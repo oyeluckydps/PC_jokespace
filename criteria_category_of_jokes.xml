@@ -1,0 +1,74 @@
+<JokeClassification>
+  <Criteria name="Mechanism">
+    <Category>Wordplay / Puns</Category>
+    <Category>Malapropisms</Category>
+    <Category>Non-sequiturs</Category>
+    <Category>Irony / Sarcasm</Category>
+    <Category>Absurdity / Surrealism</Category>
+    <Category>Double Entendres</Category>
+    <Category>Misdirection</Category>
+    <Category>Self-referential / Meta-humor</Category>
+  </Criteria>
+
+  <Criteria name="Theme">
+    <Category>Animals</Category>
+    <Category>Politics</Category>
+    <Category>Religion</Category>
+    <Category>Sex / Adult</Category>
+    <Category>Workplace</Category>
+    <Category>Relationships / Marriage</Category>
+    <Category>Children / Parenting</Category>
+    <Category>School / Exams / Students</Category>
+    <Category>Ethnicity / Nationality / Stereotypes</Category>
+    <Category>Technology / IT / Programming</Category>
+    <Category>Science / Math / Academia</Category>
+    <Category>Dark / Morbid humor</Category>
+    <Category>Pop Culture / Celebrity</Category>
+    <Category>Historical / Intellectual humor</Category>
+  </Criteria>
+
+  <Criteria name="Structure">
+    <Category>One-liners</Category>
+    <Category>Knock-knock jokes</Category>
+    <Category>Riddles</Category>
+    <Category>Light bulb jokes</Category>
+    <Category>Yo mama jokes</Category>
+    <Category>Anti-jokes</Category>
+    <Category>Shaggy dog stories</Category>
+    <Category>Deadpan delivery</Category>
+  </Criteria>
+
+  <Criteria name="Intent">
+    <Category>Satirical</Category>
+    <Category>Parody / Spoof</Category>
+    <Category>Slapstick / Physical comedy</Category>
+    <Category>Insults / Roasts</Category>
+    <Category>Wholesome / Clean humor</Category>
+    <Category>Dark / Gallows humor</Category>
+  </Criteria>
+
+  <Criteria name="Target">
+    <Category>Dad jokes</Category>
+    <Category>Blonde jokes</Category>
+    <Category>Programmer / Nerd jokes</Category>
+    <Category>Ethnic / National jokes</Category>
+    <Category>Lawyer / Doctor / Engineer jokes</Category>
+    <Category>Gender-based humor</Category>
+  </Criteria>
+
+  <Criteria name="Culture">
+    <Category>British dry humor</Category>
+    <Category>Jewish humor</Category>
+    <Category>Indian PJ jokes</Category>
+    <Category>Japanese Manzai</Category>
+    <Category>American stand-up</Category>
+  </Criteria>
+
+  <Criteria name="Modern / Internet">
+    <Category>Memes</Category>
+    <Category>Dad joke bots / AI-generated</Category>
+    <Category>Twitter / Reddit-style jokes</Category>
+    <Category>TikTok punchlines / Vine-style shorts</Category>
+    <Category>Shitposts / Absurd Gen-Z humor</Category>
+  </Criteria>
+</JokeClassification>
