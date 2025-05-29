@@ -4,25 +4,45 @@
 
 ### 1.1 Core Research Foundation
 
-Our system draws inspiration from multiple research directions in computational humor generation. The primary foundation comes from **"Humor Mechanics: Advancing Humor Generation with Multistep Reasoning"** by Tikhonov and Shtykovskiy, along with insights from template-based humor generation approaches.
+Our system draws inspiration from multiple research directions in computational humor generation and structured LLM reasoning approaches. The foundation comes from humor generation research and strategic planning methodologies that have proven effective in complex reasoning tasks.
 
-**Multi-Step Association Generation**: The foundational paper demonstrated that breaking down joke creation into discrete steps - particularly the iterative refinement of associations - produces more novel and higher-quality humor than direct generation approaches. This systematic decomposition of the humor generation process forms a core inspiration for our methodology.
+### 1.2 Humor Generation Research
+
+**Multi-Step Association Generation**: Foundational research by Tikhonov and Shtykovskiy in "Humor Mechanics: Advancing Humor Generation with Multistep Reasoning" demonstrated that breaking down joke creation into discrete steps - particularly the iterative refinement of associations - produces more novel and higher-quality humor than direct generation approaches. This systematic decomposition of the humor generation process forms a core inspiration for our methodology.
 
 **Systematic Evaluation Framework**: Their human evaluation methodology, measuring understandability, novelty, funniness, and appropriateness, provides a robust foundation for assessing joke quality and establishing benchmarks for humor generation systems.
 
-**Template-Based Humor Research**: The work "Automating Humor using Template Extraction and Killing" provided valuable insights into structural pattern recognition in humor generation. This research demonstrated the importance of identifying recurring comedic structures and the potential for systematic approaches to humor construction. The template-based methodology showed how computational systems could recognize and utilize formal patterns in successful jokes. However, while this work established important foundational concepts about the mechanical aspects of humor and pattern-based generation, we do not employ any specific methodologies from this template extraction approach in our current system design.
+**Template-Based Humor Research**: The work "Automating Humor using Template Extraction and Infilling" provided valuable insights into structural pattern recognition in humor generation. This research demonstrated the importance of identifying recurring comedic structures and the potential for systematic approaches to humor construction. The template-based methodology showed how computational systems could recognize and utilize formal patterns in successful jokes. However, while this work established important foundational concepts about the mechanical aspects of humor and pattern-based generation, we do not employ any specific methodologies from this template extraction approach in our current system design.
 
 **Data-Driven Policy Learning**: The foundational research demonstrated that AI can learn humor patterns by analyzing successful jokes and extracting underlying mechanisms, proving more effective than rule-based systems. However, our approach diverges from this methodology - we do not employ data-driven policy learning from existing joke datasets, instead opting for a predefined categorical framework approach.
 
-### 1.2 Key Innovations We Adopt
+### 1.3 PLANSEARCH: Natural Language Planning Methodology
+
+Wang et al.'s PLANSEARCH methodology in "Planning In Natural Language Improves LLM Search For Code Generation" serves as a primary architectural inspiration for our joke generation system. Their work demonstrates that searching over natural language plans rather than direct outputs dramatically improves diversity and quality. We have incorporated several key principles from their research:
+
+**Core Architectural Principles Adopted:**
+
+- **Structured Search Space**: Instead of direct joke generation, we search over intermediate representations (categories, factors, hook points) - mirroring PLANSEARCH's approach of searching over observations and plans rather than code
+- **Combinatorial Exploration**: Systematic combination of elements through category-factor pairs and cross-category synthesis, similar to PLANSEARCH's subset combinations of observations  
+- **Hierarchical Generation**: Multi-layered complexity building from individual category-factors to synthesized groups, paralleling PLANSEARCH's first-order to second-order observation generation
+- **Diversity as Optimization Target**: Explicit focus on generating diverse intermediate representations to improve final output quality, following PLANSEARCH's core hypothesis that diversity drives performance gains
+- **Natural Language Planning**: Using natural language descriptions as intermediate planning steps before final generation, rather than jumping directly to output generation
+
+**Specific Methodological Adaptations:**
+
+- **Observation-to-Category Mapping**: PLANSEARCH's "observation generation" directly inspired our category selection process where we generate multiple relevant humor categories for each topic
+- **Plan Combination Strategy**: Their subset combination approach for merging observations is reflected in our cross-category synthesis methodology
+
+### 1.4 Key Innovations We Adopt
 
 From the foundational research, we incorporate these proven techniques:
 
 - **Structured Topic Analysis**: Rather than random word association, we implement systematic categorization to guide the humor generation process
 - **Iterative Refinement**: Multiple stages of filtering and improvement rather than single-shot generation
 - **Quality-Based Selection**: Using judging mechanisms to identify successful patterns and reinforce them
+- **Diversity-Driven Search**: Prioritizing exploration of diverse intermediate representations over direct optimization
 
-### 1.3 Our Extensions and Novel Contributions
+### 1.5 Our Extensions and Novel Contributions
 
 While building on established foundations, our system introduces several novel enhancements that represent significant departures from existing approaches:
 
@@ -32,9 +52,7 @@ While building on established foundations, our system introduces several novel e
 
 **Cross-Category Synthesis**: Identifying common elements across different humor styles to create hybrid approaches, allowing for more sophisticated and layered comedic constructions.
 
-**Evolutionary Algorithm-Based Optimization (Future Work)**: We plan to implement an evolutionary selection mechanism that identifies the most successful category-factor combinations and hook points over time. This approach allows the best-performing comedic elements to "survive" and be preferentially selected in future generations, while less successful elements are gradually filtered out. This evolutionary pressure is expected to result in continuous improvement of joke quality and increased likelihood of generating genuinely funny content.
-
-**Explicit Novelty Measurement Mechanisms (Future Work)**: While not currently integrated, we plan to develop sophisticated novelty detection systems that can identify when generated content is truly original versus when it resembles existing jokes. This will help ensure our system produces fresh humor rather than variations of known content.
+**Humor-Specific Adaptation of PLANSEARCH Principles**: Adapting the structured search methodology from code generation to the creative domain of humor, representing a novel application of these planning principles to creative content generation.
 
 ## 2. System Architecture and Core Methodology
 
@@ -237,6 +255,8 @@ Enhanced Prompt Construction → Parallel Joke Generation → Quality Pre-filter
 
 **Fitness-Based Selection**: Category-factor combinations and hook points that consistently generate high-quality jokes will be assigned higher "fitness scores" and be more likely to be selected in future generation cycles.
 
+**Iterative Refinement and Quality Filtering**: Drawing inspiration from PLANSEARCH's approach to improving diversity and quality through iterative processes, our evolutionary mechanism will implement similar principles of iterative refinement where successful elements are refined and improved over multiple generations. Additionally, quality filtering mechanisms similar to those used in PLANSEARCH will be employed to systematically filter out low-performing category-factor combinations while promoting high-performing ones.
+
 **Mutation and Variation**: The system will introduce controlled variations of successful elements, exploring slight modifications of winning category-factor combinations and generating hook points in the semantic/phonetic neighborhoods of successful ones.
 
 **Population Dynamics**: The system will maintain a diverse population of category-factor combinations while gradually increasing the representation of successful elements, preventing premature convergence while improving overall performance.
@@ -255,6 +275,16 @@ Enhanced Prompt Construction → Parallel Joke Generation → Quality Pre-filter
 - Direct targeting of proven successful hook points
 - Generation of variations and related concepts
 - Maintained diversity through controlled exploration
+
+### 5.4 Diversity Measurement and Optimization
+
+**Comprehensive Diversity Metrics**: Inspired by PLANSEARCH's systematic approach to measuring and optimizing diversity, we will implement sophisticated diversity measurement mechanisms to evaluate:
+- Semantic diversity across generated hook points
+- Categorical diversity in humor styles
+- Novelty measurement for generated jokes to ensure fresh content
+- Cross-category synthesis effectiveness metrics
+
+**Diversity-Performance Correlation Analysis**: Following PLANSEARCH's finding that diversity strongly correlates with performance improvements, we will establish metrics to track the relationship between diversity in our generation process and the quality of final joke outputs.
 
 ### 5.5 Advanced Integration Possibilities
 
