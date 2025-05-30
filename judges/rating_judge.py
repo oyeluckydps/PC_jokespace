@@ -79,7 +79,8 @@ class RatingJudge:
             scores = list(factor_scores.values())
             result.max_score = max(scores) if scores else 0
             result.mean_score = sum(scores) / len(scores) if scores else 0.0
-            result.overall_rating = (result.max_score + result.mean_score) / 2
+            result.overall_rating = (result.max_score*10 + result.mean_score +  len(scores)/5)/12   
+            # Give some benefit for involving more factors and divide by 12 to normalize and bring the value below 5.
         
         return result
     
