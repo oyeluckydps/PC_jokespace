@@ -1,18 +1,33 @@
 {
     "version": "0.2.0",
     "configurations": [
+    //   {
+    //     "name": "100 Jokes",
+    //     "type": "debugpy",
+    //     "request": "launch",
+    //     "python": "/root/anaconda3/envs/jokespace/bin/python",
+    //     "module": "judges.cli",
+    //     "args": [
+    //       "temp/100_jokes_dataset.xml",
+    //       "--batch-size",
+    //       "15",
+    //       "--top-count",
+    //       "10"
+    //     ],
+    //     "justMyCode": true
+    //   },
       {
-        "name": "Launch Judges CLI",
+        "name": "Sample Jokes",
         "type": "debugpy",
         "request": "launch",
         "python": "/root/anaconda3/envs/jokespace/bin/python",
         "module": "judges.cli",
         "args": [
-          "temp/100_jokes_dataset.xml",
+          "temp/sample_jokes.xml",
           "--batch-size",
-          "15",
+          "1",
           "--top-count",
-          "10"
+          "5"
         ],
         "justMyCode": true
       }
