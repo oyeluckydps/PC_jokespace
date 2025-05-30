@@ -2,10 +2,10 @@ import asyncio
 from typing import Dict, Tuple
 import dspy
 
-from PC_jokespace.utilities.dspy_client import ClaudeClient
-from PC_jokespace.utilities.xml_parser import ExampleData
-from PC_jokespace.judges.models import RatingResult, DuelResult
-from PC_jokespace.judges.dspy_signatures import DuelComparisonSignature
+from utilities.dspy_client import ClaudeClient
+from utilities.xml_parser import ExampleData
+from judges.models import RatingResult, DuelResult
+from judges.dspy_signatures import DuelComparisonSignature
 
 class DuelJudge:
     def __init__(self, client: ClaudeClient, examples: ExampleData):

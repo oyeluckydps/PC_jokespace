@@ -5,7 +5,7 @@ from typing import List, Dict, Optional, Tuple
 from datetime import datetime
 from pathlib import Path
 
-from PC_jokespace.judges.models import (
+from judges.models import (
     RatingResult, TournamentResult, DuelResult, 
     AdmissibilityResults
 )
@@ -248,5 +248,4 @@ class XMLLogger:
         filepath = self.output_dir / filename
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(final_xml)
-    
     

@@ -1,7 +1,7 @@
 import asyncio
 from typing import List, Dict, Optional, Tuple
-from PC_jokespace.judges.models import RatingResult, DuelResult, TournamentResult
-from PC_jokespace.judges.duel_judge import DuelJudge
+from judges.models import RatingResult, DuelResult, TournamentResult
+from judges.duel_judge import DuelJudge
 
 class TournamentManager:
     def __init__(self, duel_judge: DuelJudge):

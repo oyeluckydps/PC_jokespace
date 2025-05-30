@@ -2,14 +2,14 @@ import asyncio
 from typing import Tuple, Optional, List
 from pathlib import Path
 
-from PC_jokespace.utilities.dspy_client import ClaudeClient
-from PC_jokespace.utilities.xml_parser import XMLConfigParser
-from PC_jokespace.utilities.xml_logger import XMLLogger
-from PC_jokespace.judges.models import RatingResult
-from PC_jokespace.judges.rating_judge import RatingJudge
-from PC_jokespace.judges.duel_judge import DuelJudge
-from PC_jokespace.judges.batch_processor import BatchProcessor
-from PC_jokespace.judges.tournament_manager import TournamentManager
+from utilities.dspy_client import ClaudeClient
+from utilities.xml_parser import XMLConfigParser
+from utilities.xml_logger import XMLLogger
+from judges.models import RatingResult
+from judges.rating_judge import RatingJudge
+from judges.duel_judge import DuelJudge
+from judges.batch_processor import BatchProcessor
+from judges.tournament_manager import TournamentManager
 
 class JokeJudgeSystem:
     def __init__(self, output_dir: str):

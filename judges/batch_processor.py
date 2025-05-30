@@ -3,9 +3,9 @@ from typing import List, Optional
 from datetime import datetime
 import sys
 
-from PC_jokespace.utilities.xml_parser import JokeData
-from PC_jokespace.judges.models import RatingResult
-from PC_jokespace.judges.rating_judge import RatingJudge
+from utilities.xml_parser import JokeData
+from judges.models import RatingResult
+from judges.rating_judge import RatingJudge
 
 class BatchProcessor:
     def __init__(self, rating_judge: RatingJudge, batch_size: int = 20):

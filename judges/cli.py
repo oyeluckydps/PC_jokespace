@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Tuple, Optional
 
-from PC_jokespace.judges.main_judge import JokeJudgeSystem
+from judges.main_judge import JokeJudgeSystem
 
 def main():
     """Entry point for: python -m judges <jokes_file.xml> [--batch-size N] [--top-count N]"""

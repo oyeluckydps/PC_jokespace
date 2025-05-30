@@ -2,12 +2,12 @@ import asyncio
 from typing import List, Dict, Optional
 import dspy
 
-from PC_jokespace.utilities.xml_parser import Category, Factor, ExampleData, JokeData
-from PC_jokespace.utilities.dspy_client import ClaudeClient
-from PC_jokespace.judges.models import (
+from utilities.xml_parser import Category, Factor, ExampleData, JokeData
+from utilities.dspy_client import ClaudeClient
+from judges.models import (
     RatingResult, AdmissibilityResults, AdmissibilityCheck
 )
-from PC_jokespace.judges.dspy_signatures import (
+from judges.dspy_signatures import (
     AdmissibilitySignature, CategoryAssignmentSignature,
     FactorSelectionSignature, FactorScoringSignature
 )
