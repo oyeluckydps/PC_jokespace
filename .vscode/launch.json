@@ -27,7 +27,8 @@
           "--batch-size",
           "1",
           "--top-count",
-          "5"
+          "5",
+          "--bypass-cache"          
         ],
         "justMyCode": true
       }

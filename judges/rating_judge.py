@@ -14,12 +14,14 @@ from judges.dspy_signatures import (
 
 class RatingJudge:
     def __init__(self, client: ClaudeClient, categories: List[str], 
-                 factors: Dict[str, List[Factor]], examples: ExampleData):
+                 factors: Dict[str, List[Factor]], examples: ExampleData,
+                 max_retries: int = 5):
         """Initialize rating judge with parsed XML data"""
         self.client = client
         self.categories = categories
         self.factors = factors
         self.examples = examples
+        self.max_retries = max_retries  # Store max retries for use in error handling
         
         # Initialize DSPy predictors
         self.admissibility_predictor = dspy.Predict(AdmissibilitySignature)
@@ -81,6 +83,20 @@ class RatingJudge:
         
         return result
     
+    async def _retry_on_error(self, func, *args, **kwargs):
+        """Generic retry wrapper for async functions"""
+        for attempt in range(self.max_retries + 1):  # +1 for initial attempt
+            try:
+                return await func(*args, **kwargs)
+            except Exception as e:
+                if attempt == self.max_retries:
+                    # No more retries
+                    raise e
+                else:
+                    # Log retry attempt
+                    print(f"\033[93m⚠️  Error: {str(e)[:50]}..., retrying in 2s\033[0m")
+                    await asyncio.sleep(2)
+    
     async def _check_all_admissibility_async(self, joke_text: str) -> AdmissibilityResults:
         """Run 5 admissibility checks in parallel"""
         # Define check functions
@@ -111,18 +127,20 @@ class RatingJudge:
         Accept if there's ANY attempt at humor, wordplay, irony, or comedic structure.
         Even bad jokes or failed attempts at humor should PASS this check."""
         
-        try:
+        async def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="intent",
                 instruction_prompt=instructions
             )
-            
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
+        
+        try:
+            return await self._retry_on_error(check)
         except Exception as e:
-            # If API fails, be liberal and pass
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed, defaulting to pass: {str(e)}")
+            # If all retries fail, be liberal and pass
+            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
     async def _check_completeness_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check if joke is complete"""
@@ -130,17 +148,19 @@ class RatingJudge:
         Accept if there's a setup and any form of conclusion, even if weak.
         One-liners, puns, and short jokes should PASS."""
         
-        try:
+        async def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="completeness",
                 instruction_prompt=instructions
             )
-            
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
+        
+        try:
+            return await self._retry_on_error(check)
         except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed, defaulting to pass: {str(e)}")
+            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
     async def _check_appropriateness_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check appropriateness"""
@@ -148,17 +168,19 @@ class RatingJudge:
         Accept edgy humor, dark humor, adult humor, political humor.
         Only reject if promoting hate, violence, or extreme harm."""
         
-        try:
+        async def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="appropriateness",
                 instruction_prompt=instructions
             )
-            
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
+        
+        try:
+            return await self._retry_on_error(check)
         except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed, defaulting to pass: {str(e)}")
+            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
     async def _check_coherence_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check logical coherence"""
@@ -166,17 +188,19 @@ class RatingJudge:
         Accept if there's any logical thread, even if absurd or surreal.
         Abstract humor and non-sequiturs can still PASS if intentional."""
         
-        try:
+        async def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="coherence",
                 instruction_prompt=instructions
             )
-            
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
+        
+        try:
+            return await self._retry_on_error(check)
         except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed, defaulting to pass: {str(e)}")
+            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
     async def _check_accessibility_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check language accessibility"""
@@ -184,23 +208,25 @@ class RatingJudge:
         Accept specialized humor, cultural references, wordplay in any language.
         Technical or niche jokes should still PASS."""
         
-        try:
+        async def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="accessibility",
                 instruction_prompt=instructions
             )
-            
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
+        
+        try:
+            return await self._retry_on_error(check)
         except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed, defaulting to pass: {str(e)}")
+            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
     async def _classify_categories_async(self, joke_text: str) -> Tuple[List[str], bool]:
         """Assign joke to categories"""
         categories_str = ", ".join(self.categories)
         
-        try:
+        async def classify():
             result = self.category_predictor(
                 joke_text=joke_text,
                 all_categories=f"Available categories: {categories_str}"
@@ -224,7 +250,9 @@ class RatingJudge:
                     is_independent = True
             
             return categories, is_independent
-            
+        
+        try:
+            return await self._retry_on_error(classify)
         except Exception as e:
             # Default to Independent on error
             return ["Independent"], True
@@ -297,7 +325,7 @@ class RatingJudge:
         
         factors_str = "\n".join(factors_info)
         
-        try:
+        async def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category=category,
@@ -311,7 +339,9 @@ class RatingJudge:
                     selected.append(factor.name)
             
             return selected
-            
+        
+        try:
+            return await self._retry_on_error(select)
         except Exception as e:
             return []
     
@@ -323,7 +353,7 @@ class RatingJudge:
         
         factors_str = "\n".join(factors_info[:20])  # Limit to prevent token overflow
         
-        try:
+        async def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category="Independent",
@@ -337,7 +367,9 @@ class RatingJudge:
                     selected.append(factor.name)
             
             return selected[:10]  # Limit to 10 factors for Independent
-            
+        
+        try:
+            return await self._retry_on_error(select)
         except Exception as e:
             return []
     
@@ -381,7 +413,7 @@ class RatingJudge:
         pos_examples = "\n".join(f"- {ex}" for ex in factor.positive_examples[:3])
         neg_examples = "\n".join(f"- {ex}" for ex in factor.negative_examples[:3])
         
-        try:
+        async def score():
             result = self.factor_scorer(
                 joke_text=joke_text,
                 factor_name=factor.name,
@@ -392,10 +424,12 @@ class RatingJudge:
             
             # Parse score
             try:
-                score = int(result.score)
-                return max(0, min(5, score))  # Ensure 0-5 range
+                score_val = int(result.score)
+                return max(0, min(5, score_val))  # Ensure 0-5 range
             except:
                 return 3  # Default middle score on parse error
-                
+        
+        try:
+            return await self._retry_on_error(score)
         except Exception as e:
             return 3  # Default middle score on API error

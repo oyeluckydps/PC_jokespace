@@ -719,6 +719,36 @@ python -m judges jokes_dataset.xml --batch-size 30 --top-count 24
 # Error case - no valid jokes in file
 python -m judges empty_or_invalid.xml
 # Output: Error: No valid jokes found in input file (in RED)
+
+# Bypass cache for fresh evaluation (useful when testing prompt changes)
+python -m judges temp/100_jokes_dataset.xml --bypass-cache
+
+# Run rating-only mode to quickly see top jokes without tournament
+python -m judges temp/sample_jokes.xml --rating-only
+
+# Disable retries for faster failure detection during development
+python -m judges temp/100_jokes_dataset.xml --retries 0
+
+# Combine rating-only with custom top count to see best 30 jokes
+python -m judges temp/100_jokes_dataset.xml --rating-only --top-count 30
+
+# Fresh evaluation with increased retries for unstable connections
+python -m judges temp/sample_jokes.xml --bypass-cache --retries 10
+
+# Quick test run: rating-only, no cache, minimal retries
+python -m judges temp/sample_jokes.xml --rating-only --bypass-cache --retries 1
+
+# Full tournament with cache bypass and larger batches
+python -m judges temp/100_jokes_dataset.xml --bypass-cache --batch-size 40 --top-count 16
+
+# Production run: increased retries, top 32 for 5-round tournament
+python -m judges temp/100_jokes_dataset.xml --retries 8 --top-count 32
+
+# Debug mode: no retries, bypass cache, small tournament
+python -m judges temp/sample_jokes.xml --retries 0 --bypass-cache --top-count 8
+
+# Complete fresh evaluation with all parameters customized
+python -m judges temp/100_jokes_dataset.xml --batch-size 25 --top-count 20 --bypass-cache --rating-only --retries 3
 ```
 
 This complete revised plan incorporates all clarifications and discussions, including the revised bye mechanism, error handling for no valid jokes, proper file paths, category/factor handling, and all other implementation details discussed.

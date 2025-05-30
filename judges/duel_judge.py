@@ -8,10 +8,11 @@ from judges.models import RatingResult, DuelResult
 from judges.dspy_signatures import DuelComparisonSignature
 
 class DuelJudge:
-    def __init__(self, client: ClaudeClient, examples: ExampleData):
+    def __init__(self, client: ClaudeClient, examples: ExampleData, max_retries: int = 5):
         """Initialize with good/bad joke examples"""
         self.client = client
         self.examples = examples
+        self.max_retries = max_retries  # Store max retries for error handling
         self.duel_predictor = dspy.Predict(DuelComparisonSignature)
     
     def compare_jokes_for_tournament(self, joke_a: RatingResult, joke_b: RatingResult,
@@ -37,13 +38,27 @@ class DuelJudge:
         
         # Resolve the comparison
         return self._resolve_comparison(ab_result, ba_result, joke_a.joke_id, joke_b.joke_id)
+    
+    async def _retry_on_error(self, func, *args, **kwargs):
+        """Generic retry wrapper for async functions"""
+        for attempt in range(self.max_retries + 1):  # +1 for initial attempt
+            try:
+                return await func(*args, **kwargs)
+            except Exception as e:
+                if attempt == self.max_retries:
+                    # No more retries
+                    raise e
+                else:
+                    # Log retry attempt
+                    print(f"\033[93m⚠️  Duel comparison error: {str(e)[:50]}..., retrying in 2s\033[0m")
+                    await asyncio.sleep(2)
    
     async def _compare_ab_async(self, joke_a_text: str, joke_b_text: str) -> Dict:
         """Compare A vs B with examples"""
         good_examples = "\n".join(f"Good: {ex}" for ex in self.examples.good_jokes)
         bad_examples = "\n".join(f"Bad: {ex}" for ex in self.examples.bad_jokes)
         
-        try:
+        async def compare():
             result = self.duel_predictor(
                 joke_a=joke_a_text,
                 joke_b=joke_b_text,
@@ -63,52 +78,58 @@ class DuelJudge:
                 'confidence': confidence,
                 'reasoning': result.reasoning
             }
+        
+        try:
+            return await self._retry_on_error(compare)
         except Exception as e:
-            # Default to A with low confidence on error
+            # Default to A with low confidence on error after all retries
             return {
-                'winner': 'a',
-                'confidence': 1.0,
-                'reasoning': f"Comparison failed: {str(e)}"
-            }
-   
+               'winner': 'a',
+               'confidence': 1.0,
+               'reasoning': f"Comparison failed after {self.max_retries} retries: {str(e)}"
+           }
+  
     async def _compare_ba_async(self, joke_b_text: str, joke_a_text: str) -> Dict:
         """Compare B vs A with examples"""
         good_examples = "\n".join(f"Good: {ex}" for ex in self.examples.good_jokes)
         bad_examples = "\n".join(f"Bad: {ex}" for ex in self.examples.bad_jokes)
-        
-        try:
+       
+        async def compare():
             result = self.duel_predictor(
                 joke_a=joke_b_text,
                 joke_b=joke_a_text,
                 good_examples=good_examples,
                 bad_examples=bad_examples
             )
-            
+           
             winner = result.winner.lower().strip()
             # Reverse the result since we swapped inputs
             if 'joke_a' in winner:
                 actual_winner = 'b'
             else:
                 actual_winner = 'a'
-            
+           
             try:
                 confidence = float(result.confidence_factor)
                 confidence = max(1.0, confidence)
             except:
                 confidence = 1.0
-            
+           
             return {
                 'winner': actual_winner,
                 'confidence': confidence,
                 'reasoning': result.reasoning
             }
+       
+        try:
+            return await self._retry_on_error(compare)
         except Exception as e:
             return {
                 'winner': 'a',
                 'confidence': 1.0,
-                'reasoning': f"Comparison failed: {str(e)}"
+                'reasoning': f"Comparison failed after {self.max_retries} retries: {str(e)}"
             }
-   
+  
     def _resolve_comparison(self, ab_result: Dict, ba_result: Dict, 
                            joke_a_id: int, joke_b_id: int) -> Dict:
         """Resolve conflicts between two comparisons"""
@@ -144,7 +165,7 @@ class DuelJudge:
             'position_consistent': position_consistent,
             'reasoning': reasoning
         }
-   
+  
     def _build_duel_result(self, joke_a: RatingResult, joke_b: RatingResult,
                           comparison: Dict, match_id: str, round_number: int,
                           round_name: str, lives_tracker: Dict[int, int]) -> DuelResult:

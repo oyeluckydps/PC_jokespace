@@ -3,9 +3,11 @@ import time
 import dspy
 from typing import Optional, Any
 from anthropic import Anthropic
+import random
 
 class ClaudeClient:
-    def __init__(self, model: str = "claude-3-5-sonnet-20241022", api_key: Optional[str] = None, cache: bool = True):
+    def __init__(self, model: str = "claude-3-5-sonnet-20241022", api_key: Optional[str] = None, 
+                 cache: bool = True):
         """Initialize DSPy with Claude 3.5 Sonnet using environment API key"""
         # self.model = "claude-3-5-sonnet-20241022" # Input -> $3.00 / MTok       Output ->$15.00 / MTok
         self.model = "claude-3-haiku-20240307"    # Input -> $0.25 / MTok       Output -> $1.25 / MTok
@@ -21,9 +23,12 @@ class ClaudeClient:
         self.lm = dspy.LM(
             model=self.model,
             api_key=self.api_key,
-            max_tokens=2000
+            max_tokens=2000,
+            cache=self.cache,
+            temperature=0.1 + (0 if self.cache else 1)*0.001*random.uniform(-1, 1)        # The cache of DSPy is not functioning well so add some randomness to bypass the cache.
         )
         dspy.settings.configure(lm=self.lm, cache=self.cache)
+        pass
     
     def generate(self, prompt: str, max_tokens: int = 2000, temperature: float = 0.1) -> Optional[str]:
         """Generate response with retry logic"""
@@ -50,5 +55,3 @@ class ClaudeClient:
         if not api_key:
             raise ValueError("ANTHROPIC_API_KEY not found in environment variables")
         return api_key
-    
-    
