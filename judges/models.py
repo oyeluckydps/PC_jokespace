@@ -41,6 +41,10 @@ class DuelResult(BaseModel):
     confidence_factor: float
     position_consistent: bool
     reasoning: str
+    # New fields for enhanced display
+    ab_confidence: Optional[float] = None
+    ba_confidence: Optional[float] = None
+    decision_type: Optional[str] = None  # "consistent", "by_confidence", "by_tie", "by_rating"
 
 class TournamentResult(BaseModel):
     winner_joke: RatingResult

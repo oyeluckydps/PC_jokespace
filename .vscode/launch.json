@@ -25,10 +25,9 @@
         "args": [
           "temp/sample_jokes.xml",
           "--batch-size",
-          "1",
+          "2",
           "--top-count",
-          "5",
-          "--bypass-cache"          
+          "5"       
         ],
         "justMyCode": true
       }

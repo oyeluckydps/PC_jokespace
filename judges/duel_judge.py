@@ -36,8 +36,8 @@ class DuelJudge:
         
         ab_result, ba_result = await asyncio.gather(ab_task, ba_task)
         
-        # Resolve the comparison
-        return self._resolve_comparison(ab_result, ba_result, joke_a.joke_id, joke_b.joke_id)
+        # Resolve the comparison with joke metadata for tiebreaking
+        return self._resolve_comparison(ab_result, ba_result, joke_a, joke_b)
     
     async def _retry_on_error(self, func, *args, **kwargs):
         """Generic retry wrapper for async functions"""
@@ -131,54 +131,68 @@ class DuelJudge:
             }
   
     def _resolve_comparison(self, ab_result: Dict, ba_result: Dict, 
-                           joke_a_id: int, joke_b_id: int) -> Dict:
+                           joke_a: RatingResult, joke_b: RatingResult) -> Dict:
         """Resolve conflicts between two comparisons"""
         position_consistent = ab_result['winner'] == ba_result['winner']
+        decision_type = None
         
         if position_consistent:
             # Both comparisons agree
             winner = ab_result['winner']
             confidence = (ab_result['confidence'] + ba_result['confidence']) / 2
             reasoning = f"Consistent decision. AB: {ab_result['reasoning']} BA: {ba_result['reasoning']}"
+            decision_type = "consistent"
         else:
             # Comparisons disagree - check for tie
             if ab_result['confidence'] == ba_result['confidence']:
-                # Exact tie - both advance
-                winner = 'tie'
-                confidence = ab_result['confidence']
-                reasoning = f"Tie detected with equal confidence {confidence}. Both jokes advance."
+                # Exact tie - use original ratings to break tie
+                if joke_a.overall_rating > joke_b.overall_rating:
+                    winner = 'a'
+                    confidence = ab_result['confidence']
+                    reasoning = f"Tie detected (confidence {confidence}). Using original rating to break tie: A({joke_a.overall_rating:.2f}) > B({joke_b.overall_rating:.2f})"
+                    decision_type = "by_rating"
+                elif joke_b.overall_rating > joke_a.overall_rating:
+                    winner = 'b'
+                    confidence = ba_result['confidence']
+                    reasoning = f"Tie detected (confidence {confidence}). Using original rating to break tie: B({joke_b.overall_rating:.2f}) > A({joke_a.overall_rating:.2f})"
+                    decision_type = "by_rating"
+                else:
+                    # Even ratings - use seed
+                    winner = 'a' if joke_a.original_rank < joke_b.original_rank else 'b'
+                    confidence = ab_result['confidence']
+                    reasoning = f"Tie with equal ratings. Using seed to break tie."
+                    decision_type = "by_rating"
             else:
                 # Use higher confidence result
                 if ab_result['confidence'] > ba_result['confidence']:
                     winner = ab_result['winner']
                     confidence = ab_result['confidence']
                     reasoning = f"Position inconsistent. Using AB result (higher confidence). {ab_result['reasoning']}"
+                    decision_type = "by_confidence"
                 else:
                     winner = ba_result['winner']
                     confidence = ba_result['confidence']
                     reasoning = f"Position inconsistent. Using BA result (higher confidence). {ba_result['reasoning']}"
+                    decision_type = "by_confidence"
         
         return {
             'winner': winner,
-            'winner_id': joke_a_id if winner == 'a' else (joke_b_id if winner == 'b' else -1),
+            'winner_id': joke_a.joke_id if winner == 'a' else joke_b.joke_id,
             'confidence': confidence,
             'position_consistent': position_consistent,
-            'reasoning': reasoning
+            'reasoning': reasoning,
+            'ab_confidence': ab_result['confidence'],
+            'ba_confidence': ba_result['confidence'],
+            'decision_type': decision_type
         }
   
     def _build_duel_result(self, joke_a: RatingResult, joke_b: RatingResult,
                           comparison: Dict, match_id: str, round_number: int,
                           round_name: str, lives_tracker: Dict[int, int]) -> DuelResult:
         """Build complete duel result"""
-        # Handle tie case
-        if comparison['winner'] == 'tie':
-            # For ties, pick A as nominal winner but mark that both advance
-            winner_id = joke_a.joke_id
-            loser_advanced = True
-        else:
-            winner_id = comparison['winner_id']
-            loser_id = joke_b.joke_id if winner_id == joke_a.joke_id else joke_a.joke_id
-            loser_advanced = lives_tracker.get(loser_id, 0) > 0
+        winner_id = comparison['winner_id']
+        loser_id = joke_b.joke_id if winner_id == joke_a.joke_id else joke_a.joke_id
+        loser_advanced = lives_tracker.get(loser_id, 0) > 0
         
         return DuelResult(
             match_id=match_id,
@@ -194,5 +208,8 @@ class DuelJudge:
             loser_advanced_by_life=loser_advanced,
             confidence_factor=comparison['confidence'],
             position_consistent=comparison['position_consistent'],
-            reasoning=comparison['reasoning']
+            reasoning=comparison['reasoning'],
+            ab_confidence=comparison.get('ab_confidence'),
+            ba_confidence=comparison.get('ba_confidence'),
+            decision_type=comparison.get('decision_type')
         )
