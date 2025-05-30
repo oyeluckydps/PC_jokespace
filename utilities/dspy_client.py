@@ -14,7 +14,7 @@ class ClaudeClient:
         self.retry_delay = 5
         
         # Configure DSPy with Claude
-        self.lm = dspy.Claude(
+        self.lm = dspy.LM(
             model=self.model,
             api_key=self.api_key,
             max_tokens=2000

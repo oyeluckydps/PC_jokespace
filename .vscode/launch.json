@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Judges CLI",
+        "type": "debugpy",
+        "request": "launch",
+        "python": "/root/anaconda3/envs/jokespace/bin/python",
+        "module": "judges.cli",
+        "args": [
+          "temp/100_jokes_dataset.xml",
+          "--batch-size",
+          "15",
+          "--top-count",
+          "10"
+        ],
+        "justMyCode": true
+      }
+    ]
+  }
+  

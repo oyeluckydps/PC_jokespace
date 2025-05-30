@@ -23,7 +23,7 @@ class JokeData(BaseModel):
     text: str
 
 class XMLConfigParser:
-    def __init__(self, base_path: str = "PC_jokespace"):
+    def __init__(self, base_path: str = ""):
         """Initialize parser with base path for finding XML configuration files"""
         self.base_path = Path(base_path)
     

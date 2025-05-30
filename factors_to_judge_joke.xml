@@ -1,4 +1,5 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
   <Criteria name="Mechanism">
     <Category name="Wordplay / Puns">
       <Factor name="Linguistic Creativity">
@@ -201,205 +202,192 @@
       </Factor>
     </Category>
   </Criteria>
-  
-  
-  
-  
-  
-  
-	<Criteria name="Theme">
-	  <Category name="Animals">
-		<Factor name="Linguistic Creativity">
-		  <Explanation>How creatively language is used to describe animal behaviors, traits, or scenarios.</Explanation>
-		  <GoodExample>"Why don't seagulls fly over the bay? Because then they'd be bagels."</GoodExample>
-		  <BadExample>"Cows go moo. That's funny, right?"</BadExample>
-		</Factor>
-		<Factor name="Personification">
-		  <Explanation>Giving animals human-like traits to create humor or satire.</Explanation>
-		  <GoodExample>"My dog thinks he’s human. He even yells at Alexa."</GoodExample>
-		  <BadExample>"The cat was sitting. Like a person. Hilarious?"</BadExample>
-		</Factor>
-	  </Category>
 
-	  <Category name="Politics">
-		<Factor name="Sharp Commentary">
-		  <Explanation>Effectively critiquing political ideologies, figures, or policies with wit.</Explanation>
-		  <GoodExample>"Politicians and diapers should be changed often—both for the same reason."</GoodExample>
-		  <BadExample>"I don't like politicians. They're dumb."</BadExample>
-		</Factor>
-		<Factor name="Topical Relevance">
-		  <Explanation>Refers to how well the joke aligns with current political events or discourse.</Explanation>
-		  <GoodExample>"Inflation is so bad, my Monopoly money is now worth more than my paycheck."</GoodExample>
-		  <BadExample>"I heard a joke about the Berlin Wall. Topical, right?"</BadExample>
-		</Factor>
-	  </Category>
+  <Criteria name="Theme">
+    <Category name="Animals">
+      <Factor name="Linguistic Creativity">
+        <Explanation>How creatively language is used to describe animal behaviors, traits, or scenarios.</Explanation>
+        <GoodExample>"Why don't seagulls fly over the bay? Because then they'd be bagels."</GoodExample>
+        <BadExample>"Cows go moo. That's funny, right?"</BadExample>
+      </Factor>
+      <Factor name="Personification">
+        <Explanation>Giving animals human-like traits to create humor or satire.</Explanation>
+        <GoodExample>"My dog thinks he’s human. He even yells at Alexa."</GoodExample>
+        <BadExample>"The cat was sitting. Like a person. Hilarious?"</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Religion">
-		<Factor name="Fairness">
-		  <Explanation>Respectful tone while making light-hearted observations on religious practices or beliefs.</Explanation>
-		  <GoodExample>"I have a lot of respect for monks. I mean, they take a vow of silence and still put up with group chats."</GoodExample>
-		  <BadExample>"All religious people are dumb." (offensive, lacks wit)</BadExample>
-		</Factor>
-		<Factor name="Symbolic Subversion">
-		  <Explanation>Using religious symbols or stories in a surprising or humorous context.</Explanation>
-		  <GoodExample>"Moses had the first tablet that could connect to the cloud."</GoodExample>
-		  <BadExample>"Jesus walked on water. Cool. Anyway..."</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Politics">
+      <Factor name="Sharp Commentary">
+        <Explanation>Effectively critiquing political ideologies, figures, or policies with wit.</Explanation>
+        <GoodExample>"Politicians and diapers should be changed often—both for the same reason."</GoodExample>
+        <BadExample>"I don't like politicians. They're dumb."</BadExample>
+      </Factor>
+      <Factor name="Topical Relevance">
+        <Explanation>Refers to how well the joke aligns with current political events or discourse.</Explanation>
+        <GoodExample>"Inflation is so bad, my Monopoly money is now worth more than my paycheck."</GoodExample>
+        <BadExample>"I heard a joke about the Berlin Wall. Topical, right?"</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Sex / Adult">
-		<Factor name="Double Entendre Cleverness">
-		  <Explanation>Wit in using ambiguous or layered language that can be interpreted innocently or sexually.</Explanation>
-		  <GoodExample>"I told her she had a beautiful chassis. Turns out she wasn’t into car metaphors."</GoodExample>
-		  <BadExample>"Boobs are funny." (Too direct and lacks sophistication)</BadExample>
-		</Factor>
-		<Factor name="Balance of Crudeness and Wit">
-		  <Explanation>How well the joke balances mature content with cleverness rather than shock value alone.</Explanation>
-		  <GoodExample>"Love is blind, but marriage is a real eye-opener."</GoodExample>
-		  <BadExample>"Sex is gross. Haha." (Low effort, no wit)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Religion">
+      <Factor name="Fairness">
+        <Explanation>Respectful tone while making light-hearted observations on religious practices or beliefs.</Explanation>
+        <GoodExample>"I have a lot of respect for monks. I mean, they take a vow of silence and still put up with group chats."</GoodExample>
+        <BadExample>"All religious people are dumb." (offensive, lacks wit)</BadExample>
+      </Factor>
+      <Factor name="Symbolic Subversion">
+        <Explanation>Using religious symbols or stories in a surprising or humorous context.</Explanation>
+        <GoodExample>"Moses had the first tablet that could connect to the cloud."</GoodExample>
+        <BadExample>"Jesus walked on water. Cool. Anyway..."</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Workplace">
-		<Factor name="Relatability">
-		  <Explanation>Capturing common workplace scenarios in a humorous way that resonates widely.</Explanation>
-		  <GoodExample>"I pretend to work as they pretend to pay me."</GoodExample>
-		  <BadExample>"Office chairs roll. That’s it."</BadExample>
-		</Factor>
-		<Factor name="Sarcastic Tone">
-		  <Explanation>Using dry or sarcastic humor to point out workplace absurdities.</Explanation>
-		  <GoodExample>"Teamwork is important—it gives you someone to blame."</GoodExample>
-		  <BadExample>"My boss exists. So funny, right?"</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Sex / Adult">
+      <Factor name="Double Entendre Cleverness">
+        <Explanation>Wit in using ambiguous or layered language that can be interpreted innocently or sexually.</Explanation>
+        <GoodExample>"I told her she had a beautiful chassis. Turns out she wasn’t into car metaphors."</GoodExample>
+        <BadExample>"Boobs are funny." (Too direct and lacks sophistication)</BadExample>
+      </Factor>
+      <Factor name="Balance of Crudeness and Wit">
+        <Explanation>How well the joke balances mature content with cleverness rather than shock value alone.</Explanation>
+        <GoodExample>"Love is blind, but marriage is a real eye-opener."</GoodExample>
+        <BadExample>"Sex is gross. Haha." (Low effort, no wit)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Relationships / Marriage">
-		<Factor name="Punch Impact">
-		  <Explanation>Strong, memorable endings that twist typical relationship dynamics.</Explanation>
-		  <GoodExample>"My wife and I were happy for twenty years—then we met."</GoodExample>
-		  <BadExample>"Marriage is a thing. It exists."</BadExample>
-		</Factor>
-		<Factor name="Observational Accuracy">
-		  <Explanation>Sharp, funny takes on real quirks of relationships.</Explanation>
-		  <GoodExample>"Marriage is finding that one special person to annoy for a lifetime."</GoodExample>
-		  <BadExample>"Relationships are just confusing." (Vague and unoriginal)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Workplace">
+      <Factor name="Relatability">
+        <Explanation>Capturing common workplace scenarios in a humorous way that resonates widely.</Explanation>
+        <GoodExample>"I pretend to work as they pretend to pay me."</GoodExample>
+        <BadExample>"Office chairs roll. That’s it."</BadExample>
+      </Factor>
+      <Factor name="Sarcastic Tone">
+        <Explanation>Using dry or sarcastic humor to point out workplace absurdities.</Explanation>
+        <GoodExample>"Teamwork is important—it gives you someone to blame."</GoodExample>
+        <BadExample>"My boss exists. So funny, right?"</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Children / Parenting">
-		<Factor name="Innocent Irony">
-		  <Explanation>Humor from children's literal logic or parental chaos, without being mean-spirited.</Explanation>
-		  <GoodExample>"Kids: they dance like no one's watching. But they also scream like everyone's deaf."</GoodExample>
-		  <BadExample>"My kid is dumb." (Cruel, not funny)</BadExample>
-		</Factor>
-		<Factor name="Role Reversal Humor">
-		  <Explanation>Placing adults in child-like roles or vice versa for comedic effect.</Explanation>
-		  <GoodExample>"Parenting is just saying 'because I said so' until you die."</GoodExample>
-		  <BadExample>"Kids cry a lot." (Obvious, not insightful)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Relationships / Marriage">
+      <Factor name="Punch Impact">
+        <Explanation>Strong, memorable endings that twist typical relationship dynamics.</Explanation>
+        <GoodExample>"My wife and I were happy for twenty years—then we met."</GoodExample>
+        <BadExample>"Marriage is a thing. It exists."</BadExample>
+      </Factor>
+      <Factor name="Observational Accuracy">
+        <Explanation>Sharp, funny takes on real quirks of relationships.</Explanation>
+        <GoodExample>"Marriage is finding that one special person to annoy for a lifetime."</GoodExample>
+        <BadExample>"Relationships are just confusing." (Vague and unoriginal)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="School / Exams / Students">
-		<Factor name="Academic Irony">
-		  <Explanation>Making fun of the paradoxes or uselessness in educational systems.</Explanation>
-		  <GoodExample>"Why do I need math? I have a calculator and anxiety."</GoodExample>
-		  <BadExample>"School is boring." (Unoriginal, too broad)</BadExample>
-		</Factor>
-		<Factor name="Relatable Stress">
-		  <Explanation>Highlighting shared academic struggles humorously.</Explanation>
-		  <GoodExample>"Final exams: the reason coffee and panic attacks became best friends."</GoodExample>
-		  <BadExample>"Homework is hard." (Too bland)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Children / Parenting">
+      <Factor name="Innocent Irony">
+        <Explanation>Humor from children's literal logic or parental chaos, without being mean-spirited.</Explanation>
+        <GoodExample>"Kids: they dance like no one's watching. But they also scream like everyone's deaf."</GoodExample>
+        <BadExample>"My kid is dumb." (Cruel, not funny)</BadExample>
+      </Factor>
+      <Factor name="Role Reversal Humor">
+        <Explanation>Placing adults in child-like roles or vice versa for comedic effect.</Explanation>
+        <GoodExample>"Parenting is just saying 'because I said so' until you die."</GoodExample>
+        <BadExample>"Kids cry a lot." (Obvious, not insightful)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Ethnicity / Nationality / Stereotypes">
-		<Factor name="Cultural Nuance">
-		  <Explanation>Capturing quirks or differences with wit and sensitivity, not mockery.</Explanation>
-		  <GoodExample>"In Italy, even the GPS has an accent. 'In 500 meters, you-a turn-a left!'"</GoodExample>
-		  <BadExample>"Germans have no humor." (Flat, offensive)</BadExample>
-		</Factor>
-		<Factor name="Avoiding Punching Down">
-		  <Explanation>The joke should not target marginalized groups for easy laughs.</Explanation>
-		  <GoodExample>"Americans think a kilometer is a communist conspiracy."</GoodExample>
-		  <BadExample>"Mexicans are lazy. Haha." (Offensive, not funny)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="School / Exams / Students">
+      <Factor name="Academic Irony">
+        <Explanation>Making fun of the paradoxes or uselessness in educational systems.</Explanation>
+        <GoodExample>"Why do I need math? I have a calculator and anxiety."</GoodExample>
+        <BadExample>"School is boring." (Unoriginal, too broad)</BadExample>
+      </Factor>
+      <Factor name="Relatable Stress">
+        <Explanation>Highlighting shared academic struggles humorously.</Explanation>
+        <GoodExample>"Final exams: the reason coffee and panic attacks became best friends."</GoodExample>
+        <BadExample>"Homework is hard." (Too bland)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Technology / IT / Programming">
-		<Factor name="Inside Knowledge Fun">
-		  <Explanation>Rewards tech-savvy audiences with clever, accurate humor.</Explanation>
-		  <GoodExample>"Why do programmers prefer dark mode? Because light attracts bugs."</GoodExample>
-		  <BadExample>"Computers are weird." (Generic)</BadExample>
-		</Factor>
-		<Factor name="Syntax Humor">
-		  <Explanation>Plays with code, logic, or programming language syntax.</Explanation>
-		  <GoodExample>"I would love to change the world, but they won’t give me the source code."</GoodExample>
-		  <BadExample>"C++ is stupid." (Rant, not a joke)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Ethnicity / Nationality / Stereotypes">
+      <Factor name="Cultural Nuance">
+        <Explanation>Capturing quirks or differences with wit and sensitivity, not mockery.</Explanation>
+        <GoodExample>"In Italy, even the GPS has an accent. 'In 500 meters, you-a turn-a left!'"</GoodExample>
+        <BadExample>"Germans have no humor." (Flat, offensive)</BadExample>
+      </Factor>
+      <Factor name="Avoiding Punching Down">
+        <Explanation>The joke should not target marginalized groups for easy laughs.</Explanation>
+        <GoodExample>"Americans think a kilometer is a communist conspiracy."</GoodExample>
+        <BadExample>"Mexicans are lazy. Haha." (Offensive, not funny)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Science / Math / Academia">
-		<Factor name="Conceptual Wit">
-		  <Explanation>Applies scientific or mathematical ideas in unexpected but logical ways.</Explanation>
-		  <GoodExample>"Parallel lines have so much in common. It’s a shame they’ll never meet."</GoodExample>
-		  <BadExample>"Math is hard. I hate it." (Not humorous or clever)</BadExample>
-		</Factor>
-		<Factor name="Interdisciplinary Play">
-		  <Explanation>Combines fields (e.g., physics + philosophy) for intellectual humor.</Explanation>
-		  <GoodExample>"Schrödinger’s cat walks into a bar. Or does it?"</GoodExample>
-		  <BadExample>"Einstein was smart. LOL." (No depth or play)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Technology / IT / Programming">
+      <Factor name="Inside Knowledge Fun">
+        <Explanation>Rewards tech-savvy audiences with clever, accurate humor.</Explanation>
+        <GoodExample>"Why do programmers prefer dark mode? Because light attracts bugs."</GoodExample>
+        <BadExample>"Computers are weird." (Generic)</BadExample>
+      </Factor>
+      <Factor name="Syntax Humor">
+        <Explanation>Plays with code, logic, or programming language syntax.</Explanation>
+        <GoodExample>"I would love to change the world, but they won’t give me the source code."</GoodExample>
+        <BadExample>"C++ is stupid." (Rant, not a joke)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Dark / Morbid humor">
-		<Factor name="Shock with Substance">
-		  <Explanation>Startles the audience, but has a clever or cathartic point.</Explanation>
-		  <GoodExample>"I have a friend who’s a suicide prevention counselor... He’s hanging in there."</GoodExample>
-		  <BadExample>"Death is funny." (No structure or insight)</BadExample>
-		</Factor>
-		<Factor name="Emotional Subversion">
-		  <Explanation>Twists serious emotional subjects in a surprising yet meaningful way.</Explanation>
-		  <GoodExample>"My therapist said I should do what makes me happy. So I’m eating cake in the dark."</GoodExample>
-		  <BadExample>"Orphans are funny. Haha." (Insensitive, cruel)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Science / Math / Academia">
+      <Factor name="Conceptual Wit">
+        <Explanation>Applies scientific or mathematical ideas in unexpected but logical ways.</Explanation>
+        <GoodExample>"Parallel lines have so much in common. It’s a shame they’ll never meet."</GoodExample>
+        <BadExample>"Math is hard. I hate it." (Not humorous or clever)</BadExample>
+      </Factor>
+      <Factor name="Interdisciplinary Play">
+        <Explanation>Combines fields (e.g., physics + philosophy) for intellectual humor.</Explanation>
+        <GoodExample>"Schrödinger’s cat walks into a bar. Or does it?"</GoodExample>
+        <BadExample>"Einstein was smart. LOL." (No depth or play)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Pop Culture / Celebrity">
-		<Factor name="Name Play and Mimicry">
-		  <Explanation>Imitating or punning on celebrity names or behaviors cleverly.</Explanation>
-		  <GoodExample>"Kanye West’s ego is the only thing faster than Wi-Fi."</GoodExample>
-		  <BadExample>"Celebrities are dumb." (Generic insult)</BadExample>
-		</Factor>
-		<Factor name="Topical Twist">
-		  <Explanation>Relating trending events or gossip to universal situations in a clever way.</Explanation>
-		  <GoodExample>"Taylor Swift has more breakups than my Wi-Fi connection."</GoodExample>
-		  <BadExample>"Justin Bieber is weird." (No creative spin)</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Dark / Morbid humor">
+      <Factor name="Shock with Substance">
+        <Explanation>Startles the audience, but has a clever or cathartic point.</Explanation>
+        <GoodExample>"I have a friend who’s a suicide prevention counselor... He’s hanging in there."</GoodExample>
+        <BadExample>"Death is funny." (No structure or insight)</BadExample>
+      </Factor>
+      <Factor name="Emotional Subversion">
+        <Explanation>Twists serious emotional subjects in a surprising yet meaningful way.</Explanation>
+        <GoodExample>"My therapist said I should do what makes me happy. So I’m eating cake in the dark."</GoodExample>
+        <BadExample>"Orphans are funny. Haha." (Insensitive, cruel)</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Historical / Intellectual humor">
-		<Factor name="Clever Anachronism">
-		  <Explanation>Places historical figures in modern scenarios or mixes eras unexpectedly.</Explanation>
-		  <GoodExample>"Julius Caesar’s final words: ‘Et tu, Bluetooth?’"</GoodExample>
-		  <BadExample>"History is old. LOL." (Lazy humor)</BadExample>
-		</Factor>
-		<Factor name="Reference Density">
-		  <Explanation>Layers of references or accurate intellectual allusions that reward deep knowledge.</Explanation>
-		  <GoodExample>"Descartes walks into a bar. Bartender asks, 'Want a beer?' Descartes says, 'I think not'—and disappears."</GoodExample>
-		  <BadExample>"Philosophy is dumb." (No engagement or understanding)</BadExample>
-		</Factor>
-	  </Category>
-	</Criteria>
+    <Category name="Pop Culture / Celebrity">
+      <Factor name="Name Play and Mimicry">
+        <Explanation>Imitating or punning on celebrity names or behaviors cleverly.</Explanation>
+        <GoodExample>"Kanye West’s ego is the only thing faster than Wi-Fi."</GoodExample>
+        <BadExample>"Celebrities are dumb." (Generic insult)</BadExample>
+      </Factor>
+      <Factor name="Topical Twist">
+        <Explanation>Relating trending events or gossip to universal situations in a clever way.</Explanation>
+        <GoodExample>"Taylor Swift has more breakups than my Wi-Fi connection."</GoodExample>
+        <BadExample>"Justin Bieber is weird." (No creative spin)</BadExample>
+      </Factor>
+    </Category>
 
-
-
-
-
-
-
+    <Category name="Historical / Intellectual humor">
+      <Factor name="Clever Anachronism">
+        <Explanation>Places historical figures in modern scenarios or mixes eras unexpectedly.</Explanation>
+        <GoodExample>"Julius Caesar’s final words: ‘Et tu, Bluetooth?’"</GoodExample>
+        <BadExample>"History is old. LOL." (Lazy humor)</BadExample>
+      </Factor>
+      <Factor name="Reference Density">
+        <Explanation>Layers of references or accurate intellectual allusions that reward deep knowledge.</Explanation>
+        <GoodExample>"Descartes walks into a bar. Bartender asks, 'Want a beer?' Descartes says, 'I think not'—and disappears."</GoodExample>
+        <BadExample>"Philosophy is dumb." (No engagement or understanding)</BadExample>
+      </Factor>
+    </Category>
+  </Criteria>
 
   <Criteria name="Structure">
-    
     <Category name="One-liners">
       <Factor name="Conciseness">
         <Explanation>A good one-liner is short, efficient, and delivers humor in as few words as possible.</Explanation>
@@ -422,34 +410,34 @@
       <Factor name="Predictable Surprise">
         <Explanation>A good knock-knock joke uses a setup the audience expects but then subverts it in a playful way.</Explanation>
         <GoodExample>
-          Knock knock.  
-          Who's there?  
-          Lettuce.  
-          Lettuce who?  
+          Knock knock.
+          Who's there?
+          Lettuce.
+          Lettuce who?
           Lettuce in, it's cold out here!
         </GoodExample>
         <BadExample>
-          Knock knock.  
-          Who’s there?  
-          Banana.  
-          Banana who?  
+          Knock knock.
+          Who’s there?
+          Banana.
+          Banana who?
           Just banana.
         </BadExample>
       </Factor>
       <Factor name="Sound/Meaning Play">
         <Explanation>The joke often hinges on phonetic puns or homonyms, which must be clear and clever.</Explanation>
         <GoodExample>
-          Knock knock.  
-          Who's there?  
-          Boo.  
-          Boo who?  
+          Knock knock.
+          Who's there?
+          Boo.
+          Boo who?
           Don’t cry, it’s just a joke!
         </GoodExample>
         <BadExample>
-          Knock knock.  
-          Who’s there?  
-          Cat.  
-          Cat who?  
+          Knock knock.
+          Who’s there?
+          Cat.
+          Cat who?
           Cat doesn't matter.
         </BadExample>
       </Factor>
@@ -459,22 +447,22 @@
       <Factor name="Cleverness">
         <Explanation>The answer should be both surprising and logically satisfying.</Explanation>
         <GoodExample>
-          Q: What has keys but can't open locks?  
+          Q: What has keys but can't open locks?
           A: A piano.
         </GoodExample>
         <BadExample>
-          Q: What has teeth but doesn’t bite?  
+          Q: What has teeth but doesn’t bite?
           A: A toothbrush… but it does bite a little.
         </BadExample>
       </Factor>
       <Factor name="Relevance">
         <Explanation>The riddle should stay focused on the core idea; overly obscure or tangential riddles fail to land.</Explanation>
         <GoodExample>
-          Q: What comes down but never goes up?  
+          Q: What comes down but never goes up?
           A: Rain.
         </GoodExample>
         <BadExample>
-          Q: What is red and blue and green and orange and invisible?  
+          Q: What is red and blue and green and orange and invisible?
           A: A chameleon in a disco… maybe?
         </BadExample>
       </Factor>
@@ -484,22 +472,22 @@
       <Factor name="Stereotype Play">
         <Explanation>Uses stereotypes (often benign or exaggerated) to create relatable humor.</Explanation>
         <GoodExample>
-          Q: How many software engineers does it take to change a light bulb?  
+          Q: How many software engineers does it take to change a light bulb?
           A: None, that's a hardware issue.
         </GoodExample>
         <BadExample>
-          Q: How many people does it take to change a light bulb?  
+          Q: How many people does it take to change a light bulb?
           A: I don't know, people do things.
         </BadExample>
       </Factor>
       <Factor name="Concise Build-up">
         <Explanation>The setup should be short and the punchline must flip expectations quickly.</Explanation>
         <GoodExample>
-          Q: How many surrealists does it take to change a light bulb?  
+          Q: How many surrealists does it take to change a light bulb?
           A: Fish.
         </GoodExample>
         <BadExample>
-          Q: How many historians does it take to change a light bulb?  
+          Q: How many historians does it take to change a light bulb?
           A: First you must understand the bulb’s cultural and economic context...
         </BadExample>
       </Factor>
@@ -522,22 +510,22 @@
       <Factor name="Deliberate Anti-climax">
         <Explanation>Humor arises from the intentional absence of a traditional punchline.</Explanation>
         <GoodExample>
-          Q: Why did the chicken cross the road?  
+          Q: Why did the chicken cross the road?
           A: Because it was going to the other side.
         </GoodExample>
         <BadExample>
-          Q: Why did the chicken cross the road?  
+          Q: Why did the chicken cross the road?
           A: Because I said so.
         </BadExample>
       </Factor>
       <Factor name="Deadpan Absurdity">
         <Explanation>Delivers a nonsensical or literal response in a serious tone.</Explanation>
         <GoodExample>
-          Q: A man walks into a bar...  
+          Q: A man walks into a bar...
           A: He is treated for a head injury.
         </GoodExample>
         <BadExample>
-          Q: A man walks into a bar...  
+          Q: A man walks into a bar...
           A: Drinks orange juice and leaves.
         </BadExample>
       </Factor>
@@ -576,16 +564,9 @@
         <BadExample>"I like to eat. Sometimes I walk too."</BadExample>
       </Factor>
     </Category>
-
   </Criteria>
-  
-  
-  
-  
-  
-  
-  <Criteria name="Intent">
 
+  <Criteria name="Intent">
     <Category name="Satirical">
       <Factor name="Sharp Commentary">
         <Explanation>Offers a clever or insightful critique of society, politics, or culture. Adheres when it exposes truths wittily without being preachy.</Explanation>
@@ -619,7 +600,7 @@
         <Explanation>The audience should be able to identify what is being spoofed. If it's too obscure or poorly mimicked, the joke fails.</Explanation>
         <GoodExample>"Harry Potter fanfiction: ‘You're a wizard, Gary. Also, you're now head of HR.’"</GoodExample>
         <BadExample>"Some guy gets powers and stuff happens."</BadExample>
-    </Factor>
+      </Factor>
     </Category>
 
     <Category name="Slapstick / Physical comedy">
@@ -651,7 +632,7 @@
         <GoodExample>"Your cooking is like your Wi-Fi—sometimes it works, mostly it just burns."</GoodExample>
         <BadExample>"You're a terrible cook and nobody likes you."</BadExample>
       </Factor>
-      <Factor name="Timing & Delivery">
+      <Factor name="Timing and Delivery">
         <Explanation>The roast should land at the right moment. Poor delivery can make a joke fall flat or feel forced.</Explanation>
         <GoodExample>"And here comes John—the only man whose haircut screams 'midlife crisis' louder than his car horn."</GoodExample>
         <BadExample>"John looks weird. Anyway, back to the topic."</BadExample>
@@ -693,101 +674,89 @@
         <BadExample>"I want to die. Haha."</BadExample>
       </Factor>
     </Category>
-
   </Criteria>
 
+  <Criteria name="Target">
+    <Category name="Dad jokes">
+      <Factor name="Pun Precision">
+        <Explanation>Relies heavily on puns or wordplay. Effective when the play on words is clever and unexpected.</Explanation>
+        <GoodExample>"I'm afraid for the calendar. Its days are numbered."</GoodExample>
+        <BadExample>"I know a joke about paper. Never mind, it's tearable."</BadExample>
+      </Factor>
+      <Factor name="Groan-Worthy Charm">
+        <Explanation>Delivers a pun or simple joke that causes an eye-roll, but still earns affection. Adheres when the joke is innocent yet playfully corny.</Explanation>
+        <GoodExample>"I only know 25 letters of the alphabet. I don’t know y."</GoodExample>
+        <BadExample>"Why did the chicken cross the road? Because... chicken."</BadExample>
+      </Factor>
+    </Category>
 
+    <Category name="Blonde jokes">
+      <Factor name="Stereotype Sensitivity">
+        <Explanation>Must tread lightly on stereotypes—acceptable when it’s exaggerated in a clearly playful and self-aware way, not degrading.</Explanation>
+        <GoodExample>"Why did the blonde stare at the orange juice container? It said 'concentrate.'"</GoodExample>
+        <BadExample>"Blondes are dumb. That’s it, that’s the joke."</BadExample>
+      </Factor>
+      <Factor name="Absurd Logic">
+        <Explanation>The joke should present illogical conclusions that are amusingly ridiculous. Fails when logic gaps aren’t funny or feel lazy.</Explanation>
+        <GoodExample>"A blonde put lipstick on her forehead to make up her mind."</GoodExample>
+        <BadExample>"Blonde thought a quarterback was a refund. Haha."</BadExample>
+      </Factor>
+    </Category>
 
+    <Category name="Programmer / Nerd jokes">
+      <Factor name="Technical Wit">
+        <Explanation>Appeals through clever use of real technical terms or logic. Works when it's true to context but simplified enough to be funny.</Explanation>
+        <GoodExample>"Why do programmers prefer dark mode? Because light attracts bugs."</GoodExample>
+        <BadExample>"Code. Debug. Cry. Repeat."</BadExample>
+      </Factor>
+      <Factor name="Layered Understanding">
+        <Explanation>Has multiple layers of understanding—extra funny if you get the reference. Fails when it's too obscure or shallow.</Explanation>
+        <GoodExample>"There are 10 types of people in the world: those who understand binary and those who don’t."</GoodExample>
+        <BadExample>"Segmentation fault. LOL."</BadExample>
+      </Factor>
+    </Category>
 
+    <Category name="Ethnic / National jokes">
+      <Factor name="Cultural Cleverness">
+        <Explanation>Uses cultural traits to set up humor, ideally celebrating rather than mocking. Fails if it feels like ridicule without insight.</Explanation>
+        <GoodExample>"In Italy, they add work to their coffee breaks. In America, we add coffee to our work breaks."</GoodExample>
+        <BadExample>"Germans have no humor. End of joke."</BadExample>
+      </Factor>
+      <Factor name="Friendly Universality">
+        <Explanation>Should unite across cultures, not divide—highlighting shared human quirks. Fails if it leans into outdated or mean stereotypes.</Explanation>
+        <GoodExample>"A Brit, an American, and a Japanese guy walk into a bar... and start comparing who apologizes fastest."</GoodExample>
+        <BadExample>"Mexicans are lazy. That’s why they nap all the time. Haha."</BadExample>
+      </Factor>
+    </Category>
 
-	<Criteria name="Target">
-	  <Category name="Dad jokes">
-		<Factor name="Pun Precision">
-		  <Explanation>Relies heavily on puns or wordplay. Effective when the play on words is clever and unexpected.</Explanation>
-		  <GoodExample>"I'm afraid for the calendar. Its days are numbered."</GoodExample>
-		  <BadExample>"I know a joke about paper. Never mind, it's tearable."</BadExample>
-		</Factor>
-		<Factor name="Groan-Worthy Charm">
-		  <Explanation>Delivers a pun or simple joke that causes an eye-roll, but still earns affection. Adheres when the joke is innocent yet playfully corny.</Explanation>
-		  <GoodExample>"I only know 25 letters of the alphabet. I don’t know y."</GoodExample>
-		  <BadExample>"Why did the chicken cross the road? Because... chicken."</BadExample>
-		</Factor>
-	  </Category>
+    <Category name="Lawyer / Doctor / Engineer jokes">
+      <Factor name="Role Reversal or Exaggeration">
+        <Explanation>Uses exaggeration or role stereotypes to invert expectations. Works when it's clever and based on known tropes.</Explanation>
+        <GoodExample>"What’s the difference between a doctor and God? God doesn’t think he’s a doctor."</GoodExample>
+        <BadExample>"Lawyers lie. That’s funny."</BadExample>
+      </Factor>
+      <Factor name="Professional Logic Subversion">
+        <Explanation>Takes technical or professional logic and flips it on its head humorously. Fails when it’s just jargon or too dry.</Explanation>
+        <GoodExample>"An engineer thinks a glass is twice as big as it needs to be."</GoodExample>
+        <BadExample>"Doctors don’t know anything. Haha."</BadExample>
+      </Factor>
+    </Category>
 
-	  <Category name="Blonde jokes">
-		<Factor name="Stereotype Sensitivity">
-		  <Explanation>Must tread lightly on stereotypes—acceptable when it’s exaggerated in a clearly playful and self-aware way, not degrading.</Explanation>
-		  <GoodExample>"Why did the blonde stare at the orange juice container? It said 'concentrate.'"</GoodExample>
-		  <BadExample>"Blondes are dumb. That’s it, that’s the joke."</BadExample>
-		</Factor>
-		<Factor name="Absurd Logic">
-		  <Explanation>The joke should present illogical conclusions that are amusingly ridiculous. Fails when logic gaps aren’t funny or feel lazy.</Explanation>
-		  <GoodExample>"A blonde put lipstick on her forehead to make up her mind."</GoodExample>
-		  <BadExample>"Blonde thought a quarterback was a refund. Haha."</BadExample>
-		</Factor>
-	  </Category>
-
-	  <Category name="Programmer / Nerd jokes">
-		<Factor name="Technical Wit">
-		  <Explanation>Appeals through clever use of real technical terms or logic. Works when it's true to context but simplified enough to be funny.</Explanation>
-		  <GoodExample>"Why do programmers prefer dark mode? Because light attracts bugs."</GoodExample>
-		  <BadExample>"Code. Debug. Cry. Repeat."</BadExample>
-		</Factor>
-		<Factor name="Layered Understanding">
-		  <Explanation>Has multiple layers of understanding—extra funny if you get the reference. Fails when it's too obscure or shallow.</Explanation>
-		  <GoodExample>"There are 10 types of people in the world: those who understand binary and those who don’t."</GoodExample>
-		  <BadExample>"Segmentation fault. LOL."</BadExample>
-		</Factor>
-	  </Category>
-
-	  <Category name="Ethnic / National jokes">
-		<Factor name="Cultural Cleverness">
-		  <Explanation>Uses cultural traits to set up humor, ideally celebrating rather than mocking. Fails if it feels like ridicule without insight.</Explanation>
-		  <GoodExample>"In Italy, they add work to their coffee breaks. In America, we add coffee to our work breaks."</GoodExample>
-		  <BadExample>"Germans have no humor. End of joke."</BadExample>
-		</Factor>
-		<Factor name="Friendly Universality">
-		  <Explanation>Should unite across cultures, not divide—highlighting shared human quirks. Fails if it leans into outdated or mean stereotypes.</Explanation>
-		  <GoodExample>"A Brit, an American, and a Japanese guy walk into a bar... and start comparing who apologizes fastest."</GoodExample>
-		  <BadExample>"Mexicans are lazy. That’s why they nap all the time. Haha."</BadExample>
-		</Factor>
-	  </Category>
-
-	  <Category name="Lawyer / Doctor / Engineer jokes">
-		<Factor name="Role Reversal or Exaggeration">
-		  <Explanation>Uses exaggeration or role stereotypes to invert expectations. Works when it's clever and based on known tropes.</Explanation>
-		  <GoodExample>"What’s the difference between a doctor and God? God doesn’t think he’s a doctor."</GoodExample>
-		  <BadExample>"Lawyers lie. That’s funny."</BadExample>
-		</Factor>
-		<Factor name="Professional Logic Subversion">
-		  <Explanation>Takes technical or professional logic and flips it on its head humorously. Fails when it’s just jargon or too dry.</Explanation>
-		  <GoodExample>"An engineer thinks a glass is twice as big as it needs to be."</GoodExample>
-		  <BadExample>"Doctors don’t know anything. Haha."</BadExample>
-		</Factor>
-	  </Category>
-
-	  <Category name="Gender-based humor">
-		<Factor name="Playful Relatability">
-		  <Explanation>Highlights differences with humor rooted in shared experience. Works when it’s light and playful, not divisive.</Explanation>
-		  <GoodExample>"Why don’t women ever tell you what they want for Christmas? Because they already told you—six months ago."</GoodExample>
-		  <BadExample>"Women can’t drive. LOL."</BadExample>
-		</Factor>
-		<Factor name="Stereotype Inversion">
-		  <Explanation>Flips expected roles or comments on double standards humorously. Fails when it reinforces harm or lacks nuance.</Explanation>
-		  <GoodExample>"Men are from Mars, women are from Venus. That explains why communication is so... out of this world."</GoodExample>
-		  <BadExample>"Men are dumb. Period."</BadExample>
-		</Factor>
-	  </Category>
-	</Criteria>
-
-
-
-
-
-
+    <Category name="Gender-based humor">
+      <Factor name="Playful Relatability">
+        <Explanation>Highlights differences with humor rooted in shared experience. Works when it’s light and playful, not divisive.</Explanation>
+        <GoodExample>"Why don’t women ever tell you what they want for Christmas? Because they already told you—six months ago."</GoodExample>
+        <BadExample>"Women can’t drive. LOL."</BadExample>
+      </Factor>
+      <Factor name="Stereotype Inversion">
+        <Explanation>Flips expected roles or comments on double standards humorously. Fails when it reinforces harm or lacks nuance.</Explanation>
+        <GoodExample>"Men are from Mars, women are from Venus. That explains why communication is so... out of this world."</GoodExample>
+        <BadExample>"Men are dumb. Period."</BadExample>
+      </Factor>
+    </Category>
+  </Criteria>
 
   <Criteria name="Culture">
-
     <Category name="British dry humor">
       <Factor name="Understatement">
         <Explanation>The joke deliberately minimizes or downplays an idea, emotion, or event, creating humor through contrast between delivery and implication.</Explanation>
@@ -877,194 +846,97 @@
         <BadExample>"My parents were strict. That’s it."</BadExample>
       </Factor>
     </Category>
-
-  </Criteria>  <Criteria name="Culture">
-
-    <Category name="British dry humor">
-      <Factor name="Understatement">
-        <Explanation>The joke deliberately minimizes or downplays an idea, emotion, or event, creating humor through contrast between delivery and implication.</Explanation>
-        <GoodExample>"It’s just a scratch," he said, as his arm dangled by a thread.</GoodExample>
-        <BadExample>"I'm bleeding. That’s bad."</BadExample>
-      </Factor>
-      <Factor name="Deadpan Delivery">
-        <Explanation>Humor is enhanced by an emotionless or expressionless tone. It works when the content is absurd but the tone is serious.</Explanation>
-        <GoodExample>"I used to play piano by ear, but now I use my hands."</GoodExample>
-        <BadExample>"I’m really funny. Please laugh at this next joke."</BadExample>
-      </Factor>
-      <Factor name="Wit and Brevity">
-        <Explanation>Smart wordplay or subtle insight conveyed succinctly. Succeeds when it's clever and concise.</Explanation>
-        <GoodExample>"The trouble with jogging is that the ice falls out of your glass."</GoodExample>
-        <BadExample>"I once tried jogging. I didn’t like it because it was tiring and I spilled my drink and it made me feel sweaty."</BadExample>
-      </Factor>
-    </Category>
-
-    <Category name="Jewish humor">
-      <Factor name="Self-deprecation">
-        <Explanation>Makes fun of oneself or one’s identity. Works when it’s done with warmth and cleverness.</Explanation>
-        <GoodExample>"I’m not a hypochondriac, I’m just very well-informed about my imminent death."</GoodExample>
-        <BadExample>"I hate myself. That’s the joke."</BadExample>
-      </Factor>
-      <Factor name="Existential Absurdity">
-        <Explanation>Focuses on life’s paradoxes and inherent struggles, often philosophical. Effective when relatable and wry.</Explanation>
-        <GoodExample>"God, why me? And God says, 'Because you’re annoying.'"</GoodExample>
-        <BadExample>"Life sucks and then you die. Funny, right?"</BadExample>
-      </Factor>
-      <Factor name="Family and Tradition Irony">
-        <Explanation>Draws on cultural expectations and subverts them gently. Works when it’s both respectful and sharp.</Explanation>
-        <GoodExample>"My mother asked if I was warm. I said yes. She added a third sweater."</GoodExample>
-        <BadExample>"Jewish moms are crazy. Lol."</BadExample>
-      </Factor>
-    </Category>
-
-    <Category name="Indian PJ jokes">
-      <Factor name="Pun-based Simplicity">
-        <Explanation>Relies on literal and simple wordplay. Works best when clean, quick, and absurdly logical.</Explanation>
-        <GoodExample>"Why was the math book sad? Because it had too many problems."</GoodExample>
-        <BadExample>"Math book cried because it was math. Haha."</BadExample>
-      </Factor>
-      <Factor name="Groan-worthy Innocence">
-        <Explanation>So bad it’s good—elicits a groan but also a smile due to its harmless goofiness.</Explanation>
-        <GoodExample>"I told my shoes a joke. They didn’t have the sole to laugh."</GoodExample>
-        <BadExample>"My shirt is hungry. It ate my buttons."</BadExample>
-      </Factor>
-      <Factor name="Predictable Surprise">
-        <Explanation>Setup leads to an overly obvious punchline that’s funny because it’s exactly what you'd fear.</Explanation>
-        <GoodExample>"What’s brown and sticky? A stick."</GoodExample>
-        <BadExample>"What’s brown? Chocolate. LOL."</BadExample>
-      </Factor>
-    </Category>
-
-    <Category name="Japanese Manzai">
-      <Factor name="Straightman-Clown Contrast">
-        <Explanation>Relies on interplay between the serious 'tsukkomi' and the silly 'boke'. Works when the timing and energy difference land sharply.</Explanation>
-        <GoodExample>Boke: "I bought invisible ink!" Tsukkomi: "And what do you plan to write with that—ghost letters?!"</GoodExample>
-        <BadExample>Boke: "Bananas are phones." Tsukkomi: "No they’re not."</BadExample>
-      </Factor>
-      <Factor name="Fast-paced Timing">
-        <Explanation>Jokes rely on rapid exchanges. Works when the rhythm enhances absurdity without confusing the audience.</Explanation>
-        <GoodExample>Boke: "I’m a genius! I put water in the toaster to boil it!" Tsukkomi: "You’re going to boil the house down!"</GoodExample>
-        <BadExample>Slow back-and-forth that drags and loses momentum.</BadExample>
-      </Factor>
-      <Factor name="Situational Escalation">
-        <Explanation>Starts mundane and spirals into chaos. Works when the escalation is funny and builds logically.</Explanation>
-        <GoodExample>Boke: "Let’s dig a hole to America." Tsukkomi: "With a spoon?! You’ll hit your own feet!"</GoodExample>
-        <BadExample>Random escalation that lacks a thread: "Let’s dig to America. Then fly to Jupiter. Then explode."</BadExample>
-      </Factor>
-    </Category>
-
-    <Category name="American stand-up">
-      <Factor name="Relatability">
-        <Explanation>The joke connects with common experiences, often in urban, everyday settings. Works when it reflects shared truths with unique perspective.</Explanation>
-        <GoodExample>"Dating in your 30s is like shopping at a thrift store. You’ll find something, but it probably has issues."</GoodExample>
-        <BadExample>"Relationships are weird. Whatever."</BadExample>
-      </Factor>
-      <Factor name="Observational Sharpness">
-        <Explanation>Notices what others miss. Works when the insight feels fresh and cleverly worded.</Explanation>
-        <GoodExample>"Why do we press harder on the remote when the batteries are dying? Like it’s trying harder now."</GoodExample>
-        <BadExample>"Remotes are annoying."</BadExample>
-      </Factor>
-      <Factor name="Punchline Efficiency">
-        <Explanation>Builds toward a sharp, effective payoff. Works when the setup is tight and the punchline surprises.</Explanation>
-        <GoodExample>"My parents raised me with love and boundaries. Mostly boundaries."</GoodExample>
-        <BadExample>"My parents were strict. That’s it."</BadExample>
-      </Factor>
-    </Category>
-
   </Criteria>
-  
-  
-  
-  
-  
-  
+
   <Criteria name="Modern / Internet">
-  <Category name="Memes">
-    <Factor name="Template Innovation">
-      <Explanation>Uses a familiar meme format but brings a fresh twist or creative subversion. Adheres when the joke surprises while fitting the format.</Explanation>
-      <GoodExample>Image: Distracted Boyfriend. Labels: "Me" looking at "well-written joke" while ignoring "recycled punchline".</GoodExample>
-      <BadExample>Image: Drake meme with reused "No/Yes" joke from 2016 without any change.</BadExample>
-    </Factor>
-    <Factor name="Cultural Referencing">
-      <Explanation>Effective use of pop culture or current events that resonate widely. Fails when the reference is outdated or too niche.</Explanation>
-      <GoodExample>"When you realize ChatGPT just became self-aware and starts correcting *your* grammar."</GoodExample>
-      <BadExample>"When you realize Windows Vista was bad." (Too outdated)</BadExample>
-    </Factor>
-    <Factor name="Visual Humor Sync">
-      <Explanation>Image and caption work together, enhancing each other. Lacks impact when the image and text feel mismatched.</Explanation>
-      <GoodExample>Image: Dog in a suit with caption: “When you accidentally send your resume to a meme page.”</GoodExample>
-      <BadExample>Image: Random cat. Caption: "I love quantum physics."</BadExample>
-    </Factor>
-  </Category>
+    <Category name="Memes">
+      <Factor name="Template Innovation">
+        <Explanation>Uses a familiar meme format but brings a fresh twist or creative subversion. Adheres when the joke surprises while fitting the format.</Explanation>
+        <GoodExample>Image: Distracted Boyfriend. Labels: "Me" looking at "well-written joke" while ignoring "recycled punchline".</GoodExample>
+        <BadExample>Image: Drake meme with reused "No/Yes" joke from 2016 without any change.</BadExample>
+      </Factor>
+      <Factor name="Cultural Referencing">
+        <Explanation>Effective use of pop culture or current events that resonate widely. Fails when the reference is outdated or too niche.</Explanation>
+        <GoodExample>"When you realize ChatGPT just became self-aware and starts correcting *your* grammar."</GoodExample>
+        <BadExample>"When you realize Windows Vista was bad." (Too outdated)</BadExample>
+      </Factor>
+      <Factor name="Visual Humor Sync">
+        <Explanation>Image and caption work together, enhancing each other. Lacks impact when the image and text feel mismatched.</Explanation>
+        <GoodExample>Image: Dog in a suit with caption: “When you accidentally send your resume to a meme page.”</GoodExample>
+        <BadExample>Image: Random cat. Caption: "I love quantum physics."</BadExample>
+      </Factor>
+    </Category>
 
-  <Category name="Dad joke bots / AI-generated">
-    <Factor name="Punniness">
-      <Explanation>Relies on groan-worthy, clean puns. Works when it's silly but clever; fails when it's too obvious or strained.</Explanation>
-      <GoodExample>"Why did the scarecrow win an award? Because he was outstanding in his field."</GoodExample>
-      <BadExample>"I like bread. It’s loaf-ly."</BadExample>
-    </Factor>
-    <Factor name="Simplicity">
-      <Explanation>Joke should be easy to understand, quick to get. Breaks down if it requires explanation or overthinking.</Explanation>
-      <GoodExample>"I'm on a seafood diet. I see food and I eat it."</GoodExample>
-      <BadExample>"Time is a flat lasagna, just like my uncle said when..." (Too convoluted)</BadExample>
-    </Factor>
-    <Factor name="Wholesomeness">
-      <Explanation>Should be light-hearted and family-safe. Misses the mark if it's mean-spirited or edgy.</Explanation>
-      <GoodExample>"What do you call fake spaghetti? An impasta."</GoodExample>
-      <BadExample>"I’d tell you a dirty joke, but I showered."</BadExample>
-    </Factor>
-  </Category>
+    <Category name="Dad joke bots / AI-generated">
+      <Factor name="Punniness">
+        <Explanation>Relies on groan-worthy, clean puns. Works when it's silly but clever; fails when it's too obvious or strained.</Explanation>
+        <GoodExample>"Why did the scarecrow win an award? Because he was outstanding in his field."</GoodExample>
+        <BadExample>"I like bread. It’s loaf-ly."</BadExample>
+      </Factor>
+      <Factor name="Simplicity">
+        <Explanation>Joke should be easy to understand, quick to get. Breaks down if it requires explanation or overthinking.</Explanation>
+        <GoodExample>"I'm on a seafood diet. I see food and I eat it."</GoodExample>
+        <BadExample>"Time is a flat lasagna, just like my uncle said when..." (Too convoluted)</BadExample>
+      </Factor>
+      <Factor name="Wholesomeness">
+        <Explanation>Should be light-hearted and family-safe. Misses the mark if it's mean-spirited or edgy.</Explanation>
+        <GoodExample>"What do you call fake spaghetti? An impasta."</GoodExample>
+        <BadExample>"I’d tell you a dirty joke, but I showered."</BadExample>
+      </Factor>
+    </Category>
 
-  <Category name="Twitter / Reddit-style jokes">
-    <Factor name="Relatable Specificity">
-      <Explanation>Joke uses highly specific scenarios people can deeply relate to. Fails when too generic or vague.</Explanation>
-      <GoodExample>"Me: *tries to sleep* Brain: Top 10 most embarrassing moments from 2006."</GoodExample>
-      <BadExample>"Sometimes I get tired."</BadExample>
-    </Factor>
-    <Factor name="Brevity with Punch">
-      <Explanation>Condenses humor into a compact, witty statement. Too long = loses effect; too short = unclear.</Explanation>
-      <GoodExample>"Dating me is like software updates: mostly ignored until it’s too late."</GoodExample>
-      <BadExample>"I once had a thought about relationships and software that I think is kind of funny and maybe relevant..."</BadExample>
-    </Factor>
-    <Factor name="Tone Consistency">
-      <Explanation>Voice should feel authentic and match the joke's style. Bad when the tone shifts mid-joke.</Explanation>
-      <GoodExample>"I didn't get the job, but I did learn how to cry silently in a public bathroom. So, growth."</GoodExample>
-      <BadExample>"I was sad so I baked cookies and then I thought about nihilism and that was weird."</BadExample>
-    </Factor>
-  </Category>
+    <Category name="Twitter / Reddit-style jokes">
+      <Factor name="Relatable Specificity">
+        <Explanation>Joke uses highly specific scenarios people can deeply relate to. Fails when too generic or vague.</Explanation>
+        <GoodExample>"Me: *tries to sleep* Brain: Top 10 most embarrassing moments from 2006."</GoodExample>
+        <BadExample>"Sometimes I get tired."</BadExample>
+      </Factor>
+      <Factor name="Brevity with Punch">
+        <Explanation>Condenses humor into a compact, witty statement. Too long = loses effect; too short = unclear.</Explanation>
+        <GoodExample>"Dating me is like software updates: mostly ignored until it’s too late."</GoodExample>
+        <BadExample>"I once had a thought about relationships and software that I think is kind of funny and maybe relevant..."</BadExample>
+      </Factor>
+      <Factor name="Tone Consistency">
+        <Explanation>Voice should feel authentic and match the joke's style. Bad when the tone shifts mid-joke.</Explanation>
+        <GoodExample>"I didn't get the job, but I did learn how to cry silently in a public bathroom. So, growth."</GoodExample>
+        <BadExample>"I was sad so I baked cookies and then I thought about nihilism and that was weird."</BadExample>
+      </Factor>
+    </Category>
 
-  <Category name="TikTok punchlines / Vine-style shorts">
-    <Factor name="Timing and Delivery">
-      <Explanation>The humor relies on perfect timing, fast cuts, or sudden twists. Loses impact if pacing drags or punchline is predictable.</Explanation>
-      <GoodExample>Video cuts from guy saying “I’m totally fine” to him immediately falling through a chair.</GoodExample>
-      <BadExample>Setup drags for 30 seconds and punchline is “I spilled coffee.”</BadExample>
-    </Factor>
-    <Factor name="Reaction Layering">
-      <Explanation>Incorporates reactions (real or exaggerated) as part of the humor. Fails when reactions feel forced or mismatched.</Explanation>
-      <GoodExample>Girl says “I hate surprises” and roommate bursts in dressed as a cake; both scream.</GoodExample>
-      <BadExample>Guy says something mildly funny, then forces laugh track over it.</BadExample>
-    </Factor>
-    <Factor name="Unexpected Escalation">
-      <Explanation>Joke intensifies quickly in an absurd or exaggerated way. Doesn’t work if the escalation is random or lacks buildup.</Explanation>
-      <GoodExample>Starts with “I just need one egg” and ends with the kitchen on fire.</GoodExample>
-      <BadExample>Starts with “I just need one egg” and cuts to outer space with no connection.</BadExample>
-    </Factor>
-  </Category>
+    <Category name="TikTok punchlines / Vine-style shorts">
+      <Factor name="Timing and Delivery">
+        <Explanation>The humor relies on perfect timing, fast cuts, or sudden twists. Loses impact if pacing drags or punchline is predictable.</Explanation>
+        <GoodExample>Video cuts from guy saying “I’m totally fine” to him immediately falling through a chair.</GoodExample>
+        <BadExample>Setup drags for 30 seconds and punchline is “I spilled coffee.”</BadExample>
+      </Factor>
+      <Factor name="Reaction Layering">
+        <Explanation>Incorporates reactions (real or exaggerated) as part of the humor. Fails when reactions feel forced or mismatched.</Explanation>
+        <GoodExample>Girl says “I hate surprises” and roommate bursts in dressed as a cake; both scream.</GoodExample>
+        <BadExample>Guy says something mildly funny, then forces laugh track over it.</BadExample>
+      </Factor>
+      <Factor name="Unexpected Escalation">
+        <Explanation>Joke intensifies quickly in an absurd or exaggerated way. Doesn’t work if the escalation is random or lacks buildup.</Explanation>
+        <GoodExample>Starts with “I just need one egg” and ends with the kitchen on fire.</GoodExample>
+        <BadExample>Starts with “I just need one egg” and cuts to outer space with no connection.</BadExample>
+      </Factor>
+    </Category>
 
-  <Category name="Shitposts / Absurd Gen-Z humor">
-    <Factor name="Embrace of Nonsense">
-      <Explanation>Deliberate absurdity, randomness, or anti-humor. Works when chaos feels intentional; fails if it's just incoherent.</Explanation>
-      <GoodExample>“me: *breathes* cereal box in the distance: YOU HAVE AWAKENED THE ANCIENT CURSE”</GoodExample>
-      <BadExample>“me banana car loud funny smell zzz lol”</BadExample>
-    </Factor>
-    <Factor name="Meta-awareness">
-      <Explanation>Breaks the fourth wall or mocks the format of jokes/memes themselves. Fails when it tries too hard or lacks substance.</Explanation>
-      <GoodExample>“This is a meme. The joke is missing. That’s the joke.”</GoodExample>
-      <BadExample>“Haha look I said meme. Is funny yet?”</BadExample>
-    </Factor>
-    <Factor name="Contradiction Play">
-      <Explanation>Combines things that logically shouldn’t go together for surreal effect. Fails when it just confuses without payoff.</Explanation>
-      <GoodExample>“I put my hopes and dreams in the microwave. Now it’s beeping.”</GoodExample>
-      <BadExample>“Toothpaste is politics if you think about it.”</BadExample>
-    </Factor>
-  </Category>
-</Criteria>
+    <Category name="Shitposts / Absurd Gen-Z humor">
+      <Factor name="Embrace of Nonsense">
+        <Explanation>Deliberate absurdity, randomness, or anti-humor. Works when chaos feels intentional; fails if it's just incoherent.</Explanation>
+        <GoodExample>“me: *breathes* cereal box in the distance: YOU HAVE AWAKENED THE ANCIENT CURSE”</GoodExample>
+        <BadExample>“me banana car loud funny smell zzz lol”</BadExample>
+      </Factor>
+      <Factor name="Meta-awareness">
+        <Explanation>Breaks the fourth wall or mocks the format of jokes/memes themselves. Fails when it tries too hard or lacks substance.</Explanation>
+        <GoodExample>“This is a meme. The joke is missing. That’s the joke.”</GoodExample>
+        <BadExample>“Haha look I said meme. Is funny yet?”</BadExample>
+      </Factor>
+      <Factor name="Contradiction Play">
+        <Explanation>Combines things that logically shouldn’t go together for surreal effect. Fails when it just confuses without payoff.</Explanation>
+        <GoodExample>“I put my hopes and dreams in the microwave. Now it’s beeping.”</GoodExample>
+        <BadExample>“Toothpaste is politics if you think about it.”</BadExample>
+      </Factor>
+    </Category>
+  </Criteria>
+</Root>

@@ -4,7 +4,7 @@ class AdmissibilitySignature(dspy.Signature):
     """Check if text is admissible as a joke"""
     joke_text = dspy.InputField(desc="The joke text to evaluate")
     check_type = dspy.InputField(desc="Type of admissibility check: intent/completeness/appropriateness/coherence/accessibility")
-    instructions = dspy.InputField(desc="Liberal evaluation instructions for this check")
+    instruction_prompt = dspy.InputField(desc="Liberal evaluation instructions for this check")
     passed = dspy.OutputField(desc="true or false")
     reasoning = dspy.OutputField(desc="Brief explanation for the decision")
 

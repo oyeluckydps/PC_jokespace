@@ -1,5 +1,5 @@
 import asyncio
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 import dspy
 
 from utilities.xml_parser import Category, Factor, ExampleData, JokeData
@@ -110,7 +110,7 @@ class RatingJudge:
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="intent",
-                instructions=instructions
+                instruction_prompt=instructions
             )
             
             passed = result.passed.lower() == 'true'
@@ -129,7 +129,7 @@ class RatingJudge:
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="completeness",
-                instructions=instructions
+                instruction_prompt=instructions
             )
             
             passed = result.passed.lower() == 'true'
@@ -147,7 +147,7 @@ class RatingJudge:
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="appropriateness",
-                instructions=instructions
+                instruction_prompt=instructions
             )
             
             passed = result.passed.lower() == 'true'
@@ -165,7 +165,7 @@ class RatingJudge:
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="coherence",
-                instructions=instructions
+                instruction_prompt=instructions
             )
             
             passed = result.passed.lower() == 'true'
@@ -183,7 +183,7 @@ class RatingJudge:
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="accessibility",
-                instructions=instructions
+                instruction_prompt=instructions
             )
             
             passed = result.passed.lower() == 'true'
