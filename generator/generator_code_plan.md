@@ -1,4 +1,4 @@
-# Final Minimalist Joke Generator System - Code Plan
+# Final Minimalist Joke Generator System - Code Plan (Revised)
 
 ## Updated Project Structure
 
@@ -103,19 +103,19 @@ This file handles all topic input processing, converting any input into a standa
 ### Stage 2: Hook-Template Generation (`generator/hook_template_generator.py`)
 
 **File Purpose:**
-This file generates hook-template pairs along with their detailed explanatory contexts in a single LLM call using DSPy framework and ClaudeClient. Each hook-template pair is immediately accompanied by comprehensive explanation. Uses HookTemplateGenerationSignature for structured output. Includes retry logic with configurable attempts. Minimal code focused on effective LLM interaction.
+This file generates hook-template pairs along with their detailed explanatory contexts in a single LLM call using DSPy framework. Takes ClaudeClient instance as parameter. Each hook-template pair is immediately accompanied by comprehensive explanation. Uses HookTemplateGenerationSignature for structured output. Includes retry logic with configurable attempts. Minimal code focused on effective LLM interaction.
 
 **Functions Required:**
 
-**`generate_hook_template_contexts(topic_set: set, retries: int = 3) -> list[HookTemplateContext]`**
+**`generate_hook_template_contexts(topic_set: set, client: ClaudeClient, retries: int = 3) -> list[HookTemplateContext]`**
 - Converts topic set into formatted string using generator_utils formatting function
-- Creates ClaudeClient instance (already configured in dspy_client.py)
+- Uses passed ClaudeClient instance for LLM calls
 - Makes single LLM call using DSPy framework with HookTemplateGenerationSignature
 - Implements retry logic up to specified number of attempts for LLM failures with 2-second delays
-- Uses dspy.ChainOfThought or similar DSPy module with the signature
-- Access DSPy output directly using object.hook_template_pairs
+- Uses dspy.Predict with the signature similar to judge implementation
+- Access DSPy output directly using result.hook_template_pairs (structured as list of HookTemplateContext objects)
 - Returns list of HookTemplateContext objects ready for downstream processing
-- Essential error handling with retries for LLM call failures
+- Essential error handling with retries for LLM call failures using async retry pattern
 
 **Critical Prompt Template for Hook-Template-Context Generation:**
 ```
@@ -160,23 +160,23 @@ Output format should be structured list of hook-template-context objects."
 - Ensure variety in hook types and template structures through careful prompt engineering
 - Create rich context enabling both simple and sophisticated joke generation
 - Contain minimum working code focused on effective LLM interaction with retry logic
-- Use existing ClaudeClient configuration without model selection complexity
+- Use passed ClaudeClient instance without creating new client
 
 ### Stage 3: Higher-Order Group Creation (`generator/higher_order_grouper.py`)
 
 **File Purpose:**
-This file creates sophisticated combinations of multiple hook-template-context items that work together synergistically. LLM must create at least one higher-order group but can create as many as make comedic sense. Each group comes with comprehensive explanation of multi-layered comedic strategies. Uses HigherOrderGroupingSignature for structured output. Includes retry logic. Minimal code focused on LLM interaction and group formation.
+This file creates sophisticated combinations of multiple hook-template-context items that work together synergistically. Takes ClaudeClient instance as parameter. LLM must create at least one higher-order group but can create as many as make comedic sense. Each group comes with comprehensive explanation of multi-layered comedic strategies. Uses HigherOrderGroupingSignature for structured output. Includes retry logic. Minimal code focused on LLM interaction and group formation.
 
 **Functions Required:**
 
-**`create_higher_order_groups(topic_set: set, hook_template_contexts: list, retries: int = 3) -> list[HigherOrderGroup]`**
-- Takes topic set and all generated hook-template contexts as input
+**`create_higher_order_groups(topic_set: set, hook_template_contexts: list, client: ClaudeClient, retries: int = 3) -> list[HigherOrderGroup]`**
+- Takes topic set, all generated hook-template contexts, and ClaudeClient instance as input
 - Formats inputs using generator_utils functions for consistent LLM consumption
 - Makes single LLM call using DSPy with HigherOrderGroupingSignature
 - Implements retry logic up to specified number of attempts with 2-second delays
 - LLM must create at least one group but can create more based on available synergistic opportunities
 - Each group contains 2+ hook-template-context items that complement each other
-- Access DSPy output directly using object.higher_order_groups
+- Access DSPy output directly using result.higher_order_groups (structured as list of HigherOrderGroup objects)
 - Returns list of HigherOrderGroup objects with embedded contexts and explanations
 
 **Critical Prompt Template for Higher-Order Group Creation:**
@@ -225,35 +225,42 @@ Output format should be structured list of higher-order group objects."
 ### Stage 4: Joke Generation (`generator/joke_engine.py`)
 
 **File Purpose:**
-This file generates actual jokes using both first-order contexts and higher-order groups with async parallel processing. Uses asyncio for batch processing with configurable batch size. Emphasizes maximum creative freedom for LLM, treating provided elements as inspiration rather than requirements. Focus on producing novel, high-quality jokes with mandatory connection to topics. Uses JokeGenerationSignature for structured output. Includes comprehensive error handling for parallel processing. All contexts are flattened into common GenerationContext objects for uniform processing.
+This file generates actual jokes using both first-order contexts and higher-order groups with async parallel processing. Takes ClaudeClient instance as parameter. Uses asyncio for batch processing with configurable batch size. Emphasizes maximum creative freedom for LLM, treating provided elements as inspiration rather than requirements. Focus on producing novel, high-quality jokes with mandatory connection to topics. Uses JokeGenerationSignature for structured output. Includes comprehensive error handling for parallel processing using asyncio.gather with return_exceptions=True. All contexts are flattened into common GenerationContext objects for uniform processing.
 
 **Functions Required:**
 
-**`generate_jokes_from_all_contexts(topic_set: set, first_order_contexts: list, higher_order_groups: list, batch_size: int = 5, retries: int = 3) -> JokePortfolio`**
+**`generate_jokes_from_all_contexts(topic_set: set, first_order_contexts: list, higher_order_groups: list, client: ClaudeClient, batch_size: int = 5, retries: int = 3) -> JokePortfolio`**
 - Orchestrates joke generation from all available contexts using async parallel processing
+- Takes ClaudeClient instance as parameter for all LLM calls
 - Flattens both first-order and higher-order contexts into unified list of GenerationContext objects using generator_utils
 - Splits flattened contexts into batches of specified size for parallel processing
-- Uses asyncio.gather() to process batches concurrently
+- Uses asyncio.gather(return_exceptions=True) to process batches concurrently and handle partial failures
 - Compiles all generated jokes into single JokePortfolio object
 - Logs individual LLM call failures and continues with successful results
 - Raises error only if ALL batch calls fail and no jokes are generated
 - Returns comprehensive collection of jokes from all comedic approaches
 
-**`async generate_jokes_batch(topic_set: set, context_batch: list, retries: int = 3) -> list[GeneratedJoke]`**
+**`async generate_jokes_batch(topic_set: set, context_batch: list, client: ClaudeClient, retries: int = 3) -> list[GeneratedJoke]`**
 - Async function for processing a batch of flattened GenerationContext objects in parallel
-- Uses asyncio.gather() to make multiple concurrent LLM calls
+- Uses asyncio.gather(return_exceptions=True) to make multiple concurrent LLM calls
 - Each context generates one or more jokes using generate_jokes_from_context
-- Logs individual context failures and continues with successful results
+- Filters out Exception instances from results and logs failures
 - Returns flattened list of GeneratedJoke objects from all successful contexts in batch
 
-**`async generate_jokes_from_context(topic_set: set, context: GenerationContext, retries: int = 3) -> list[GeneratedJoke]`**
+**`async generate_jokes_from_context(topic_set: set, context: GenerationContext, client: ClaudeClient, retries: int = 3) -> list[GeneratedJoke]`**
 - Core async joke generation function working with flattened GenerationContext objects
-- Makes LLM call using DSPy with JokeGenerationSignature
+- Makes LLM call using DSPy with JokeGenerationSignature through dspy.Predict
+- Implements retry logic using async retry pattern similar to rating_judge
 - Uses unified prompt approach since all contexts are flattened to same format
-- Implements retry logic up to specified number of attempts with 2-second delays
 - Emphasizes creative freedom and novel joke creation with mandatory topic connection
-- Access DSPy output directly using object.generated_jokes
+- Access DSPy output directly using result.generated_jokes (structured as list of GeneratedJoke objects)
 - Returns list of GeneratedJoke objects for integration into portfolio
+
+**`async _retry_on_error(func, *args, **kwargs)`**
+- Generic retry wrapper for async functions (similar to rating_judge implementation)
+- Implements exponential backoff with configurable max retries
+- Logs retry attempts with error messages
+- Raises final exception after all retries exhausted
 
 **Critical Prompt Template for Joke Generation:**
 ```
@@ -300,7 +307,7 @@ Output format should be structured list of joke objects."
 - Implement efficient async parallel processing for multiple joke generation with configurable batch size
 - Process both first-order and higher-order contexts uniformly through flattening approach
 - Emphasize creativity and originality in joke creation with maximum creative freedom
-- Handle batch processing failures gracefully while ensuring at least some jokes are generated
+- Handle batch processing failures gracefully using return_exceptions=True pattern
 - Contain minimum working code focused on effective async joke generation with comprehensive error handling
 
 ### Stage 5: Output Formatting (`generator/output_formatter.py`)
@@ -346,12 +353,14 @@ This file formats generated jokes into XML structure exactly matching sample_jok
 ### Stage 6: System Orchestration (`generator/main_generator.py`)
 
 **File Purpose:**
-This file coordinates entire pipeline from topic processing through judge system integration. Manages flow between all stages, creates timestamped log directories in logs/ folder, and provides unified interface for complete process. Integrates with existing judge CLI using subprocess called from PC_jokespace root directory. Contains minimum working code focused on effective pipeline coordination with proper error handling.
+This file coordinates entire pipeline from topic processing through judge system integration. Creates single ClaudeClient instance based on bypass_cache parameter and passes it to all stages. Manages flow between all stages, creates timestamped log directories in logs/ folder, and provides unified interface for complete process. Integrates with existing judge CLI using subprocess called from PC_jokespace root directory with proper flag passing. Contains minimum working code focused on effective pipeline coordination with proper error handling.
 
 **Functions Required:**
 
-**`run_complete_generation_and_judging(topic_input: str = None, first_order_only: bool = False, generation_only: bool = False, output_dir: str = "output/", batch_size: int = 5, retries: int = 3) -> dict`**
+**`run_complete_generation_and_judging(topic_input: str = None, first_order_only: bool = False, generation_only: bool = False, output_dir: str = "output/", batch_size: int = 5, retries: int = 3, bypass_cache: bool = False) -> dict`**
 - Main orchestration function running complete pipeline with all configuration options
+- Creates single ClaudeClient instance with cache parameter based on bypass_cache flag
+- Passes client instance to all pipeline stages requiring LLM access
 - Handles both random topic selection (when topic_input is None) and user input processing
 - Conditionally skips higher-order generation when first_order_only is True
 - Stops after joke generation when generation_only is True, skipping judge integration
@@ -359,17 +368,19 @@ This file coordinates entire pipeline from topic processing through judge system
 - Creates output directory if it doesn't exist using generator_utils
 - Returns comprehensive results including winner joke ID and judge output paths
 
-**`execute_generation_pipeline(topic_set: set, first_order_only: bool, log_dir: str, output_dir: str, batch_size: int, retries: int) -> JokePortfolio`**
+**`execute_generation_pipeline(topic_set: set, client: ClaudeClient, first_order_only: bool, log_dir: str, output_dir: str, batch_size: int, retries: int) -> JokePortfolio`**
 - Executes core generation pipeline stages in sequence with all parameters
+- Passes ClaudeClient instance to each stage requiring LLM access
 - Calls each stage function with appropriate parameters and retry configuration
 - Logs intermediate results to XML files in timestamped log directory using extended xml_logger
 - Passes batch_size and retries to joke generation stage for async processing
 - Essential error handling to continue with available data when possible
 - Returns complete JokePortfolio object with all generated jokes
 
-**`integrate_with_judge_system(xml_output_file: str, batch_size: int, retries: int) -> dict`**
+**`integrate_with_judge_system(xml_output_file: str, batch_size: int, retries: int, bypass_cache: bool) -> dict`**
 - Calls existing judge system CLI using subprocess from PC_jokespace root directory
-- Command format: `python -m judges <xml_file_path> --batch-size <adjusted_batch_size> --top-count <adjusted_top_count> --retries <retries>`
+- Command format with cache flag: `python -m judges <xml_file_path> --batch-size <adjusted_batch_size> --top-count <adjusted_top_count> --retries <retries> [--bypass-cache]`
+- Includes --bypass-cache flag in command if bypass_cache is True
 - Adjusts batch-size: if total jokes < 10, use total joke count; otherwise use batch_size parameter
 - Adjusts top-count: if total jokes < 15, use total joke count; otherwise use 15
 - Streams all judge output to terminal for user visibility using subprocess.run with real-time output
@@ -393,9 +404,10 @@ This file coordinates entire pipeline from topic processing through judge system
 - Essential error handling for logging operations
 
 **What This File Should Achieve:**
+- Create and manage single ClaudeClient instance for entire pipeline based on bypass_cache parameter
 - Provide seamless end-to-end pipeline execution from topic to final ranked jokes with all configuration options
 - Create timestamped log directories for organized output management in logs/ folder
-- Integrate generation and judging systems using subprocess called from PC_jokespace root with proper command formatting and output streaming
+- Integrate generation and judging systems using subprocess with proper flag passing including --bypass-cache
 - Parse judge system output to extract winner information and retrieve joke from memory
 - Log important intermediate results for debugging and analysis using extended xml_logger
 - Contain minimum working code focused on effective pipeline coordination with comprehensive parameter passing
@@ -404,7 +416,7 @@ This file coordinates entire pipeline from topic processing through judge system
 ### Stage 7: Command Line Interface (`generator/cli.py`)
 
 **File Purpose:**
-This file provides clean, intuitive command-line interface for complete joke generation system called from PC_jokespace root directory. Handles argument parsing, mode selection, and result presentation while integrating seamlessly with existing judge system. Includes batch-size and retries configuration. Contains minimum working code focused on effective CLI functionality with proper argument validation and error handling.
+This file provides clean, intuitive command-line interface for complete joke generation system called from PC_jokespace root directory. Handles argument parsing including bypass-cache flag, mode selection, and result presentation while integrating seamlessly with existing judge system. Includes batch-size, retries configuration, and cache control. Contains minimum working code focused on effective CLI functionality with proper argument validation and error handling.
 
 **Functions Required:**
 
@@ -413,7 +425,7 @@ This file provides clean, intuitive command-line interface for complete joke gen
 - Parses command-line arguments using parse_arguments()
 - Validates argument combinations and raises errors for invalid configurations
 - Determines execution mode based on provided arguments
-- Calls appropriate pipeline function with parsed parameters
+- Calls appropriate pipeline function with parsed parameters including bypass_cache flag
 - Handles CLI-level errors with user-friendly messages and proper exit codes
 
 **`parse_arguments() -> argparse.Namespace`**
@@ -425,6 +437,7 @@ This file provides clean, intuitive command-line interface for complete joke gen
   - `--output-dir path/to/dir` - Custom output directory (default: "output/")
   - `--batch-size N` - Async batch size for joke generation (default: 5)
   - `--retries N` - Number of retry attempts for LLM calls (default: 3)
+  - `--bypass-cache` - Bypass DSPy caching mechanism (flag)
 - Provides helpful descriptions and examples for each argument
 - Essential validation for numeric arguments (batch-size, retries must be positive integers)
 - Returns parsed arguments ready for pipeline execution
@@ -433,7 +446,8 @@ This file provides clean, intuitive command-line interface for complete joke gen
 - Converts parsed CLI arguments into pipeline function parameters
 - Handles topic input logic (None for random selection, provided string for user input)
 - Validates output directory and raises error if cannot be created
-- Calls main pipeline function with all appropriate parameters including batch_size and retries
+- Passes bypass_cache flag from args to pipeline function
+- Calls main pipeline function with all appropriate parameters including batch_size, retries, and bypass_cache
 - Returns results dictionary for display to user
 
 **`display_results(results: dict) -> None`**
@@ -457,16 +471,18 @@ This file provides clean, intuitive command-line interface for complete joke gen
 - Both first-order and higher-order jokes generated by default
 - Batch size of 5 for async processing by default
 - 3 retry attempts for LLM calls by default
+- DSPy cache enabled by default (bypass_cache=False)
 
 **What This File Should Achieve:**
 - Provide intuitive command-line interface requiring minimal user knowledge
 - Support all major execution modes through clear arguments with proper validation
 - Integrate seamlessly with existing PC_jokespace structure and judge system
 - Present results clearly and helpfully to users based on execution mode
-- Handle configuration parameters for async processing and retry logic
+- Handle configuration parameters for async processing, retry logic, and cache control
 - Contain minimum working code focused on effective CLI functionality
 - Work correctly when called via `python -m generator.cli` from PC_jokespace root
 - Validate arguments and provide clear error messages for invalid configurations
+- Pass bypass_cache flag through to both generation and judge systems
 
 ## Extended Utility Functions
 
@@ -487,13 +503,13 @@ This file provides clean, intuitive command-line interface for complete joke gen
 
 **`log_first_order_contexts(contexts: list, output_dir: str = None) -> None`**
 - Logs hook-template-context combinations to first_order_contexts.xml in specified directory
-- Creates simple readable XML structure capturing essential context information
+- Creates readable XML structure with hook, template, and explanation elements
 - Uses existing XMLLogger formatting patterns with proper indentation
 - Includes all context details in readable format for debugging and analysis
 
 **`log_higher_order_groups(groups: list, output_dir: str = None) -> None`**
 - Logs higher-order groups to higher_order_groups.xml in specified directory
-- Creates simple readable XML structure for group compositions and explanations
+- Creates readable XML structure showing group ID, member hook-template pairs, and group explanation
 - Includes group compositions and unified explanations in structured format
 - Enables analysis of group creation effectiveness using existing XML formatting utilities
 
@@ -531,11 +547,12 @@ This file provides clean, intuitive command-line interface for complete joke gen
 ## Key Design Principles and Implementation Requirements
 
 ### DSPy Integration and LLM Configuration
-- Use existing ClaudeClient from dspy_client.py (already configured with claude-3-haiku-20240307)
+- Create single ClaudeClient instance in main_generator.py with cache parameter based on bypass_cache flag
+- Pass client instance to all functions requiring LLM access (no multiple client instantiation)
 - Create DSPy signatures following dspy_signatures.py patterns with InputField and OutputField
-- Use dspy.ChainOfThought or similar modules with custom signatures for structured output
-- Access DSPy outputs directly: object.output_field_name
-- Retry logic implemented at individual LLM call level with 2-second delays
+- Use dspy.Predict with custom signatures for structured output (following judge pattern)
+- Access DSPy outputs directly as structured objects matching model classes
+- Implement async retry logic at individual LLM call level with exponential backoff
 
 ### Context Flattening Architecture for Unified Processing
 - GenerationContext as base class with context_type field for unified processing
@@ -544,6 +561,64 @@ This file provides clean, intuitive command-line interface for complete joke gen
 - Uniform processing approach eliminates need for type-aware prompt adaptation
 - Single joke generation function handles all flattened contexts identically
 
+### Async Processing Architecture (continued)
+- Use asyncio.gather(return_exceptions=True) for graceful handling of partial failures
+- Filter Exception instances from results and continue with successful contexts
+- Implement retry logic within async functions using pattern from rating_judge
+- Log individual failures while ensuring overall pipeline continues with available data
+
 ### Higher-Order Group Requirements
 - LLM must create at least one higher-order group (mandatory requirement)
-- No upper bounds on group creation
+- No upper bounds on group creation - LLM decides based on synergistic opportunities
+- Each group treated as single unified element for joke generation
+- Group explanations focus on multi-layered comedic strategies
+
+### Error Handling and Logging Strategy
+- Comprehensive error handling at each stage with informative messages
+- Continue pipeline with partial data when possible (fail gracefully)
+- Log intermediate results to timestamped directories for debugging
+- XML logging using readable formats for manual inspection
+- Stream judge output to terminal for real-time visibility
+
+### Integration with Judge System
+- Use subprocess to call judge CLI from PC_jokespace root directory
+- Pass all relevant flags including --bypass-cache when set
+- Parse judge output to extract winner information
+- Maintain joke text in memory for winner retrieval
+- Handle judge system failures gracefully with clear error messages
+
+### Code Style and Structure Requirements
+- Minimal, focused code without over-engineering
+- Follow existing patterns from judge system files
+- Use simple Python classes (no Pydantic) for generator models
+- Consistent naming and structure across all files
+- Essential comments for complex logic only
+- Proper type hints for function signatures
+
+### Performance Considerations
+- Configurable batch size for async processing (default: 5)
+- Configurable retry attempts for LLM calls (default: 3)
+- Exponential backoff for rate limit handling
+- Efficient memory usage by processing in batches
+- Optional cache bypass for testing and debugging
+
+### Output Requirements
+- XML output must exactly match sample_jokes.xml format
+- Sequential integer IDs starting from 1
+- Proper XML escaping for special characters
+- Compatible with existing judge system expectations
+- Clear file organization in timestamped directories
+
+## Implementation Notes
+
+1. **Client Management**: The ClaudeClient instance is created once in main_generator.py based on the bypass_cache flag and passed through the entire pipeline. This ensures consistent caching behavior and avoids multiple client instantiations.
+
+2. **DSPy Output Handling**: Following the judge system pattern, DSPy outputs are accessed directly as structured objects. The signatures define OutputFields that map to model classes, eliminating manual parsing.
+
+3. **Async Pattern**: The async implementation wraps synchronous DSPy calls in async functions, similar to the rating_judge pattern. This allows parallel processing while maintaining compatibility with the DSPy framework.
+
+4. **Error Recovery**: Using asyncio.gather(return_exceptions=True) allows the system to continue with partial results when some contexts fail, ensuring robust joke generation even with API issues.
+
+5. **Judge Integration**: The --bypass-cache flag is properly passed to the judge system when calling it via subprocess, ensuring consistent caching behavior across the entire pipeline.
+
+This revised code plan incorporates all clarifications while maintaining the minimal, focused approach and following the established patterns from the judge system implementation.
