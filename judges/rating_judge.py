@@ -62,10 +62,15 @@ class RatingJudge:
         factors_data = await self._select_factors_per_category_async(joke.text, categories, is_independent)
         result.relevant_factors = factors_data['all_factors']
         result.dropped_categories = factors_data['dropped_categories']
+        factor_objects = factors_data['factor_objects']  # Get factor objects for scoring
         
         # Step 4: Score all factors
         if result.relevant_factors:
-            factor_scores = await self._score_factors_async(joke.text, result.relevant_factors)
+            factor_scores = await self._score_factors_async(
+                joke.text, 
+                result.relevant_factors,
+                factor_objects  # Pass factor objects directly
+            )
             result.factor_scores = factor_scores
             
             # Step 5: Calculate final ratings
@@ -274,12 +279,11 @@ class RatingJudge:
                         factor_objects[factor_name] = factor
                         break
         
-        # Store factor objects for later use
-        self._temp_factor_objects = factor_objects
-        
+        # Return factor objects along with other data
         return {
             'all_factors': all_factors,
-            'dropped_categories': dropped_categories
+            'dropped_categories': dropped_categories,
+            'factor_objects': factor_objects  # Include factor objects in return
         }
     
     async def _select_category_factors_async(self, joke_text: str, category: str) -> List[str]:
@@ -337,18 +341,16 @@ class RatingJudge:
         except Exception as e:
             return []
     
-    async def _score_factors_async(self, joke_text: str, factors: List[str]) -> Dict[str, int]:
+    async def _score_factors_async(self, joke_text: str, factors: List[str], 
+                                  factor_objects: Dict[str, Factor]) -> Dict[str, int]:
         """Score each factor in parallel"""
-        if not hasattr(self, '_temp_factor_objects'):
-            return {}
-        
         tasks = []
         factor_names = []
         
         # Create scoring tasks for each factor occurrence
         for factor_name in factors:
-            if factor_name in self._temp_factor_objects:
-                factor = self._temp_factor_objects[factor_name]
+            if factor_name in factor_objects:
+                factor = factor_objects[factor_name]
                 task = self._score_single_factor_async(joke_text, factor)
                 tasks.append(task)
                 factor_names.append(factor_name)
@@ -371,9 +373,6 @@ class RatingJudge:
                 while f"{factor_name}_{suffix}" in result:
                     suffix += 1
                 result[f"{factor_name}_{suffix}"] = scores[i]
-        
-        # Clean up temporary storage
-        del self._temp_factor_objects
         
         return result
     
@@ -400,4 +399,3 @@ class RatingJudge:
                 
         except Exception as e:
             return 3  # Default middle score on API error
-
