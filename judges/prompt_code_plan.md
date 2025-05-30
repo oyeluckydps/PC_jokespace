@@ -102,10 +102,11 @@ class XMLConfigParser:
     
     def parse_jokes(self, jokes_file_path):
         # Parse input jokes XML file
-        # Validate each joke has id and text
-        # Skip invalid jokes with warning: print(f"Warning: Skipping invalid joke at position {i}")
+        # Each joke element has 'id' attribute and text content
+        # Example: <joke id="1">Why did the chicken cross the road?...</joke>
+        # Validate each joke has id attribute and non-empty text
+        # Skip invalid jokes with warning
         # Return list of valid JokeData objects
-        # If no valid jokes found, return empty list
     
     def _load_xml_file(self, filename):
         # Generic XML file loader with error handling
