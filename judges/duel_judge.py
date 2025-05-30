@@ -136,6 +136,10 @@ class DuelJudge:
         position_consistent = ab_result['winner'] == ba_result['winner']
         decision_type = None
         
+        # Calculate winner IDs for each direction
+        ab_winner_id = joke_a.joke_id if ab_result['winner'] == 'a' else joke_b.joke_id
+        ba_winner_id = joke_a.joke_id if ba_result['winner'] == 'a' else joke_b.joke_id
+
         if position_consistent:
             # Both comparisons agree
             winner = ab_result['winner']
@@ -183,12 +187,14 @@ class DuelJudge:
             'reasoning': reasoning,
             'ab_confidence': ab_result['confidence'],
             'ba_confidence': ba_result['confidence'],
+            'ab_winner_id': ab_winner_id,
+            'ba_winner_id': ba_winner_id,
             'decision_type': decision_type
         }
   
     def _build_duel_result(self, joke_a: RatingResult, joke_b: RatingResult,
-                          comparison: Dict, match_id: str, round_number: int,
-                          round_name: str, lives_tracker: Dict[int, int]) -> DuelResult:
+                        comparison: Dict, match_id: str, round_number: int,
+                        round_name: str, lives_tracker: Dict[int, int]) -> DuelResult:
         """Build complete duel result"""
         winner_id = comparison['winner_id']
         loser_id = joke_b.joke_id if winner_id == joke_a.joke_id else joke_a.joke_id
@@ -211,5 +217,9 @@ class DuelJudge:
             reasoning=comparison['reasoning'],
             ab_confidence=comparison.get('ab_confidence'),
             ba_confidence=comparison.get('ba_confidence'),
+            ab_winner_id=comparison.get('ab_winner_id'),  # ADD THIS
+            ba_winner_id=comparison.get('ba_winner_id'),  # ADD THIS
             decision_type=comparison.get('decision_type')
         )
+    
+    

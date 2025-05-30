@@ -197,15 +197,15 @@ class TournamentManager:
     
     def _display_match_result(self, match: DuelResult, joke_a: RatingResult, joke_b: RatingResult):
         """Display detailed match result"""
-        # Show evaluation details
+        # Show evaluation details with joke IDs
         print(f"  > Evaluating A→B... confidence: {match.ab_confidence:.2f} "
-              f"(winner: {'A' if match.ab_confidence else 'Unknown'})")
+            f"(winner: Joke {match.ab_winner_id})")
         print(f"  > Evaluating B→A... confidence: {match.ba_confidence:.2f} "
-              f"(winner: {'B' if match.ba_confidence else 'Unknown'})")
+            f"(winner: Joke {match.ba_winner_id})")
         
         # Show decision type
         if match.decision_type == "consistent":
-            print(f"  ✓ CONSISTENT: Both directions agree")
+            print(f"  ✓ CONSISTENT: Both directions agree on Joke {match.winner_id}")
         elif match.decision_type == "by_confidence":
             print(f"  ⚠️  INCONSISTENT: Using higher confidence result")
         elif match.decision_type == "by_rating":
@@ -223,7 +223,7 @@ class TournamentManager:
         if match.loser_advanced_by_life:
             remaining_lives = self.lives_remaining.get(loser_joke.joke_id, 0)
             print(f"  💚 Loser: Joke {loser_joke.joke_id} advances using 1 life "
-                  f"({remaining_lives} {'lives' if remaining_lives != 1 else 'life'} remaining)")
+                f"({remaining_lives} {'lives' if remaining_lives != 1 else 'life'} remaining)")
         else:
             print(f"  💔 Loser: Joke {loser_joke.joke_id} eliminated (no lives remaining)")
     

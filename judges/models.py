@@ -44,6 +44,8 @@ class DuelResult(BaseModel):
     # New fields for enhanced display
     ab_confidence: Optional[float] = None
     ba_confidence: Optional[float] = None
+    ab_winner_id: Optional[int] = None
+    ba_winner_id: Optional[int] = None
     decision_type: Optional[str] = None  # "consistent", "by_confidence", "by_tie", "by_rating"
 
 class TournamentResult(BaseModel):
