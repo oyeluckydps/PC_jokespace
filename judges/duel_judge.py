@@ -15,12 +15,12 @@ class DuelJudge:
         self.max_retries = max_retries  # Store max retries for error handling
         self.duel_predictor = dspy.Predict(DuelComparisonSignature)
     
-    def compare_jokes_for_tournament(self, joke_a: RatingResult, joke_b: RatingResult,
-                                   match_id: str, round_number: int, round_name: str,
-                                   lives_tracker: Dict[int, int]) -> DuelResult:
+    async def compare_jokes_for_tournament(self, joke_a: RatingResult, joke_b: RatingResult,
+                                match_id: str, round_number: int, round_name: str,
+                                lives_tracker: Dict[int, int]) -> DuelResult:
         """Full tournament comparison with lives tracking"""
-        # Run async comparison
-        comparison_result = asyncio.run(self.compare_jokes_async(joke_a, joke_b))
+        # Run async comparison - NO asyncio.run() needed!
+        comparison_result = await self.compare_jokes_async(joke_a, joke_b)
         
         # Build match result
         return self._build_duel_result(

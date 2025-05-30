@@ -10,7 +10,7 @@ class TournamentManager:
         self.lives_tracker = {}
         self.bye_tracker = {}
     
-    def run_tournament(self, top_jokes: List[RatingResult]) -> TournamentResult:
+    async def run_tournament(self, top_jokes: List[RatingResult]) -> TournamentResult:
         """Run tournament with lives system and bye handling"""
         if not top_jokes:
             return None
@@ -26,7 +26,7 @@ class TournamentManager:
         
         # Run tournament rounds
         while len(current_participants) > 1:
-            round_matches, survivors = self._run_tournament_round(
+            round_matches, survivors = await self._run_tournament_round(  # ADD await
                 current_participants, round_number, self.bye_tracker
             )
             all_matches.extend(round_matches)
@@ -72,7 +72,7 @@ class TournamentManager:
                 lives[joke.joke_id] = 0
         return lives
     
-    def _run_tournament_round(self, participants: List[RatingResult], round_number: int,
+    async def _run_tournament_round(self, participants: List[RatingResult], round_number: int,
                             bye_history: Dict[int, List[int]]) -> Tuple[List[DuelResult], List[RatingResult]]:
         """Run a single tournament round"""
         round_name = self._create_round_name(len(participants))
@@ -120,8 +120,8 @@ class TournamentManager:
             joke_a_lives = self._get_current_lives(joke_a.joke_id, matches)
             joke_b_lives = self._get_current_lives(joke_b.joke_id, matches)
             
-            # Run duel
-            match_result = self.duel_judge.compare_jokes_for_tournament(
+            # Run duel - ADD await
+            match_result = await self.duel_judge.compare_jokes_for_tournament(
                 joke_a, joke_b,
                 match_id=f"R{round_number}_M{i+1}",
                 round_number=round_number,

@@ -157,7 +157,7 @@ class JokeJudgeSystem:
     async def _run_tournament_phase(self, top_jokes: List[RatingResult]):
         """Run tournament with lives and bye system"""
         manager = TournamentManager(self.duel_judge)
-        return manager.run_tournament(top_jokes)
+        return await manager.run_tournament(top_jokes)
     
     async def _log_rating_results(self, all_ratings: List[RatingResult]):
         """Log rating results progressively"""
