@@ -7,7 +7,11 @@ from anthropic import Anthropic
 class ClaudeClient:
     def __init__(self, model: str = "claude-3-5-sonnet-20241022", api_key: Optional[str] = None, cache: bool = True):
         """Initialize DSPy with Claude 3.5 Sonnet using environment API key"""
-        self.model = model
+        # self.model = "claude-3-5-sonnet-20241022" # Input -> $3.00 / MTok       Output ->$15.00 / MTok
+        self.model = "claude-3-haiku-20240307"    # Input -> $0.25 / MTok       Output -> $1.25 / MTok
+        # self.model = "claude-3-5-haiku-20241022"  # Input -> $0.80 / MTok       Output -> $4.00 / MTok
+
+        # self.model = model
         self.api_key = api_key or self._get_api_key()
         self.cache = cache
         self.max_retries = 10
