@@ -35,10 +35,10 @@ PC_jokespace/
 
 **Note: All prompts in this document are TEMPLATES. Actual prompts should be highly descriptive and include ALL points mentioned in corresponding code plan sections.**
 
-**Core Models Required (using Pydantic BaseModel):**
+**Core Models Required (using simple Python classes, NO Pydantic):**
 - `TopicSet` - Python set containing one or more cleaned topics (alphanumeric + spaces + hyphens only)
 - `HookTemplateContext` - Single hook-template pair with detailed generator explanation (always created together)
-- `GenerationContext` - Base class with `context_type` field
+- `GenerationContext` - Base class with `context_type` field for unified processing after flattening
 - `FirstOrderContext` - Subclass of GenerationContext for single hook-template pairs
 - `HigherOrderGroup` - Collection of 2+ hook-template-context combinations with unified group explanation
 - `HigherOrderContext` - Subclass of GenerationContext for higher-order groups
@@ -60,11 +60,11 @@ This file defines DSPy signature classes for structured LLM outputs, eliminating
 **`HigherOrderGroupingSignature(dspy.Signature)`**
 - `topic_description = dspy.InputField(desc="Formatted description of topics for joke generation")`
 - `available_contexts = dspy.InputField(desc="All available hook-template-context combinations")`
-- `higher_order_groups = dspy.OutputField(desc="List of synergistic groups with 2+ hook-template pairs each")`
+- `higher_order_groups = dspy.OutputField(desc="List of synergistic groups with 2+ hook-template pairs each - create at least one group")`
 
 **`JokeGenerationSignature(dspy.Signature)`**
 - `topic_description = dspy.InputField(desc="Formatted description of topics for joke generation")`
-- `context_guidance = dspy.InputField(desc="Hook-template-context or higher-order group guidance")`
+- `context_guidance = dspy.InputField(desc="Flattened context guidance from either hook-template-context or higher-order group")`
 - `generated_jokes = dspy.OutputField(desc="One or more original, novel jokes based on inspiration from context")`
 
 ## Detailed File Descriptions and Functions
@@ -165,7 +165,7 @@ Output format should be structured list of hook-template-context objects."
 ### Stage 3: Higher-Order Group Creation (`generator/higher_order_grouper.py`)
 
 **File Purpose:**
-This file creates sophisticated combinations of multiple hook-template-context items that work together synergistically. LLM decides how many groups to create based on comedic potential. Each group comes with comprehensive explanation of multi-layered comedic strategies. Uses HigherOrderGroupingSignature for structured output. Includes retry logic. Minimal code focused on LLM interaction and group formation.
+This file creates sophisticated combinations of multiple hook-template-context items that work together synergistically. LLM must create at least one higher-order group but can create as many as make comedic sense. Each group comes with comprehensive explanation of multi-layered comedic strategies. Uses HigherOrderGroupingSignature for structured output. Includes retry logic. Minimal code focused on LLM interaction and group formation.
 
 **Functions Required:**
 
@@ -174,7 +174,7 @@ This file creates sophisticated combinations of multiple hook-template-context i
 - Formats inputs using generator_utils functions for consistent LLM consumption
 - Makes single LLM call using DSPy with HigherOrderGroupingSignature
 - Implements retry logic up to specified number of attempts with 2-second delays
-- LLM decides how many groups to create based on available synergistic opportunities
+- LLM must create at least one group but can create more based on available synergistic opportunities
 - Each group contains 2+ hook-template-context items that complement each other
 - Access DSPy output directly using object.higher_order_groups
 - Returns list of HigherOrderGroup objects with embedded contexts and explanations
@@ -205,9 +205,9 @@ For each group, provide:
 
 Treat each group of selected hook-templates as a single unified element for joke generation purposes.
 
-CREATE AS MANY OR AS FEW GROUPS AS MAKE SENSE:
-- If you see many synergistic opportunities, create more groups
-- If few combinations offer genuine enhancement, create fewer groups
+REQUIREMENTS:
+- CREATE AT LEAST ONE GROUP (this is mandatory)
+- You may create additional groups if you see genuine synergistic opportunities
 - Prioritize quality of synergy over quantity of groups
 - Only group elements that truly work better together
 
@@ -219,19 +219,20 @@ Output format should be structured list of higher-order group objects."
 - Create comprehensive strategies for multi-layered humor generation
 - Enable sophisticated joke creation leveraging multiple comedic elements
 - Provide detailed guidance for complex comedic approaches treating groups as unified elements
+- Ensure at least one higher-order group is always created
 - Contain minimum working code focused on effective group creation with retry logic
 
 ### Stage 4: Joke Generation (`generator/joke_engine.py`)
 
 **File Purpose:**
-This file generates actual jokes using both first-order contexts and higher-order groups with async parallel processing. Uses asyncio for batch processing with configurable batch size. Emphasizes maximum creative freedom for LLM, treating provided elements as inspiration rather than requirements. Focus on producing novel, high-quality jokes with mandatory connection to topics. Uses JokeGenerationSignature for structured output. Includes comprehensive error handling for parallel processing.
+This file generates actual jokes using both first-order contexts and higher-order groups with async parallel processing. Uses asyncio for batch processing with configurable batch size. Emphasizes maximum creative freedom for LLM, treating provided elements as inspiration rather than requirements. Focus on producing novel, high-quality jokes with mandatory connection to topics. Uses JokeGenerationSignature for structured output. Includes comprehensive error handling for parallel processing. All contexts are flattened into common GenerationContext objects for uniform processing.
 
 **Functions Required:**
 
 **`generate_jokes_from_all_contexts(topic_set: set, first_order_contexts: list, higher_order_groups: list, batch_size: int = 5, retries: int = 3) -> JokePortfolio`**
 - Orchestrates joke generation from all available contexts using async parallel processing
-- Combines first-order and higher-order contexts into unified list using generator_utils
-- Splits contexts into batches of specified size for parallel processing
+- Flattens both first-order and higher-order contexts into unified list of GenerationContext objects using generator_utils
+- Splits flattened contexts into batches of specified size for parallel processing
 - Uses asyncio.gather() to process batches concurrently
 - Compiles all generated jokes into single JokePortfolio object
 - Logs individual LLM call failures and continues with successful results
@@ -239,16 +240,16 @@ This file generates actual jokes using both first-order contexts and higher-orde
 - Returns comprehensive collection of jokes from all comedic approaches
 
 **`async generate_jokes_batch(topic_set: set, context_batch: list, retries: int = 3) -> list[GeneratedJoke]`**
-- Async function for processing a batch of contexts in parallel
+- Async function for processing a batch of flattened GenerationContext objects in parallel
 - Uses asyncio.gather() to make multiple concurrent LLM calls
 - Each context generates one or more jokes using generate_jokes_from_context
 - Logs individual context failures and continues with successful results
 - Returns flattened list of GeneratedJoke objects from all successful contexts in batch
 
 **`async generate_jokes_from_context(topic_set: set, context: GenerationContext, retries: int = 3) -> list[GeneratedJoke]`**
-- Core async joke generation function working with both first-order and higher-order contexts
+- Core async joke generation function working with flattened GenerationContext objects
 - Makes LLM call using DSPy with JokeGenerationSignature
-- Adapts prompt based on context type (FirstOrderContext vs. HigherOrderContext)
+- Uses unified prompt approach since all contexts are flattened to same format
 - Implements retry logic up to specified number of attempts with 2-second delays
 - Emphasizes creative freedom and novel joke creation with mandatory topic connection
 - Access DSPy output directly using object.generated_jokes
@@ -259,10 +260,10 @@ This file generates actual jokes using both first-order contexts and higher-orde
 "Generate one or more brilliant, novel jokes about: {formatted_topic_set}
 
 COMEDIC GUIDANCE:
-{context_details - either single hook-template-context or unified higher-order group}
+{flattened_context_details - unified format for both first-order and higher-order contexts}
 
 GENERATOR EXPLANATION:
-{explanation - either individual or unified group explanation}
+{flattened_explanation - unified explanation regardless of original context type}
 
 CRITICAL CREATIVE FREEDOM INSTRUCTIONS:
 - You do NOT need to use the exact hooks, templates, or context provided
@@ -297,7 +298,7 @@ Output format should be structured list of joke objects."
 **What This File Should Achieve:**
 - Generate high-quality, novel jokes prioritizing humor while maintaining mandatory topic connection
 - Implement efficient async parallel processing for multiple joke generation with configurable batch size
-- Produce both simple and sophisticated jokes from available contexts using DSPy structured output
+- Process both first-order and higher-order contexts uniformly through flattening approach
 - Emphasize creativity and originality in joke creation with maximum creative freedom
 - Handle batch processing failures gracefully while ensuring at least some jokes are generated
 - Contain minimum working code focused on effective async joke generation with comprehensive error handling
@@ -345,7 +346,7 @@ This file formats generated jokes into XML structure exactly matching sample_jok
 ### Stage 6: System Orchestration (`generator/main_generator.py`)
 
 **File Purpose:**
-This file coordinates entire pipeline from topic processing through judge system integration. Manages flow between all stages, creates timestamped log directories in logs/ folder, and provides unified interface for complete process. Integrates with existing judge CLI using subprocess. Contains minimum working code focused on effective pipeline coordination with proper error handling.
+This file coordinates entire pipeline from topic processing through judge system integration. Manages flow between all stages, creates timestamped log directories in logs/ folder, and provides unified interface for complete process. Integrates with existing judge CLI using subprocess called from PC_jokespace root directory. Contains minimum working code focused on effective pipeline coordination with proper error handling.
 
 **Functions Required:**
 
@@ -367,7 +368,7 @@ This file coordinates entire pipeline from topic processing through judge system
 - Returns complete JokePortfolio object with all generated jokes
 
 **`integrate_with_judge_system(xml_output_file: str, batch_size: int, retries: int) -> dict`**
-- Calls existing judge system CLI using subprocess with proper command structure
+- Calls existing judge system CLI using subprocess from PC_jokespace root directory
 - Command format: `python -m judges <xml_file_path> --batch-size <adjusted_batch_size> --top-count <adjusted_top_count> --retries <retries>`
 - Adjusts batch-size: if total jokes < 10, use total joke count; otherwise use batch_size parameter
 - Adjusts top-count: if total jokes < 15, use total joke count; otherwise use 15
@@ -394,7 +395,7 @@ This file coordinates entire pipeline from topic processing through judge system
 **What This File Should Achieve:**
 - Provide seamless end-to-end pipeline execution from topic to final ranked jokes with all configuration options
 - Create timestamped log directories for organized output management in logs/ folder
-- Integrate generation and judging systems using subprocess with proper command formatting and output streaming
+- Integrate generation and judging systems using subprocess called from PC_jokespace root with proper command formatting and output streaming
 - Parse judge system output to extract winner information and retrieve joke from memory
 - Log important intermediate results for debugging and analysis using extended xml_logger
 - Contain minimum working code focused on effective pipeline coordination with comprehensive parameter passing
@@ -403,7 +404,7 @@ This file coordinates entire pipeline from topic processing through judge system
 ### Stage 7: Command Line Interface (`generator/cli.py`)
 
 **File Purpose:**
-This file provides clean, intuitive command-line interface for complete joke generation system. Handles argument parsing, mode selection, and result presentation while integrating seamlessly with existing judge system. Includes batch-size and retries configuration. Contains minimum working code focused on effective CLI functionality with proper argument validation and error handling.
+This file provides clean, intuitive command-line interface for complete joke generation system called from PC_jokespace root directory. Handles argument parsing, mode selection, and result presentation while integrating seamlessly with existing judge system. Includes batch-size and retries configuration. Contains minimum working code focused on effective CLI functionality with proper argument validation and error handling.
 
 **Functions Required:**
 
@@ -507,11 +508,11 @@ This file provides clean, intuitive command-line interface for complete joke gen
 - Creates natural language description suitable for prompt inclusion
 - Ensures consistent formatting across all LLM calls
 
-**`combine_all_generation_contexts(first_order_contexts: list, higher_order_groups: list) -> list[GenerationContext]`**
-- Merges first-order and higher-order contexts into unified list for joke generation
-- Converts FirstOrderContext and HigherOrderContext objects into common GenerationContext objects
-- Maintains context type information for appropriate prompt adaptation
-- Returns combined list ready for iterative async joke generation
+**`flatten_all_generation_contexts(first_order_contexts: list, higher_order_groups: list) -> list[GenerationContext]`**
+- Flattens both first-order and higher-order contexts into unified list of GenerationContext objects for uniform processing
+- Converts FirstOrderContext and HigherOrderContext objects into common GenerationContext format
+- Maintains essential context information while enabling uniform processing in joke generation
+- Returns combined list ready for iterative async joke generation with consistent format
 
 **`ensure_directory_exists(directory_path: str) -> str`**
 - Creates directory and all parent directories if they don't exist
@@ -536,61 +537,13 @@ This file provides clean, intuitive command-line interface for complete joke gen
 - Access DSPy outputs directly: object.output_field_name
 - Retry logic implemented at individual LLM call level with 2-second delays
 
-### Async Parallel Processing for Joke Generation
-- Use asyncio library for concurrent joke generation from multiple contexts
-- Configurable batch size (CLI argument --batch-size, default 5)
-- Individual LLM call failures logged and handled gracefully - continue with successful results
-- Error only if ALL contexts fail to generate jokes
-- No semaphore or complex concurrency control - simple batching approach
+### Context Flattening Architecture for Unified Processing
+- GenerationContext as base class with context_type field for unified processing
+- FirstOrderContext and HigherOrderContext subclasses for type-specific creation
+- Flattening step converts both types into common GenerationContext format for joke generation
+- Uniform processing approach eliminates need for type-aware prompt adaptation
+- Single joke generation function handles all flattened contexts identically
 
-### Organized Logging and Output Management
-- Timestamped log directories in logs/ folder using generator_YYYY_MM_DD_HH_MM_SS format
-- Separate output/ directory for final joke XML files
-- Both directories created automatically if they don't exist
-- Clear separation between debugging logs and final outputs
-- Integration with existing XMLLogger class for consistent formatting
-
-### Judge System Integration
-- Subprocess call to judge CLI: `python -m judges <xml_file> --batch-size <adjusted> --top-count <adjusted> --retries <retries>`
-- Dynamic batch-size adjustment: if total jokes < 10, use total joke count; otherwise use provided batch_size
-- Dynamic top-count adjustment: min(15, total_jokes)
-- Stream all judge output to terminal for user visibility
-- Parse winner from final output pattern: "Joke ID: X"
-- Retrieve winner joke text from JokePortfolio memory using parsed ID
-- Pass retries parameter from generator CLI to judge CLI
-
-### Topic Processing and Character Cleaning
-- Whitelist approach for character cleaning: alphanumeric + spaces + hyphens only
-- Comma used as separator - removed after splitting
-- Empty input automatically switches to random topic selection
-- Random topics parsed from random_funny_topics.xml in generator/ folder
-- Equal weight random topic selection
-- Topic validation after cleaning - use random if no valid topics remain
-
-### XML Format Compliance
-- Final output exactly matches sample_jokes.xml: `<jokes><joke id="1">text</joke></jokes>`
-- Sequential integer IDs starting from 1
-- Proper XML character escaping for special characters in joke text
-- Complete compatibility with existing judge system input requirements
-
-### Maximum LLM Creative Freedom with Mandatory Topic Connection
-- All prompts explicitly grant permission to ignore, modify, or replace provided elements
-- Emphasis on novel, original joke creation over element compliance
-- Provided elements serve as inspiration and starting points, not rigid requirements
-- Quality and humor prioritized with mandatory topic connection (non-negotiable)
-- Creative freedom balanced with topic relevance requirement
-
-### Subclass Architecture for Generation Contexts
-- GenerationContext as base class with context_type field
-- FirstOrderContext subclass for individual hook-template pairs
-- HigherOrderContext subclass for grouped combinations
-- Type-aware prompt adaptation based on context subclass
-
-### Module Import Structure and CLI Integration
-- All imports use absolute imports: `from generator.topic_processor import ...`
-- CLI accessible via `python -m generator.cli` from PC_jokespace root
-- Seamless integration with existing PC_jokespace structure
-- Reuse of existing utilities (dspy_client, xml_parser, xml_logger) with extensions
-- No conflicts with existing judge system or utility functions
-
-**Important Note:** All prompt templates provided in this document are examples and starting
+### Higher-Order Group Requirements
+- LLM must create at least one higher-order group (mandatory requirement)
+- No upper bounds on group creation
