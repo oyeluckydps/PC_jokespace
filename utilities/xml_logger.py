@@ -219,6 +219,58 @@ class XMLLogger:
         
         self._write_xml(root, filename)
     
+    def log_first_order_contexts(self, contexts: List, output_dir: str = None) -> None:
+        """Log hook-template-context combinations"""
+        root = ET.Element("first_order_contexts")
+        root.set("timestamp", self._format_timestamp())
+        root.set("total_contexts", str(len(contexts)))
+        
+        for i, ctx in enumerate(contexts):
+            context_elem = ET.SubElement(root, "context")
+            context_elem.set("id", str(i + 1))
+            
+            hook_elem = ET.SubElement(context_elem, "hook")
+            hook_elem.text = ctx.hook
+            
+            template_elem = ET.SubElement(context_elem, "template")
+            template_elem.text = ctx.template
+            
+            explanation_elem = ET.SubElement(context_elem, "explanation")
+            explanation_elem.text = ctx.explanation
+        
+        self._write_xml(root, "first_order_contexts.xml")
+        print(f"First-order contexts logged to: {self.output_dir}/first_order_contexts.xml")
+
+    def log_higher_order_groups(self, groups: List, output_dir: str = None) -> None:
+        """Log higher-order groups"""
+        root = ET.Element("higher_order_groups")
+        root.set("timestamp", self._format_timestamp())
+        root.set("total_groups", str(len(groups)))
+        
+        for i, group in enumerate(groups):
+            group_elem = ET.SubElement(root, "group")
+            group_elem.set("id", str(i + 1))
+            group_elem.set("member_count", str(len(group.hook_template_contexts)))
+            
+            # List member contexts
+            members_elem = ET.SubElement(group_elem, "members")
+            for j, ctx in enumerate(group.hook_template_contexts):
+                member_elem = ET.SubElement(members_elem, "member")
+                member_elem.set("index", str(j + 1))
+                
+                hook_elem = ET.SubElement(member_elem, "hook")
+                hook_elem.text = ctx.hook
+                
+                template_elem = ET.SubElement(member_elem, "template")
+                template_elem.text = ctx.template
+            
+            # Group explanation
+            explanation_elem = ET.SubElement(group_elem, "group_explanation")
+            explanation_elem.text = group.group_explanation
+        
+        self._write_xml(root, "higher_order_groups.xml")
+        print(f"Higher-order groups logged to: {self.output_dir}/higher_order_groups.xml")
+
     def _create_output_dir(self):
         """Ensure output directory exists"""
         self.output_dir.mkdir(parents=True, exist_ok=True)

@@ -171,4 +171,24 @@ class XMLConfigParser:
         except ET.ParseError as e:
             raise ValueError(f"Error parsing XML file {filename}: {str(e)}")
     
+    def parse_random_topics_from_generator(self) -> List[str]:
+        """Parse random_funny_topics.xml from generator folder"""
+        try:
+            file_path = Path("generator") / "random_funny_topics.xml"
+            tree = self._load_xml_file(file_path)
+            root = tree.getroot()
+            
+            topics = []
+            # Parse Topic elements within FunnyJokeSeeds
+            for topic_elem in root.findall(".//Topic"):
+                if topic_elem.text:
+                    topics.append(topic_elem.text.strip())
+            
+            return topics if topics else ["Banana", "Coffee", "Monday", "Pizza", "Cats"]
+            
+        except Exception as e:
+            print(f"Warning: Could not parse random topics: {e}")
+            # Return fallback topics
+            return ["Banana", "Coffee", "Monday", "Pizza", "Cats"]
+
     

@@ -622,3 +622,156 @@ This file provides clean, intuitive command-line interface for complete joke gen
 5. **Judge Integration**: The --bypass-cache flag is properly passed to the judge system when calling it via subprocess, ensuring consistent caching behavior across the entire pipeline.
 
 This revised code plan incorporates all clarifications while maintaining the minimal, focused approach and following the established patterns from the judge system implementation.
+
+Here are various sample CLI commands to test different aspects of the joke generator system:
+
+## Basic Usage
+
+```bash
+# 1. Default - random topic, full pipeline with judging
+python -m generator.cli
+
+# 2. Single specific topic
+python -m generator.cli --topic "pizza"
+
+# 3. Multiple topics
+python -m generator.cli --topic "cats, dogs, veterinarians"
+
+# 4. Complex topic combinations
+python -m generator.cli --topic "coffee, monday morning, office workers"
+```
+
+## Generation Modes
+
+```bash
+# 5. Skip higher-order grouping (faster, simpler)
+python -m generator.cli --topic "banana" --first-order-only
+
+# 6. Skip judging system (generation only)
+python -m generator.cli --topic "computers" --generation-only
+
+# 7. Both flags - minimal pipeline
+python -m generator.cli --topic "rain" --first-order-only --generation-only
+```
+
+## Performance Tuning
+
+```bash
+# 8. Small batch size (less parallel processing, more stable)
+python -m generator.cli --topic "chocolate" --batch-size 2
+
+# 9. Large batch size (more parallel processing)
+python -m generator.cli --topic "smartphones" --batch-size 10
+
+# 10. No retries (fail fast)
+python -m generator.cli --topic "music" --retries 0
+
+# 11. More retries for unstable connections
+python -m generator.cli --topic "sports" --retries 5
+```
+
+## Cache Control
+
+```bash
+# 12. Bypass cache for fresh results
+python -m generator.cli --topic "summer" --bypass-cache
+
+# 13. Bypass cache with full pipeline
+python -m generator.cli --topic "school" --bypass-cache --batch-size 3
+```
+
+## Output Directory
+
+```bash
+# 14. Custom output directory
+python -m generator.cli --topic "travel" --output-dir "my_jokes/"
+
+# 15. Nested output directory
+python -m generator.cli --topic "food" --output-dir "output/2024/november/"
+```
+
+## Edge Cases and Testing
+
+```bash
+# 16. Empty topic (should use random)
+python -m generator.cli --topic ""
+
+# 17. Single word topics with special handling
+python -m generator.cli --topic "AI, ML, ChatGPT"
+
+# 18. Topics with punctuation (should be cleaned)
+python -m generator.cli --topic "rock & roll, hip-hop!, jazz?"
+
+# 19. Very long topic list
+python -m generator.cli --topic "apples, oranges, bananas, grapes, strawberries"
+
+# 20. Minimal resources mode
+python -m generator.cli --topic "winter" --batch-size 1 --retries 1 --first-order-only
+```
+
+## Combined Options Testing
+
+```bash
+# 21. Full custom configuration
+python -m generator.cli \
+  --topic "birthday, cake, party" \
+  --batch-size 4 \
+  --retries 2 \
+  --output-dir "birthday_jokes/" \
+  --bypass-cache
+
+# 22. Fast generation mode
+python -m generator.cli \
+  --topic "robots" \
+  --first-order-only \
+  --generation-only \
+  --batch-size 8 \
+  --retries 1
+
+# 23. Reliable mode for important runs
+python -m generator.cli \
+  --topic "wedding" \
+  --batch-size 3 \
+  --retries 5 \
+  --output-dir "important_output/"
+
+# 24. Debug mode (minimal batching)
+python -m generator.cli \
+  --topic "debugging" \
+  --batch-size 1 \
+  --bypass-cache \
+  --first-order-only
+```
+
+## Error Testing
+
+```bash
+# 25. Invalid batch size (should error)
+python -m generator.cli --topic "error" --batch-size 0
+
+# 26. Invalid retries (should error)
+python -m generator.cli --topic "test" --retries -1
+
+# 27. Invalid output directory (permission issues)
+python -m generator.cli --topic "test" --output-dir "/root/forbidden/"
+```
+
+## Quick Test Sequence
+
+For a comprehensive test of the system, run these in order:
+
+```bash
+# Quick test
+python -m generator.cli --topic "test" --first-order-only --generation-only --batch-size 2
+
+# Normal test
+python -m generator.cli --topic "coffee, morning"
+
+# Full test
+python -m generator.cli --topic "technology, future, AI" --bypass-cache
+
+# Stress test
+python -m generator.cli --topic "universe, physics, quantum" --batch-size 10 --retries 5
+```
+
+    
