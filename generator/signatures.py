@@ -2,7 +2,7 @@
 
 import dspy
 from typing import List, Union
-from generator.generator_models import FirstOrderTriplet, HigherOrderGroup, JokeOutput
+from generator.models import FirstOrderTriplet, HigherOrderGroup, JokeOutput # Updated import
 
 class HookTemplateGenerationSignature(dspy.Signature):
     """Generate hook-template pairs with comprehensive explanations for joke creation"""
@@ -58,4 +58,4 @@ class JokeGenerationSignature(dspy.Signature):
     generated_jokes: List[JokeOutput] = dspy.OutputField(
         desc="One or more original, novel jokes based on inspiration from context",
         min_items=1
-    )
+    ) 

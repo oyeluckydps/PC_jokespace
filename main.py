@@ -1,3 +1,4 @@
+# ./main.py
 """System orchestration for joke generation pipeline"""
 
 import os
@@ -13,7 +14,7 @@ from generator.hook_template_generator import generate_hook_template_contexts
 from generator.higher_order_grouper import generate_higher_order_groups
 from generator.joke_engine import generate_full_joke_set
 from generator.output_formatter import format_jokes_to_xml
-from generator.generator_models import JokePortfolio, FirstOrderTriplet, HigherOrderGroup
+from generator.models import JokePortfolio, FirstOrderTriplet, HigherOrderGroup
 from judges.cli import evaluate_jokes_programmatic
 
 

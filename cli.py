@@ -1,10 +1,11 @@
+# ./cli.py
 """Command line interface for joke generator"""
 
 import argparse
 import time
 import sys
 from pathlib import Path
-from main import run_complete_generation_and_judging # Updated import
+from main_generator import run_complete_generation_and_judging # Updated import
 
 
 def main():

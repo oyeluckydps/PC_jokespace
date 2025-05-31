@@ -69,4 +69,4 @@ class JokePortfolio:
         return len(self.jokes)
     
     def __repr__(self):
-        return f"JokePortfolio(total_jokes={len(self.jokes)})"
+        return f"JokePortfolio(total_jokes={len(self.jokes)})" 

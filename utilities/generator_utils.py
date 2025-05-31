@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 from typing import List, Union
-from generator.generator_models import FirstOrderTriplet, HigherOrderGroup
+from generator.models import FirstOrderTriplet, HigherOrderGroup
 
 
 def format_topic_set_for_prompt(topic_set: set) -> str:

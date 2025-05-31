@@ -2,14 +2,14 @@
 
 import asyncio
 import dspy
-from typing import List, Union
+from typing import List, Union, Dict
 from utilities.dspy_client import ClaudeClient
 from utilities.generator_utils import format_topic_set_for_prompt
-from generator.generator_models import (
+from generator.models import (
     FirstOrderTriplet, HigherOrderGroup, 
     GeneratedJoke, JokeOutput
 )
-from generator.generator_signatures import JokeGenerationSignature
+from generator.signatures import JokeGenerationSignature
 
 
 async def generate_jokes_from_context(

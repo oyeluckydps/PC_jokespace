@@ -1,12 +1,13 @@
+# ./generator/higher_order_grouper.py
 """Create higher-order groups from hook-template-context combinations using DSPy"""
 
 import asyncio
 import dspy
-from typing import List
+from typing import List, Set
+from generator.models import FirstOrderTriplet, HigherOrderGroup, HookTemplatePair
+from generator.signatures import HigherOrderGroupingSignature
 from utilities.dspy_client import ClaudeClient
-from utilities.generator_utils import format_topic_set_for_prompt
-from generator.generator_models import FirstOrderTriplet, HigherOrderGroup, HookTemplatePair
-from generator.generator_signatures import HigherOrderGroupingSignature
+from utilities.generator_utils import format_topic_set_for_prompt, format_triplets_for_prompt, generate_system_prompt
 
 
 async def generate_higher_order_groups(

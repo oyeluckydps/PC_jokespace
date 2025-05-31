@@ -1,3 +1,4 @@
+# ./generator/output_formatter.py
 """Format jokes to XML matching sample_jokes.xml structure"""
 
 import xml.etree.ElementTree as ET
@@ -5,7 +6,7 @@ import xml.sax.saxutils as saxutils
 from xml.dom import minidom
 from pathlib import Path
 from typing import List
-from generator.generator_models import JokePortfolio, GeneratedJoke
+from generator.models import JokePortfolio, GeneratedJoke
 from utilities.generator_utils import ensure_directory_exists
 
 

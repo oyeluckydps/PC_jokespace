@@ -1,15 +1,16 @@
 import os
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Union
 from datetime import datetime
 from pathlib import Path
 
-from generator.generator_models import FirstOrderTriplet, HigherOrderGroup
+from generator.models import FirstOrderTriplet, HigherOrderGroup
 from judges.models import (
     RatingResult, TournamentResult, DuelResult, 
     AdmissibilityResults
 )
+from utilities.generator_utils import ensure_directory_exists
 
 class XMLLogger:
     def __init__(self, output_dir: str):
