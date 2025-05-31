@@ -73,35 +73,42 @@ async def generate_jokes_from_context(
                             Use the group explanation as a guide for creating sophisticated, funny jokes.
                             Generate 2-5 distinct jokes that showcase the synergistic potential."""
     
-    # Retry logic
-    for attempt in range(retries + 1):
-        try:
-            # Make LLM call
-            result = predictor(
-                task_description=task_description,
-                topic=formatted_topics,
-                context_guidance=context  # Pass the actual FirstOrderTriplet or HigherOrderGroup object
-            )
-            
-            # Convert JokeOutput objects to GeneratedJoke objects
-            if hasattr(result, 'generated_jokes') and result.generated_jokes:
-                jokes = []
-                for joke_output in result.generated_jokes:
-                    jokes.append(GeneratedJoke(text=joke_output.text))
+    # Define synchronous function for DSPy call
+    def sync_joke_generation():
+        # Retry logic within the synchronous function
+        for attempt in range(retries + 1):
+            try:
+                # Make LLM call (synchronous DSPy predictor)
+                result = predictor(
+                    task_description=task_description,
+                    topic=formatted_topics,
+                    context_guidance=context  # Pass the actual FirstOrderTriplet or HigherOrderGroup object
+                )
                 
-                print(f"Generated {len(jokes)} jokes from {'first-order' if isinstance(context, FirstOrderTriplet) else 'higher-order'} context")
-                return jokes
-            else:
-                raise ValueError("No valid jokes in LLM response")
-                
-        except Exception as e:
-            if attempt < retries:
-                print(f"Attempt {attempt + 1} failed: {str(e)[:100]}... Retrying in 2s")
-                await asyncio.sleep(2)
-            else:
-                raise Exception(f"Failed to generate jokes after {retries + 1} attempts: {str(e)}")
+                # Convert JokeOutput objects to GeneratedJoke objects
+                if hasattr(result, 'generated_jokes') and result.generated_jokes:
+                    jokes = []
+                    for joke_output in result.generated_jokes:
+                        jokes.append(GeneratedJoke(text=joke_output.text))
+                    
+                    print(f"Generated {len(jokes)} jokes from {'first-order' if isinstance(context, FirstOrderTriplet) else 'higher-order'} context")
+                    return jokes
+                else:
+                    raise ValueError("No valid jokes in LLM response")
+                    
+            except Exception as e:
+                if attempt < retries:
+                    print(f"Attempt {attempt + 1} failed: {str(e)[:100]}... Retrying in 2s")
+                    import time
+                    time.sleep(2)  # Use synchronous sleep within the sync function
+                else:
+                    raise Exception(f"Failed to generate jokes after {retries + 1} attempts: {str(e)}")
+        
+        return []
     
-    return []
+    # Run the synchronous DSPy call in a thread pool to avoid blocking the event loop
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, sync_joke_generation)
 
 
 async def generate_full_joke_set(
@@ -152,4 +159,3 @@ async def generate_full_joke_set(
     
     print(f"Total jokes generated: {len(all_jokes)}")
     return all_jokes
-
