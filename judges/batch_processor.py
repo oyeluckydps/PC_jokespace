@@ -160,18 +160,18 @@ class BatchProcessor:
                 factors_str = ", ".join([f"{name}({score})" for name, score in top_factors])
                 print(f"   Top factors: {factors_str}")
         else:
-            # Show why joke was rejected
+            # Show why joke was rejected - Fixed to use direct boolean values
             failed_checks = []
             ar = result.admissibility_results
-            if not ar.intent_check.passed:
+            if not ar.intent_check:
                 failed_checks.append("intent")
-            if not ar.completeness_check.passed:
+            if not ar.completeness_check:
                 failed_checks.append("completeness")
-            if not ar.appropriateness_check.passed:
+            if not ar.appropriateness_check:
                 failed_checks.append("appropriateness")
-            if not ar.coherence_check.passed:
+            if not ar.coherence_check:
                 failed_checks.append("coherence")
-            if not ar.accessibility_check.passed:
+            if not ar.accessibility_check:
                 failed_checks.append("accessibility")
             
             print(f"   Joke {joke_index + 1}: ❌ Not admissible (failed: {', '.join(failed_checks)})")
@@ -247,3 +247,4 @@ class BatchProcessor:
         
         print(f"{'='*70}\n")
 
+    

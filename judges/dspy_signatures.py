@@ -1,12 +1,18 @@
 import dspy
 
-class AdmissibilitySignature(dspy.Signature):
-    """Check if text is admissible as a joke"""
+class CombinedAdmissibilitySignature(dspy.Signature):
+    """Comprehensive admissibility check for joke content with bias mitigation"""
+    evaluation_criteria = dspy.InputField(desc="All five liberal evaluation criteria with detailed instructions")
+    bias_mitigation_guidelines = dspy.InputField(desc="Specific bias mitigation measures and warnings")
+    examples = dspy.InputField(desc="Examples of jokes that pass and fail each criterion")
     joke_text = dspy.InputField(desc="The joke text to evaluate")
-    check_type = dspy.InputField(desc="Type of admissibility check: intent/completeness/appropriateness/coherence/accessibility")
-    instruction_prompt = dspy.InputField(desc="Liberal evaluation instructions for this check")
-    passed = dspy.OutputField(desc="true or false")
-    reasoning = dspy.OutputField(desc="Brief explanation for the decision")
+    
+    # Individual binary outputs for each criterion
+    intent_passed = dspy.OutputField(desc="Boolean indicating if joke has comedic intent")
+    completeness_passed = dspy.OutputField(desc="Boolean indicating if joke is complete")
+    appropriateness_passed = dspy.OutputField(desc="Boolean indicating if joke is appropriate")
+    coherence_passed = dspy.OutputField(desc="Boolean indicating if joke is coherent")
+    accessibility_passed = dspy.OutputField(desc="Boolean indicating if joke is accessible")
 
 class CategoryAssignmentSignature(dspy.Signature):
     """Assign joke to relevant categories"""
@@ -44,3 +50,4 @@ class DuelComparisonSignature(dspy.Signature):
     confidence_factor = dspy.OutputField(desc="Float >= 1.0 indicating confidence in decision")
     reasoning = dspy.OutputField(desc="Detailed explanation for the choice")
 
+    

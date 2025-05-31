@@ -1,16 +1,12 @@
 from typing import List, Dict, Optional, Tuple
 from pydantic import BaseModel
 
-class AdmissibilityCheck(BaseModel):
-    passed: bool
-    reasoning: str
-
 class AdmissibilityResults(BaseModel):
-    intent_check: AdmissibilityCheck
-    completeness_check: AdmissibilityCheck
-    appropriateness_check: AdmissibilityCheck
-    coherence_check: AdmissibilityCheck
-    accessibility_check: AdmissibilityCheck
+    intent_check: bool
+    completeness_check: bool
+    appropriateness_check: bool
+    coherence_check: bool
+    accessibility_check: bool
     is_admissible: bool
 
 class RatingResult(BaseModel):
@@ -59,3 +55,4 @@ class TournamentResult(BaseModel):
     tournament_rounds: int
     top_count_used: int  # Number of jokes that entered tournament
 
+    

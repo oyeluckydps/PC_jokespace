@@ -1,16 +1,21 @@
 import asyncio
 from typing import List, Dict, Optional, Tuple
 import dspy
+import time
+from datetime import datetime
 
 from utilities.xml_parser import Category, Factor, ExampleData, JokeData
 from utilities.dspy_client import ClaudeClient
 from judges.models import (
-    RatingResult, AdmissibilityResults, AdmissibilityCheck
+    RatingResult, AdmissibilityResults
 )
 from judges.dspy_signatures import (
-    AdmissibilitySignature, CategoryAssignmentSignature,
+    CombinedAdmissibilitySignature, CategoryAssignmentSignature,
     FactorSelectionSignature, FactorScoringSignature
 )
+
+# File-wide variable for timing logs
+LOG_TIME = True
 
 class RatingJudge:
     def __init__(self, client: ClaudeClient, categories: List[str], 
@@ -21,13 +26,18 @@ class RatingJudge:
         self.categories = categories
         self.factors = factors
         self.examples = examples
-        self.max_retries = max_retries  # Store max retries for use in error handling
+        self.max_retries = max_retries
         
         # Initialize DSPy predictors
-        self.admissibility_predictor = dspy.Predict(AdmissibilitySignature)
+        self.combined_admissibility_predictor = dspy.Predict(CombinedAdmissibilitySignature)
         self.category_predictor = dspy.Predict(CategoryAssignmentSignature)
         self.factor_selector = dspy.Predict(FactorSelectionSignature)
         self.factor_scorer = dspy.Predict(FactorScoringSignature)
+        
+        # Pre-build static prompt components
+        self._evaluation_criteria = self._build_evaluation_criteria()
+        self._bias_mitigation_guidelines = self._build_bias_mitigation_guidelines()
+        self._admissibility_examples = self._build_admissibility_examples()
     
     def evaluate_joke(self, joke: JokeData) -> RatingResult:
         """Synchronous wrapper for async evaluation"""
@@ -35,8 +45,19 @@ class RatingJudge:
     
     async def evaluate_joke_async(self, joke: JokeData) -> RatingResult:
         """Full evaluation pipeline"""
-        # Step 1: Check admissibility
-        admissibility_results = await self._check_all_admissibility_async(joke.text)
+        # Initialize timing
+        start_time = time.time()
+        start_timestamp = datetime.now().strftime("%H:%M:%S.%f")[:-3]  # HH:MM:SS.mmm
+        
+        if LOG_TIME:
+            print(f"Joke {joke.id} | Start: {start_timestamp}")
+        
+        # Step 1: Combined admissibility check
+        admissibility_results = await self._check_combined_admissibility_async(joke.text)
+        
+        if LOG_TIME:
+            elapsed = (time.time() - start_time) * 1000  # Convert to milliseconds
+            print(f"Joke {joke.id} | Admissibility Check: {elapsed:.3f}ms")
         
         # Initialize default result
         result = RatingResult(
@@ -54,180 +75,226 @@ class RatingJudge:
         
         # If not admissible, return early
         if not admissibility_results.is_admissible:
+            if LOG_TIME:
+                total_elapsed = (time.time() - start_time) * 1000
+                print(f"Joke {joke.id} | Not Admissible - Total: {total_elapsed:.3f}ms")
             return result
         
         # Step 2: Assign categories
         categories, is_independent = await self._classify_categories_async(joke.text)
         result.assigned_categories = categories
         
+        if LOG_TIME:
+            elapsed = (time.time() - start_time) * 1000
+            print(f"Joke {joke.id} | Category Assignment: {elapsed:.3f}ms")
+        
         # Step 3: Select factors per category
         factors_data = await self._select_factors_per_category_async(joke.text, categories, is_independent)
         result.relevant_factors = factors_data['all_factors']
         result.dropped_categories = factors_data['dropped_categories']
-        factor_objects = factors_data['factor_objects']  # Get factor objects for scoring
+        factor_objects = factors_data['factor_objects']
+        
+        if LOG_TIME:
+            elapsed = (time.time() - start_time) * 1000
+            print(f"Joke {joke.id} | Factor Selection: {elapsed:.3f}ms")
         
         # Step 4: Score all factors
         if result.relevant_factors:
             factor_scores = await self._score_factors_async(
                 joke.text, 
                 result.relevant_factors,
-                factor_objects  # Pass factor objects directly
+                factor_objects
             )
             result.factor_scores = factor_scores
+            
+            if LOG_TIME:
+                elapsed = (time.time() - start_time) * 1000
+                print(f"Joke {joke.id} | Factor Scoring: {elapsed:.3f}ms")
             
             # Step 5: Calculate final ratings
             scores = list(factor_scores.values())
             result.max_score = max(scores) if scores else 0
             result.mean_score = sum(scores) / len(scores) if scores else 0.0
             result.overall_rating = (result.max_score*10 + result.mean_score +  len(scores)/5)/12   
-            # Give some benefit for involving more factors and divide by 12 to normalize and bring the value below 5.
+        
+        if LOG_TIME:
+            total_elapsed = (time.time() - start_time) * 1000
+            print(f"Joke {joke.id} | Complete: {total_elapsed:.3f}ms")
         
         return result
     
-    async def _retry_on_error(self, func, *args, **kwargs):
-        """Generic retry wrapper for async functions"""
-        for attempt in range(self.max_retries + 1):  # +1 for initial attempt
+    def _build_evaluation_criteria(self) -> str:
+        """Build the evaluation criteria string"""
+        return """
+INTENT CHECK - Liberal Evaluation:
+Only reject if there is ABSOLUTELY NO comedic intent.
+Accept if there's ANY attempt at humor, wordplay, irony, or comedic structure.
+Even bad jokes or failed attempts at humor should PASS this check.
+
+COMPLETENESS CHECK - Liberal Evaluation:
+Only reject if SEVERELY incomplete.
+Accept if there's a setup and any form of conclusion, even if weak.
+One-liners, puns, and short jokes should PASS.
+
+APPROPRIATENESS CHECK - Liberal Evaluation:
+Only reject EXTREMELY offensive content.
+Accept edgy humor, dark humor, adult humor, political humor.
+Only reject if promoting hate, violence, or extreme harm.
+
+COHERENCE CHECK - Liberal Evaluation:
+Only reject if COMPLETELY incoherent.
+Accept if there's any logical thread, even if absurd or surreal.
+Abstract humor and non-sequiturs can still PASS if intentional.
+
+ACCESSIBILITY CHECK - Liberal Evaluation:
+Only reject if IMPOSSIBLE to understand.
+Accept specialized humor, cultural references, wordplay in any language.
+Technical or niche jokes should still PASS.
+"""
+    
+    def _build_bias_mitigation_guidelines(self) -> str:
+        """Build bias mitigation guidelines"""
+        return """
+BIAS MITIGATION MEASURES:
+
+LENGTH BIAS AVOIDANCE:
+- Do not favor longer or shorter jokes
+- Evaluate based on content quality, not word count
+- Short one-liners can be as valid as longer setup-punchline jokes
+
+POSITION BIAS AVOIDANCE:
+- Evaluate each criterion independently
+- Do not let earlier criteria evaluations influence later ones
+- Consider all criteria simultaneously rather than sequentially
+
+STYLE BIAS AVOIDANCE:
+- Do not prefer certain writing styles or formats
+- Accept various joke structures (puns, observational, absurdist, etc.)
+- Avoid favoring complex vocabulary over simple language
+
+CULTURAL BIAS AVOIDANCE:
+- Accept humor from different cultural contexts
+- Do not require universal cultural knowledge
+- Specialized or niche references should still pass accessibility if comprehensible
+
+CONCRETENESS BIAS AVOIDANCE:
+- Do not favor jokes with specific details over abstract humor
+- Avoid preferring authoritative-sounding content
+- Simple concepts can be as valid as complex ones
+
+OVERCONFIDENCE MITIGATION:
+- Apply liberal evaluation standards consistently
+- When in doubt, err on the side of passing the check
+- Focus on the minimum threshold for each criterion
+"""
+    
+    def _build_admissibility_examples(self) -> str:
+        """Build examples for admissibility checks"""
+        return """
+INTENT CHECK EXAMPLES:
+
+PASS Example: "I told my wife she was drawing her eyebrows too high. She looked surprised."
+- Clear comedic intent with setup and punchline structure
+
+FAIL Example: "The weather is nice today and I like coffee."
+- No comedic intent, just factual statements
+
+COMPLETENESS CHECK EXAMPLES:
+
+PASS Example: "Why don't scientists trust atoms? Because they make up everything!"
+- Complete joke with setup and punchline
+
+FAIL Example: "There once was a man from..."
+- Severely incomplete, missing the entire joke content
+
+APPROPRIATENESS CHECK EXAMPLES:
+
+PASS Example: "My therapist says I have a preoccupation with vengeance. We'll see about that."
+- Dark humor but not promoting harm
+
+FAIL Example: [Content promoting violence or extreme hate]
+- Would be rejected for promoting actual harm
+
+COHERENCE CHECK EXAMPLES:
+
+PASS Example: "I haven't slept for ten days, because that would be too long."
+- Coherent wordplay with logical thread
+
+FAIL Example: "Purple elephant mathematics seven window happy."
+- Completely incoherent with no logical connection
+
+ACCESSIBILITY CHECK EXAMPLES:
+
+PASS Example: "There are only 10 types of people: those who understand binary and those who don't."
+- Technical reference but comprehensible
+
+FAIL Example: [Content in completely unknown language/script with no context]
+- Would be impossible to understand for evaluation
+"""
+    
+    def _retry_on_error(self, func, *args, **kwargs):
+        """Generic retry wrapper for sync functions with retries"""
+        for attempt in range(self.max_retries + 1):
             try:
-                return await func(*args, **kwargs)
+                return func(*args, **kwargs)
             except Exception as e:
                 if attempt == self.max_retries:
-                    # No more retries
                     raise e
                 else:
-                    # Log retry attempt
                     print(f"\033[93m⚠️  Error: {str(e)[:50]}..., retrying in 2s\033[0m")
-                    await asyncio.sleep(2)
+                    import time
+                    time.sleep(2)
     
-    async def _check_all_admissibility_async(self, joke_text: str) -> AdmissibilityResults:
-        """Run 5 admissibility checks in parallel"""
-        # Define check functions
-        check_tasks = [
-            self._check_intent_async(joke_text),
-            self._check_completeness_async(joke_text),
-            self._check_appropriateness_async(joke_text),
-            self._check_coherence_async(joke_text),
-            self._check_accessibility_async(joke_text)
-        ]
-        
-        # Run all checks in parallel
-        results = await asyncio.gather(*check_tasks)
-        
-        # Compile results
-        return AdmissibilityResults(
-            intent_check=results[0],
-            completeness_check=results[1],
-            appropriateness_check=results[2],
-            coherence_check=results[3],
-            accessibility_check=results[4],
-            is_admissible=all(r.passed for r in results)
-        )
-    
-    async def _check_intent_async(self, joke_text: str) -> AdmissibilityCheck:
-        """Check comedic intent with liberal evaluation"""
-        instructions = """Liberal evaluation: Only reject if there is ABSOLUTELY NO comedic intent.
-        Accept if there's ANY attempt at humor, wordplay, irony, or comedic structure.
-        Even bad jokes or failed attempts at humor should PASS this check."""
-        
+    async def _check_combined_admissibility_async(self, joke_text: str) -> AdmissibilityResults:
+        """Run combined admissibility check with bias mitigation"""
         async def check():
-            result = self.admissibility_predictor(
-                joke_text=joke_text,
-                check_type="intent",
-                instruction_prompt=instructions
+            result = self.combined_admissibility_predictor(
+                evaluation_criteria=self._evaluation_criteria,
+                bias_mitigation_guidelines=self._bias_mitigation_guidelines,
+                examples=self._admissibility_examples,
+                joke_text=joke_text
             )
-            passed = result.passed.lower() == 'true'
-            return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
+            
+            # DSPy returns boolean values directly
+            intent_passed = bool(result.intent_passed)
+            completeness_passed = bool(result.completeness_passed)
+            appropriateness_passed = bool(result.appropriateness_passed)
+            coherence_passed = bool(result.coherence_passed)
+            accessibility_passed = bool(result.accessibility_passed)
+            
+            # Calculate overall admissibility programmatically
+            is_admissible = all([
+                intent_passed, completeness_passed, appropriateness_passed,
+                coherence_passed, accessibility_passed
+            ])
+            
+            return AdmissibilityResults(
+                intent_check=intent_passed,
+                completeness_check=completeness_passed,
+                appropriateness_check=appropriateness_passed,
+                coherence_check=coherence_passed,
+                accessibility_check=accessibility_passed,
+                is_admissible=is_admissible
+            )
         
         try:
-            return await self._retry_on_error(check)
+            return await self._retry_on_error_async(check)
         except Exception as e:
-            # If all retries fail, be liberal and pass
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
-    
-    async def _check_completeness_async(self, joke_text: str) -> AdmissibilityCheck:
-        """Check if joke is complete"""
-        instructions = """Liberal evaluation: Only reject if SEVERELY incomplete.
-        Accept if there's a setup and any form of conclusion, even if weak.
-        One-liners, puns, and short jokes should PASS."""
-        
-        async def check():
-            result = self.admissibility_predictor(
-                joke_text=joke_text,
-                check_type="completeness",
-                instruction_prompt=instructions
+            # If all retries fail, be liberal and pass all checks
+            return AdmissibilityResults(
+                intent_check=True,
+                completeness_check=True,
+                appropriateness_check=True,
+                coherence_check=True,
+                accessibility_check=True,
+                is_admissible=True
             )
-            passed = result.passed.lower() == 'true'
-            return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
-        
-        try:
-            return await self._retry_on_error(check)
-        except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
-    
-    async def _check_appropriateness_async(self, joke_text: str) -> AdmissibilityCheck:
-        """Check appropriateness"""
-        instructions = """Liberal evaluation: Only reject EXTREMELY offensive content.
-        Accept edgy humor, dark humor, adult humor, political humor.
-        Only reject if promoting hate, violence, or extreme harm."""
-        
-        async def check():
-            result = self.admissibility_predictor(
-                joke_text=joke_text,
-                check_type="appropriateness",
-                instruction_prompt=instructions
-            )
-            passed = result.passed.lower() == 'true'
-            return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
-        
-        try:
-            return await self._retry_on_error(check)
-        except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
-    
-    async def _check_coherence_async(self, joke_text: str) -> AdmissibilityCheck:
-        """Check logical coherence"""
-        instructions = """Liberal evaluation: Only reject if COMPLETELY incoherent.
-        Accept if there's any logical thread, even if absurd or surreal.
-        Abstract humor and non-sequiturs can still PASS if intentional."""
-        
-        async def check():
-            result = self.admissibility_predictor(
-                joke_text=joke_text,
-                check_type="coherence",
-                instruction_prompt=instructions
-            )
-            passed = result.passed.lower() == 'true'
-            return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
-        
-        try:
-            return await self._retry_on_error(check)
-        except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
-    
-    async def _check_accessibility_async(self, joke_text: str) -> AdmissibilityCheck:
-        """Check language accessibility"""
-        instructions = """Liberal evaluation: Only reject if IMPOSSIBLE to understand.
-        Accept specialized humor, cultural references, wordplay in any language.
-        Technical or niche jokes should still PASS."""
-        
-        async def check():
-            result = self.admissibility_predictor(
-                joke_text=joke_text,
-                check_type="accessibility",
-                instruction_prompt=instructions
-            )
-            passed = result.passed.lower() == 'true'
-            return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
-        
-        try:
-            return await self._retry_on_error(check)
-        except Exception as e:
-            return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
     async def _classify_categories_async(self, joke_text: str) -> Tuple[List[str], bool]:
         """Assign joke to categories"""
         categories_str = ", ".join(self.categories)
         
-        async def classify():
+        def classify():
             result = self.category_predictor(
                 joke_text=joke_text,
                 all_categories=f"Available categories: {categories_str}"
@@ -253,17 +320,31 @@ class RatingJudge:
             return categories, is_independent
         
         try:
-            return await self._retry_on_error(classify)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(classify))
         except Exception as e:
             # Default to Independent on error
             return ["Independent"], True
+    
+    async def _retry_on_error_async(self, func, *args, **kwargs):
+        """Generic async retry wrapper"""
+        for attempt in range(self.max_retries + 1):
+            try:
+                return await func(*args, **kwargs)
+            except Exception as e:
+                if attempt == self.max_retries:
+                    raise e
+                else:
+                    print(f"\033[93m⚠️  Error: {str(e)[:50]}..., retrying in 2s\033[0m")
+                    await asyncio.sleep(2)
     
     async def _select_factors_per_category_async(self, joke_text: str, categories: List[str], 
                                                is_independent: bool) -> Dict:
         """Select relevant factors for each category"""
         all_factors = []
         dropped_categories = []
-        factor_objects = {}  # Track factor objects for scoring
+        factor_objects = {}
         
         if "Independent" in categories:
             # For Independent, consider all factors from all categories
@@ -308,11 +389,10 @@ class RatingJudge:
                         factor_objects[factor_name] = factor
                         break
         
-        # Return factor objects along with other data
         return {
             'all_factors': all_factors,
             'dropped_categories': dropped_categories,
-            'factor_objects': factor_objects  # Include factor objects in return
+            'factor_objects': factor_objects
         }
     
     async def _select_category_factors_async(self, joke_text: str, category: str) -> List[str]:
@@ -326,7 +406,7 @@ class RatingJudge:
         
         factors_str = "\n".join(factors_info)
         
-        async def select():
+        def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category=category,
@@ -342,7 +422,9 @@ class RatingJudge:
             return selected
         
         try:
-            return await self._retry_on_error(select)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
         except Exception as e:
             return []
     
@@ -354,7 +436,7 @@ class RatingJudge:
         
         factors_str = "\n".join(factors_info[:20])  # Limit to prevent token overflow
         
-        async def select():
+        def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category="Independent",
@@ -370,7 +452,9 @@ class RatingJudge:
             return selected[:10]  # Limit to 10 factors for Independent
         
         try:
-            return await self._retry_on_error(select)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
         except Exception as e:
             return []
     
@@ -414,7 +498,7 @@ class RatingJudge:
         pos_examples = "\n".join(f"- {ex}" for ex in factor.positive_examples[:3])
         neg_examples = "\n".join(f"- {ex}" for ex in factor.negative_examples[:3])
         
-        async def score():
+        def score():
             result = self.factor_scorer(
                 joke_text=joke_text,
                 factor_name=factor.name,
@@ -431,6 +515,8 @@ class RatingJudge:
                 return 3  # Default middle score on parse error
         
         try:
-            return await self._retry_on_error(score)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(score))
         except Exception as e:
             return 3  # Default middle score on API error

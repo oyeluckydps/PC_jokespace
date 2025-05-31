@@ -45,9 +45,7 @@ class XMLLogger:
                 ("accessibility", result.admissibility_results.accessibility_check)
             ]:
                 check_elem = ET.SubElement(admiss_elem, check_name)
-                check_elem.set("passed", str(check_result.passed))
-                reason_elem = ET.SubElement(check_elem, "reasoning")
-                reason_elem.text = check_result.reasoning
+                check_elem.set("passed", str(check_result))
             
             # Categories
             categories_elem = ET.SubElement(joke_elem, "categories")
