@@ -5,6 +5,7 @@ from typing import List, Dict, Optional, Tuple
 from datetime import datetime
 from pathlib import Path
 
+from generator.generator_models import FirstOrderTriplet, HigherOrderGroup
 from judges.models import (
     RatingResult, TournamentResult, DuelResult, 
     AdmissibilityResults
@@ -219,7 +220,7 @@ class XMLLogger:
         
         self._write_xml(root, filename)
     
-    def log_first_order_contexts(self, contexts: List, output_dir: str = None) -> None:
+    def log_first_order_contexts(self, contexts: List[FirstOrderTriplet], output_dir: str = None) -> None:
         """Log hook-template-context combinations"""
         root = ET.Element("first_order_contexts")
         root.set("timestamp", self._format_timestamp())
@@ -241,7 +242,7 @@ class XMLLogger:
         self._write_xml(root, "first_order_contexts.xml")
         print(f"First-order contexts logged to: {self.output_dir}/first_order_contexts.xml")
 
-    def log_higher_order_groups(self, groups: List, output_dir: str = None) -> None:
+    def log_higher_order_groups(self, groups: List[HigherOrderGroup], output_dir: str = None) -> None:
         """Log higher-order groups"""
         root = ET.Element("higher_order_groups")
         root.set("timestamp", self._format_timestamp())
@@ -250,23 +251,23 @@ class XMLLogger:
         for i, group in enumerate(groups):
             group_elem = ET.SubElement(root, "group")
             group_elem.set("id", str(i + 1))
-            group_elem.set("member_count", str(len(group.hook_template_contexts)))
+            group_elem.set("member_count", str(len(group.hook_template_pairs)))
             
             # List member contexts
             members_elem = ET.SubElement(group_elem, "members")
-            for j, ctx in enumerate(group.hook_template_contexts):
+            for j, pair in enumerate(group.hook_template_pairs):
                 member_elem = ET.SubElement(members_elem, "member")
                 member_elem.set("index", str(j + 1))
                 
                 hook_elem = ET.SubElement(member_elem, "hook")
-                hook_elem.text = ctx.hook
+                hook_elem.text = pair.hook
                 
                 template_elem = ET.SubElement(member_elem, "template")
-                template_elem.text = ctx.template
+                template_elem.text = pair.template
             
             # Group explanation
             explanation_elem = ET.SubElement(group_elem, "group_explanation")
-            explanation_elem.text = group.group_explanation
+            explanation_elem.text = group.context_explanation
         
         self._write_xml(root, "higher_order_groups.xml")
         print(f"Higher-order groups logged to: {self.output_dir}/higher_order_groups.xml")

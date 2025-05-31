@@ -10,8 +10,13 @@ class ClaudeClient:
                  cache: bool = True):
         """Initialize DSPy with Claude 3.5 Sonnet using environment API key"""
         # self.model = "claude-3-5-sonnet-20241022" # Input -> $3.00 / MTok       Output ->$15.00 / MTok
-        self.model = "claude-3-haiku-20240307"    # Input -> $0.25 / MTok       Output -> $1.25 / MTok
-        # self.model = "claude-3-5-haiku-20241022"  # Input -> $0.80 / MTok       Output -> $4.00 / MTok
+        # self.model = "claude-3-haiku-20240307"    # Input -> $0.25 / MTok       Output -> $1.25 / MTok
+        self.model = "claude-3-5-haiku-20241022"  # Input -> $0.80 / MTok       Output -> $4.00 / MTok
+        # Claude 3 Haiku: 4,096 output tokens max
+        # Claude 3 Sonnet: 8,192 output tokens max
+        # Claude 3 Opus: 8,192 output tokens max
+        # Claude 3.5 Sonnet: 8,192 output tokens max
+        # Claude 3.5 Haiku: 8,192 output tokens max
 
         # self.model = model
         self.api_key = api_key or self._get_api_key()
@@ -23,7 +28,7 @@ class ClaudeClient:
         self.lm = dspy.LM(
             model=self.model,
             api_key=self.api_key,
-            max_tokens=2000,
+            max_tokens=8000,
             cache=self.cache,
             temperature=0.1 + (0 if self.cache else 1)*0.001*random.uniform(-1, 1)        # The cache of DSPy is not functioning well so add some randomness to bypass the cache.
         )

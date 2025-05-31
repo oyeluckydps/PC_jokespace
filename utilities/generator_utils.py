@@ -2,10 +2,8 @@
 
 import re
 from pathlib import Path
-from typing import List
-from generator.generator_models import (
-    GenerationContext, FirstOrderContext, HigherOrderContext
-)
+from typing import List, Union
+from generator.generator_models import FirstOrderTriplet, HigherOrderGroup
 
 
 def format_topic_set_for_prompt(topic_set: set) -> str:
@@ -22,20 +20,20 @@ def format_topic_set_for_prompt(topic_set: set) -> str:
         return f"the topics: {all_but_last}, and {topics_list[-1]}"
 
 
-def flatten_all_generation_contexts(first_order_contexts: List[FirstOrderContext],
-                                  higher_order_contexts: List[HigherOrderContext]) -> List[GenerationContext]:
-    """Flatten all contexts into uniform GenerationContext objects"""
-    flattened = []
+def combine_all_contexts(
+    first_order_triplets: List[FirstOrderTriplet],
+    higher_order_groups: List[HigherOrderGroup]
+    ) -> List[Union[FirstOrderTriplet, HigherOrderGroup]]:
+    """Combine all contexts into a single list for processing"""
+    combined = []
     
-    # Add first-order contexts
-    for ctx in first_order_contexts:
-        flattened.append(ctx)  # Already a GenerationContext subclass
+    # Add first-order triplets
+    combined.extend(first_order_triplets)
     
-    # Add higher-order contexts
-    for ctx in higher_order_contexts:
-        flattened.append(ctx)  # Already a GenerationContext subclass
+    # Add higher-order groups
+    combined.extend(higher_order_groups)
     
-    return flattened
+    return combined
 
 
 def ensure_directory_exists(directory_path: str) -> str:
@@ -55,5 +53,3 @@ def clean_topic_with_whitelist(topic: str) -> str:
     # Strip and normalize whitespace
     cleaned = ' '.join(cleaned.split())
     return cleaned
-
-    

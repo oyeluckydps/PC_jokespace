@@ -11,10 +11,10 @@ from utilities.xml_logger import XMLLogger
 from utilities.generator_utils import ensure_directory_exists
 from generator.topic_processor import process_user_input
 from generator.hook_template_generator import generate_hook_template_contexts
-from generator.higher_order_grouper import create_higher_order_groups
-from generator.joke_engine import generate_jokes_from_all_contexts
+from generator.higher_order_grouper import generate_higher_order_groups
+from generator.joke_engine import generate_full_joke_set
 from generator.output_formatter import format_jokes_to_xml
-from generator.generator_models import JokePortfolio, FirstOrderContext, HigherOrderContext
+from generator.generator_models import JokePortfolio, FirstOrderTriplet, HigherOrderGroup
 
 
 def run_complete_generation_and_judging(topic_input: str = None, first_order_only: bool = False,
@@ -72,32 +72,31 @@ async def execute_generation_pipeline(topic_set: set, client: ClaudeClient, firs
     
     # Stage 1: Generate hook-template contexts
     print("\n=== Stage 1: Generating Hook-Template Contexts ===")
-    hook_template_contexts = await generate_hook_template_contexts(topic_set, client, retries)
-    
-    # Convert to FirstOrderContext objects
-    first_order_contexts = [FirstOrderContext(ctx) for ctx in hook_template_contexts]
+    first_order_triplets = await generate_hook_template_contexts(topic_set, client, retries)
     
     # Log first-order contexts
-    logger.log_first_order_contexts(hook_template_contexts, log_dir)
+    logger.log_first_order_contexts(first_order_triplets, log_dir)
     
     # Stage 2: Create higher-order groups (unless first_order_only)
-    higher_order_contexts = []
+    higher_order_groups = []
     if not first_order_only:
         print("\n=== Stage 2: Creating Higher-Order Groups ===")
-        higher_order_groups = await create_higher_order_groups(topic_set, hook_template_contexts, client, retries)
-        
-        # Convert to HigherOrderContext objects
-        higher_order_contexts = [HigherOrderContext(group) for group in higher_order_groups]
+        higher_order_groups = await generate_higher_order_groups(
+            first_order_triplets, topic_set, client, retries
+        )
         
         # Log higher-order groups
         logger.log_higher_order_groups(higher_order_groups, log_dir)
     
     # Stage 3: Generate jokes
     print("\n=== Stage 3: Generating Jokes ===")
-    portfolio = await generate_jokes_from_all_contexts(
-        topic_set, first_order_contexts, higher_order_contexts, 
-        client, batch_size, retries
+    jokes = await generate_full_joke_set(
+        first_order_triplets, higher_order_groups, topic_set, client
     )
+    
+    # Create portfolio
+    portfolio = JokePortfolio()
+    portfolio.add_jokes(jokes)
     
     return portfolio
 
@@ -178,3 +177,4 @@ def create_timestamped_log_directory() -> str:
 def log_intermediate_results(stage_name: str, data: any, log_dir: str) -> None:
     """Log intermediate results (handled by XMLLogger in pipeline)"""
     pass  # Logging is done directly in execute_generation_pipeline
+

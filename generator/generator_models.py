@@ -3,56 +3,42 @@
 from pydantic import BaseModel, Field
 from typing import List
 
-# Pydantic models for DSPy structured outputs
-class HookTemplateOutput(BaseModel):
+# Basic building block for hook-template pairs
+class HookTemplatePair(BaseModel):
+    """A basic hook-template pair without explanation"""
+    hook: str = Field(description="A comedic anchor or connection point related to the topic")
+    template: str = Field(description="A joke structure format that amplifies the hook's humor potential")
+
+# First-order structure with explanation
+class FirstOrderTriplet(BaseModel):
     """A single hook-template pair with comedic generation explanation"""
     hook: str = Field(description="A comedic anchor or connection point related to the topic - wordplay, concept, cultural reference, or semantic relationship")
     template: str = Field(description="A joke structure format that amplifies the hook's humor potential - classic formats, setup-punchline structures, or narrative patterns")
     explanation: str = Field(description="Comprehensive strategy explaining how this hook-template combination generates multiple funny jokes, what comedic techniques it enables, and why it's effective")
-
-class HookTemplateContext:
-    """Single hook-template pair with detailed generator explanation"""
-    def __init__(self, hook: str, template: str, explanation: str):
-        self.hook = hook
-        self.template = template
-        self.explanation = explanation
     
     def __repr__(self):
-        return f"HookTemplateContext(hook='{self.hook[:30]}...', template='{self.template[:30]}...')"
+        return f"FirstOrderTriplet(hook='{self.hook[:30]}...', template='{self.template[:30]}...')"
 
-class GenerationContext:
-    """Base class for unified processing after flattening"""
-    def __init__(self, context_type: str, details: str, explanation: str):
-        self.context_type = context_type  # 'first_order' or 'higher_order'
-        self.details = details
-        self.explanation = explanation
-
-class FirstOrderContext(GenerationContext):
-    """Subclass for single hook-template pairs"""
-    def __init__(self, hook_template_context: HookTemplateContext):
-        details = f"Hook: {hook_template_context.hook}\nTemplate: {hook_template_context.template}"
-        super().__init__('first_order', details, hook_template_context.explanation)
-        self.original_context = hook_template_context
-
-class HigherOrderGroup:
-    """Collection of 2+ hook-template-context combinations with unified group explanation"""
-    def __init__(self, hook_template_contexts: list, group_explanation: str):
-        self.hook_template_contexts = hook_template_contexts
-        self.group_explanation = group_explanation
+# Higher-order group structure
+class HigherOrderGroup(BaseModel):
+    """A group of 2+ hook-template pairs that work together synergistically"""
+    hook_template_pairs: List[HookTemplatePair] = Field(
+        description="List of hook-template pairs that work together synergistically",
+        min_items=2
+    )
+    context_explanation: str = Field(
+        description="Comprehensive strategy for how these hooks and templates work together to create sophisticated multi-layered jokes"
+    )
     
     def __repr__(self):
-        return f"HigherOrderGroup(contexts={len(self.hook_template_contexts)}, explanation='{self.group_explanation[:50]}...')"
+        return f"HigherOrderGroup(pairs={len(self.hook_template_pairs)}, explanation='{self.context_explanation[:50]}...')"
 
-class HigherOrderContext(GenerationContext):
-    """Subclass for higher-order groups"""
-    def __init__(self, higher_order_group: HigherOrderGroup):
-        details = "\n\n".join([
-            f"Hook-Template Pair {i+1}:\nHook: {ctx.hook}\nTemplate: {ctx.template}"
-            for i, ctx in enumerate(higher_order_group.hook_template_contexts)
-        ])
-        super().__init__('higher_order', details, higher_order_group.group_explanation)
-        self.original_group = higher_order_group
+# Joke generation output
+class JokeOutput(BaseModel):
+    """A single generated joke"""
+    text: str = Field(description="The complete joke text, ready for presentation")
 
+# Non-Pydantic classes for joke storage
 class GeneratedJoke:
     """Individual joke with simple integer ID"""
     def __init__(self, text: str, joke_id: int = None):
@@ -84,5 +70,3 @@ class JokePortfolio:
     
     def __repr__(self):
         return f"JokePortfolio(total_jokes={len(self.jokes)})"
-
-    
