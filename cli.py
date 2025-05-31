@@ -4,7 +4,7 @@ import argparse
 import time
 import sys
 from pathlib import Path
-from generator.main_generator import run_complete_generation_and_judging
+from main import run_complete_generation_and_judging # Updated import
 
 
 def main():
@@ -154,5 +154,3 @@ def display_results(results: dict, elapsed_time: float) -> None:
 
 if __name__ == "__main__":
     main()
-
-    

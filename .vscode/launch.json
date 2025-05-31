@@ -36,7 +36,7 @@
         "type": "debugpy",
         "request": "launch",
         "python": "/root/anaconda3/envs/jokespace/bin/python",
-        "module": "generator.cli",
+        "module": "cli",
         "args": [
             "--topic",
             "universe, physics, quantum",

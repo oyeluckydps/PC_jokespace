@@ -160,4 +160,4 @@ def create_timestamped_log_directory() -> str:
 
 def log_intermediate_results(stage_name: str, data: any, log_dir: str) -> None:
     """Log intermediate results (handled by XMLLogger in pipeline)"""
-    pass  # Logging is done directly in execute_generation_pipeline
+    pass  # Logging is done directly in execute_generation_pipeline 

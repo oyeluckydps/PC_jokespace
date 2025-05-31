@@ -774,4 +774,6 @@ python -m generator.cli --topic "technology, future, AI" --bypass-cache
 python -m generator.cli --topic "universe, physics, quantum" --batch-size 10 --retries 5
 ```
 
+python -m generator.cli --topic "nodejs locked in a VM" --batch-size 10 --retries 5
+
     
