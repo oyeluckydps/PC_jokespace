@@ -160,15 +160,24 @@ class RatingJudge:
     
     async def _check_intent_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check comedic intent with liberal evaluation"""
-        instructions = """Liberal evaluation: Only reject if there is ABSOLUTELY NO comedic intent.
-        Accept if there's ANY attempt at humor, wordplay, irony, or comedic structure.
-        Even bad jokes or failed attempts at humor should PASS this check."""
+        instructions = """Focus only on comedic intent. Do not let joke length, complexity, or writing style influence your decision.
+
+Liberal evaluation: Only reject if there is ABSOLUTELY NO comedic intent. When in doubt, PASS. This check should only fail obvious violations. Borderline cases should PASS.
+
+Accept if there's ANY attempt at humor, wordplay, irony, or comedic structure. Even bad jokes or failed attempts at humor should PASS this check."""
+        
+        examples = """PASS (Clear): "Why don't scientists trust atoms? Because they make up everything!" - Clear pun with setup and punchline.
+
+FAIL (Clear): "The quarterly sales report shows a 15% increase in revenue." - Pure factual statement with no comedic intent.
+
+PASS (Borderline): "My programming skills are so bad, I once spent three hours debugging a semicolon." - Self-deprecating attempt at humor about programming, even if not particularly funny, shows clear comedic intent."""
         
         def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="intent",
-                instruction_prompt=instructions
+                instruction_prompt=instructions,
+                examples=examples
             )
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
@@ -183,15 +192,24 @@ class RatingJudge:
     
     async def _check_completeness_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check if joke is complete"""
-        instructions = """Liberal evaluation: Only reject if SEVERELY incomplete.
-        Accept if there's a setup and any form of conclusion, even if weak.
-        One-liners, puns, and short jokes should PASS."""
+        instructions = """Focus only on completeness of the joke structure. Do not let joke length, complexity, or writing style influence your decision.
+
+Liberal evaluation: Only reject if SEVERELY incomplete. When in doubt, PASS. This check should only fail obvious violations. Borderline cases should PASS.
+
+Accept if there's a setup and any form of conclusion, even if weak. One-liners, puns, and short jokes should PASS."""
+        
+        examples = """PASS (Clear): "I told my wife she was drawing her eyebrows too high. She looked surprised." - Complete setup and punchline.
+
+FAIL (Clear): "So there was this guy and he went to the store and" - Obviously incomplete, cuts off mid-sentence.
+
+PASS (Borderline): "Parallel lines have so much in common. Too bad they'll never meet." - Simple but complete one-liner, has both premise and conclusion."""
         
         def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="completeness",
-                instruction_prompt=instructions
+                instruction_prompt=instructions,
+                examples=examples
             )
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
@@ -205,15 +223,24 @@ class RatingJudge:
     
     async def _check_appropriateness_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check appropriateness"""
-        instructions = """Liberal evaluation: Only reject EXTREMELY offensive content.
-        Accept edgy humor, dark humor, adult humor, political humor.
-        Only reject if promoting hate, violence, or extreme harm."""
+        instructions = """Focus only on extremely harmful content. Do not let joke length, complexity, or writing style influence your decision.
+
+Liberal evaluation: Only reject EXTREMELY offensive content. When in doubt, PASS. This check should only fail obvious violations. Borderline cases should PASS.
+
+Accept edgy humor, dark humor, adult humor, political humor. Only reject if promoting hate, violence, or extreme harm."""
+        
+        examples = """PASS (Clear): "Why don't cannibals eat clowns? Because they taste funny." - Dark humor but not promoting harm.
+
+FAIL (Clear): "All Pakistani people should be eliminated from society." - Promotes hate and violence against a group.
+
+PASS (Borderline): "My ex is like a software update. Whenever I see the notification, I think 'not now'." - Mildly edgy relationship humor but not harmful."""
         
         def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="appropriateness",
-                instruction_prompt=instructions
+                instruction_prompt=instructions,
+                examples=examples
             )
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
@@ -227,15 +254,24 @@ class RatingJudge:
     
     async def _check_coherence_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check logical coherence"""
-        instructions = """Liberal evaluation: Only reject if COMPLETELY incoherent.
-        Accept if there's any logical thread, even if absurd or surreal.
-        Abstract humor and non-sequiturs can still PASS if intentional."""
+        instructions = """Focus only on internal logical consistency. Do not let joke length, complexity, or writing style influence your decision.
+
+Liberal evaluation: Only reject if COMPLETELY incoherent. When in doubt, PASS. This check should only fail obvious violations. Borderline cases should PASS.
+
+Accept if there's any logical thread, even if absurd or surreal. Abstract humor and non-sequiturs can still PASS if intentional."""
+        
+        examples = """PASS (Clear): "I haven't slept for ten days, because that would be too long." - Logical wordplay on different meanings of 'for ten days'.
+
+FAIL (Clear): "Purple banana telephone mathematics seventeen." - Random words with no logical connection or comedic structure.
+
+PASS (Borderline): "Time flies like an arrow. Fruit flies like a banana." - Surreal but has intentional logical structure playing with word meanings."""
         
         def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="coherence",
-                instruction_prompt=instructions
+                instruction_prompt=instructions,
+                examples=examples
             )
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
@@ -249,15 +285,24 @@ class RatingJudge:
     
     async def _check_accessibility_async(self, joke_text: str) -> AdmissibilityCheck:
         """Check language accessibility"""
-        instructions = """Liberal evaluation: Only reject if IMPOSSIBLE to understand.
-        Accept specialized humor, cultural references, wordplay in any language.
-        Technical or niche jokes should still PASS."""
+        instructions = """Focus only on basic understandability. Do not let joke length, complexity, or writing style influence your decision.
+
+Liberal evaluation: Only reject if IMPOSSIBLE to understand. When in doubt, PASS. This check should only fail obvious violations. Borderline cases should PASS.
+
+Accept specialized humor, cultural references, wordplay in any language. Technical or niche jokes should still PASS."""
+        
+        examples = """PASS (Clear): "Why do programmers prefer dark mode? Because light attracts bugs!" - Uses technical terms but meaning is clear.
+
+FAIL (Clear): "Xlqpz frwm nhtg vjkl zxcv!" - Incomprehensible random letters, impossible to understand.
+
+PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating them until someone gets them." - Technical networking joke that may not be universally understood but is clearly structured."""
         
         def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="accessibility",
-                instruction_prompt=instructions
+                instruction_prompt=instructions,
+                examples=examples
             )
             passed = result.passed.lower() == 'true'
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)

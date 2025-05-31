@@ -1,5 +1,5 @@
 logs/
 **/__pycache__/
 
-secret/vertex_key.json
-output/generated_jokes.xml
+**/secret/**
+output/*
