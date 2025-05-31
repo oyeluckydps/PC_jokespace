@@ -6,7 +6,7 @@ from typing import List, Set
 from generator.models import FirstOrderTriplet
 from generator.signatures import HookTemplateGenerationSignature
 from utilities.dspy_client import ClaudeClient
-from utilities.generator_utils import format_topic_set_for_prompt, generate_system_prompt
+from utilities.generator_utils import format_topic_set_for_prompt
 
 
 async def generate_hook_template_contexts(topic_set: set, client: ClaudeClient, retries: int = 3) -> List[FirstOrderTriplet]:

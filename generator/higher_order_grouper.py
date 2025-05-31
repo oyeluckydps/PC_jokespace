@@ -7,7 +7,7 @@ from typing import List, Set
 from generator.models import FirstOrderTriplet, HigherOrderGroup, HookTemplatePair
 from generator.signatures import HigherOrderGroupingSignature
 from utilities.dspy_client import ClaudeClient
-from utilities.generator_utils import format_topic_set_for_prompt, format_triplets_for_prompt, generate_system_prompt
+from utilities.generator_utils import format_topic_set_for_prompt
 
 
 async def generate_higher_order_groups(
