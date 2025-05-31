@@ -112,7 +112,7 @@ class TournamentManager:
     
     async def _run_tournament_round(self, participants: List[RatingResult], round_number: int,
                                   all_previous_matches: List[DuelResult]) -> Tuple[List[DuelResult], List[RatingResult]]:
-        """Run a single tournament round"""
+        """Run a single tournament round with parallel match execution"""
         round_name = self._create_round_name(len(participants))
         matches = []
         survivors = []
@@ -158,13 +158,25 @@ class TournamentManager:
             )
             matches.append(bye_match)
         
-        # Create matches using traditional seeding
+        # Create matches using traditional seeding and prepare for parallel execution
         sorted_participants = sorted(active_participants, key=lambda x: x.original_rank)
         num_matches = len(sorted_participants) // 2
+        
+        # Prepare all match tasks for parallel execution
+        match_tasks = []
+        match_info = []  # Store match metadata for display
         
         for i in range(num_matches):
             joke_a = sorted_participants[i]
             joke_b = sorted_participants[-(i+1)]
+            
+            # Store match info for display
+            match_info.append({
+                'match_num': i + 1,
+                'joke_a': joke_a,
+                'joke_b': joke_b,
+                'match_id': f"R{round_number}_M{i+1}"
+            })
             
             # Display match header
             print(f"\n{'─'*60}")
@@ -173,7 +185,123 @@ class TournamentManager:
                   f"Joke {joke_b.joke_id} (Seed {joke_b.original_rank}, "
                   f"Lives: {self.lives_remaining.get(joke_b.joke_id, 0)})")
             
-            # Run duel
+            # Create async task for this match
+            task = self.duel_judge.compare_jokes_for_tournament(
+                joke_a, joke_b,
+                match_id=f"R{round_number}_M{i+1}",
+                round_number=round_number,
+                round_name=round_name,
+                lives_tracker=self.lives_remaining
+            )
+            match_tasks.append(task)
+        
+        # Execute all matches in parallel
+        print(f"\n⚡ Executing {len(match_tasks)} matches in parallel...")
+        
+        try:
+            # Run all matches concurrently
+            match_results = await asyncio.gather(*match_tasks, return_exceptions=True)
+            
+            # Process results and handle any exceptions
+            for i, result in enumerate(match_results):
+                info = match_info[i]
+                
+                if isinstance(result, Exception):
+                    # Handle failed match - create default result
+                    print(f"❌ Match {info['match_num']} failed: {str(result)[:50]}...")
+                    
+                    # Create fallback result favoring higher seed
+                    fallback_result = DuelResult(
+                        match_id=info['match_id'],
+                        round_number=round_number,
+                        round_name=round_name,
+                        joke_a_id=info['joke_a'].joke_id,
+                        joke_a_seed=info['joke_a'].original_rank,
+                        joke_a_lives_before=self.lives_remaining.get(info['joke_a'].joke_id, 0),
+                        joke_b_id=info['joke_b'].joke_id,
+                        joke_b_seed=info['joke_b'].original_rank,
+                        joke_b_lives_before=self.lives_remaining.get(info['joke_b'].joke_id, 0),
+                        winner_id=info['joke_a'].joke_id,  # Default to joke_a (higher seed)
+                        loser_advanced_by_life=False,
+                        confidence_factor=1.0,
+                        position_consistent=False,
+                        reasoning=f"Match failed, defaulting to higher seed. Error: {str(result)}"
+                    )
+                    match_result = fallback_result
+                else:
+                    match_result = result
+                
+                # Display match details
+                self._display_match_result(match_result, info['joke_a'], info['joke_b'])
+                
+                matches.append(match_result)
+                
+                # Process match result and update lives
+                advancing_jokes = self._process_match_result(match_result)
+                for joke_id in advancing_jokes:
+                    survivor = next(j for j in [info['joke_a'], info['joke_b']] if j.joke_id == joke_id)
+                    survivors.append(survivor)
+            
+            print(f"✅ All {len(match_tasks)} matches completed!")
+            
+        except Exception as e:
+            print(f"❌ Critical error during parallel match execution: {e}")
+            # Fallback to sequential execution if parallel fails
+            print("🔄 Falling back to sequential execution...")
+            return await self._run_tournament_round_sequential(
+                participants, round_number, all_previous_matches
+            )
+        
+        return matches, survivors
+    
+    async def _run_tournament_round_sequential(self, participants: List[RatingResult], round_number: int,
+                                             all_previous_matches: List[DuelResult]) -> Tuple[List[DuelResult], List[RatingResult]]:
+        """Fallback sequential execution for error recovery"""
+        round_name = self._create_round_name(len(participants))
+        matches = []
+        survivors = []
+        
+        print(f"⚠️  Running round {round_number} sequentially as fallback...")
+        
+        # Handle bye (same as parallel version)
+        bye_recipient = None
+        active_participants = participants.copy()
+        
+        if len(active_participants) % 2 == 1:
+            bye_recipient, active_participants = self._select_bye_recipient(
+                active_participants, self.bye_tracker, round_number
+            )
+            survivors.append(bye_recipient)
+            
+            bye_match = DuelResult(
+                match_id=f"R{round_number}_BYE",
+                round_number=round_number,
+                round_name=round_name,
+                joke_a_id=bye_recipient.joke_id,
+                joke_a_seed=bye_recipient.original_rank,
+                joke_a_lives_before=self.lives_remaining.get(bye_recipient.joke_id, 0),
+                joke_b_id=-1,
+                joke_b_seed=-1,
+                joke_b_lives_before=0,
+                winner_id=bye_recipient.joke_id,
+                loser_advanced_by_life=False,
+                confidence_factor=0.0,
+                position_consistent=True,
+                reasoning="Bye - advanced automatically"
+            )
+            matches.append(bye_match)
+        
+        # Sequential match execution
+        sorted_participants = sorted(active_participants, key=lambda x: x.original_rank)
+        num_matches = len(sorted_participants) // 2
+        
+        for i in range(num_matches):
+            joke_a = sorted_participants[i]
+            joke_b = sorted_participants[-(i+1)]
+            
+            print(f"\n🐌 Sequential Match {i+1}: Joke {joke_a.joke_id} vs Joke {joke_b.joke_id}")
+            
+            # Run duel sequentially
             match_result = await self.duel_judge.compare_jokes_for_tournament(
                 joke_a, joke_b,
                 match_id=f"R{round_number}_M{i+1}",
@@ -182,12 +310,9 @@ class TournamentManager:
                 lives_tracker=self.lives_remaining
             )
             
-            # Display match details
             self._display_match_result(match_result, joke_a, joke_b)
-            
             matches.append(match_result)
             
-            # Process match result and update lives
             advancing_jokes = self._process_match_result(match_result)
             for joke_id in advancing_jokes:
                 survivor = next(j for j in [joke_a, joke_b] if j.joke_id == joke_id)

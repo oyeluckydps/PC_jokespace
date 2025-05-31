@@ -284,20 +284,20 @@ The Duel Judge focuses on bias mitigation and robust comparison:
 
 *   **Run a full evaluation (rating + tournament) on `temp/100_jokes_dataset.xml`, process 15 jokes per batch, and advance top 10 to tournament:**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --batch-size 15 --top-count 10
+    python -m judges.cli temp/100_jokes_dataset.xml --batch-size 15 --top-count 10
     ```
 
 *   **Run a rating-only evaluation on `temp/sample_jokes.xml`, process 5 jokes per batch, and show top 3 rated jokes:**
     ```bash
-    python -m judges temp/sample_jokes.xml --batch-size 5 --top-count 3 --rating-only
+    python -m judges.cli temp/sample_jokes.xml --batch-size 5 --top-count 3 --rating-only
     ```
 
 *   **Run a full evaluation with default batch size (20) and top count (20), but bypass the DSPy cache and set LLM call retries to 3:**
     ```bash
-    python -m judges temp/another_jokes_file.xml --bypass-cache --retries 3
+    python -m judges.cli temp/another_jokes_file.xml --bypass-cache --retries 3
     ```
 
 *   **Run with minimal arguments (will use defaults for batch size and top count for tournament):**
     ```bash
-    python -m judges temp/short_jokes_list.xml
+    python -m judges.cli temp/short_jokes_list.xml
     ``` 
