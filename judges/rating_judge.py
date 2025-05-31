@@ -247,7 +247,7 @@ FAIL Example: [Content in completely unknown language/script with no context]
     
     async def _check_combined_admissibility_async(self, joke_text: str) -> AdmissibilityResults:
         """Run combined admissibility check with bias mitigation"""
-        async def check():
+        def check():
             result = self.combined_admissibility_predictor(
                 evaluation_criteria=self._evaluation_criteria,
                 bias_mitigation_guidelines=self._bias_mitigation_guidelines,
@@ -278,7 +278,9 @@ FAIL Example: [Content in completely unknown language/script with no context]
             )
         
         try:
-            return await self._retry_on_error_async(check)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(check))
         except Exception as e:
             # If all retries fail, be liberal and pass all checks
             return AdmissibilityResults(
@@ -326,18 +328,6 @@ FAIL Example: [Content in completely unknown language/script with no context]
         except Exception as e:
             # Default to Independent on error
             return ["Independent"], True
-    
-    async def _retry_on_error_async(self, func, *args, **kwargs):
-        """Generic async retry wrapper"""
-        for attempt in range(self.max_retries + 1):
-            try:
-                return await func(*args, **kwargs)
-            except Exception as e:
-                if attempt == self.max_retries:
-                    raise e
-                else:
-                    print(f"\033[93m⚠️  Error: {str(e)[:50]}..., retrying in 2s\033[0m")
-                    await asyncio.sleep(2)
     
     async def _select_factors_per_category_async(self, joke_text: str, categories: List[str], 
                                                is_independent: bool) -> Dict:
