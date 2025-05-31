@@ -6,19 +6,19 @@ from anthropic import Anthropic
 import random
 
 class ClaudeClient:
-    def __init__(self, model: str = "claude-3-5-sonnet-20241022", api_key: Optional[str] = None, 
+    def __init__(self, model: str = '', api_key: Optional[str] = None, 
                  cache: bool = True):
         """Initialize DSPy with Claude 3.5 Sonnet using environment API key"""
-        # self.model = "claude-3-5-sonnet-20241022" # Input -> $3.00 / MTok       Output ->$15.00 / MTok
-        # self.model = "claude-3-haiku-20240307"    # Input -> $0.25 / MTok       Output -> $1.25 / MTok
-        self.model = "claude-3-5-haiku-20241022"  # Input -> $0.80 / MTok       Output -> $4.00 / MTok
+        model_default = "claude-3-5-sonnet-20241022" # Input -> $3.00 / MTok       Output ->$15.00 / MTok
+        # model_default = "claude-3-haiku-20240307"    # Input -> $0.25 / MTok       Output -> $1.25 / MTok
+        # model_default = "claude-3-5-haiku-20241022"  # Input -> $0.80 / MTok       Output -> $4.00 / MTok
         # Claude 3 Haiku: 4,096 output tokens max
         # Claude 3 Sonnet: 8,192 output tokens max
         # Claude 3 Opus: 8,192 output tokens max
         # Claude 3.5 Sonnet: 8,192 output tokens max
         # Claude 3.5 Haiku: 8,192 output tokens max
 
-        # self.model = model
+        self.model = model if model else model_default
         self.api_key = api_key or self._get_api_key()
         self.cache = cache
         self.max_retries = 10

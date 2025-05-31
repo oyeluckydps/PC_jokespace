@@ -16,18 +16,34 @@
     //     ],
     //     "justMyCode": true
     //   },
+    //   {
+    //     "name": "Sample Jokes",
+    //     "type": "debugpy",
+    //     "request": "launch",
+    //     "python": "/root/anaconda3/envs/jokespace/bin/python",
+    //     "module": "judges.cli",
+    //     "args": [
+    //       "temp/sample_jokes.xml",
+    //       "--batch-size",
+    //       "2",
+    //       "--top-count",
+    //       "5"       
+    //     ],
+    //     "justMyCode": true
+    //   },
       {
-        "name": "Sample Jokes",
+        "name": "Generate Jokes",
         "type": "debugpy",
         "request": "launch",
         "python": "/root/anaconda3/envs/jokespace/bin/python",
-        "module": "judges.cli",
+        "module": "generator.cli",
         "args": [
-          "temp/sample_jokes.xml",
-          "--batch-size",
-          "2",
-          "--top-count",
-          "5"       
+            "--topic",
+            "universe, physics, quantum",
+            "--batch-size",
+            "1",
+            "--retries",
+            "5"
         ],
         "justMyCode": true
       }

@@ -2,10 +2,9 @@
 
 import os
 import asyncio
-import subprocess
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 from utilities.dspy_client import ClaudeClient
 from utilities.xml_logger import XMLLogger
 from utilities.generator_utils import ensure_directory_exists
@@ -15,6 +14,7 @@ from generator.higher_order_grouper import generate_higher_order_groups
 from generator.joke_engine import generate_full_joke_set
 from generator.output_formatter import format_jokes_to_xml
 from generator.generator_models import JokePortfolio, FirstOrderTriplet, HigherOrderGroup
+from judges.cli import evaluate_jokes_programmatic
 
 
 def run_complete_generation_and_judging(topic_input: str = None, first_order_only: bool = False,
@@ -51,7 +51,9 @@ def run_complete_generation_and_judging(topic_input: str = None, first_order_onl
     
     # Run judge system if not generation-only
     if not generation_only:
-        judge_results = integrate_with_judge_system(output_file, batch_size, retries, bypass_cache)
+        judge_results = asyncio.run(integrate_with_judge_system(
+            output_file, len(portfolio), batch_size, retries, bypass_cache
+        ))
         results.update(judge_results)
         
         # Get winner joke text from portfolio
@@ -101,61 +103,43 @@ async def execute_generation_pipeline(topic_set: set, client: ClaudeClient, firs
     return portfolio
 
 
-def integrate_with_judge_system(xml_output_file: str, batch_size: int, retries: int, 
-                              bypass_cache: bool) -> Dict:
-    """Call judge system and parse results"""
+async def integrate_with_judge_system(xml_output_file: str, joke_count: int, batch_size: int, 
+                                    retries: int, bypass_cache: bool) -> Dict:
+    """Call judge system using the programmatic interface"""
     
-    # Count jokes in file to adjust parameters
-    try:
-        import xml.etree.ElementTree as ET
-        tree = ET.parse(xml_output_file)
-        joke_count = len(tree.findall('.//joke'))
-    except:
-        joke_count = 20  # Default assumption
-    
-    # Adjust parameters
+    # Adjust parameters based on joke count
     adjusted_batch_size = min(joke_count, batch_size) if joke_count < 10 else batch_size
     adjusted_top_count = min(joke_count, 15)
     
-    # Build command
-    cmd = [
-        'python', '-m', 'judges', 
-        xml_output_file,
-        '--batch-size', str(adjusted_batch_size),
-        '--top-count', str(adjusted_top_count),
-        '--retries', str(retries)
-    ]
-    
-    if bypass_cache:
-        cmd.append('--bypass-cache')
-    
     print(f"\n=== Running Judge System ===")
-    print(f"Command: {' '.join(cmd)}")
+    print(f"Evaluating {joke_count} jokes with batch size {adjusted_batch_size}")
     
     try:
-        # Run judge system
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=os.getcwd())
+        # Call the judge system programmatically
+        result = await evaluate_jokes_programmatic(
+            jokes_file=xml_output_file,
+            batch_size=adjusted_batch_size,
+            top_count=adjusted_top_count,
+            bypass_cache=bypass_cache,
+            rating_only=False,  # We want the full tournament
+            retries=retries
+        )
         
-        # Stream output
-        print(result.stdout)
-        if result.stderr:
-            print("Errors:", result.stderr)
+        if result is None:
+            return {
+                'winner_id': None,
+                'judge_output': "No valid jokes found for evaluation",
+                'judge_success': False
+            }
         
-        # Parse winner from output
-        winner_id = None
-        for line in result.stdout.split('\n'):
-            if 'Joke ID:' in line and 'TOURNAMENT WINNER' in result.stdout:
-                # Extract ID from "Joke ID: X" pattern
-                try:
-                    winner_id = int(line.split('Joke ID:')[1].strip().split()[0])
-                    break
-                except:
-                    pass
+        # Unpack the winner tuple
+        winner_id, winner_text = result
         
         return {
             'winner_id': winner_id,
-            'judge_output': result.stdout,
-            'judge_success': result.returncode == 0
+            'winner_text': winner_text,
+            'judge_output': f"Tournament completed. Winner: Joke ID {winner_id}",
+            'judge_success': True
         }
         
     except Exception as e:
@@ -177,4 +161,3 @@ def create_timestamped_log_directory() -> str:
 def log_intermediate_results(stage_name: str, data: any, log_dir: str) -> None:
     """Log intermediate results (handled by XMLLogger in pipeline)"""
     pass  # Logging is done directly in execute_generation_pipeline
-

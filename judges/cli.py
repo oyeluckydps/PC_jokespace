@@ -8,6 +8,60 @@ from typing import Tuple, Optional, List
 from judges.main_judge import JokeJudgeSystem
 from judges.models import RatingResult
 
+
+async def evaluate_jokes_programmatic(
+    jokes_file: str,
+    batch_size: int = 20,
+    top_count: int = 20,
+    bypass_cache: bool = False,
+    rating_only: bool = False,
+    retries: int = 5
+):
+    """
+    Programmatic interface for joke evaluation system.
+    
+    Args:
+        jokes_file: Path to XML file containing jokes
+        batch_size: Number of jokes to process in parallel (default: 20)
+        top_count: Number of top jokes to advance to tournament (default: 20)
+        bypass_cache: Bypass DSPy caching mechanism (default: False)
+        rating_only: Only run rating phase without tournament (default: False)
+        retries: Number of retry attempts for LLM calls (default: 5)
+    
+    Returns:
+        List[RatingResult] if rating_only=True
+        Tuple[int, str] (winner_id, winner_text) if rating_only=False
+        None if no valid jokes found
+        
+    Example:
+        # Rating only
+        best_jokes = await evaluate_jokes_programmatic("jokes.xml", rating_only=True)
+        
+        # Full tournament
+        winner_id, winner_text = await evaluate_jokes_programmatic("jokes.xml", rating_only=False)
+    """
+    
+    if rating_only:
+        # Rating-only mode
+        best_jokes = await run_rating_only_evaluation(
+            jokes_file, 
+            batch_size, 
+            top_count,
+            bypass_cache,
+            retries
+        )
+        return best_jokes
+    else:
+        # Full tournament mode
+        winner, log_dir = await run_batch_evaluation(
+            jokes_file, 
+            batch_size, 
+            top_count,
+            bypass_cache,
+            retries
+        )
+        return winner
+
 def main():
     """Entry point for: python -m judges <jokes_file.xml> [options]"""
     args = parse_arguments()
