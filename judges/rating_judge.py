@@ -1,6 +1,8 @@
 import asyncio
 from typing import List, Dict, Optional, Tuple
 import dspy
+import time
+from datetime import datetime
 
 from utilities.xml_parser import Category, Factor, ExampleData, JokeData
 from utilities.dspy_client import ClaudeClient
@@ -11,6 +13,9 @@ from judges.dspy_signatures import (
     AdmissibilitySignature, CategoryAssignmentSignature,
     FactorSelectionSignature, FactorScoringSignature
 )
+
+# File-wide variable for timing logs
+LOG_TIME = True
 
 class RatingJudge:
     def __init__(self, client: ClaudeClient, categories: List[str], 
@@ -35,8 +40,19 @@ class RatingJudge:
     
     async def evaluate_joke_async(self, joke: JokeData) -> RatingResult:
         """Full evaluation pipeline"""
+        # Initialize timing
+        start_time = time.time()
+        start_timestamp = datetime.now().strftime("%H:%M:%S.%f")[:-3]  # HH:MM:SS.mmm
+        
+        if LOG_TIME:
+            print(f"Joke {joke.id} | Start: {start_timestamp}")
+        
         # Step 1: Check admissibility
         admissibility_results = await self._check_all_admissibility_async(joke.text)
+        
+        if LOG_TIME:
+            elapsed = (time.time() - start_time) * 1000  # Convert to milliseconds
+            print(f"Joke {joke.id} | Admissibility Check: {elapsed:.3f}ms")
         
         # Initialize default result
         result = RatingResult(
@@ -54,17 +70,28 @@ class RatingJudge:
         
         # If not admissible, return early
         if not admissibility_results.is_admissible:
+            if LOG_TIME:
+                total_elapsed = (time.time() - start_time) * 1000
+                print(f"Joke {joke.id} | Not Admissible - Total: {total_elapsed:.3f}ms")
             return result
         
         # Step 2: Assign categories
         categories, is_independent = await self._classify_categories_async(joke.text)
         result.assigned_categories = categories
         
+        if LOG_TIME:
+            elapsed = (time.time() - start_time) * 1000
+            print(f"Joke {joke.id} | Category Assignment: {elapsed:.3f}ms")
+        
         # Step 3: Select factors per category
         factors_data = await self._select_factors_per_category_async(joke.text, categories, is_independent)
         result.relevant_factors = factors_data['all_factors']
         result.dropped_categories = factors_data['dropped_categories']
         factor_objects = factors_data['factor_objects']  # Get factor objects for scoring
+        
+        if LOG_TIME:
+            elapsed = (time.time() - start_time) * 1000
+            print(f"Joke {joke.id} | Factor Selection: {elapsed:.3f}ms")
         
         # Step 4: Score all factors
         if result.relevant_factors:
@@ -75,6 +102,10 @@ class RatingJudge:
             )
             result.factor_scores = factor_scores
             
+            if LOG_TIME:
+                elapsed = (time.time() - start_time) * 1000
+                print(f"Joke {joke.id} | Factor Scoring: {elapsed:.3f}ms")
+            
             # Step 5: Calculate final ratings
             scores = list(factor_scores.values())
             result.max_score = max(scores) if scores else 0
@@ -82,13 +113,17 @@ class RatingJudge:
             result.overall_rating = (result.max_score*10 + result.mean_score +  len(scores)/5)/12   
             # Give some benefit for involving more factors and divide by 12 to normalize and bring the value below 5.
         
+        if LOG_TIME:
+            total_elapsed = (time.time() - start_time) * 1000
+            print(f"Joke {joke.id} | Complete: {total_elapsed:.3f}ms")
+        
         return result
     
-    async def _retry_on_error(self, func, *args, **kwargs):
-        """Generic retry wrapper for async functions"""
+    def _retry_on_error(self, func, *args, **kwargs):
+        """Generic retry wrapper for sync functions with retries"""
         for attempt in range(self.max_retries + 1):  # +1 for initial attempt
             try:
-                return await func(*args, **kwargs)
+                return func(*args, **kwargs)
             except Exception as e:
                 if attempt == self.max_retries:
                     # No more retries
@@ -96,7 +131,8 @@ class RatingJudge:
                 else:
                     # Log retry attempt
                     print(f"\033[93m⚠️  Error: {str(e)[:50]}..., retrying in 2s\033[0m")
-                    await asyncio.sleep(2)
+                    import time
+                    time.sleep(2)
     
     async def _check_all_admissibility_async(self, joke_text: str) -> AdmissibilityResults:
         """Run 5 admissibility checks in parallel"""
@@ -128,7 +164,7 @@ class RatingJudge:
         Accept if there's ANY attempt at humor, wordplay, irony, or comedic structure.
         Even bad jokes or failed attempts at humor should PASS this check."""
         
-        async def check():
+        def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="intent",
@@ -138,7 +174,9 @@ class RatingJudge:
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
         
         try:
-            return await self._retry_on_error(check)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(check))
         except Exception as e:
             # If all retries fail, be liberal and pass
             return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
@@ -149,7 +187,7 @@ class RatingJudge:
         Accept if there's a setup and any form of conclusion, even if weak.
         One-liners, puns, and short jokes should PASS."""
         
-        async def check():
+        def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="completeness",
@@ -159,7 +197,9 @@ class RatingJudge:
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
         
         try:
-            return await self._retry_on_error(check)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(check))
         except Exception as e:
             return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
@@ -169,7 +209,7 @@ class RatingJudge:
         Accept edgy humor, dark humor, adult humor, political humor.
         Only reject if promoting hate, violence, or extreme harm."""
         
-        async def check():
+        def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="appropriateness",
@@ -179,7 +219,9 @@ class RatingJudge:
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
         
         try:
-            return await self._retry_on_error(check)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(check))
         except Exception as e:
             return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
@@ -189,7 +231,7 @@ class RatingJudge:
         Accept if there's any logical thread, even if absurd or surreal.
         Abstract humor and non-sequiturs can still PASS if intentional."""
         
-        async def check():
+        def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="coherence",
@@ -199,7 +241,9 @@ class RatingJudge:
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
         
         try:
-            return await self._retry_on_error(check)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(check))
         except Exception as e:
             return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
@@ -209,7 +253,7 @@ class RatingJudge:
         Accept specialized humor, cultural references, wordplay in any language.
         Technical or niche jokes should still PASS."""
         
-        async def check():
+        def check():
             result = self.admissibility_predictor(
                 joke_text=joke_text,
                 check_type="accessibility",
@@ -219,7 +263,9 @@ class RatingJudge:
             return AdmissibilityCheck(passed=passed, reasoning=result.reasoning)
         
         try:
-            return await self._retry_on_error(check)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(check))
         except Exception as e:
             return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
@@ -227,7 +273,7 @@ class RatingJudge:
         """Assign joke to categories"""
         categories_str = ", ".join(self.categories)
         
-        async def classify():
+        def classify():
             result = self.category_predictor(
                 joke_text=joke_text,
                 all_categories=f"Available categories: {categories_str}"
@@ -253,7 +299,9 @@ class RatingJudge:
             return categories, is_independent
         
         try:
-            return await self._retry_on_error(classify)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(classify))
         except Exception as e:
             # Default to Independent on error
             return ["Independent"], True
@@ -326,7 +374,7 @@ class RatingJudge:
         
         factors_str = "\n".join(factors_info)
         
-        async def select():
+        def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category=category,
@@ -342,7 +390,9 @@ class RatingJudge:
             return selected
         
         try:
-            return await self._retry_on_error(select)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
         except Exception as e:
             return []
     
@@ -354,7 +404,7 @@ class RatingJudge:
         
         factors_str = "\n".join(factors_info[:20])  # Limit to prevent token overflow
         
-        async def select():
+        def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category="Independent",
@@ -370,7 +420,9 @@ class RatingJudge:
             return selected[:10]  # Limit to 10 factors for Independent
         
         try:
-            return await self._retry_on_error(select)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
         except Exception as e:
             return []
     
@@ -414,7 +466,7 @@ class RatingJudge:
         pos_examples = "\n".join(f"- {ex}" for ex in factor.positive_examples[:3])
         neg_examples = "\n".join(f"- {ex}" for ex in factor.negative_examples[:3])
         
-        async def score():
+        def score():
             result = self.factor_scorer(
                 joke_text=joke_text,
                 factor_name=factor.name,
@@ -431,6 +483,8 @@ class RatingJudge:
                 return 3  # Default middle score on parse error
         
         try:
-            return await self._retry_on_error(score)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(score))
         except Exception as e:
             return 3  # Default middle score on API error

@@ -39,26 +39,25 @@ class DuelJudge:
         # Resolve the comparison with joke metadata for tiebreaking
         return self._resolve_comparison(ab_result, ba_result, joke_a, joke_b)
     
-    async def _retry_on_error(self, func, *args, **kwargs):
-        """Generic retry wrapper for async functions"""
-        for attempt in range(self.max_retries + 1):  # +1 for initial attempt
+    def _retry_on_error(self, func, *args, **kwargs):
+        """Generic retry wrapper for sync functions with retries"""
+        for attempt in range(self.max_retries + 1):
             try:
-                return await func(*args, **kwargs)
+                return func(*args, **kwargs)
             except Exception as e:
                 if attempt == self.max_retries:
-                    # No more retries
                     raise e
                 else:
-                    # Log retry attempt
                     print(f"\033[93m⚠️  Duel comparison error: {str(e)[:50]}..., retrying in 2s\033[0m")
-                    await asyncio.sleep(2)
+                    import time
+                    time.sleep(2)
    
     async def _compare_ab_async(self, joke_a_text: str, joke_b_text: str) -> Dict:
         """Compare A vs B with examples"""
         good_examples = "\n".join(f"Good: {ex}" for ex in self.examples.good_jokes)
         bad_examples = "\n".join(f"Bad: {ex}" for ex in self.examples.bad_jokes)
         
-        async def compare():
+        def compare():
             result = self.duel_predictor(
                 joke_a=joke_a_text,
                 joke_b=joke_b_text,
@@ -80,7 +79,9 @@ class DuelJudge:
             }
         
         try:
-            return await self._retry_on_error(compare)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(compare))
         except Exception as e:
             # Default to A with low confidence on error after all retries
             return {
@@ -94,7 +95,7 @@ class DuelJudge:
         good_examples = "\n".join(f"Good: {ex}" for ex in self.examples.good_jokes)
         bad_examples = "\n".join(f"Bad: {ex}" for ex in self.examples.bad_jokes)
        
-        async def compare():
+        def compare():
             result = self.duel_predictor(
                 joke_a=joke_b_text,
                 joke_b=joke_a_text,
@@ -122,7 +123,9 @@ class DuelJudge:
             }
        
         try:
-            return await self._retry_on_error(compare)
+            # Run synchronous DSPy call in thread pool to avoid blocking
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, lambda: self._retry_on_error(compare))
         except Exception as e:
             return {
                 'winner': 'a',
@@ -221,5 +224,3 @@ class DuelJudge:
             ba_winner_id=comparison.get('ba_winner_id'),  # ADD THIS
             decision_type=comparison.get('decision_type')
         )
-    
-    
