@@ -14,6 +14,62 @@ class FactorScorer:
         self.client = client
         self.max_retries = max_retries
         self.factor_scorer = dspy.Predict(FactorScoringSignature)
+        
+        # Define the comprehensive scoring instructions
+        self.scoring_instructions = """
+You are an expert joke evaluator with high professional standards. Your role is to critically assess jokes and create meaningful differentiation across the full scoring spectrum. Use the complete 0-5 range deliberately to distinguish performance levels.
+
+**SCORING SCALE WITH CLEAR DIFFERENTIATION:**
+- **0 = Below Average**: Factor execution is weak, flawed, or poorly implemented. Clear deficiencies evident.
+- **1 = Average**: Basic, unremarkable execution of the factor. Meets minimum expectations but nothing more.
+- **2 = Good**: Solid, competent execution with no major flaws. Well-executed but not noteworthy.
+- **3 = Better**: Above-average execution that shows skill and effectiveness. Notably well-done.
+- **4 = Very Good**: High-quality execution that demonstrates clear expertise and creativity. Impressive work.
+- **5 = Exceptional**: Outstanding execution that represents peak performance. Reserved for roughly 5-10% of jokes - rare but achievable excellence.
+
+**DISTRIBUTION EXPECTATIONS:**
+- Scores 0-1: For genuinely mediocre and average adequate factor execution
+- Score 2: For solid, good performance that meets professional standards
+- Score 3: For notably effective execution that stands out positively
+- Score 4: For high-quality work that demonstrates real skill
+- Score 5: For the top 5-10% of factor executions that truly excel
+
+**CRITICAL EVALUATION APPROACH:**
+- Maintain professional standards but recognize that these jokes were selected for having the factor present
+- Focus on HOW WELL the factor is executed, not whether it exists
+- Look for gradations in quality: basic competence vs. skillful execution vs. masterful implementation
+- Ask: "Among jokes that have this factor, how well is it executed here?"
+
+**SCORING METHODOLOGY:**
+- Start by identifying how the factor manifests in the joke
+- Assess the quality of execution against professional comedy standards
+- Consider creativity, effectiveness, and technical skill in factor implementation
+- Compare against both the positive and negative examples provided
+- Differentiate between "does the job" (score 2) and "does it well" (score 3-4)
+
+**EVIDENCE-BASED DIFFERENTIATION:**
+- Score 0: Factor present but poorly executed or undermined by flaws
+- Score 1: Basic, functional execution without distinction or creativity
+- Score 2: Competent execution that works well and serves its purpose
+- Score 3: Skillful execution that enhances the joke's effectiveness
+- Score 4: Creative, polished execution that demonstrates expertise
+- Score 5: Exceptional execution that represents the factor at its finest
+
+**QUALITY ASSESSMENT QUESTIONS:**
+- Does this factor execution enhance or detract from the joke's impact?
+- How creatively or skillfully is this factor implemented?
+- Would other comedy professionals recognize this as quality work?
+- What specific elements make this execution stand out (positively or negatively)?
+
+**REASONING STRUCTURE:**
+1. Identify specific elements demonstrating the factor
+2. Analyze the quality and effectiveness of the execution
+3. Note what works well and any limitations
+4. Compare to factor examples and professional standards
+5. Justify the score based on execution quality within the 0-5 spectrum
+
+Use the full range thoughtfully. Recognize that good execution deserves recognition (scores 2-3), while exceptional work should be rewarded (scores 4-5), and poor execution should be honestly assessed (scores 0-1). Create meaningful distinctions between performance levels.
+"""
     
     def _retry_on_error(self, func, *args, **kwargs):
         """Generic retry wrapper for sync functions with retries"""
@@ -67,16 +123,12 @@ class FactorScorer:
     
     async def _score_single_factor_async(self, joke_text: str, factor: FactorData) -> int:
         """Score joke on a single factor"""
-        pos_examples = "\n".join(f"- {ex}" for ex in factor.positive_examples[:3])
-        neg_examples = "\n".join(f"- {ex}" for ex in factor.negative_examples[:3])
         
         def score():
             result = self.factor_scorer(
                 joke_text=joke_text,
-                factor_name=factor.name,
-                factor_description=factor.description,
-                positive_examples=pos_examples,
-                negative_examples=neg_examples
+                factor_data=factor,
+                instruction=self.scoring_instructions
             )
             
             # Parse score
@@ -92,3 +144,4 @@ class FactorScorer:
             return await loop.run_in_executor(None, lambda: self._retry_on_error(score))
         except Exception as e:
             return 3  # Default middle score on API error
+

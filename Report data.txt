@@ -1,0 +1,25 @@
+======================================================================
+RATING PHASE COMPLETE
+======================================================================
+Total jokes processed: 100/100
+Admissible jokes: 87 (87.0%)
+Failed to process: 0
+Total time: 9m 31s
+Average time per joke: 5.7s
+
+📊 Rating Distribution:
+   0-1: █████ 12 jokes
+   1-2: ██ 6 jokes
+   2-3: ████████ 18 jokes
+   3-4: ██████████████████████ 48 jokes
+   4-5: █ 3 jokes
+
+🏆 Top 3 Jokes:
+   1. Joke 51 - Rating: 4.58
+      I’m reading a book on anti-gravity. It’s impossible to put down.
+   2. Joke 57 - Rating: 4.52
+      Sometimes I sit quietly and do nothing. It confuses people.
+   3. Joke 37 - Rating: 4.47
+      I have a pen. It's blue.
+======================================================================
+

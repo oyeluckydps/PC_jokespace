@@ -1,12 +1,13 @@
 import dspy
 from typing import List
-from judges.models import CategoryFactor
+from judges.models import CategoryFactor, FactorData
 
 class AdmissibilitySignature(dspy.Signature):
     """Check if text is admissible as a joke"""
     joke_text = dspy.InputField(desc="The joke text to evaluate")
     check_type = dspy.InputField(desc="Type of admissibility check: intent/completeness/appropriateness/coherence/accessibility")
     instruction_prompt = dspy.InputField(desc="Liberal evaluation instructions for this check")
+    
     reasoning = dspy.OutputField(desc="Brief explanation for the decision")
     passed = dspy.OutputField(desc="true or false")
 
@@ -32,10 +33,9 @@ class FactorSelectionSignature(dspy.Signature):
 class FactorScoringSignature(dspy.Signature):
     """Score joke on specific factor"""
     joke_text = dspy.InputField(desc="The joke text to score")
-    factor_name = dspy.InputField(desc="Name of the factor being evaluated")
-    factor_description = dspy.InputField(desc="Detailed description of what this factor measures")
-    positive_examples = dspy.InputField(desc="Examples of jokes that score well on this factor")
-    negative_examples = dspy.InputField(desc="Examples of jokes that score poorly on this factor")
+    factor_data = dspy.InputField(desc="FactorData object containing factor name, description, positive examples, and negative examples")
+    instruction = dspy.InputField(desc="Detailed instructions for objective factor-based scoring with bias mitigation guidelines")
+    
     reasoning = dspy.OutputField(desc="Explanation for the score")
     score = dspy.OutputField(desc="Integer score from 0 to 5")
 
@@ -48,3 +48,4 @@ class DuelComparisonSignature(dspy.Signature):
     reasoning = dspy.OutputField(desc="Detailed explanation for the choice")
     winner = dspy.OutputField(desc="Either 'joke_a' or 'joke_b'")
     confidence_factor = dspy.OutputField(desc="Float >= 1.0 indicating confidence in decision")
+
