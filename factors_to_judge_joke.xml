@@ -389,11 +389,6 @@
 
   <Criteria name="Structure">
     <Category name="One-liners">
-      <Factor name="Conciseness">
-        <Explanation>A good one-liner is short, efficient, and delivers humor in as few words as possible.</Explanation>
-        <GoodExample>"I used to play piano by ear, but now I use my hands."</GoodExample>
-        <BadExample>"I once had a dream where I was in a piano class and my teacher told me to play by ear, but I misunderstood and bent over trying to hit the keys with my head."</BadExample>
-      </Factor>
       <Factor name="Punch Impact">
         <Explanation>The final word or phrase must carry a surprising or humorous twist that lands effectively.</Explanation>
         <GoodExample>"I'm on a whiskey diet. I've lost three days already."</GoodExample>

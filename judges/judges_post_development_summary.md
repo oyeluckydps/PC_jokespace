@@ -61,15 +61,33 @@ The Duel Judge focuses on bias mitigation and robust comparison:
         *   First: A vs. B
         *   Second: B vs. A
     *   Good and bad joke examples (from `judges/good_vs_bad_joke.xml`) are provided as few-shot context.
-2.  **Confidence and Reasoning**:
-    *   For each comparison, the LLM determines a winner and a confidence factor (a float >= 1.0).
-3.  **Conflict Resolution**:
+    *   **Enhanced Bias-Free Evaluation**: The system now uses comprehensive bias mitigation instructions following LLM-as-a-Judge research best practices.
+2.  **Confidence Assessment**:
+    *   For each comparison, the LLM determines a winner and a **continuous confidence level** (float between 1.0-5.0):
+        *   **1.0-2.0 (Tie/Equal)**: Both jokes are essentially equal in funniness
+        *   **2.0-3.0 (Slightly funnier)**: One joke is somewhat better but the difference is small
+        *   **3.0-4.0 (Moderately funnier)**: Clear preference with noticeable difference in humor quality
+        *   **4.0-5.0 (Significantly funnier)**: Strong preference with substantial difference in comedic effectiveness
+    *   **No Explanation Requirement**: Following research findings, the system removes reasoning requirements to focus on direct judgment.
+3.  **Enhanced Bias Mitigation**:
+    *   **Length Bias**: Explicit instructions to ignore joke length
+    *   **Style Bias**: Ignore formatting, capitalization, punctuation, or visual presentation
+    *   **Concreteness Bias**: Don't favor jokes with more specific details
+    *   **Cultural Bias**: Consider broad appeal rather than niche references
+    *   **Topic Bias**: Don't favor certain humor styles - judge effectiveness within each style
+    *   **Complexity Bias**: Don't assume complex setups are funnier
+    *   **Position Bias**: Order of presentation should not influence decisions
+4.  **Enhanced Evaluation Criteria**:
+    *   **Core Criteria**: Comedic timing, surprise, wordplay, wit, and relatability
+    *   **Novelty and Uniqueness**: Prioritize fresh, creative, and inventive humor over predictable patterns
+    *   **Original Perspectives**: Value unique viewpoints, unexpected twists, and original comedic insights
+5.  **Conflict Resolution**:
     *   **Consistent Decision**: If both comparisons (A vs. B and B vs. A) yield the same winner, this winner is chosen. The confidence is averaged.
-    *   **Inconsistent Decision (Tie in Confidence)**: If the winners differ but confidences are equal:
-        *   The joke with the higher `overall_rating` (from the Rating Judge) wins.
-        *   If ratings are also equal, the joke with the lower `original_rank` (initial seed) wins.
-    *   **Inconsistent Decision (Different Confidence)**: The winner from the comparison with the higher confidence factor is chosen.
-4.  **Result**: The final output includes the determined winner, the aggregated confidence, and detailed reasoning, including how any conflicts were resolved.
+    *   **Inconsistent Decision (Close Confidence)**: If the winners differ but confidence levels are close (difference < 0.3):
+        *   For low confidence levels (≤2.0), use original ratings to break ties
+        *   For higher confidence levels, use ratings or seed ranking
+    *   **Inconsistent Decision (Different Confidence)**: The winner from the comparison with the higher confidence level is chosen.
+6.  **Result**: The final output includes the determined winner, the aggregated confidence (as continuous float), and detailed reasoning about how any conflicts were resolved.
 
 ## 3. File Descriptions
 
@@ -179,28 +197,45 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Usage**: Executed when running `python -m judges ...`.
 
 *   **`dspy_signatures.py`**:
-    *   **Description**: **UPDATED** - Defines the DSPy signatures for various LLM interactions with enhanced prompting structures and optimized data flow.
+    *   **Description**: **ENHANCED** - Defines the DSPy signatures for various LLM interactions with enhanced prompting structures, optimized data flow, and **bias-free duel comparison**.
     *   **Purpose**: Structures the input and output fields for prompts sent to the LLM, ensuring consistency and clarity for the model.
     *   **Class `AdmissibilitySignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. Defines fields for admissibility checks (`joke_text`, `check_type`, `instruction_prompt` -> `reasoning`, `passed`).
     *   **Class `CategoryAssignmentSignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. Enhanced to include `available_categories` (containing `CategoryInfo` objects) and `instruction` field for detailed analysis framework -> `reasoning`, `selected_categories`, `is_independent`.
     *   **Class `FactorSelectionSignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. **Optimized parameter type**: `relevant_categories: List[CategoryFactor]` now receives preprocessed data containing only factor names and descriptions -> `reasoning`, `relevant_factors`.
     *   **Class `FactorScoringSignature(dspy.Signature)`**: **SIGNIFICANTLY UPDATED** - Moved `reasoning` to top of output fields. **Consolidated input fields**: Now uses single `factor_data` field (FactorData object) and `instructions` field instead of separate factor components -> `reasoning`, `score`.
-    *   **Class `DuelComparisonSignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. Defines fields for comparing two jokes (`joke_a`, `joke_b`, `good_examples`, `bad_examples` -> `reasoning`, `winner`, `confidence_factor`).
+    *   **Class `DuelComparisonSignature(dspy.Signature)`**: **SIGNIFICANTLY ENHANCED** - **Removed reasoning requirement** following LLM-as-a-Judge research. Added comprehensive `instruction` field for bias-free evaluation. **Updated confidence system**: Now uses continuous `confidence_level` (float 1.0-5.0) with descriptive ranges instead of discrete categories -> `winner`, `confidence_level`.
     *   **Model Dependency**: Uses `CategoryFactor` and `FactorData` from `models.py`.
     *   **Usage**: These signatures are used by `dspy.Predict` in the specialized rating components and `DuelJudge` to interact with the LLM.
 
 *   **`duel_judge.py`**:
-    *   **Description**: Implements the logic for comparing two jokes head-to-head.
-    *   **Purpose**: To determine a winner between two jokes with bias mitigation techniques.
+    *   **Description**: **SIGNIFICANTLY ENHANCED** - Implements the logic for comparing two jokes head-to-head with **advanced bias mitigation** and **research-based improvements**.
+    *   **Purpose**: To determine a winner between two jokes with comprehensive bias mitigation techniques following LLM-as-a-Judge best practices.
     *   **Class `DuelJudge`**:
-        *   **`__init__(self, client, examples, max_retries)`**: Initializes with a `ClaudeClient`, example jokes, and max retries. Sets up `dspy.Predict(DuelComparisonSignature)`.
-        *   **`compare_jokes_for_tournament(self, joke_a, joke_b, match_id, round_number, round_name, lives_tracker)`**: Asynchronously compares two `RatingResult` objects for a tournament match. It calls `compare_jokes_async` and then formats the result using `_build_duel_result`. (Note: `asyncio.run` was removed, making this an `async` method).
-        *   **`compare_jokes_async(self, joke_a, joke_b)`**: Core async comparison logic. Runs `_compare_ab_async` and `_compare_ba_async` in parallel, then resolves them using `_resolve_comparison`.
+        *   **`__init__(self, client, examples, max_retries)`**: Initializes with a `ClaudeClient`, example jokes, and max retries. Sets up `dspy.Predict(DuelComparisonSignature)`. **NEW**: Includes comprehensive bias-free evaluation instruction.
+        *   **Enhanced Bias-Free Evaluation Instruction**: **NEW FEATURE** - Comprehensive prompt addressing:
+            *   **Core Evaluation Criteria**: Comedic timing, surprise, wordplay, wit, relatability, **novelty, and uniqueness**
+            *   **Critical Bias Mitigation**: Explicit instructions to ignore length, style, concreteness, cultural, topic, complexity, and position biases
+            *   **Continuous Confidence Levels**: 1.0-5.0 scale with descriptive ranges and guidance for decimal precision
+            *   **Novelty Focus**: Emphasis on fresh, creative, and inventive humor over predictable patterns
+        *   **`compare_jokes_for_tournament(self, joke_a, joke_b, match_id, round_number, round_name, lives_tracker)`**: Asynchronously compares two `RatingResult` objects for a tournament match. It calls `compare_jokes_async` and then formats the result using `_build_duel_result`.
+        *   **`compare_jokes_async(self, joke_a, joke_b)`**: Core async comparison logic. Runs `_compare_ab_async` and `_compare_ba_async` in parallel, then resolves them using enhanced `_resolve_comparison`.
         *   **`_retry_on_error(self, func, *args, **kwargs)`**: Generic async retry wrapper for LLM calls.
-        *   **`_compare_ab_async(self, joke_a_text, joke_b_text)`**: Performs a single LLM call to compare A vs. B.
-        *   **`_compare_ba_async(self, joke_b_text, joke_a_text)`**: Performs a single LLM call to compare B vs. A (inputs swapped).
-        *   **`_resolve_comparison(self, ab_result, ba_result, joke_a, joke_b)`**: Resolves results from A->B and B->A comparisons. Handles consistent decisions, ties (broken by rating then seed), and inconsistent decisions (broken by confidence). Returns detailed comparison metrics.
+        *   **`_compare_ab_async(self, joke_a_text, joke_b_text)`**: **ENHANCED** - Performs LLM call with comprehensive bias-free instruction and continuous confidence assessment (1.0-5.0).
+        *   **`_compare_ba_async(self, joke_b_text, joke_a_text)`**: **ENHANCED** - Performs LLM call with comprehensive bias-free instruction and continuous confidence assessment (1.0-5.0).
+        *   **`_resolve_comparison(self, ab_result, ba_result, joke_a, joke_b)`**: **SIGNIFICANTLY ENHANCED** - Advanced conflict resolution with continuous confidence handling:
+            *   **Consistent Decisions**: Average confidence levels for agreement
+            *   **Close Confidence Conflicts**: Use confidence difference thresholds (< 0.3) for nuanced resolution
+            *   **Tie Handling**: Enhanced logic for low confidence levels indicating close calls
+            *   **Rating-Based Tiebreaking**: Improved use of original ratings for conflict resolution
+            *   **Detailed Reasoning**: Comprehensive explanation of decision process with decimal precision
         *   **`_build_duel_result(self, joke_a, joke_b, comparison, match_id, round_number, round_name, lives_tracker)`**: Constructs a `DuelResult` object from the comparison outcome and match metadata.
+    *   **Key Enhancements**: 
+        *   **Research-Based Improvements**: Implements findings from LLM-as-a-Judge literature
+        *   **Removed Reasoning Requirement**: Focus on direct judgment rather than explanations
+        *   **Continuous Confidence**: Float values (1.0-5.0) instead of discrete categories for precise assessment
+        *   **Comprehensive Bias Mitigation**: Addresses length, style, cultural, topic, complexity, and position biases
+        *   **Novelty Emphasis**: Prioritizes fresh, creative, and unique humor
+        *   **Enhanced Conflict Resolution**: Sophisticated logic for handling confidence differences and ties
     *   **Model Dependency**: Uses `RatingResult`, `DuelResult`, and `ExampleData` from `models.py`.
     *   **Usage**: Used by `TournamentManager` to conduct duels in a tournament.
 
@@ -341,17 +376,18 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   If in rating-only mode, `_log_rating_only_summary()` creates a text summary, and the process ends.
 
 6.  **Tournament Phase (if not rating-only) (`JokeJudgeSystem._run_tournament_phase` -> `judges/tournament_manager.py`)**:
-    *   `TournamentManager` is instantiated with the `DuelJudge`.
+    *   `TournamentManager` is instantiated with the **enhanced** `DuelJudge`.
     *   `TournamentManager.run_tournament()`:
         *   Initializes lives for participants based on their original rank (from rating phase).
         *   Enters a loop, running rounds (`_run_tournament_round`) until only one participant remains.
         *   `_run_tournament_round()`:
             *   Determines bye recipient if an odd number of participants (`_select_bye_recipient`).
             *   Pairs remaining participants (top seed vs. bottom seed, etc.).
-            *   For each pair, calls `DuelJudge.compare_jokes_for_tournament()`:
-                *   `DuelJudge.compare_jokes_async()` runs A vs. B and B vs. A comparisons in parallel (`_compare_ab_async`, `_compare_ba_async` using `DuelComparisonSignature`).
-                *   `_resolve_comparison()` determines the true winner and confidence, handling ties and inconsistencies.
-                *   Returns a `DuelResult`.
+            *   For each pair, calls **enhanced** `DuelJudge.compare_jokes_for_tournament()`:
+                *   `DuelJudge.compare_jokes_async()` runs A vs. B and B vs. A comparisons in parallel using **comprehensive bias-free evaluation instructions**.
+                *   **Enhanced LLM Calls**: `_compare_ab_async`, `_compare_ba_async` use `DuelComparisonSignature` with **continuous confidence assessment (1.0-5.0)** and **no reasoning requirement**.
+                *   **Advanced Conflict Resolution**: `_resolve_comparison()` determines the winner using **enhanced logic for continuous confidence handling**, **close confidence thresholds**, and **sophisticated tiebreaking**.
+                *   Returns a `DuelResult` with **detailed comparison analytics**.
             *   `_process_match_result()` updates lives. Losers with lives remaining use one and advance.
             *   Collects survivors for the next round.
         *   After the loop, the single remaining participant is the winner.
@@ -393,15 +429,18 @@ The system now features a centralized, unified data model architecture:
 - **Category Assignment**: 1 call
 - **Factor Selection**: 1 call (consolidated, handles all categories at once with optimized data)
 - **Factor Scoring**: 10 calls (1 per factor, run in parallel)
-- **Total**: **17 DSPy calls**
+- **Duel Comparison**: 2 calls per match (A vs B, B vs A in parallel)
+- **Total Rating**: **17 DSPy calls** per joke
+- **Total Duel**: **2 DSPy calls** per match
 
 **Efficiency Improvements**:
-- **Reasoning First**: All DSPy signatures now output reasoning first for better LLM response structure
+- **Reasoning Optimization**: Duel comparisons **removed reasoning requirement** for improved performance following research findings
 - **Optimized Data Payload**: Factor selection uses simplified `FactorDescription` objects instead of full `FactorData`, reducing token usage and focusing LLM attention
 - **Input Preprocessing**: Raw factor data is converted to minimal required format before LLM calls
 - **Maintained Context**: Full factor data (including examples) remains available for scoring phase
 - **Unified Factor Scoring**: Single `FactorData` object and instructions passed to each scoring call instead of separate fields
-- Parallel processing where possible (admissibility checks, factor scoring)
+- **Continuous Confidence**: Precise float confidence levels (1.0-5.0) instead of discrete categories
+- Parallel processing where possible (admissibility checks, factor scoring, dual comparisons)
 - Single call for factor selection regardless of number of categories
 - Efficient data structures minimize processing overhead
 
@@ -412,9 +451,16 @@ The rating system maintains its modular architecture with specialized components
 *   **`CategoryClassifier`**: Specialized for category assignment with bias reduction techniques
 *   **`FactorSelector`**: **SIMPLIFIED** - Focused on efficient factor selection with consolidated logic
 *   **`FactorScorer`**: **SIGNIFICANTLY ENHANCED** - Optimized for parallel factor scoring with unified models and critical evaluation framework
+*   **`DuelJudge`**: **RESEARCH-ENHANCED** - Implements LLM-as-a-Judge best practices with comprehensive bias mitigation
 *   **`RatingJudge`**: Main orchestrator that coordinates all specialized components
 
-### 5.5 Enhanced Prompting and Bias Reduction
+### 5.5 Advanced Bias Reduction and Research-Based Improvements
+
+**LLM-as-a-Judge Research Implementation**:
+- **Removed Explanation Requirement**: Duel comparisons focus on direct judgment rather than reasoning, improving performance
+- **Continuous Confidence Assessment**: Float values (1.0-5.0) provide precise confidence measurement instead of discrete categories
+- **Comprehensive Bias Mitigation**: Addresses length, style, concreteness, cultural, topic, complexity, and position biases
+- **Enhanced Evaluation Criteria**: Emphasizes novelty, uniqueness, and creative originality alongside traditional humor metrics
 
 **Category Assignment Enhancements**:
 - **Randomized Category Order**: Categories are shuffled before each classification to prevent position bias
@@ -435,7 +481,30 @@ The rating system maintains its modular architecture with specialized components
 - **Parallel Processing**: All factor scoring happens in parallel for efficiency
 - **Enhanced Error Handling**: Robust retry logic with graceful degradation
 
-### 5.6 Data Structure and Type Safety Improvements
+### 5.6 Enhanced Duel Judge with Research-Based Improvements
+
+**Bias-Free Evaluation Framework**:
+- **Comprehensive Instruction Set**: Detailed prompt addressing multiple bias types and evaluation criteria
+- **Novelty and Uniqueness Focus**: Explicit emphasis on fresh, creative, and inventive humor
+- **Core Evaluation Criteria**: Comedic timing, surprise, wordplay, wit, relatability, and originality
+- **Bias Mitigation Checklist**: Systematic approach to ignore irrelevant factors (length, style, cultural references, etc.)
+
+**Advanced Confidence System**:
+- **Continuous Scale**: Float values from 1.0-5.0 with descriptive ranges for precise assessment
+- **Flexible Precision**: Support for decimal values (e.g., 2.3, 3.7, 4.1) to capture nuanced confidence levels
+- **Calibrated Ranges**: 
+  - 1.0-2.0: Tie/Equal quality
+  - 2.0-3.0: Slightly funnier
+  - 3.0-4.0: Moderately funnier  
+  - 4.0-5.0: Significantly funnier
+
+**Enhanced Conflict Resolution**:
+- **Confidence Difference Thresholds**: Uses numerical thresholds (< 0.3) to identify close calls
+- **Sophisticated Tiebreaking**: Multi-level resolution using confidence levels, original ratings, and seed rankings
+- **Detailed Analytics**: Comprehensive tracking of A/B comparison results, confidence levels, and decision rationale
+- **Position Consistency Tracking**: Monitors agreement between forward and reverse comparisons
+
+### 5.7 Data Structure and Type Safety Improvements
 
 **Unified Model Benefits**:
 - **Consistency**: All modules use the same data structures from `models.py`
@@ -450,11 +519,12 @@ The rating system maintains its modular architecture with specialized components
 - **Preprocessing Pipeline**: Input data is optimized before DSPy calls while maintaining full context internally
 - **Focused LLM Attention**: Simplified data structures help LLM focus on relevant information without examples clutter during selection
 - **Unified Factor Scoring**: Complete factor information passed as single object to scoring calls
+- **Continuous Confidence Processing**: Efficient handling of float confidence values throughout the system
 - Efficient lookup dictionaries for factor finding
 - Reduced object creation overhead
 - Streamlined data flow between components
 
-### 5.7 Enhanced Critical Scoring Framework
+### 5.8 Enhanced Critical Scoring Framework
 
 **Professional-Grade Evaluation**:
 - **Evidence-Based Standards**: Scoring requires specific evidence and justification for each score level
@@ -488,16 +558,16 @@ The rating system maintains its modular architecture with specialized components
 ## 7. Key Architectural Improvements Summary
 
 1. **Unified Data Models**: Centralized all Pydantic models in `models.py`, eliminating redundancy and ensuring consistency
-2. **DSPy Signature Optimization**: Moved reasoning to top of all output fields for better LLM response structure
-3. **Data Preprocessing Pipeline**: Added conversion layer that optimizes data for LLM calls while maintaining full context internally
-4. **Simplified Factor Selection**: Preprocesses `CategoryFactor` objects to `FactorDescription` format for efficient DSPy calls
-5. **Enhanced Factor Scoring**: Unified data input with `FactorData` objects and comprehensive critical evaluation framework
-6. **Critical Scoring Framework**: Implemented professional-grade evaluation standards with evidence-based scoring and proper score distribution
-7. **Reduced Token Usage**: Factor selection now sends minimal required data (names + descriptions) instead of full factor information with examples
-8. **Maintained Functionality**: All preprocessing is transparent - system still has access to full factor data for scoring phase
-9. **Better Performance**: Optimized data structures and algorithms for better efficiency
-10. **Enhanced Type Safety**: Consistent use of unified models across all modules provides better type checking and IDE support
-11. **Maintainable Codebase**: Centralized models and data preprocessing make the system easier to maintain and extend
-12. **Improved Score Distribution**: Critical evaluation framework designed to achieve meaningful spread across 0-5 scale with professional standards
+2. **DSPy Signature Optimization**: Enhanced signatures with bias-free instructions and continuous confidence assessment
+3. **Research-Based Duel Judge**: Implemented LLM-as-a-Judge findings including removed reasoning requirement and comprehensive bias mitigation
+4. **Continuous Confidence System**: Float values (1.0-5.0) provide precise confidence measurement instead of discrete categories
+5. **Advanced Conflict Resolution**: Sophisticated logic handling continuous confidence values, close call thresholds, and multi-level tiebreaking
+6. **Novelty and Uniqueness Focus**: Enhanced evaluation criteria emphasizing fresh, creative, and inventive humor
+7. **Comprehensive Bias Mitigation**: Systematic approach addressing length, style, cultural, topic, complexity, and position biases
+8. **Data Preprocessing Pipeline**: Optimized data flow for LLM calls while maintaining full context internally
+9. **Enhanced Factor Scoring**: Unified data input with `FactorData` objects and professional-grade critical evaluation framework
+10. **Improved Performance**: Optimized algorithms, parallel processing, and efficient data structures
+11. **Enhanced Type Safety**: Consistent use of unified models across all modules with better IDE support
+12. **Maintainable Codebase**: Centralized models and research-based improvements make the system robust and extensible
 
-The system now provides the same functionality with cleaner, more efficient, and more maintainable code while preserving all the sophisticated bias reduction and evaluation capabilities, with the added benefit of optimized LLM interactions through strategic data preprocessing and enhanced critical scoring methodology.
+The system now incorporates cutting-edge research findings from LLM-as-a-Judge literature while maintaining all sophisticated bias reduction and evaluation capabilities. The enhanced duel judge provides more precise and reliable comparisons through continuous confidence assessment, comprehensive bias mitigation, and advanced conflict resolution, resulting in improved tournament outcomes and more accurate humor evaluation.

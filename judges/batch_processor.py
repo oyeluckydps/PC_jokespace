@@ -50,10 +50,36 @@ class BatchProcessor:
             if batch_end < total_jokes:
                 await asyncio.sleep(1)
         
+        # Assign original ranks based on overall rating (highest rating gets rank 1)
+        all_results = self._assign_original_ranks(all_results)
+        
         # Final summary
         self._display_final_summary(all_results, total_jokes)
         
         return all_results
+    
+    def _assign_original_ranks(self, results: List[RatingResult]):
+        """Assign original ranks based on overall rating (1 = highest rating)"""
+        # Filter only admissible jokes for ranking
+        admissible_results = [r for r in results if r.admissibility_results.is_admissible]
+        
+        # Sort by overall_rating in descending order (highest first)
+        admissible_results.sort(key=lambda x: x.overall_rating, reverse=True)
+        
+        # Create a mapping from joke_id to rank
+        rank_mapping = {}
+        for rank, result in enumerate(admissible_results, start=1):
+            rank_mapping[result.joke_id] = rank
+        
+        # Assign ranks to the original result objects in the results list
+        for result in results:
+            if result.admissibility_results.is_admissible and result.joke_id in rank_mapping:
+                result.original_rank = rank_mapping[result.joke_id]
+            else:
+                result.original_rank = None  # Non-admissible jokes get None
+        
+        print(f"\n📊 Assigned ranks to {len(admissible_results)} admissible jokes based on overall rating")
+        return results
     
     async def _process_batch(self, batch: List[JokeData], batch_start_idx: int) -> List[RatingResult]:
         """Process a single batch of jokes in parallel"""
@@ -90,8 +116,7 @@ class BatchProcessor:
                     'error': "Maximum retries exceeded"
                 })
             else:
-                # Add original rank for tournament seeding
-                result.original_rank = joke_idx + 1
+                # Don't assign original_rank here - it will be assigned after all processing
                 valid_results.append(result)
                 
                 # Display brief result
@@ -238,12 +263,12 @@ class BatchProcessor:
                 bar = '█' * bar_width
                 print(f"   {bins[i]}-{bins[i+1]}: {bar} {count} jokes")
             
-            # Show top 3 jokes
+            # Show top 3 jokes (now properly ranked)
             top_3 = sorted(admissible_results, key=lambda x: x.overall_rating, reverse=True)[:3]
             print(f"\n🏆 Top 3 Jokes:")
             for i, joke in enumerate(top_3):
-                print(f"   {i+1}. Joke {joke.joke_id} - Rating: {joke.overall_rating:.2f}")
+                rank_text = f"Rank {joke.original_rank}" if joke.original_rank else "Unranked"
+                print(f"   {i+1}. Joke {joke.joke_id} ({rank_text}) - Rating: {joke.overall_rating:.2f}")
                 print(f"      {joke.joke_text[:80]}{'...' if len(joke.joke_text) > 80 else ''}")
         
         print(f"{'='*70}\n")
-
