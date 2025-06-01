@@ -8,6 +8,27 @@ class CategoryInfo(BaseModel):
     example1: Optional[str] = ""
     example2: Optional[str] = ""
 
+class FactorData(BaseModel):
+    """Pydantic model to store factor information"""
+    name: str
+    description: str
+    positive_examples: List[str]
+    negative_examples: List[str]
+
+class CategoryFactor(BaseModel):
+    """Pydantic model to store category with its associated factors"""
+    name: str
+    description: str
+    factors: List[FactorData]
+
+class ExampleData(BaseModel):
+    good_jokes: List[str]
+    bad_jokes: List[str]
+
+class JokeData(BaseModel):
+    id: int
+    text: str
+
 class AdmissibilityCheck(BaseModel):
     passed: bool
     reasoning: str

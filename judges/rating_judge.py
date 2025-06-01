@@ -3,9 +3,11 @@ import time
 from typing import List, Dict
 from datetime import datetime
 
-from utilities.xml_parser import Factor, ExampleData, JokeData
 from utilities.dspy_client import ClaudeClient
-from judges.models import RatingResult, CategoryInfo
+from judges.models import (
+    RatingResult, CategoryInfo, CategoryFactor, 
+    ExampleData, JokeData
+)
 from judges.admissibility_checker import AdmissibilityChecker
 from judges.category_classifier import CategoryClassifier
 from judges.factor_selector import FactorSelector
@@ -19,13 +21,14 @@ class RatingJudge:
     """Main orchestrator class that coordinates all judgment components"""
     
     def __init__(self, client: ClaudeClient, categories: List[str], 
-                 factors: Dict[str, List[Factor]], examples: ExampleData,
+                 category_factors: Dict[str, CategoryFactor],
+                 examples: ExampleData,
                  category_info_list: List[CategoryInfo],
                  max_retries: int = 5):
         """Initialize rating judge with parsed XML data"""
         self.client = client
         self.categories = categories
-        self.factors = factors
+        self.category_factors = category_factors
         self.examples = examples
         self.category_info_list = category_info_list
         self.max_retries = max_retries
@@ -33,7 +36,7 @@ class RatingJudge:
         # Initialize specialized components
         self.admissibility_checker = AdmissibilityChecker(client, max_retries)
         self.category_classifier = CategoryClassifier(client, category_info_list, max_retries)
-        self.factor_selector = FactorSelector(client, factors, max_retries)
+        self.factor_selector = FactorSelector(client, category_factors, max_retries)
         self.factor_scorer = FactorScorer(client, max_retries)
     
     def evaluate_joke(self, joke: JokeData) -> RatingResult:
@@ -122,5 +125,3 @@ class RatingJudge:
             print(f"Joke {joke.id} | Complete: {total_elapsed:.3f}ms")
         
         return result
-
-    

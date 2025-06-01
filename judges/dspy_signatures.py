@@ -1,4 +1,6 @@
 import dspy
+from typing import List
+from judges.models import CategoryFactor
 
 class AdmissibilitySignature(dspy.Signature):
     """Check if text is admissible as a joke"""
@@ -19,11 +21,12 @@ class CategoryAssignmentSignature(dspy.Signature):
     is_independent = dspy.OutputField(desc="true if no existing categories fit well, false otherwise")
 
 class FactorSelectionSignature(dspy.Signature):
-    """Select relevant factors for a category"""
+    """Select relevant factors from the provided categories for joke evaluation"""
     joke_text = dspy.InputField(desc="The joke text to evaluate")
-    category = dspy.InputField(desc="Category name to consider")
-    available_factors = dspy.InputField(desc="List of factors for this category with descriptions")
-    relevant_factors = dspy.OutputField(desc="List of relevant factor names from available factors")
+    relevant_categories : List[CategoryFactor] = dspy.InputField(desc="List[CategoryFactor] - Categories selected in the previous step with their associated factors")
+    instruction = dspy.InputField(desc="Detailed instructions for factor selection with bias mitigation guidelines")
+    
+    relevant_factors = dspy.OutputField(desc="List of relevant factor names chosen from the factors within the provided categories")
     reasoning = dspy.OutputField(desc="Explanation for factor selection")
 
 class FactorScoringSignature(dspy.Signature):

@@ -3,16 +3,16 @@ import dspy
 from typing import List, Dict
 
 from utilities.dspy_client import ClaudeClient
-from utilities.xml_parser import Factor
+from judges.models import CategoryFactor, FactorData
 from judges.dspy_signatures import FactorSelectionSignature
 
 
 class FactorSelector:
     """Handles factor selection for jokes based on categories"""
     
-    def __init__(self, client: ClaudeClient, factors: Dict[str, List[Factor]], max_retries: int = 5):
+    def __init__(self, client: ClaudeClient, category_factors: Dict[str, CategoryFactor], max_retries: int = 5):
         self.client = client
-        self.factors = factors
+        self.category_factors = category_factors
         self.max_retries = max_retries
         self.factor_selector = dspy.Predict(FactorSelectionSignature)
     
@@ -38,117 +38,75 @@ class FactorSelector:
         dropped_categories = []
         factor_objects = {}  # Track factor objects for scoring
         
+        # Determine which categories to use
         if "Independent" in categories:
             # For Independent, consider all factors from all categories
-            available_factors = []
-            for cat_factors in self.factors.values():
-                available_factors.extend(cat_factors)
+            relevant_categories = list(self.category_factors.values())
         else:
-            # Process each category
-            tasks = []
-            for category in categories:
-                if category in self.factors:
-                    tasks.append(self._select_category_factors_async(joke_text, category))
-            
-            if tasks:
-                results = await asyncio.gather(*tasks)
-                
-                for i, category in enumerate(categories):
-                    if category in self.factors:
-                        selected_factors = results[i]
-                        if selected_factors:
-                            for factor_name in selected_factors:
-                                # Find the factor object
-                                for factor in self.factors[category]:
-                                    if factor.name == factor_name:
-                                        all_factors.append(factor_name)
-                                        factor_objects[factor_name] = factor
-                        else:
-                            dropped_categories.append(category)
+            # Get CategoryFactor objects for the selected categories
+            relevant_categories = []
+            for category_name in categories:
+                if category_name in self.category_factors:
+                    relevant_categories.append(self.category_factors[category_name])
+                else:
+                    dropped_categories.append(category_name)
         
-        # Handle Independent category
-        if "Independent" in categories:
-            # Select from all factors
-            all_available_factors = []
-            for cat_factors in self.factors.values():
-                all_available_factors.extend(cat_factors)
+        # If we have categories to work with, select factors
+        if relevant_categories:
+            # Make the DSPy call to select factors
+            def select():
+                result = self.factor_selector(
+                    joke_text=joke_text,
+                    relevant_categories=relevant_categories,
+                    instruction="You are provided with categories and their associated factors. Choose only the factors that are most relevant to evaluating this specific joke. The factors must be directly observable and measurable in this joke."
+                )
+                
+                # Extract and validate factor names from the result
+                selected = []
+                if result.relevant_factors:
+                    import re
+                    factor_names = re.split(r'[,;\n]', result.relevant_factors)
+                    
+                    # Build lookup for case-insensitive matching
+                    factor_lookup = {}
+                    for category_factor in relevant_categories:
+                        for factor_data in category_factor.factors:
+                            factor_lookup[factor_data.name.lower()] = factor_data.name
+                    
+                    # Clean and validate factor names
+                    for name in factor_names:
+                        clean_name = name.strip().strip('"\'')
+                        if clean_name and clean_name.lower() in factor_lookup:
+                            selected.append(factor_lookup[clean_name.lower()])
+                
+                return selected
             
-            selected = await self._select_from_all_factors_async(joke_text, all_available_factors)
-            for factor_name in selected:
-                for factor in all_available_factors:
-                    if factor.name == factor_name:
-                        all_factors.append(factor_name)
-                        factor_objects[factor_name] = factor
-                        break
+            try:
+                # Build a lookup dictionary for faster factor finding
+                factor_lookup = {}
+                for category_factor in relevant_categories:
+                    for factor_data in category_factor.factors:
+                        factor_lookup[factor_data.name.lower()] = factor_data
+                
+                # Run synchronous DSPy call in thread pool to avoid blocking
+                loop = asyncio.get_event_loop()
+                selected_factors = await loop.run_in_executor(None, lambda: self._retry_on_error(select))
+                
+                # Build factor objects mapping and all_factors list using lookup
+                for factor_name in selected_factors:
+                    if factor_name.lower() in factor_lookup:
+                        factor_data = factor_lookup[factor_name.lower()]
+                        all_factors.append(factor_data.name)  # Use the original name from factor_data
+                        factor_objects[factor_data.name] = factor_data
+                        
+            except Exception as e:
+                print(f"Error in factor selection: {e}")
         
         # Return factor objects along with other data
         return {
             'all_factors': all_factors,
             'dropped_categories': dropped_categories,
-            'factor_objects': factor_objects  # Include factor objects in return
+            'factor_objects': factor_objects
         }
-    
-    async def _select_category_factors_async(self, joke_text: str, category: str) -> List[str]:
-        """Select factors for a specific category"""
-        if category not in self.factors:
-            return []
-        
-        factors_info = []
-        for factor in self.factors[category]:
-            factors_info.append(f"{factor.name}: {factor.description}")
-        
-        factors_str = "\n".join(factors_info)
-        
-        def select():
-            result = self.factor_selector(
-                joke_text=joke_text,
-                category=category,
-                available_factors=factors_str
-            )
-            
-            # Extract factor names
-            selected = []
-            for factor in self.factors[category]:
-                if factor.name.lower() in result.relevant_factors.lower():
-                    selected.append(factor.name)
-            
-            return selected
-        
-        try:
-            # Run synchronous DSPy call in thread pool to avoid blocking
-            loop = asyncio.get_event_loop()
-            return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
-        except Exception as e:
-            return []
-    
-    async def _select_from_all_factors_async(self, joke_text: str, all_factors: List[Factor]) -> List[str]:
-        """Select from all available factors for Independent category"""
-        factors_info = []
-        for factor in all_factors:
-            factors_info.append(f"{factor.name} ({factor.category}): {factor.description}")
-        
-        factors_str = "\n".join(factors_info[:20])  # Limit to prevent token overflow
-        
-        def select():
-            result = self.factor_selector(
-                joke_text=joke_text,
-                category="Independent",
-                available_factors=factors_str
-            )
-            
-            # Extract factor names
-            selected = []
-            for factor in all_factors:
-                if factor.name.lower() in result.relevant_factors.lower():
-                    selected.append(factor.name)
-            
-            return selected[:10]  # Limit to 10 factors for Independent
-        
-        try:
-            # Run synchronous DSPy call in thread pool to avoid blocking
-            loop = asyncio.get_event_loop()
-            return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
-        except Exception as e:
-            return []
 
     

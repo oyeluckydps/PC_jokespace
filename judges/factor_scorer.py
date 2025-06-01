@@ -3,7 +3,7 @@ import dspy
 from typing import List, Dict
 
 from utilities.dspy_client import ClaudeClient
-from utilities.xml_parser import Factor
+from judges.models import FactorData
 from judges.dspy_signatures import FactorScoringSignature
 
 
@@ -31,7 +31,7 @@ class FactorScorer:
                     time.sleep(2)
     
     async def score_factors_async(self, joke_text: str, factors: List[str], 
-                                  factor_objects: Dict[str, Factor]) -> Dict[str, int]:
+                                  factor_objects: Dict[str, FactorData]) -> Dict[str, int]:
         """Score each factor in parallel"""
         tasks = []
         factor_names = []
@@ -65,7 +65,7 @@ class FactorScorer:
         
         return result
     
-    async def _score_single_factor_async(self, joke_text: str, factor: Factor) -> int:
+    async def _score_single_factor_async(self, joke_text: str, factor: FactorData) -> int:
         """Score joke on a single factor"""
         pos_examples = "\n".join(f"- {ex}" for ex in factor.positive_examples[:3])
         neg_examples = "\n".join(f"- {ex}" for ex in factor.negative_examples[:3])
@@ -92,5 +92,3 @@ class FactorScorer:
             return await loop.run_in_executor(None, lambda: self._retry_on_error(score))
         except Exception as e:
             return 3  # Default middle score on API error
-
-    

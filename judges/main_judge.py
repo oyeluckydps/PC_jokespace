@@ -25,17 +25,17 @@ class JokeJudgeSystem:
         # Load XML configurations
         self.parser = XMLConfigParser()
         self.categories = self.parser.parse_categories()
-        self.factors = self.parser.parse_factors()
+        self.category_factors = self.parser.parse_category_factors()
         self.examples = self.parser.parse_examples()
-        self.category_info_list = self.parser.parse_category_info()  # New: using CategoryInfo objects
+        self.category_info_list = self.parser.parse_category_info()
         
         # Initialize judges with max_retries parameter and new category data
         self.rating_judge = RatingJudge(
             client=self.client,
             categories=self.categories,
-            factors=self.factors,
+            category_factors=self.category_factors,
             examples=self.examples,
-            category_info_list=self.category_info_list,  # New: pass CategoryInfo objects
+            category_info_list=self.category_info_list,
             max_retries=max_retries
         )
         # Duel judge will be initialized only if needed (not in rating-only mode)

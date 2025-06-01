@@ -1,27 +1,10 @@
 import xml.etree.ElementTree as ET
 from typing import List, Dict, Optional, Tuple
 from pathlib import Path
-from pydantic import BaseModel
-from judges.models import CategoryInfo
-
-class Factor(BaseModel):
-    name: str
-    category: str
-    description: str
-    positive_examples: List[str]
-    negative_examples: List[str]
-
-class Category(BaseModel):
-    name: str
-    factors: List[Factor]
-
-class ExampleData(BaseModel):
-    good_jokes: List[str]
-    bad_jokes: List[str]
-
-class JokeData(BaseModel):
-    id: int
-    text: str
+from judges.models import (
+    CategoryInfo, FactorData, CategoryFactor, 
+    ExampleData, JokeData
+)
 
 class XMLConfigParser:
     def __init__(self, base_path: str = ""):
@@ -73,95 +56,78 @@ class XMLConfigParser:
         
         return category_info_list
     
-    def parse_categories_with_descriptions(self) -> List[Tuple[str, str]]:
-        """Parse criteria_category_of_jokes.xml and return list of (category_name, description) tuples"""
-        file_path = self.base_path / "criteria_category_of_jokes.xml"
-        tree = self._load_xml_file(file_path)
-        root = tree.getroot()
-        
-        categories_with_descriptions = []
-        # Traverse all category elements regardless of hierarchy
-        for category in root.findall(".//Category"):
-            name = category.get('Name')
-            description = category.get('Description', '')
-            if name:
-                categories_with_descriptions.append((name, description))
-        
-        return categories_with_descriptions
-    
-    def parse_category_examples(self) -> Dict[str, List[str]]:
-        """Parse criteria_category_of_jokes.xml and return dictionary of category examples"""
-        file_path = self.base_path / "criteria_category_of_jokes.xml"
-        tree = self._load_xml_file(file_path)
-        root = tree.getroot()
-        
-        category_examples = {}
-        # Traverse all category elements regardless of hierarchy
-        for category in root.findall(".//Category"):
-            name = category.get('Name')
-            if name:
-                examples = []
-                for example in category.findall('Example'):
-                    if example.text:
-                        examples.append(example.text.strip())
-                category_examples[name] = examples[:3]  # Limit to 3 examples
-        
-        return category_examples
-    
-    def parse_factors(self) -> Dict[str, List[Factor]]:
+    def parse_category_factors(self) -> Dict[str, CategoryFactor]:
         """
-        Parses the 'factors_to_judge_joke.xml' file to extract joke factors,
-        organizing them by category.
-
+        Parse factors_to_judge_joke.xml and return CategoryFactor objects with associated factors.
+        
         Returns:
-            Dict[str, List[Factor]]: A dictionary where keys are category names
-            (e.g., "Wordplay / Puns", "Animals") and values are lists of Factor objects
-            belonging to that category.
+            Dict[str, CategoryFactor]: Dictionary mapping category names to CategoryFactor objects
         """
         file_path = self.base_path / "factors_to_judge_joke.xml"
         tree = self._load_xml_file(file_path)
         root = tree.getroot()
 
-        factors_by_category: Dict[str, List[Factor]] = {}
+        category_factors: Dict[str, CategoryFactor] = {}
+
+        # First, get category descriptions from criteria_category_of_jokes.xml
+        category_descriptions = {}
+        try:
+            category_info_list = self.parse_category_info()
+            for cat_info in category_info_list:
+                category_descriptions[cat_info.name] = cat_info.description
+        except:
+            # If we can't load descriptions, continue without them
+            pass
 
         # Iterate through Criteria elements (Mechanism, Theme, Structure, etc.)
-        # The XML structure has <Root><Criteria><Category><Factor>
         for criteria_elem in root.findall("Criteria"):
             # Iterate through Category elements within each Criteria
             for category_elem in criteria_elem.findall("Category"):
                 category_name = category_elem.get('name')
+                
+                if not category_name:
+                    continue
 
-                # Initialize list for this category if it doesn't exist yet
-                if category_name not in factors_by_category:
-                    factors_by_category[category_name] = []
+                # Get category description (from criteria file or empty string)
+                category_description = category_descriptions.get(category_name, '')
 
-                # Now iterate through Factor elements within the current Category
+                # Create list of FactorData objects for this category
+                factor_data_list = []
+
+                # Iterate through Factor elements within the current Category
                 for factor_elem in category_elem.findall("Factor"):
                     factor_name = factor_elem.get('name')
 
-                    # Correctly retrieve text from the 'Explanation' tag
+                    # Get factor description from Explanation tag
                     explanation_text = factor_elem.findtext('Explanation', '').strip()
 
-                    # Correctly retrieve text from 'GoodExample' and 'BadExample' tags.
-                    # Since Factor expects List[str], wrap single examples in a list.
+                    # Get positive and negative examples
                     good_example_text = factor_elem.findtext('GoodExample', '').strip()
-                    positive_examples_list = [good_example_text] if good_example_text else []
+                    positive_examples = [good_example_text] if good_example_text else []
 
                     bad_example_text = factor_elem.findtext('BadExample', '').strip()
-                    negative_examples_list = [bad_example_text] if bad_example_text else []
+                    negative_examples = [bad_example_text] if bad_example_text else []
 
-                    # Create a Factor object and assign the correct category_name
-                    factor = Factor(
+                    # Create FactorData object
+                    factor_data = FactorData(
                         name=factor_name,
-                        category=category_name, # This is the crucial fix: get from parent Category
                         description=explanation_text,
-                        positive_examples=positive_examples_list,
-                        negative_examples=negative_examples_list
+                        positive_examples=positive_examples,
+                        negative_examples=negative_examples
                     )
 
-                    factors_by_category[category_name].append(factor)
+                    factor_data_list.append(factor_data)
 
-        return factors_by_category
+                # Create CategoryFactor object
+                category_factor = CategoryFactor(
+                    name=category_name,
+                    description=category_description,
+                    factors=factor_data_list
+                )
+
+                category_factors[category_name] = category_factor
+
+        return category_factors
     
     def parse_examples(self) -> ExampleData:
         """Parse good_vs_bad_joke.xml for few-shot examples"""
