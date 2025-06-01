@@ -11,8 +11,7 @@ class AdmissibilitySignature(dspy.Signature):
 class CategoryAssignmentSignature(dspy.Signature):
     """Assign joke to relevant categories based on analysis of joke content against available category definitions"""
     joke_text = dspy.InputField(desc="The joke text to categorize")
-    list_category_description = dspy.InputField(desc="List of tuples containing (category_name, description) for all available categories")
-    category_examples = dspy.InputField(desc="2 example jokes for each major category type")
+    available_categories = dspy.InputField(desc="List of CategoryInfo objects containing name, description, and examples for all available categories")
     instruction = dspy.InputField(desc="Detailed instructions for categorization analysis and bias avoidance")
     
     reasoning = dspy.OutputField(desc="Analysis of which categories the joke should fit into and why")
@@ -46,4 +45,3 @@ class DuelComparisonSignature(dspy.Signature):
     winner = dspy.OutputField(desc="Either 'joke_a' or 'joke_b'")
     confidence_factor = dspy.OutputField(desc="Float >= 1.0 indicating confidence in decision")
     reasoning = dspy.OutputField(desc="Detailed explanation for the choice")
-

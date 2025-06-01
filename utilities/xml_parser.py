@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 from typing import List, Dict, Optional, Tuple
 from pathlib import Path
 from pydantic import BaseModel
+from judges.models import CategoryInfo
 
 class Factor(BaseModel):
     name: str
@@ -41,6 +42,36 @@ class XMLConfigParser:
                 categories.append(name)
         
         return categories
+    
+    def parse_category_info(self) -> List[CategoryInfo]:
+        """Parse criteria_category_of_jokes.xml and return list of CategoryInfo objects"""
+        file_path = self.base_path / "criteria_category_of_jokes.xml"
+        tree = self._load_xml_file(file_path)
+        root = tree.getroot()
+        
+        category_info_list = []
+        # Traverse all category elements regardless of hierarchy
+        for category in root.findall(".//Category"):
+            name = category.get('Name')
+            description = category.get('Description', '')
+            
+            if name:
+                # Extract examples
+                examples = []
+                for example in category.findall('Example'):
+                    if example.text:
+                        examples.append(example.text.strip())
+                
+                # Create CategoryInfo object with up to 2 examples
+                category_info = CategoryInfo(
+                    name=name,
+                    description=description,
+                    example1=examples[0] if len(examples) > 0 else "",
+                    example2=examples[1] if len(examples) > 1 else ""
+                )
+                category_info_list.append(category_info)
+        
+        return category_info_list
     
     def parse_categories_with_descriptions(self) -> List[Tuple[str, str]]:
         """Parse criteria_category_of_jokes.xml and return list of (category_name, description) tuples"""
@@ -225,5 +256,3 @@ class XMLConfigParser:
             print(f"Warning: Could not parse random topics: {e}")
             # Return fallback topics
             return ["Banana", "Coffee", "Monday", "Pizza", "Cats"]
-
-    

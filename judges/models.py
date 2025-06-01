@@ -1,6 +1,13 @@
 from typing import List, Dict, Optional, Tuple
 from pydantic import BaseModel
 
+class CategoryInfo(BaseModel):
+    """Pydantic model for category information including name, description, and examples"""
+    name: str
+    description: str
+    example1: Optional[str] = ""
+    example2: Optional[str] = ""
+
 class AdmissibilityCheck(BaseModel):
     passed: bool
     reasoning: str
@@ -58,4 +65,3 @@ class TournamentResult(BaseModel):
     total_jokes_processed: int
     tournament_rounds: int
     top_count_used: int  # Number of jokes that entered tournament
-

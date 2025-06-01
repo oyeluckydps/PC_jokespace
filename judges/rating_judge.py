@@ -8,7 +8,7 @@ from datetime import datetime
 from utilities.xml_parser import Category, Factor, ExampleData, JokeData
 from utilities.dspy_client import ClaudeClient
 from judges.models import (
-    RatingResult, AdmissibilityResults, AdmissibilityCheck
+    RatingResult, AdmissibilityResults, AdmissibilityCheck, CategoryInfo
 )
 from judges.dspy_signatures import (
     AdmissibilitySignature, CategoryAssignmentSignature,
@@ -21,16 +21,14 @@ LOG_TIME = True
 class RatingJudge:
     def __init__(self, client: ClaudeClient, categories: List[str], 
                  factors: Dict[str, List[Factor]], examples: ExampleData,
-                 categories_with_descriptions: List[Tuple[str, str]],
-                 category_examples: Dict[str, List[str]],
+                 category_info_list: List[CategoryInfo],
                  max_retries: int = 5):
         """Initialize rating judge with parsed XML data"""
         self.client = client
         self.categories = categories
         self.factors = factors
         self.examples = examples
-        self.categories_with_descriptions = categories_with_descriptions
-        self.category_examples = category_examples
+        self.category_info_list = category_info_list
         self.max_retries = max_retries  # Store max retries for use in error handling
         
         # Initialize DSPy predictors
@@ -322,11 +320,8 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
     async def _classify_categories_async(self, joke_text: str) -> Tuple[List[str], bool]:
         """Assign joke to categories with enhanced prompt"""
         # Randomize category order to reduce position bias
-        randomized_categories = self.categories_with_descriptions.copy()
-        random.shuffle(randomized_categories)
-        
-        # Format category examples
-        examples_text = self._format_category_examples()
+        randomized_category_info = self.category_info_list.copy()
+        random.shuffle(randomized_category_info)
         
         instruction = """
 You are an expert comedy analyst tasked with categorizing jokes. Your goal is to identify ALL relevant categories that apply to this joke.
@@ -350,8 +345,7 @@ AVOID THESE BIASES:
         def classify():
             result = self.category_predictor(
                 joke_text=joke_text,
-                list_category_description=str(randomized_categories),
-                category_examples=examples_text,
+                available_categories=str(randomized_category_info),
                 instruction=instruction
             )
             
@@ -363,9 +357,9 @@ AVOID THESE BIASES:
             else:
                 # Extract category names from response
                 categories = []
-                for cat_name, _ in self.categories_with_descriptions:
-                    if cat_name.lower() in result.selected_categories.lower():
-                        categories.append(cat_name)
+                for category_info in self.category_info_list:
+                    if category_info.name.lower() in result.selected_categories.lower():
+                        categories.append(category_info.name)
                 
                 # If no categories found but not marked independent, mark as independent
                 if not categories:
@@ -381,21 +375,6 @@ AVOID THESE BIASES:
         except Exception as e:
             # Default to Independent on error
             return ["Independent"], True
-    
-    def _format_category_examples(self) -> str:
-        """Format category examples for the prompt"""
-        examples_text = "CATEGORY EXAMPLES:\n"
-        
-        # Select a subset of categories with examples to avoid token overflow
-        categories_with_examples = [(name, examples) for name, examples in self.category_examples.items() if examples]
-        
-        # Limit to top 10 categories to prevent prompt overflow
-        for name, examples in categories_with_examples[:10]:
-            examples_text += f"\n{name}:\n"
-            for i, example in enumerate(examples[:2], 1):  # Limit to 2 examples per category
-                examples_text += f"  {i}. {example}\n"
-        
-        return examples_text
     
     async def _select_factors_per_category_async(self, joke_text: str, categories: List[str],
                                               is_independent: bool) -> Dict:
