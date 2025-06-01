@@ -7,8 +7,8 @@ class AdmissibilitySignature(dspy.Signature):
     joke_text = dspy.InputField(desc="The joke text to evaluate")
     check_type = dspy.InputField(desc="Type of admissibility check: intent/completeness/appropriateness/coherence/accessibility")
     instruction_prompt = dspy.InputField(desc="Liberal evaluation instructions for this check")
-    passed = dspy.OutputField(desc="true or false")
     reasoning = dspy.OutputField(desc="Brief explanation for the decision")
+    passed = dspy.OutputField(desc="true or false")
 
 class CategoryAssignmentSignature(dspy.Signature):
     """Assign joke to relevant categories based on analysis of joke content against available category definitions"""
@@ -21,13 +21,13 @@ class CategoryAssignmentSignature(dspy.Signature):
     is_independent = dspy.OutputField(desc="true if no existing categories fit well, false otherwise")
 
 class FactorSelectionSignature(dspy.Signature):
-    """Select relevant factors from the provided categories for joke evaluation"""
+    """Select relevant factors from randomized categories for joke evaluation with enhanced bias mitigation"""
     joke_text = dspy.InputField(desc="The joke text to evaluate")
-    relevant_categories : List[CategoryFactor] = dspy.InputField(desc="List[CategoryFactor] - Categories selected in the previous step with their associated factors")
-    instruction = dspy.InputField(desc="Detailed instructions for factor selection with bias mitigation guidelines")
+    relevant_categories = dspy.InputField(desc="List[CategoryFactor] - Randomized categories with their associated factor descriptions (name and description only) to prevent position bias")
+    instruction = dspy.InputField(desc="Comprehensive instructions for factor selection with explicit bias mitigation guidelines and validation questions")
     
-    relevant_factors = dspy.OutputField(desc="List of relevant factor names chosen from the factors within the provided categories")
-    reasoning = dspy.OutputField(desc="Explanation for factor selection")
+    reasoning = dspy.OutputField(desc="Detailed explanation for factor selection including validation against bias mitigation criteria")
+    relevant_factors = dspy.OutputField(desc="List of relevant factor names chosen from the factors that would be application to rate a the joke. Please select one or more options.")
 
 class FactorScoringSignature(dspy.Signature):
     """Score joke on specific factor"""
@@ -36,8 +36,8 @@ class FactorScoringSignature(dspy.Signature):
     factor_description = dspy.InputField(desc="Detailed description of what this factor measures")
     positive_examples = dspy.InputField(desc="Examples of jokes that score well on this factor")
     negative_examples = dspy.InputField(desc="Examples of jokes that score poorly on this factor")
-    score = dspy.OutputField(desc="Integer score from 0 to 5")
     reasoning = dspy.OutputField(desc="Explanation for the score")
+    score = dspy.OutputField(desc="Integer score from 0 to 5")
 
 class DuelComparisonSignature(dspy.Signature):
     """Compare two jokes with examples"""
@@ -45,6 +45,6 @@ class DuelComparisonSignature(dspy.Signature):
     joke_b = dspy.InputField(desc="Second joke text")
     good_examples = dspy.InputField(desc="Examples of good jokes for reference")
     bad_examples = dspy.InputField(desc="Examples of bad jokes for reference")
+    reasoning = dspy.OutputField(desc="Detailed explanation for the choice")
     winner = dspy.OutputField(desc="Either 'joke_a' or 'joke_b'")
     confidence_factor = dspy.OutputField(desc="Float >= 1.0 indicating confidence in decision")
-    reasoning = dspy.OutputField(desc="Detailed explanation for the choice")

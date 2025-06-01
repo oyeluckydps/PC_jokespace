@@ -15,11 +15,22 @@ class FactorData(BaseModel):
     positive_examples: List[str]
     negative_examples: List[str]
 
+class FactorDescription(BaseModel):
+    """Pydantic model to store only factor name and description for DSPy calls"""
+    name: str
+    description: str
+
 class CategoryFactor(BaseModel):
     """Pydantic model to store category with its associated factors"""
     name: str
     description: str
     factors: List[FactorData]
+
+class CategoryFactorForDSPy(BaseModel):
+    """Pydantic model to store category with only factor descriptions for DSPy calls"""
+    name: str
+    description: str
+    factors: List[FactorDescription]
 
 class ExampleData(BaseModel):
     good_jokes: List[str]
