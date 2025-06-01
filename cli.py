@@ -21,6 +21,10 @@ def main():
         print("Error: retries cannot be negative")
         sys.exit(1)
     
+    if args.jokespace not in ['small', 'medium', 'large']:
+        print("Error: jokespace must be one of 'small', 'medium', or 'large'")
+        sys.exit(1)
+    
     # Run pipeline
     try:
         start_time = time.time()
@@ -51,6 +55,7 @@ Examples:
   python -m generator.cli --generation-only          # Skip judging
   python -m generator.cli --first-order-only         # Skip higher-order groups
   python -m generator.cli --bypass-cache             # Disable caching
+  python -m generator.cli --jokespace large          # Generate more jokes
         """
     )
     
@@ -100,6 +105,14 @@ Examples:
         help='Bypass DSPy caching mechanism'
     )
     
+    parser.add_argument(
+        '--jokespace',
+        type=str,
+        default='medium',
+        choices=['small', 'medium', 'large'],
+        help='Jokespace size: small (10-15 jokes), medium (25-50 jokes), large (50+ jokes) (default: medium)'
+    )
+    
     return parser.parse_args()
 
 
@@ -120,7 +133,8 @@ def run_pipeline_with_args(args: argparse.Namespace) -> dict:
         output_dir=args.output_dir,
         batch_size=args.batch_size,
         retries=args.retries,
-        bypass_cache=args.bypass_cache
+        bypass_cache=args.bypass_cache,
+        jokespace_size=args.jokespace
     )
 
 
@@ -133,6 +147,7 @@ def display_results(results: dict, elapsed_time: float) -> None:
     
     # Basic info
     print(f"\nTopics: {', '.join(results['topics'])}")
+    print(f"Jokespace size: {results.get('jokespace_size', 'medium')}")
     print(f"Total jokes generated: {results['total_jokes']}")
     print(f"Output file: {results['output_file']}")
     print(f"Log directory: {results['log_dir']}")

@@ -1,9 +1,6 @@
 # ./main.py
 """System orchestration for joke generation pipeline"""
 
-JOKESAPCE_SIZE = 'medium' # Global variable for jokespace size
-# Takes values 'small', 'medium', 'large' expect 10-15, 25-50, 50+ jokes respectively.
-
 import os
 import asyncio
 from datetime import datetime
@@ -24,8 +21,12 @@ from judges.cli import evaluate_jokes_programmatic
 def run_complete_generation_and_judging(topic_input: str = None, first_order_only: bool = False,
                                       generation_only: bool = False, output_dir: str = "output/",
                                       batch_size: int = 5, retries: int = 3, 
-                                      bypass_cache: bool = False) -> Dict:
+                                      bypass_cache: bool = False, jokespace_size: str = 'medium') -> Dict:
     """Main orchestration function"""
+    
+    # Validate jokespace_size
+    if jokespace_size not in ['small', 'medium', 'large']:
+        raise ValueError(f"Invalid jokespace size: {jokespace_size}")
     
     # Create client with cache setting
     client = ClaudeClient(cache=not bypass_cache)
@@ -40,7 +41,7 @@ def run_complete_generation_and_judging(topic_input: str = None, first_order_onl
     
     # Run generation pipeline
     portfolio = asyncio.run(execute_generation_pipeline(
-        topic_set, client, first_order_only, log_dir, output_dir, batch_size, retries
+        topic_set, client, first_order_only, log_dir, output_dir, batch_size, retries, jokespace_size
     ))
     
     # Format output
@@ -50,7 +51,8 @@ def run_complete_generation_and_judging(topic_input: str = None, first_order_onl
         'total_jokes': len(portfolio),
         'output_file': output_file,
         'log_dir': log_dir,
-        'topics': list(topic_set)
+        'topics': list(topic_set),
+        'jokespace_size': jokespace_size
     }
     
     # Run judge system if not generation-only
@@ -71,14 +73,14 @@ def run_complete_generation_and_judging(topic_input: str = None, first_order_onl
 
 async def execute_generation_pipeline(topic_set: set, client: ClaudeClient, first_order_only: bool,
                                     log_dir: str, output_dir: str, batch_size: int, 
-                                    retries: int) -> JokePortfolio:
+                                    retries: int, jokespace_size: str) -> JokePortfolio:
     """Execute core generation pipeline"""
     
     logger = XMLLogger(log_dir)
     
     # Stage 1: Generate hook-template contexts
     print("\n=== Stage 1: Generating Hook-Template Contexts ===")
-    first_order_triplets = await generate_hook_template_contexts(topic_set, client, retries)
+    first_order_triplets = await generate_hook_template_contexts(topic_set, client, retries, jokespace_size)
     
     # Log first-order contexts
     logger.log_first_order_contexts(first_order_triplets, log_dir)
@@ -88,7 +90,7 @@ async def execute_generation_pipeline(topic_set: set, client: ClaudeClient, firs
     if not first_order_only:
         print("\n=== Stage 2: Creating Higher-Order Groups ===")
         higher_order_groups = await generate_higher_order_groups(
-            first_order_triplets, topic_set, client, retries
+            first_order_triplets, topic_set, client, retries, jokespace_size
         )
         
         # Log higher-order groups
@@ -97,7 +99,7 @@ async def execute_generation_pipeline(topic_set: set, client: ClaudeClient, firs
     # Stage 3: Generate jokes
     print("\n=== Stage 3: Generating Jokes ===")
     jokes = await generate_full_joke_set(
-        first_order_triplets, higher_order_groups, topic_set, client
+        first_order_triplets, higher_order_groups, topic_set, client, jokespace_size
     )
     
     # Create portfolio
@@ -164,4 +166,6 @@ def create_timestamped_log_directory() -> str:
 
 def log_intermediate_results(stage_name: str, data: any, log_dir: str) -> None:
     """Log intermediate results (handled by XMLLogger in pipeline)"""
-    pass  # Logging is done directly in execute_generation_pipeline 
+    pass  # Logging is done directly in execute_generation_pipeline
+
+    

@@ -10,24 +10,31 @@ from generator.models import (
     GeneratedJoke, JokeOutput
 )
 from generator.signatures import JokeGenerationSignature
-from main import JOKESAPCE_SIZE
 
-if JOKESAPCE_SIZE == 'small':
-    num_of_jokes = "1 to 3"
-elif JOKESAPCE_SIZE == 'medium':
-    num_of_jokes = "3 to 5"
-elif JOKESAPCE_SIZE == 'large':
-    num_of_jokes = "5 to 8"
-else:
-    raise ValueError(f"Invalid jokespace size: {JOKESAPCE_SIZE}")
+
+def get_num_of_jokes(jokespace_size: str) -> str:
+    """Get number of jokes based on jokespace size"""
+    if jokespace_size == 'small':
+        return "1 to 3"
+    elif jokespace_size == 'medium':
+        return "3 to 5"
+    elif jokespace_size == 'large':
+        return "5 to 8"
+    else:
+        raise ValueError(f"Invalid jokespace size: {jokespace_size}")
+
 
 async def generate_jokes_from_context(
     context: Union[FirstOrderTriplet, HigherOrderGroup],
     topic_set: set,
     client: ClaudeClient,
-    retries: int = 3
+    retries: int = 3,
+    jokespace_size: str = 'medium'
 ) -> List[GeneratedJoke]:
     """Generate jokes from either first-order triplet or higher-order group"""
+    
+    # Get number of jokes based on jokespace size
+    num_of_jokes = get_num_of_jokes(jokespace_size)
     
     # Format topics for prompt
     formatted_topics = format_topic_set_for_prompt(topic_set)
@@ -45,7 +52,7 @@ async def generate_jokes_from_context(
                             - Adapt the template structure creatively - don't follow it rigidly
                             - Ensure jokes are genuinely funny and surprising
                             - Make jokes feel natural and conversational
-                            - Keep the jokes short. 1-3 lines would be perfect.
+                            - Keep the jokes short. 1-2 lines would be perfect.
 
                             2. QUALITY STANDARDS:
                             - Strong, unexpected punchlines that subvert expectations
@@ -68,7 +75,7 @@ async def generate_jokes_from_context(
                             - You may build complex humor through interaction of different hooks/templates
                             - You may layer different comedic techniques for sophisticated effect
                             - Ensure each joke stands alone as genuinely funny
-                            - Keep the jokes short. 1-4 lines would be perfect.
+                            - Keep the jokes short. 1-2 lines would be perfect.
 
                             2. SYNERGISTIC TECHNIQUES:
                             - Combine hooks for unexpected connections
@@ -128,6 +135,7 @@ async def generate_full_joke_set(
     higher_order_groups: List[HigherOrderGroup],
     topic_set: set,
     client: ClaudeClient,
+    jokespace_size: str = 'medium',
     jokes_per_first_order: int = 2,
     jokes_per_higher_order: int = 3
 ) -> List[GeneratedJoke]:
@@ -138,7 +146,7 @@ async def generate_full_joke_set(
     # Generate jokes from first-order triplets
     print(f"Generating jokes from {len(first_order_triplets)} first-order contexts...")
     first_order_tasks = [
-        generate_jokes_from_context(triplet, topic_set, client)
+        generate_jokes_from_context(triplet, topic_set, client, jokespace_size=jokespace_size)
         for triplet in first_order_triplets
     ]
     
@@ -153,7 +161,7 @@ async def generate_full_joke_set(
     # Generate jokes from higher-order groups
     print(f"Generating jokes from {len(higher_order_groups)} higher-order groups...")
     higher_order_tasks = [
-        generate_jokes_from_context(group, topic_set, client)
+        generate_jokes_from_context(group, topic_set, client, jokespace_size=jokespace_size)
         for group in higher_order_groups
     ]
     

@@ -8,24 +8,31 @@ from generator.models import FirstOrderTriplet, HigherOrderGroup, HookTemplatePa
 from generator.signatures import HigherOrderGroupingSignature
 from utilities.dspy_client import ClaudeClient
 from utilities.generator_utils import format_topic_set_for_prompt
-from main import JOKESAPCE_SIZE
 
-if JOKESAPCE_SIZE == 'small':
-    num_of_jokes = "1 to 3"
-elif JOKESAPCE_SIZE == 'medium':
-    num_of_jokes = "3 to 8"
-elif JOKESAPCE_SIZE == 'large':
-    num_of_jokes = "8 or more"
-else:
-    raise ValueError(f"Invalid jokespace size: {JOKESAPCE_SIZE}")
+
+def get_num_of_jokes(jokespace_size: str) -> str:
+    """Get number of jokes based on jokespace size"""
+    if jokespace_size == 'small':
+        return "1 to 3"
+    elif jokespace_size == 'medium':
+        return "3 to 8"
+    elif jokespace_size == 'large':
+        return "8 or more"
+    else:
+        raise ValueError(f"Invalid jokespace size: {jokespace_size}")
+
 
 async def generate_higher_order_groups(
     first_order_triplets: List[FirstOrderTriplet], 
     topic_set: set, 
     client: ClaudeClient, 
-    retries: int = 3
+    retries: int = 3,
+    jokespace_size: str = 'medium'
 ) -> List[HigherOrderGroup]:
     """Create synergistic groups from hook-template-context triplets"""
+    
+    # Get number of jokes based on jokespace size
+    num_of_jokes = get_num_of_jokes(jokespace_size)
     
     # Format topics for prompt
     formatted_topics = format_topic_set_for_prompt(topic_set)

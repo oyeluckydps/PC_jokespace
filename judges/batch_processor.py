@@ -169,7 +169,7 @@ class BatchProcessor:
         """Display brief result for a processed joke"""
         if result.admissibility_results.is_admissible:
             # Show rating with visual indicator
-            rating_bar = self._create_rating_bar(result.overall_rating)
+            rating_bar = self._create_rating_bar(result.mean_score)
             print(f"   Joke {joke_index + 1}: {rating_bar} Rating: {result.overall_rating:.2f} "
                   f"(Max: {result.max_score}, Mean: {result.mean_score:.2f})")
             
