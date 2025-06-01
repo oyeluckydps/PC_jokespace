@@ -84,17 +84,35 @@ class TournamentManager:
         )
     
     def _initialize_lives(self, jokes: List[RatingResult]):
-        """Initialize lives based on original ranking"""
+        """Initialize lives based on original ranking and total number of jokes"""
         self.lives_remaining = {}
+        total_jokes = len(jokes)
+        
         for joke in jokes:
-            if joke.original_rank == 1:
-                self.lives_remaining[joke.joke_id] = 3
-            elif joke.original_rank == 2:
-                self.lives_remaining[joke.joke_id] = 2
-            elif joke.original_rank == 3:
-                self.lives_remaining[joke.joke_id] = 1
+            if total_jokes <= 8:
+                # For 8 or fewer jokes: only top player gets 1 life
+                if joke.original_rank == 1:
+                    self.lives_remaining[joke.joke_id] = 1
+                else:
+                    self.lives_remaining[joke.joke_id] = 0
+            elif 9 <= total_jokes <= 16:
+                # For 9-16 jokes: top player gets 2 lives, second gets 1 life
+                if joke.original_rank == 1:
+                    self.lives_remaining[joke.joke_id] = 2
+                elif joke.original_rank == 2:
+                    self.lives_remaining[joke.joke_id] = 1
+                else:
+                    self.lives_remaining[joke.joke_id] = 0
             else:
-                self.lives_remaining[joke.joke_id] = 0
+                # For more than 16 jokes: use existing logic
+                if joke.original_rank == 1:
+                    self.lives_remaining[joke.joke_id] = 3
+                elif joke.original_rank == 2:
+                    self.lives_remaining[joke.joke_id] = 2
+                elif joke.original_rank == 3:
+                    self.lives_remaining[joke.joke_id] = 1
+                else:
+                    self.lives_remaining[joke.joke_id] = 0
     
     def _get_initial_lives_count(self, jokes: List[RatingResult]) -> Dict[int, int]:
         """Get initial lives for tracking purposes"""
@@ -403,17 +421,7 @@ class TournamentManager:
         lives_used_this_round = sum(1 for m in round_matches if m.loser_advanced_by_life)
         print(f"  - Lives used this round: {lives_used_this_round}")
         print(f"  - Jokes advancing: {len(survivors)}")
-        
-        # Show remaining lives distribution
-        lives_dist = {}
-        for survivor in survivors:
-            lives = self.lives_remaining.get(survivor.joke_id, 0)
-            lives_dist[lives] = lives_dist.get(lives, 0) + 1
-        
-        print(f"  - Lives distribution: ", end="")
-        for lives in sorted(lives_dist.keys(), reverse=True):
-            print(f"{lives} {'lives' if lives != 1 else 'life'}: {lives_dist[lives]} jokes, ", end="")
-        print()  # New line
+         # New line
         print(f"{'─'*70}")
     
     def _create_round_name(self, participants_count: int) -> str:
