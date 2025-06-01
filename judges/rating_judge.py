@@ -2,6 +2,7 @@ import asyncio
 from typing import List, Dict, Optional, Tuple
 import dspy
 import time
+import random
 from datetime import datetime
 
 from utilities.xml_parser import Category, Factor, ExampleData, JokeData
@@ -20,12 +21,16 @@ LOG_TIME = True
 class RatingJudge:
     def __init__(self, client: ClaudeClient, categories: List[str], 
                  factors: Dict[str, List[Factor]], examples: ExampleData,
+                 categories_with_descriptions: List[Tuple[str, str]],
+                 category_examples: Dict[str, List[str]],
                  max_retries: int = 5):
         """Initialize rating judge with parsed XML data"""
         self.client = client
         self.categories = categories
         self.factors = factors
         self.examples = examples
+        self.categories_with_descriptions = categories_with_descriptions
+        self.category_examples = category_examples
         self.max_retries = max_retries  # Store max retries for use in error handling
         
         # Initialize DSPy predictors
@@ -315,13 +320,39 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
             return AdmissibilityCheck(passed=True, reasoning=f"Check failed after {self.max_retries} retries: {str(e)}")
     
     async def _classify_categories_async(self, joke_text: str) -> Tuple[List[str], bool]:
-        """Assign joke to categories"""
-        categories_str = ", ".join(self.categories)
+        """Assign joke to categories with enhanced prompt"""
+        # Randomize category order to reduce position bias
+        randomized_categories = self.categories_with_descriptions.copy()
+        random.shuffle(randomized_categories)
+        
+        # Format category examples
+        examples_text = self._format_category_examples()
+        
+        instruction = """
+You are an expert comedy analyst tasked with categorizing jokes. Your goal is to identify ALL relevant categories that apply to this joke.
+
+ANALYSIS FRAMEWORK:
+Analyze the provided list of categories against the joke content. For each potentially relevant category, consider whether the joke's elements, themes, or comedic approach align with that category's definition and examples.
+
+CATEGORIZATION RULES:
+- A joke can belong to MULTIPLE categories
+- Assign primary categories (core humor type) and secondary categories (content themes)
+- Only mark as "Independent" if truly novel and doesn't fit ANY existing category
+- Consider both obvious and subtle categorizations
+
+AVOID THESE BIASES:
+- Don't favor longer or shorter jokes
+- Don't default to popular categories
+- Don't let category order influence your decisions
+- Consider less common but accurate categories
+"""
         
         def classify():
             result = self.category_predictor(
                 joke_text=joke_text,
-                all_categories=f"Available categories: {categories_str}"
+                list_category_description=str(randomized_categories),
+                category_examples=examples_text,
+                instruction=instruction
             )
             
             # Parse categories
@@ -332,9 +363,9 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
             else:
                 # Extract category names from response
                 categories = []
-                for cat in self.categories:
-                    if cat.lower() in result.categories.lower():
-                        categories.append(cat)
+                for cat_name, _ in self.categories_with_descriptions:
+                    if cat_name.lower() in result.selected_categories.lower():
+                        categories.append(cat_name)
                 
                 # If no categories found but not marked independent, mark as independent
                 if not categories:
@@ -351,13 +382,28 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
             # Default to Independent on error
             return ["Independent"], True
     
-    async def _select_factors_per_category_async(self, joke_text: str, categories: List[str], 
-                                               is_independent: bool) -> Dict:
+    def _format_category_examples(self) -> str:
+        """Format category examples for the prompt"""
+        examples_text = "CATEGORY EXAMPLES:\n"
+        
+        # Select a subset of categories with examples to avoid token overflow
+        categories_with_examples = [(name, examples) for name, examples in self.category_examples.items() if examples]
+        
+        # Limit to top 10 categories to prevent prompt overflow
+        for name, examples in categories_with_examples[:10]:
+            examples_text += f"\n{name}:\n"
+            for i, example in enumerate(examples[:2], 1):  # Limit to 2 examples per category
+                examples_text += f"  {i}. {example}\n"
+        
+        return examples_text
+    
+    async def _select_factors_per_category_async(self, joke_text: str, categories: List[str],
+                                              is_independent: bool) -> Dict:
         """Select relevant factors for each category"""
         all_factors = []
         dropped_categories = []
         factor_objects = {}  # Track factor objects for scoring
-        
+
         if "Independent" in categories:
             # For Independent, consider all factors from all categories
             available_factors = []
@@ -369,10 +415,10 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
             for category in categories:
                 if category in self.factors:
                     tasks.append(self._select_category_factors_async(joke_text, category))
-            
+
             if tasks:
                 results = await asyncio.gather(*tasks)
-                
+
                 for i, category in enumerate(categories):
                     if category in self.factors:
                         selected_factors = results[i]
@@ -385,14 +431,14 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
                                         factor_objects[factor_name] = factor
                         else:
                             dropped_categories.append(category)
-        
+
         # Handle Independent category
         if "Independent" in categories:
             # Select from all factors
             all_available_factors = []
             for cat_factors in self.factors.values():
                 all_available_factors.extend(cat_factors)
-            
+
             selected = await self._select_from_all_factors_async(joke_text, all_available_factors)
             for factor_name in selected:
                 for factor in all_available_factors:
@@ -400,83 +446,83 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
                         all_factors.append(factor_name)
                         factor_objects[factor_name] = factor
                         break
-        
+
         # Return factor objects along with other data
         return {
             'all_factors': all_factors,
             'dropped_categories': dropped_categories,
             'factor_objects': factor_objects  # Include factor objects in return
         }
-    
+
     async def _select_category_factors_async(self, joke_text: str, category: str) -> List[str]:
         """Select factors for a specific category"""
         if category not in self.factors:
             return []
-        
+
         factors_info = []
         for factor in self.factors[category]:
             factors_info.append(f"{factor.name}: {factor.description}")
-        
+
         factors_str = "\n".join(factors_info)
-        
+
         def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category=category,
                 available_factors=factors_str
             )
-            
+
             # Extract factor names
             selected = []
             for factor in self.factors[category]:
                 if factor.name.lower() in result.relevant_factors.lower():
                     selected.append(factor.name)
-            
+
             return selected
-        
+
         try:
             # Run synchronous DSPy call in thread pool to avoid blocking
             loop = asyncio.get_event_loop()
             return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
         except Exception as e:
             return []
-    
+
     async def _select_from_all_factors_async(self, joke_text: str, all_factors: List[Factor]) -> List[str]:
         """Select from all available factors for Independent category"""
         factors_info = []
         for factor in all_factors:
             factors_info.append(f"{factor.name} ({factor.category}): {factor.description}")
-        
+
         factors_str = "\n".join(factors_info[:20])  # Limit to prevent token overflow
-        
+
         def select():
             result = self.factor_selector(
                 joke_text=joke_text,
                 category="Independent",
                 available_factors=factors_str
             )
-            
+
             # Extract factor names
             selected = []
             for factor in all_factors:
                 if factor.name.lower() in result.relevant_factors.lower():
                     selected.append(factor.name)
-            
+
             return selected[:10]  # Limit to 10 factors for Independent
-        
+
         try:
             # Run synchronous DSPy call in thread pool to avoid blocking
             loop = asyncio.get_event_loop()
             return await loop.run_in_executor(None, lambda: self._retry_on_error(select))
         except Exception as e:
             return []
-    
-    async def _score_factors_async(self, joke_text: str, factors: List[str], 
-                                  factor_objects: Dict[str, Factor]) -> Dict[str, int]:
+
+    async def _score_factors_async(self, joke_text: str, factors: List[str],
+                                   factor_objects: Dict[str, Factor]) -> Dict[str, int]:
         """Score each factor in parallel"""
         tasks = []
         factor_names = []
-        
+
         # Create scoring tasks for each factor occurrence
         for factor_name in factors:
             if factor_name in factor_objects:
@@ -484,13 +530,13 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
                 task = self._score_single_factor_async(joke_text, factor)
                 tasks.append(task)
                 factor_names.append(factor_name)
-        
+
         if not tasks:
             return {}
-        
+
         # Run all scoring tasks in parallel
         scores = await asyncio.gather(*tasks)
-        
+
         # Build scores dictionary (handling duplicates)
         result = {}
         for i, factor_name in enumerate(factor_names):
@@ -503,14 +549,14 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
                 while f"{factor_name}_{suffix}" in result:
                     suffix += 1
                 result[f"{factor_name}_{suffix}"] = scores[i]
-        
+
         return result
-    
+
     async def _score_single_factor_async(self, joke_text: str, factor: Factor) -> int:
         """Score joke on a single factor"""
         pos_examples = "\n".join(f"- {ex}" for ex in factor.positive_examples[:3])
         neg_examples = "\n".join(f"- {ex}" for ex in factor.negative_examples[:3])
-        
+
         def score():
             result = self.factor_scorer(
                 joke_text=joke_text,
@@ -519,14 +565,14 @@ PASS (Borderline): "TCP jokes aren't funny because you have to keep repeating th
                 positive_examples=pos_examples,
                 negative_examples=neg_examples
             )
-            
+
             # Parse score
             try:
                 score_val = int(result.score)
                 return max(0, min(5, score_val))  # Ensure 0-5 range
             except:
                 return 3  # Default middle score on parse error
-        
+
         try:
             # Run synchronous DSPy call in thread pool to avoid blocking
             loop = asyncio.get_event_loop()

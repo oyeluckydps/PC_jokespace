@@ -9,12 +9,15 @@ class AdmissibilitySignature(dspy.Signature):
     reasoning = dspy.OutputField(desc="Brief explanation for the decision")
 
 class CategoryAssignmentSignature(dspy.Signature):
-    """Assign joke to relevant categories"""
+    """Assign joke to relevant categories based on analysis of joke content against available category definitions"""
     joke_text = dspy.InputField(desc="The joke text to categorize")
-    all_categories = dspy.InputField(desc="Full list of available category names")
-    categories = dspy.OutputField(desc="List of relevant category names, or empty list if none fit")
+    list_category_description = dspy.InputField(desc="List of tuples containing (category_name, description) for all available categories")
+    category_examples = dspy.InputField(desc="2 example jokes for each major category type")
+    instruction = dspy.InputField(desc="Detailed instructions for categorization analysis and bias avoidance")
+    
+    reasoning = dspy.OutputField(desc="Analysis of which categories the joke should fit into and why")
+    selected_categories = dspy.OutputField(desc="List of applicable category names only (do not include descriptions or examples)")
     is_independent = dspy.OutputField(desc="true if no existing categories fit well, false otherwise")
-    reasoning = dspy.OutputField(desc="Explanation for category assignments")
 
 class FactorSelectionSignature(dspy.Signature):
     """Select relevant factors for a category"""

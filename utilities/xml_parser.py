@@ -36,11 +36,46 @@ class XMLConfigParser:
         categories = []
         # Traverse all category elements regardless of hierarchy
         for category in root.findall(".//Category"):
-            name = category.text
+            name = category.get('Name')  # Changed from category.text to category.get('Name')
             if name:
                 categories.append(name)
         
         return categories
+    
+    def parse_categories_with_descriptions(self) -> List[Tuple[str, str]]:
+        """Parse criteria_category_of_jokes.xml and return list of (category_name, description) tuples"""
+        file_path = self.base_path / "criteria_category_of_jokes.xml"
+        tree = self._load_xml_file(file_path)
+        root = tree.getroot()
+        
+        categories_with_descriptions = []
+        # Traverse all category elements regardless of hierarchy
+        for category in root.findall(".//Category"):
+            name = category.get('Name')
+            description = category.get('Description', '')
+            if name:
+                categories_with_descriptions.append((name, description))
+        
+        return categories_with_descriptions
+    
+    def parse_category_examples(self) -> Dict[str, List[str]]:
+        """Parse criteria_category_of_jokes.xml and return dictionary of category examples"""
+        file_path = self.base_path / "criteria_category_of_jokes.xml"
+        tree = self._load_xml_file(file_path)
+        root = tree.getroot()
+        
+        category_examples = {}
+        # Traverse all category elements regardless of hierarchy
+        for category in root.findall(".//Category"):
+            name = category.get('Name')
+            if name:
+                examples = []
+                for example in category.findall('Example'):
+                    if example.text:
+                        examples.append(example.text.strip())
+                category_examples[name] = examples[:3]  # Limit to 3 examples
+        
+        return category_examples
     
     def parse_factors(self) -> Dict[str, List[Factor]]:
         """

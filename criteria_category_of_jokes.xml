@@ -1,74 +1,231 @@
+<?xml version='1.0' encoding='utf-8'?>
 <JokeClassification>
   <Criteria name="Mechanism">
-    <Category>Wordplay / Puns</Category>
-    <Category>Malapropisms</Category>
-    <Category>Non-sequiturs</Category>
-    <Category>Irony / Sarcasm</Category>
-    <Category>Absurdity / Surrealism</Category>
-    <Category>Double Entendres</Category>
-    <Category>Misdirection</Category>
-    <Category>Self-referential / Meta-humor</Category>
+    <Category Name="Wordplay / Puns" Description="Jokes that rely on clever or humorous use of words, especially by exploiting multiple meanings or similar sounds.">
+      <Example id="1">I'm reading a book about anti-gravity. It's impossible to put down.</Example>
+      <Example id="2">Why did the bicycle fall over? Because it was two tired!</Example>
+    </Category>
+    <Category Name="Malapropisms" Description="Jokes that derive humor from the incorrect use of a word in place of one with a similar sound, often with nonsensical or amusing results.">
+      <Example id="1">He had to use a fire distinguisher.</Example>
+      <Example id="2">My sister has extra-century perception.</Example>
+    </Category>
+    <Category Name="Non-sequiturs" Description="Jokes where the punchline is a statement that is absurdly unrelated to the setup.">
+      <Example id="1">What's the difference between a duck? One of its legs is both the same.</Example>
+      <Example id="2">I asked the librarian if they had books about paranoia. She whispered, 'They're right behind you!'</Example>
+    </Category>
+    <Category Name="Irony / Sarcasm" Description="Jokes that use language that normally signifies the opposite, typically for humorous or emphatic effect. Sarcasm is a sharp, bitter, or cutting expression or remark; a bitter gibe or taunt, often conveyed through irony.">
+      <Example id="1">A traffic cop got his license suspended for unpaid parking tickets.</Example>
+      <Example id="2">Oh, a surprise party for me? I had absolutely no idea, despite finding the decorations and overhearing all the planning.</Example>
+    </Category>
+    <Category Name="Absurdity / Surrealism" Description="Jokes that feature illogical, bizarre, or dreamlike scenarios and imagery for comedic effect.">
+      <Example id="1">A man walks into a bar with a slab of asphalt under his arm. He says: 'A beer please, and one for the road.'</Example>
+      <Example id="2">My dog is a great dancer. His favorite move is the 'roof'.</Example>
+    </Category>
+    <Category Name="Double Entendres" Description="Jokes that are phrased to be understood in two ways, one of which is often risqué or suggestive.">
+      <Example id="1">Marriage is a fine institution, but I'm not ready for an institution.</Example>
+      <Example id="2">A linguistics professor was lecturing his class. "In English," he said, "a double negative forms a positive. However, in some languages, such as Russian, a double negative remains a negative. But there isn't a single language, not one, in which a double positive can express a negative." A voice from the back of the room piped up, "Yeah, right."</Example>
+    </Category>
+    <Category Name="Misdirection" Description="Jokes that lead the listener to expect a certain outcome or meaning, then deliver a surprising and different one.">
+      <Example id="1">I used to play piano by ear, but now I use my hands.</Example>
+      <Example id="2">I told my wife she was drawing her eyebrows too high. She seemed surprised.</Example>
+    </Category>
+    <Category Name="Self-referential / Meta-humor" Description="Jokes that refer to the joke itself, the act of telling a joke, or the conventions of humor.">
+      <Example id="1">This is a joke. It has a setup and a punchline.</Example>
+      <Example id="2">Why did the comedian get booed off stage? His jokes weren't self-aware enough.</Example>
+    </Category>
   </Criteria>
 
   <Criteria name="Theme">
-    <Category>Animals</Category>
-    <Category>Politics</Category>
-    <Category>Religion</Category>
-    <Category>Sex / Adult</Category>
-    <Category>Workplace</Category>
-    <Category>Relationships / Marriage</Category>
-    <Category>Children / Parenting</Category>
-    <Category>School / Exams / Students</Category>
-    <Category>Ethnicity / Nationality / Stereotypes</Category>
-    <Category>Technology / IT / Programming</Category>
-    <Category>Science / Math / Academia</Category>
-    <Category>Dark / Morbid humor</Category>
-    <Category>Pop Culture / Celebrity</Category>
-    <Category>Historical / Intellectual humor</Category>
+    <Category Name="Animals" Description="Jokes where animals are the main characters or subject, often behaving in human-like ways or in funny situations.">
+      <Example id="1">What do you call a fish with no eyes? Fsh!</Example>
+      <Example id="2">Why don't skeletons fight each other? They don't have the guts.</Example>
+    </Category>
+    <Category Name="Politics" Description="Jokes that satirize or comment on political figures, systems, or events.">
+      <Example id="1">Why don't politicians go to the beach? Because they have trouble telling the truth from the lying.</Example>
+      <Example id="2">A politician is one who shakes your hand before elections and your confidence after.</Example>
+    </Category>
+    <Category Name="Religion" Description="Jokes that involve religious figures, beliefs, practices, or institutions, often by highlighting human interpretations or paradoxes.">
+      <Example id="1">An atheist, a vegan, and a CrossFit enthusiast walk into a bar. I only know because they told everyone within two minutes.</Example>
+      <Example id="2">Moses had the first tablet that could connect to the cloud.</Example>
+    </Category>
+    <Category Name="Sex / Adult" Description="Jokes that deal with sexual themes, innuendo, or adult situations, often relying on suggestion or explicit content for humor. (Note: Examples will be kept mild).">
+      <Example id="1">Why is it so hard for a pirate to learn the alphabet? Because they can spend years at C!</Example>
+      <Example id="2">What did the O say to the Q? You've got a cute little tail there!</Example>
+    </Category>
+    <Category Name="Workplace" Description="Jokes centered around office life, colleagues, bosses, and common work situations.">
+      <Example id="1">My boss told me to have a good day. So I went home.</Example>
+      <Example id="2">I'm not saying I hate my job, but if it were on fire and I had a glass of water, I'd drink it.</Example>
+    </Category>
+    <Category Name="Relationships / Marriage" Description="Jokes about the dynamics of romantic relationships, dating, marriage, and family life.">
+      <Example id="1">My wife and I were happy for twenty years. Then we met.</Example>
+      <Example id="2">I told my wife she was drawing her eyebrows too high. She looked surprised.</Example>
+    </Category>
+    <Category Name="Children / Parenting" Description="Jokes about the challenges, joys, and humorous aspects of raising children and being a parent.">
+      <Example id="1">Why did the kids give their dad a blanket for his birthday? They heard he was cool.</Example>
+      <Example id="2">Parenting is mostly just informing kids how many more minutes they have of something.</Example>
+    </Category>
+    <Category Name="School / Exams / Students" Description="Jokes related to education, teachers, students, homework, exams, and school life.">
+      <Example id="1">Why was the math book sad? Because it had too many problems.</Example>
+      <Example id="2">Teacher: "Kids, what does the chicken give you?" Student: "Meat!" Teacher: "Very good! Now what does the pig give you?" Student: "Bacon!" Teacher: "Great! And what does the fat cow give you?" Student: "Homework!"</Example>
+    </Category>
+    <Category Name="Ethnicity / Nationality / Stereotypes" Description="Jokes that play on perceived cultural traits or stereotypes associated with specific ethnic groups or nationalities. (Note: Examples will aim for lightheartedness and avoid offensiveness).">
+      <Example id="1">An Englishman, an Irishman, and a Scotsman are in a pub. The barman says, "Is this some kind of joke?"</Example>
+      <Example id="2">Why do French people eat snails? They don't like fast food.</Example>
+    </Category>
+    <Category Name="Technology / IT / Programming" Description="Jokes about computers, software, the internet, programming, and the quirks of technology.">
+      <Example id="1">There are 10 types of people in the world: those who understand binary, and those who don't.</Example>
+      <Example id="2">Why did the programmer quit his job? Because he didn't get arrays.</Example>
+    </Category>
+    <Category Name="Science / Math / Academia" Description="Jokes that involve scientific principles, mathematical concepts, or the academic world.">
+      <Example id="1">Why can you never trust atoms? They make up everything!</Example>
+      <Example id="2">A biologist, a chemist, and a statistician are out hunting. The biologist shoots at a deer and misses 5ft to the left. The chemist takes a shot and misses 5ft to the right. The statistician yells, "We got him!"</Example>
+    </Category>
+    <Category Name="Dark / Morbid humor" Description="Jokes that find humor in serious, grim, or taboo subjects like death, misfortune, or disaster.">
+      <Example id="1">"I have a vest that's bulletproof, fireproof, stabproof, and waterproof. It's also extremely uncomfortable." "What's it made of?" "Irony."</Example>
+      <Example id="2">My grandfather has the heart of a lion and a lifetime ban from the zoo.</Example>
+    </Category>
+    <Category Name="Pop Culture / Celebrity" Description="Jokes that reference movies, TV shows, music, celebrities, or other aspects of popular culture.">
+      <Example id="1">Why was Star Wars Episode IV, V, and VI made before I, II, and III? Because in charge of sequence, Yoda was.</Example>
+      <Example id="2">What's the difference between a well-dressed man on a unicycle and a poorly-dressed man on a bicycle? Attire.</Example>
+    </Category>
+    <Category Name="Historical / Intellectual humor" Description="Jokes that require some knowledge of history, literature, philosophy, or other intellectual subjects to be understood.">
+      <Example id="1">René Descartes walks into a bar. The bartender asks, "Would you like a drink?" Descartes replies, "I think not," and promptly disappears.</Example>
+      <Example id="2">What's brown and sticky? A stick.</Example>
+    </Category>
   </Criteria>
 
   <Criteria name="Structure">
-    <Category>One-liners</Category>
-    <Category>Knock-knock jokes</Category>
-    <Category>Riddles</Category>
-    <Category>Light bulb jokes</Category>
-    <Category>Yo mama jokes</Category>
-    <Category>Anti-jokes</Category>
-    <Category>Shaggy dog stories</Category>
-    <Category>Deadpan delivery</Category>
+    <Category Name="One-liners" Description="Jokes that are delivered in a single, concise sentence or phrase.">
+      <Example id="1">I told my wife she was drawing her eyebrows too high. She seemed surprised.</Example>
+      <Example id="2">I'm on a whiskey diet. I've lost three days already.</Example>
+    </Category>
+    <Category Name="Knock-knock jokes" Description="A structured call-and-response joke format starting with 'Knock, knock.' 'Who's there?'.">
+      <Example id="1">Knock, knock. Who's there? Lettuce. Lettuce who? Lettuce in, it's cold out here!</Example>
+      <Example id="2">Knock, knock. Who's there? Cows go. Cows go who? No, cows go moo!</Example>
+    </Category>
+    <Category Name="Riddles" Description="Jokes phrased as a question or statement with a double or veiled meaning, put forth as a puzzle to be solved.">
+      <Example id="1">What has an eye, but cannot see? A needle.</Example>
+      <Example id="2">What is full of holes but still holds water? A sponge.</Example>
+    </Category>
+    <Category Name="Light bulb jokes" Description="A formulaic joke asking how many people of a certain group are needed to change a light bulb, with the punchline playing on stereotypes of that group.">
+      <Example id="1">How many programmers does it take to change a light bulb? None, that's a hardware problem.</Example>
+      <Example id="2">How many surrealists does it take to change a light bulb? A fish.</Example>
+    </Category>
+    <Category Name="Yo mama jokes" Description="A type of insult humor where the 'yo mama' (your mother) is the target of a hyperbolic and often absurd put-down.">
+      <Example id="1">Yo mama's so fat, when she wears a yellow raincoat, people yell "Taxi!"</Example>
+      <Example id="2">Yo mama's so old, her birth certificate says 'Expired'.</Example>
+    </Category>
+    <Category Name="Anti-jokes" Description="Jokes where the listener is set up to expect a traditional punchline, but instead receives a mundane, logical, or unfunny statement.">
+      <Example id="1">Why did the chicken cross the road? To get to the other side.</Example>
+      <Example id="2">What's red and bad for your teeth? A brick.</Example>
+    </Category>
+    <Category Name="Shaggy dog stories" Description="A long-winded, rambling joke with an anticlimactic or nonsensical punchline; the humor comes from the lengthy buildup to nothing.">
+      <Example id="1">A man spent years training his dog to talk. Finally, after much effort, the dog looks up and says, "You know, for a long time I've been meaning to ask you... why do you keep hitting me with that newspaper?" The humor is in the expectation vs. the mundane reveal after a long implied setup.</Example>
+      <Example id="2">A man walks into a bar and orders a drink. The bartender serves him. The man enjoys his drink. (This is a very short shaggy dog story, the point is the lack of a punchline where one is expected).</Example>
+    </Category>
+    <Category Name="Deadpan delivery" Description="A style of comedic delivery where jokes are told in a deliberately serious, expressionless, or unemotional manner. The humor often arises from the contrast between the absurd content and the serious delivery. (Note: The examples are the jokes themselves, the deadpan aspect is in how they'd be told).">
+      <Example id="1">I'm not a vegetarian because I love animals. I'm a vegetarian because I hate plants.</Example>
+      <Example id="2">My therapist told me the way to achieve true inner peace is to finish what I start. So far I've finished two bags of MnMs and a chocolate cake. I feel better already.</Example>
+    </Category>
   </Criteria>
 
   <Criteria name="Intent">
-    <Category>Satirical</Category>
-    <Category>Parody / Spoof</Category>
-    <Category>Slapstick / Physical comedy</Category>
-    <Category>Insults / Roasts</Category>
-    <Category>Wholesome / Clean humor</Category>
-    <Category>Dark / Gallows humor</Category>
+    <Category Name="Satirical" Description="Jokes that use humor, irony, exaggeration, or ridicule to expose and criticize people's stupidity or vices, particularly in the context of contemporary politics and other topical issues.">
+      <Example id="1">The government is a bit like a baby. An alimentary canal with a big appetite at one end and no sense of responsibility at the other.</Example>
+      <Example id="2">In order to make a small fortune in the stock market, you should start with a large fortune.</Example>
+    </Category>
+    <Category Name="Parody / Spoof" Description="Jokes that imitate the style of a particular writer, artist, or genre with deliberate exaggeration for comic effect.">
+      <Example id="1">"To be or not to be, that is the question... whether 'tis nobler in the mind to suffer the slings and arrows of outrageous fortune, or to take arms against a sea of troubles, and by opposing end them... or just order a pizza?"</Example>
+      <Example id="2">If Dr. Seuss wrote horror: "I do not like them, Sam-I-Am, these things that go bump in the night, I am."</Example>
+    </Category>
+    <Category Name="Slapstick / Physical comedy" Description="Humor based on clumsy actions and humorously embarrassing events, often involving exaggerated physical violence or accidents. (Note: XML examples describe scenarios).">
+      <Example id="1">A man slips on a banana peel and lands in a wedding cake. (Visual description)</Example>
+      <Example id="2">Why did the scarecrow win an award? Because he was outstanding in his field! (Can be seen as physical if imagining the scarecrow).</Example>
+    </Category>
+    <Category Name="Insults / Roasts" Description="Jokes intended to mock or disparage a person or thing, often in a witty or humorous way.">
+      <Example id="1">You're not the dumbest person in the world, but you'd better hope they don't die.</Example>
+      <Example id="2">Is your family tree a cactus? Because everyone on it is a prick.</Example>
+    </Category>
+    <Category Name="Wholesome / Clean humor" Description="Jokes that are free from offensive, risqué, or controversial content, suitable for all audiences.">
+      <Example id="1">Why don't scientists trust atoms? Because they make up everything!</Example>
+      <Example id="2">What do you call a bear with no teeth? A gummy bear!</Example>
+    </Category>
+    <Category Name="Dark / Gallows humor" Description="Humor that treats serious, frightening, or taboo subjects like death, disease, or warfare with bitter amusement. (Similar to Morbid Humor but can be more about coping with dire situations).">
+      <Example id="1">"Well, apart from that, Mrs. Lincoln, how was the play?"</Example>
+      <Example id="2">I have a stepladder. My real ladder left when I was a kid.</Example>
+    </Category>
   </Criteria>
 
   <Criteria name="Target">
-    <Category>Dad jokes</Category>
-    <Category>Blonde jokes</Category>
-    <Category>Programmer / Nerd jokes</Category>
-    <Category>Ethnic / National jokes</Category>
-    <Category>Lawyer / Doctor / Engineer jokes</Category>
-    <Category>Gender-based humor</Category>
+    <Category Name="Dad jokes" Description="Typically short, pun-based, or corny jokes told by fathers, often eliciting groans rather than laughter.">
+      <Example id="1">What do you call a fish with no eyes? Fsh!</Example>
+      <Example id="2">I'm afraid for the calendar. Its days are numbered.</Example>
+    </Category>
+    <Category Name="Blonde jokes" Description="Jokes that play on the stereotype of blonde women being unintelligent. (Note: These can be controversial; examples will be mild and focus on naivety).">
+      <Example id="1">A blonde walks into a library and asks, "Can I have a burger and fries?" The librarian says, "Ma'am, this is a library." The blonde whispers, "Oh, sorry. (in a low voice) Can I have a burger and fries?"</Example>
+      <Example id="2">Why did the blonde stare at the orange juice container? Because it said "concentrate."</Example>
+    </Category>
+    <Category Name="Programmer / Nerd jokes" Description="Jokes that rely on knowledge of computer science, mathematics, science fiction, or other 'nerdy' topics.">
+      <Example id="1">Why do programmers prefer dark mode? Because light attracts bugs.</Example>
+      <Example id="2">There are 10 types of people: those who understand binary and those who don't, and those who didn't expect this joke to be in base 3.</Example>
+    </Category>
+    <Category Name="Ethnic / National jokes" Description="Jokes that target specific ethnic or national groups, often based on stereotypes. (Reiteration of earlier category, focusing on 'target').">
+      <Example id="1">An Englishman, an Irishman, and a Scotsman walk out of a pub. This is not the setup for a joke; they just had a nice evening.</Example>
+      <Example id="2">Why did the American bring a ladder to the bar? He heard the drinks were on the house.</Example>
+    </Category>
+    <Category Name="Lawyer / Doctor / Engineer jokes" Description="Jokes that play on stereotypes or common perceptions of professions like lawyers, doctors, or engineers.">
+      <Example id="1">Why did the lawyer bring a ladder to court? To reach a higher settlement.</Example>
+      <Example id="2">A doctor, a lawyer, and an engineer were discussing whose profession was oldest. The doctor said, "Well, Eve was made from Adam's rib, and that was a surgical procedure." The engineer said, "But before that, order was created from chaos, and that was an engineering feat." The lawyer smiled and said, "And who do you think created the chaos?"</Example>
+    </Category>
+    <Category Name="Gender-based humor" Description="Jokes that derive humor from stereotypes or perceived differences between genders.">
+      <Example id="1">Why is "Feminism" the "F-word"? Because "Patriarchy" was too long to fit on a t-shirt.</Example>
+      <Example id="2">Man: "Honey, why is there a man hiding in our closet?" Woman: "He's looking for Narnia."</Example>
+    </Category>
   </Criteria>
 
   <Criteria name="Culture">
-    <Category>British dry humor</Category>
-    <Category>Jewish humor</Category>
-    <Category>Indian PJ jokes</Category>
-    <Category>Japanese Manzai</Category>
-    <Category>American stand-up</Category>
+    <Category Name="British dry humor" Description="A form of comedy characterized by understatement, irony, and a deadpan delivery, often dealing with awkward or absurd situations.">
+      <Example id="1">"My hovercraft is full of eels." (Often cited as an example of a nonsensical phrase used in a deadpan way, like from Monty Python).</Example>
+      <Example id="2">"It's just a flesh wound." - The Black Knight, Monty Python and the Holy Grail, after having his arm cut off.</Example>
+    </Category>
+    <Category Name="Jewish humor" Description="Humor often characterized by self-deprecation, irony, wordplay, and a focus on the anxieties and absurdities of everyday life, often with a historical or cultural subtext.">
+      <Example id="1">A man is on his deathbed. He smells his wife's brisket cooking. He calls his son, "Son, go ask your mother for a piece of brisket." The son returns. "Mom says it's for the shiva."</Example>
+      <Example id="2">Why don't cannibals eat clowns? Because they taste funny.</Example>
+    </Category>
+    <Category Name="Indian PJ jokes" Description="Often referred to as 'Poor Jokes' or 'PJs', these are typically simple, pun-based, or silly jokes popular in India, similar to dad jokes.">
+      <Example id="1">Why was the math book sad? Because it had too many problems. (A common PJ)</Example>
+      <Example id="2">Teacher: "What is the chemical formula for water?" Student: "HIJKLMNO." Teacher: "What are you talking about?" Student: "Yesterday you said it's H to O!"</Example>
+    </Category>
+    <Category Name="Japanese Manzai" Description="A traditional style of stand-up comedy in Japanese culture involving two performers: a tsukkomi (straight man) and a boke (funny man), who trade jokes at great speed. (Note: Example describes the dynamic).">
+      <Example id="1">Boke: "I invented a new way to keep my house cool!" Tsukkomi: "Oh really? How?" Boke: "I just open the refrigerator door!" Tsukkomi: "That's not new, and it's terrible for the environment, you idiot!"</Example>
+      <Example id="2">Why did the scarecrow win an award? Because he was outstanding in his field! (Could be a line in a Manzai routine).</Example>
+    </Category>
+    <Category Name="American stand-up" Description="A broad category of comedy performance where a comedian performs in front of a live audience, usually speaking directly to them, with jokes often based on personal observations, storytelling, or social commentary.">
+      <Example id="1">"I was walking down the street, and this guy, he just... you know?" (The humor comes from observational details and delivery, hard to capture in text alone).</Example>
+      <Example id="2">"So, I went to the doctor the other day..." (A common setup for an observational or anecdotal joke in stand-up).</Example>
+    </Category>
   </Criteria>
 
   <Criteria name="Modern / Internet">
-    <Category>Memes</Category>
-    <Category>Dad joke bots / AI-generated</Category>
-    <Category>Twitter / Reddit-style jokes</Category>
-    <Category>TikTok punchlines / Vine-style shorts</Category>
-    <Category>Shitposts / Absurd Gen-Z humor</Category>
+    <Category Name="Memes" Description="Humorous images, videos, pieces of text, etc., that are copied (often with slight variations) and spread rapidly by Internet users. (Note: Examples are textual descriptions of meme concepts).">
+      <Example id="1">Image: Distracted Boyfriend. Text: Boyfriend looking at 'New Programming Language', Girlfriend looking annoyed is 'Current Project', Other Woman is 'Shiny New Framework'.</Example>
+      <Example id="2">"One does not simply walk into Mordor." (Text from a popular meme, often adapted).</Example>
+    </Category>
+    <Category Name="Dad joke bots / AI-generated" Description="Jokes created by algorithms or AI, often mimicking the style of dad jokes or puns, sometimes with slightly off or absurd results.">
+      <Example id="1">Why did the computer go to art school? To learn how to draw a new byte!</Example>
+      <Example id="2">What do you call a sad strawberry? A blueberry.</Example>
+    </Category>
+    <Category Name="Twitter / Reddit-style jokes" Description="Short, often topical or observational jokes, frequently using hashtags, abbreviations, or specific platform conventions.">
+      <Example id="1">Me: I should eat healthier. Also me: *orders pizza with extra cheese* #relatable</Example>
+      <Example id="2">Just saw someone pay for coffee with a check. Pretty sure I time-traveled. #oldschool</Example>
+    </Category>
+    <Category Name="TikTok punchlines / Vine-style shorts" Description="Very short, often visual jokes or skits with a quick setup and punchline, popular on short-form video platforms. (Note: Examples are textual descriptions).">
+      <Example id="1">Video: Person struggles to open a jar. Second person walks in, opens it effortlessly, and walks out. First person looks defeated.</Example>
+      <Example id="2">Someone tries a "life hack" from the internet, and it fails spectacularly.</Example>
+    </Category>
+    <Category Name="Shitposts / Absurd Gen-Z humor" Description="A type of internet humor characterized by its intentionally low quality, nonsensical, ironic, or surreal content, often defying traditional joke structures.">
+      <Example id="1">E</Example>
+      <Example id="2">Why did the banana go to the doctor? Because it wasn't peeling well. (Then an image of a distorted banana).</Example>
+    </Category>
   </Criteria>
 </JokeClassification>
