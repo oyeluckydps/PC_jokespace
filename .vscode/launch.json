@@ -31,20 +31,29 @@
     //     ],
     //     "justMyCode": true
     //   },
+    //   {
+    //     "name": "Generate Jokes",
+    //     "type": "debugpy",
+    //     "request": "launch",
+    //     "python": "/root/anaconda3/envs/jokespace/bin/python",
+    //     "module": "cli",
+    //     "args": [
+    //         "--topic",
+    //         "universe, physics, quantum",
+    //         "--batch-size",
+    //         "1",
+    //         "--retries",
+    //         "5"
+    //     ],
+    //     "justMyCode": true
+    //   },
       {
-        "name": "Generate Jokes",
+        "name": "DSPy Client",
         "type": "debugpy",
         "request": "launch",
         "python": "/root/anaconda3/envs/jokespace/bin/python",
-        "module": "cli",
-        "args": [
-            "--topic",
-            "universe, physics, quantum",
-            "--batch-size",
-            "1",
-            "--retries",
-            "5"
-        ],
+        "program": "${workspaceFolder}/utilities/dspy_client.py",
+        "cwd": "${workspaceFolder}/utilities",
         "justMyCode": true
       }
     ]
