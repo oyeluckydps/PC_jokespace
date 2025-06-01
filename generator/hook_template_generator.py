@@ -7,7 +7,16 @@ from generator.models import FirstOrderTriplet
 from generator.signatures import HookTemplateGenerationSignature
 from utilities.dspy_client import ClaudeClient
 from utilities.generator_utils import format_topic_set_for_prompt
+from main import JOKESAPCE_SIZE
 
+if JOKESAPCE_SIZE == 'small':
+    num_of_jokes = "1 to 5"
+elif JOKESAPCE_SIZE == 'medium':
+    num_of_jokes = "5 to 10"
+elif JOKESAPCE_SIZE == 'large':
+    num_of_jokes = "10 or more"
+else:
+    raise ValueError(f"Invalid jokespace size: {JOKESAPCE_SIZE}")
 
 async def generate_hook_template_contexts(topic_set: set, client: ClaudeClient, retries: int = 3) -> List[FirstOrderTriplet]:
     """Generate hook-template-explanation triplets"""
@@ -19,11 +28,11 @@ async def generate_hook_template_contexts(topic_set: set, client: ClaudeClient, 
     predictor = dspy.Predict(HookTemplateGenerationSignature)
     
     # Detailed task description
-    task_description = """Generate 15-20 diverse hook-template-explanation triplets for joke creation following these guidelines:
+    task_description = f"""Generate {num_of_jokes} diverse hook-template-explanation triplets for joke creation following these guidelines:
 
                         1. HOOK POINT Creation:
                         - Identify comedic anchors directly related to the given topic(s)
-                        - Include various types: wordplay/puns, conceptual connections, cultural references, semantic relationships
+                        - Include various types of hook points: wordplay/puns, conceptual connections, cultural references, semantic relationships
                         - Each hook should offer a unique angle or perspective on the topic
                         - Ensure hooks have strong comedic potential
 
@@ -38,10 +47,10 @@ async def generate_hook_template_contexts(topic_set: set, client: ClaudeClient, 
                         - Describe MULTIPLE ways to generate different jokes from this pair
                         - Detail specific comedic techniques enabled (misdirection, wordplay, absurdity, etc.)
                         - Show how hook and template complement each other
-                        - Include concrete joke generation strategies
+                        - You many include concrete joke generation strategies
 
-                        Focus on combinations that offer clear paths to creating multiple, diverse, funny jokes.
-                        Generate AT LEAST 15 hook-template-explanation triplets to ensure sufficient variety."""
+                        Focus on combinations that offer clear paths to creating the funniest joke.
+                        """
     
     # Retry logic
     for attempt in range(retries + 1):

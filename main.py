@@ -1,6 +1,9 @@
 # ./main.py
 """System orchestration for joke generation pipeline"""
 
+JOKESAPCE_SIZE = 'medium' # Global variable for jokespace size
+# Takes values 'small', 'medium', 'large' expect 10-15, 25-50, 50+ jokes respectively.
+
 import os
 import asyncio
 from datetime import datetime

@@ -8,7 +8,16 @@ from generator.models import FirstOrderTriplet, HigherOrderGroup, HookTemplatePa
 from generator.signatures import HigherOrderGroupingSignature
 from utilities.dspy_client import ClaudeClient
 from utilities.generator_utils import format_topic_set_for_prompt
+from main import JOKESAPCE_SIZE
 
+if JOKESAPCE_SIZE == 'small':
+    num_of_jokes = "1 to 3"
+elif JOKESAPCE_SIZE == 'medium':
+    num_of_jokes = "3 to 8"
+elif JOKESAPCE_SIZE == 'large':
+    num_of_jokes = "8 or more"
+else:
+    raise ValueError(f"Invalid jokespace size: {JOKESAPCE_SIZE}")
 
 async def generate_higher_order_groups(
     first_order_triplets: List[FirstOrderTriplet], 
@@ -25,12 +34,13 @@ async def generate_higher_order_groups(
     predictor = dspy.Predict(HigherOrderGroupingSignature)
     
     # Detailed task description
-    task_description = """Analyze the provided hook-template-context triplets and create 5-10 SYNERGISTIC GROUPS following these guidelines:
+    task_description = f"""Analyze the provided hook-template-context triplets and create {num_of_jokes} SYNERGISTIC GROUPS following these guidelines:
 
                         1. GROUP FORMATION:
-                        - Each group should contain 2-4 hook-template pairs that work together
+                        - Each group should contain 2 or more hook-template pairs that work together to form a meta hook-template for a funny joke
                         - Select pairs that create MULTI-LAYERED humor opportunities
-                        - Look for complementary hooks that build on each other
+                        - You may look for complementary hooks that build on each other
+                        - You may look for contrasting hooks that contradict to bring humor
                         - Ensure templates work together for complex joke structures
 
                         2. SYNERGY CRITERIA:
@@ -46,8 +56,8 @@ async def generate_higher_order_groups(
                         - Show how the group creates humor beyond individual pairs
                         - Include strategies for combining elements
 
-                        Focus on groups that enable complex, intelligent humor through interaction of multiple elements.
-                        Generate 5-10 distinct groups, each with clear synergistic value."""
+                        Focus on groups that enable complex, intelligent humor through interaction of multiple elements to create humour that may be complex or simple.
+                        Generate {num_of_jokes} distinct groups, each with clear synergistic value."""
     
     # Format available contexts as numbered list
     formatted_contexts = "\n".join([

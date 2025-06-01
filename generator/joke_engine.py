@@ -10,7 +10,16 @@ from generator.models import (
     GeneratedJoke, JokeOutput
 )
 from generator.signatures import JokeGenerationSignature
+from main import JOKESAPCE_SIZE
 
+if JOKESAPCE_SIZE == 'small':
+    num_of_jokes = "1 to 3"
+elif JOKESAPCE_SIZE == 'medium':
+    num_of_jokes = "3 to 5"
+elif JOKESAPCE_SIZE == 'large':
+    num_of_jokes = "5 to 8"
+else:
+    raise ValueError(f"Invalid jokespace size: {JOKESAPCE_SIZE}")
 
 async def generate_jokes_from_context(
     context: Union[FirstOrderTriplet, HigherOrderGroup],
@@ -28,7 +37,7 @@ async def generate_jokes_from_context(
     
     # Determine context type and create appropriate task description
     if isinstance(context, FirstOrderTriplet):
-        task_description = """Generate 1-3 ORIGINAL, FUNNY jokes using the provided hook-template-explanation as INSPIRATION (not a rigid formula):
+        task_description = f"""Generate {num_of_jokes} ORIGINAL, FUNNY jokes using the provided hook-template-explanation as INSPIRATION (not a rigid formula):
 
                             1. JOKE REQUIREMENTS:
                             - Create completely NEW jokes, not examples from the explanation
@@ -36,6 +45,7 @@ async def generate_jokes_from_context(
                             - Adapt the template structure creatively - don't follow it rigidly
                             - Ensure jokes are genuinely funny and surprising
                             - Make jokes feel natural and conversational
+                            - Keep the jokes short. 1-3 lines would be perfect.
 
                             2. QUALITY STANDARDS:
                             - Strong, unexpected punchlines that subvert expectations
@@ -48,15 +58,17 @@ async def generate_jokes_from_context(
                             - Feel free to combine, twist, or reimagine the suggestions
                             - The goal is funny, original jokes that work on their own
 
-                            Generate 1-3 distinct, high-quality jokes that would make people laugh."""
+                            4. YOU MAY OR MAY NOT USE THE HOOK, TEMPLATE OR EXPLANATION AS IS. The aim is to create funniest joke on the menioned topic.
+                            Generate {num_of_jokes} distinct, high-quality jokes that would make people laugh."""
     else:  # HigherOrderGroup
-        task_description = """Generate 2-5 SOPHISTICATED, MULTI-LAYERED jokes using the provided group of hook-template pairs:
+        task_description = f"""Generate {num_of_jokes} HUMOR FILLED, FUNNY jokes taking inspiration from the provided group of hook-template pairs:
 
-                            1. ADVANCED JOKE REQUIREMENTS:
-                            - Create jokes that utilize MULTIPLE elements from the group
-                            - Build complex humor through interaction of different hooks/templates
-                            - Layer different comedic techniques for sophisticated effect
+                            1. JOKE BUILDING TIPS:
+                            - Create jokes that may utilize MULTIPLE elements from the group
+                            - You may build complex humor through interaction of different hooks/templates
+                            - You may layer different comedic techniques for sophisticated effect
                             - Ensure each joke stands alone as genuinely funny
+                            - Keep the jokes short. 1-4 lines would be perfect.
 
                             2. SYNERGISTIC TECHNIQUES:
                             - Combine hooks for unexpected connections
@@ -71,7 +83,7 @@ async def generate_jokes_from_context(
                             - Original, memorable content
 
                             Use the group explanation as a guide for creating sophisticated, funny jokes.
-                            Generate 2-5 distinct jokes that showcase the synergistic potential."""
+                            Generate {num_of_jokes} distinct jokes that showcase the synergistic potential."""
     
     # Define synchronous function for DSPy call
     def sync_joke_generation():
