@@ -122,3 +122,5 @@ class RatingJudge:
             print(f"Joke {joke.id} | Complete: {total_elapsed:.3f}ms")
         
         return result
+
+    

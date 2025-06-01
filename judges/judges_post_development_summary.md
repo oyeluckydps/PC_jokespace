@@ -32,6 +32,7 @@ The Rating Judge follows a multi-stage pipeline:
 2.  **Category Classification**:
     *   If admissible, the joke is classified into one or more predefined categories (e.g., "Observational", "Pun", "Wordplay"). These categories are loaded from `criteria_category_of_jokes.xml`.
     *   If a joke doesn't fit any existing categories, it's marked as "Independent."
+    *   **Enhanced Prompting**: The category assignment now uses enhanced prompts with detailed analysis frameworks to reduce bias and improve accuracy. Categories are randomized to prevent position bias.
 3.  **Factor Identification**:
     *   Based on the assigned categories (or all factors if "Independent"), relevant evaluation factors are selected. Factors are specific criteria like "Originality," "Setup-Punchline Cohesion," etc., loaded from `factors_to_judge_joke.xml`. Each factor has a description and positive/negative examples.
     *   If no relevant factors are found for a category, that category might be dropped for the joke.
@@ -70,6 +71,47 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Description**: Standard Python package initializer.
     *   **Purpose**: Makes the `judges` directory a Python package.
     *   **Required**: Yes, for proper module import.
+
+*   **`admissibility_checker.py`**:
+    *   **Description**: Handles all admissibility checks for jokes using enhanced liberal prompting.
+    *   **Purpose**: To determine if a joke meets basic criteria for evaluation with bias towards inclusion.
+    *   **Class `AdmissibilityChecker`**:
+        *   **`__init__(self, client, max_retries)`**: Initializes with `ClaudeClient` and retry settings. Sets up `dspy.Predict(AdmissibilitySignature)`.
+        *   **`check_all_admissibility_async(self, joke_text)`**: Runs all five admissibility checks in parallel using `asyncio.gather()`.
+        *   **`_check_intent_async(self, joke_text)` through `_check_accessibility_async(self, joke_text)`**: Individual async methods for each admissibility check with enhanced liberal prompting and clear examples.
+        *   **`_retry_on_error(self, func, *args, **kwargs)`**: Generic retry wrapper with exponential backoff.
+    *   **Usage**: Used by main `RatingJudge` orchestrator for the admissibility phase.
+
+*   **`category_classifier.py`**:
+    *   **Description**: Handles category assignment for jokes with enhanced bias reduction techniques.
+    *   **Purpose**: To assign jokes to appropriate categories while minimizing position and popularity bias.
+    *   **Class `CategoryClassifier`**:
+        *   **`__init__(self, client, category_info_list, max_retries)`**: Initializes with `ClaudeClient`, `CategoryInfo` objects, and retry settings. Sets up `dspy.Predict(CategoryAssignmentSignature)`.
+        *   **`classify_categories_async(self, joke_text)`**: Assigns categories using enhanced prompting with randomized category order to reduce position bias. Uses detailed analysis framework.
+        *   **`_retry_on_error(self, func, *args, **kwargs)`**: Generic retry wrapper.
+    *   **Usage**: Used by main `RatingJudge` orchestrator for the category assignment phase.
+
+*   **`factor_selector.py`**:
+    *   **Description**: Handles factor selection for jokes based on assigned categories.
+    *   **Purpose**: To identify relevant evaluation factors for each joke based on its categories.
+    *   **Class `FactorSelector`**:
+        *   **`__init__(self, client, factors, max_retries)`**: Initializes with `ClaudeClient`, factors dictionary, and retry settings. Sets up `dspy.Predict(FactorSelectionSignature)`.
+        *   **`select_factors_per_category_async(self, joke_text, categories, is_independent)`**: Main async method to select factors. Handles both regular categories and "Independent" category logic.
+        *   **`_select_category_factors_async(self, joke_text, category)`**: Selects factors for a specific category.
+        *   **`_select_from_all_factors_async(self, joke_text, all_factors)`**: Selects factors when category is "Independent" (considers all available factors).
+        *   **`_retry_on_error(self, func, *args, **kwargs)`**: Generic retry wrapper.
+    *   **Usage**: Used by main `RatingJudge` orchestrator for the factor selection phase.
+
+*   **`factor_scorer.py`**:
+    *   **Description**: Handles factor scoring for jokes with parallel processing.
+    *   **Purpose**: To score jokes on individual factors efficiently using parallel LLM calls.
+    *   **Class `FactorScorer`**:
+        *   **`__init__(self, client, max_retries)`**: Initializes with `ClaudeClient` and retry settings. Sets up `dspy.Predict(FactorScoringSignature)`.
+        *   **`score_factors_async(self, joke_text, factors, factor_objects)`**: Scores each factor in parallel using `asyncio.gather()`. Handles duplicate factor names with suffix notation.
+        *   **`_score_single_factor_async(self, joke_text, factor)`**: Scores a joke on a single factor using enhanced prompting with positive/negative examples.
+        *   **`_retry_on_error(self, func, *args, **kwargs)`**: Generic retry wrapper.
+    *   **Usage**: Used by main `RatingJudge` orchestrator for the factor scoring phase.
+
 *   **`batch_processor.py`**:
     *   **Description**: Handles the processing of jokes in batches, including progress display and retries for individual joke evaluations.
     *   **Purpose**: To efficiently evaluate a large number of jokes by parallelizing calls (conceptually, via `asyncio.gather`) and managing API rate limits or transient errors robustly.
@@ -83,6 +125,7 @@ The Duel Judge focuses on bias mitigation and robust comparison:
         *   **`_display_progress(self, total_jokes)`**: Shows overall progress, elapsed time, and ETA.
         *   **`_display_final_summary(self, all_results, total_jokes)`**: Prints a summary of the entire rating phase, including statistics.
     *   **Usage**: Used by `JokeJudgeSystem` in `main_judge.py` to conduct the rating phase.
+
 *   **`cli.py`**:
     *   **Description**: Provides the command-line interface for the joke judging system.
     *   **Purpose**: Allows users to run the evaluation pipeline from the terminal, specifying input files and parameters.
@@ -94,15 +137,17 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Function `display_progress(current_joke, total_jokes, status)`**: (Currently seems unused directly by `cli.py` but intended for progress, handled by `BatchProcessor`).
     *   **Function `display_final_results(winner_id, winner_text, log_dir)`**: Prints the final tournament winner and log directory.
     *   **Usage**: Executed when running `python -m judges ...`.
+
 *   **`dspy_signatures.py`**:
-    *   **Description**: Defines the DSPy signatures for various LLM interactions.
+    *   **Description**: Defines the DSPy signatures for various LLM interactions with enhanced prompting structures.
     *   **Purpose**: Structures the input and output fields for prompts sent to the LLM, ensuring consistency and clarity for the model.
-    *   **Class `AdmissibilitySignature(dspy.Signature)`**: Defines fields for admissibility checks (`joke_text`, `check_type`, `instruction_prompt` -> `passed`, `reasoning`).
-    *   **Class `CategoryAssignmentSignature(dspy.Signature)`**: Defines fields for category assignment (`joke_text`, `all_categories` -> `categories`, `is_independent`, `reasoning`).
+    *   **Class `AdmissibilitySignature(dspy.Signature)`**: Defines fields for admissibility checks (`joke_text`, `check_type`, `instruction_prompt`, `examples` -> `passed`, `reasoning`).
+    *   **Class `CategoryAssignmentSignature(dspy.Signature)`**: Enhanced to include `available_categories` (containing `CategoryInfo` objects) and `instruction` field for detailed analysis framework -> `selected_categories`, `is_independent`, `reasoning`.
     *   **Class `FactorSelectionSignature(dspy.Signature)`**: Defines fields for selecting relevant factors (`joke_text`, `category`, `available_factors` -> `relevant_factors`, `reasoning`).
     *   **Class `FactorScoringSignature(dspy.Signature)`**: Defines fields for scoring a joke on a specific factor (`joke_text`, `factor_name`, `factor_description`, `positive_examples`, `negative_examples` -> `score`, `reasoning`).
     *   **Class `DuelComparisonSignature(dspy.Signature)`**: Defines fields for comparing two jokes (`joke_a`, `joke_b`, `good_examples`, `bad_examples` -> `winner`, `confidence_factor`, `reasoning`).
-    *   **Usage**: These signatures are used by `dspy.Predict` in the `RatingJudge` and `DuelJudge` to interact with the LLM.
+    *   **Usage**: These signatures are used by `dspy.Predict` in the specialized rating components and `DuelJudge` to interact with the LLM.
+
 *   **`duel_judge.py`**:
     *   **Description**: Implements the logic for comparing two jokes head-to-head.
     *   **Purpose**: To determine a winner between two jokes with bias mitigation techniques.
@@ -116,6 +161,7 @@ The Duel Judge focuses on bias mitigation and robust comparison:
         *   **`_resolve_comparison(self, ab_result, ba_result, joke_a, joke_b)`**: Resolves results from A->B and B->A comparisons. Handles consistent decisions, ties (broken by rating then seed), and inconsistent decisions (broken by confidence). Returns detailed comparison metrics.
         *   **`_build_duel_result(self, joke_a, joke_b, comparison, match_id, round_number, round_name, lives_tracker)`**: Constructs a `DuelResult` object from the comparison outcome and match metadata.
     *   **Usage**: Used by `TournamentManager` to conduct duels in a tournament.
+
 *   **`main_judge.py`**:
     *   **Description**: Orchestrates the entire joke evaluation pipeline, integrating the Rating Judge, Duel Judge, Batch Processor, and Tournament Manager.
     *   **Purpose**: Acts as the central controller for the joke judging system.
@@ -131,32 +177,27 @@ The Duel Judge focuses on bias mitigation and robust comparison:
         *   **`_log_tournament_results(self, tournament_result)`**: Logs tournament results using `XMLLogger`.
         *   **`_log_rating_only_summary(self, top_jokes, total_jokes, admissible_jokes)`**: Creates a text summary file for rating-only mode.
     *   **Usage**: Instantiated and used by `cli.py` to run evaluations.
+
 *   **`models.py`**:
     *   **Description**: Defines Pydantic models for structuring data throughout the system.
     *   **Purpose**: Ensures data consistency and provides type validation for various results and inputs.
+    *   **Class `CategoryInfo(BaseModel)`**: New model for category information including `name`, `description`, `example1`, and `example2` fields.
     *   **Class `AdmissibilityCheck(BaseModel)`**: Stores result of a single admissibility check (`passed`, `reasoning`).
     *   **Class `AdmissibilityResults(BaseModel)`**: Aggregates all five admissibility checks and an overall `is_admissible` flag.
     *   **Class `RatingResult(BaseModel)`**: Comprehensive result for a single joke after rating (ID, text, admissibility, categories, factors, scores, overall rating, original rank).
     *   **Class `DuelResult(BaseModel)`**: Result of a single duel (match metadata, joke IDs, seeds, lives, winner, confidence, consistency, reasoning, and detailed A/B comparison stats).
     *   **Class `TournamentResult(BaseModel)`**: Overall result of a tournament (winner, rankings, lives/bye tracking, all matches, etc.).
     *   **Usage**: Used extensively across all modules to pass structured data.
+
 *   **`rating_judge.py`**:
-    *   **Description**: Implements the logic for the detailed, multi-stage rating of individual jokes.
-    *   **Purpose**: To assign a comprehensive quality score and detailed analysis to each joke.
+    *   **Description**: Main orchestrator class that coordinates all specialized rating components.
+    *   **Purpose**: To manage the complete rating pipeline while delegating specific tasks to specialized components.
     *   **Class `RatingJudge`**:
-        *   **`__init__(self, client, categories, factors, examples, max_retries)`**: Initializes with `ClaudeClient`, pre-parsed categories/factors/examples, and retry settings. Sets up `dspy.Predict` for various signatures.
+        *   **`__init__(self, client, categories, factors, examples, category_info_list, max_retries)`**: Initializes with `ClaudeClient`, pre-parsed categories/factors/examples, `CategoryInfo` objects, and retry settings. Initializes specialized components: `AdmissibilityChecker`, `CategoryClassifier`, `FactorSelector`, and `FactorScorer`.
         *   **`evaluate_joke(self, joke)`**: Synchronous wrapper for `evaluate_joke_async`.
-        *   **`evaluate_joke_async(self, joke)`**: Main async pipeline for rating a single `JokeData` object: admissibility check, category classification, factor selection, factor scoring, and final rating calculation.
-        *   **`_retry_on_error(self, func, *args, **kwargs)`**: Generic async retry wrapper.
-        *   **`_check_all_admissibility_async(self, joke_text)`**: Runs all five admissibility sub-checks in parallel.
-        *   **`_check_intent_async(self, joke_text)` through `_check_accessibility_async(self, joke_text)`**: Individual async methods for each of the five admissibility checks, each using `AdmissibilitySignature`.
-        *   **`_classify_categories_async(self, joke_text)`**: Assigns joke to categories using `CategoryAssignmentSignature`. Handles "Independent" category.
-        *   **`_select_factors_per_category_async(self, joke_text, categories, is_independent)`**: Selects relevant factors based on assigned categories. If "Independent", considers factors from all categories. Returns selected factor names and the factor objects.
-        *   **`_select_category_factors_async(self, joke_text, category)`**: Selects factors for a specific category using `FactorSelectionSignature`.
-        *   **`_select_from_all_factors_async(self, joke_text, all_factors)`**: Selects factors when category is "Independent".
-        *   **`_score_factors_async(self, joke_text, factors, factor_objects)`**: Scores each selected factor in parallel using `_score_single_factor_async`.
-        *   **`_score_single_factor_async(self, joke_text, factor)`**: Scores a joke on a single `Factor` object using `FactorScoringSignature`.
-    *   **Usage**: Used by `BatchProcessor` to rate jokes.
+        *   **`evaluate_joke_async(self, joke)`**: Main async pipeline orchestrator that coordinates the specialized components: admissibility check, category classification, factor selection, factor scoring, and final rating calculation with detailed timing logs.
+    *   **Usage**: Used by `BatchProcessor` to rate jokes through the coordinated pipeline.
+
 *   **`tournament_manager.py`**:
     *   **Description**: Manages the execution of a tournament between a list of top-rated jokes.
     *   **Purpose**: To determine an ultimate winner through a series of duels, incorporating a lives and bye system.
@@ -180,6 +221,7 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Description**: Standard Python package initializer, may also expose key classes for easier import.
     *   **Purpose**: Makes the `utilities` directory a Python package.
     *   **Required**: Yes, for proper module import.
+
 *   **`dspy_client.py`**:
     *   **Description**: Provides a client for interacting with the Claude LLM via the DSPy library.
     *   **Purpose**: Encapsulates API key management, model configuration, retry logic, and caching for LLM calls.
@@ -187,19 +229,24 @@ The Duel Judge focuses on bias mitigation and robust comparison:
         *   **`__init__(self, model, api_key, cache)`**: Initializes the DSPy LM with the specified Claude model (defaults to Haiku), API key (from env var), and caching preference. It includes a small random temperature adjustment if caching is disabled to help bypass DSPy's aggressive caching if needed.
         *   **`generate(self, prompt, max_tokens, temperature)`**: Sends a prompt to the LLM and returns the response. Implements retry logic with delays for API failures.
         *   **`_get_api_key(self)`**: Retrieves the `ANTHROPIC_API_KEY` from environment variables.
-    *   **Usage**: Instantiated and used by `JokeJudgeSystem`, `RatingJudge`, and `DuelJudge` for all LLM interactions.
+    *   **Usage**: Instantiated and used by `JokeJudgeSystem`, specialized rating components, and `DuelJudge` for all LLM interactions.
+
 *   **`xml_parser.py`**:
-    *   **Description**: Handles parsing of all XML configuration files and the input joke XML file.
+    *   **Description**: Handles parsing of all XML configuration files and the input joke XML file with enhanced category information support.
     *   **Purpose**: To load criteria, categories, factors, example jokes, and input jokes from their respective XML files into Pydantic models.
-    *   **Pydantic Models (`Factor`, `Category`, `ExampleData`, `JokeData`)**: Define the structure for the data parsed from XML.
+    *   **Pydantic Models (`CategoryInfo`, `Factor`, `Category`, `ExampleData`, `JokeData`)**: Define the structure for the data parsed from XML. `CategoryInfo` is a new model that encapsulates category name, description, and examples.
     *   **Class `XMLConfigParser`**:
         *   **`__init__(self, base_path)`**: Initializes with the base path for XML files.
         *   **`parse_categories(self)`**: Parses `criteria_category_of_jokes.xml` into a flat list of category names.
+        *   **`parse_category_info(self)`**: **NEW METHOD** - Parses `criteria_category_of_jokes.xml` into a list of `CategoryInfo` objects containing name, description, and up to 2 examples per category.
+        *   **`parse_categories_with_descriptions(self)`**: Parses categories with descriptions as tuples (maintained for backward compatibility).
+        *   **`parse_category_examples(self)`**: Parses category examples as dictionary (maintained for backward compatibility).
         *   **`parse_factors(self)`**: Parses `factors_to_judge_joke.xml` into a dictionary mapping category names to lists of `Factor` objects.
         *   **`parse_examples(self)`**: Parses `judges/good_vs_bad_joke.xml` into an `ExampleData` object (5 good, 5 bad jokes).
         *   **`parse_jokes(self, jokes_file_path)`**: Parses the input jokes XML, validating IDs and text, and returns a list of `JokeData` objects.
         *   **`_load_xml_file(self, filename)`**: Helper to load and parse an XML file using `xml.etree.ElementTree`.
     *   **Usage**: Used by `JokeJudgeSystem` to load all necessary configurations and input data.
+
 *   **`xml_logger.py`**:
     *   **Description**: Responsible for generating all XML output log files.
     *   **Purpose**: To create detailed, well-formatted XML logs of the rating process, top jokes, tournament matches, and final tournament results.
@@ -226,9 +273,10 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   `ClaudeClient` is initialized (API key, model, caching, retries).
     *   `XMLConfigParser` is initialized. It loads:
         *   Categories from `criteria_category_of_jokes.xml`.
+        *   **Enhanced**: Category information (including descriptions and examples) using `parse_category_info()` into `CategoryInfo` objects.
         *   Factors from `factors_to_judge_joke.xml`.
         *   Example jokes from `judges/good_vs_bad_joke.xml`.
-    *   `RatingJudge` is initialized with the client and parsed configurations.
+    *   `RatingJudge` is initialized with the client and parsed configurations, which internally initializes specialized components: `AdmissibilityChecker`, `CategoryClassifier`, `FactorSelector`, and `FactorScorer`.
     *   `DuelJudge` is initialized (if not in rating-only mode) with the client and examples.
     *   `XMLLogger` is initialized with the output directory once jokes are confirmed to be loaded.
 
@@ -240,14 +288,13 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   `BatchProcessor` is instantiated with the `RatingJudge`.
     *   `BatchProcessor.process_all_jokes()` iterates through jokes in batches:
         *   For each joke, `_evaluate_joke_with_retry()` calls `RatingJudge.evaluate_joke_async()`.
-        *   `RatingJudge.evaluate_joke_async()`:
-            *   Performs 5 admissibility checks in parallel (`_check_all_admissibility_async` -> individual `_check_*_async` methods using `AdmissibilitySignature`).
-            *   If admissible:
-                *   Classifies categories (`_classify_categories_async` using `CategoryAssignmentSignature`).
-                *   Selects relevant factors (`_select_factors_per_category_async` -> `_select_category_factors_async` / `_select_from_all_factors_async` using `FactorSelectionSignature`).
-                *   Scores each factor (`_score_factors_async` -> `_score_single_factor_async` using `FactorScoringSignature`).
-                *   Calculates `max_score`, `mean_score`, and `overall_rating`.
-            *   Returns a `RatingResult` object.
+        *   `RatingJudge.evaluate_joke_async()` **orchestrates specialized components**:
+            *   **Admissibility Phase**: `AdmissibilityChecker.check_all_admissibility_async()` performs 5 enhanced liberal admissibility checks in parallel using detailed prompting with clear examples.
+            *   **Category Phase**: If admissible, `CategoryClassifier.classify_categories_async()` assigns categories using enhanced prompting with randomized category order and detailed analysis framework to reduce bias.
+            *   **Factor Selection Phase**: `FactorSelector.select_factors_per_category_async()` identifies relevant factors based on assigned categories or all factors for "Independent" category.
+            *   **Factor Scoring Phase**: `FactorScorer.score_factors_async()` scores each factor in parallel with enhanced prompting using positive/negative examples.
+            *   **Final Calculation**: Calculates `max_score`, `mean_score`, and `overall_rating` with detailed timing logs.
+            *   Returns a comprehensive `RatingResult` object.
         *   Batch processor collects `RatingResult` objects and displays progress.
     *   `XMLLogger.log_rating_results()` saves `rating_results.xml`.
 
@@ -280,7 +327,54 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   The winner's ID and text (if full tournament) or the list of top jokes (if rating-only) are displayed.
     *   The path to the log directory is printed.
 
-## 5. Sample Commands to Run the Module
+## 5. Enhanced Features and Improvements
+
+### 5.1 Modular Architecture
+The rating system has been refactored into a modular architecture with specialized components:
+
+*   **`AdmissibilityChecker`**: Dedicated to admissibility checks with enhanced liberal prompting
+*   **`CategoryClassifier`**: Specialized for category assignment with bias reduction techniques
+*   **`FactorSelector`**: Focused on factor selection based on categories
+*   **`FactorScorer`**: Optimized for parallel factor scoring
+*   **`RatingJudge`**: Main orchestrator that coordinates all specialized components
+
+This modular design provides:
+- **Separation of Concerns**: Each component has a single responsibility
+- **Better Maintainability**: Easier to modify individual components
+- **Improved Testing**: Can unit test each component separately
+- **Cleaner Code**: Each component is focused and manageable in size
+
+### 5.2 Enhanced Prompting and Bias Reduction
+
+**Category Assignment Enhancements**:
+- **Randomized Category Order**: Categories are shuffled before each classification to prevent position bias
+- **Enhanced Analysis Framework**: Detailed instructions guide the LLM through systematic category analysis
+- **Structured Category Information**: Uses `CategoryInfo` objects that bundle name, description, and examples together
+- **Bias Awareness**: Explicit instructions to avoid common biases (length bias, popularity bias, position bias)
+
+**Admissibility Check Enhancements**:
+- **Liberal Evaluation Guidelines**: Each check includes explicit "liberal evaluation" instructions that err on the side of inclusion
+- **Clear Examples**: Each check provides clear pass/fail/borderline examples with detailed explanations
+- **Focused Instructions**: Each check focuses only on its specific criterion to avoid cross-contamination
+
+**Factor Scoring Enhancements**:
+- **Positive/Negative Examples**: Each factor includes concrete examples of high and low performance
+- **Parallel Processing**: All factor scoring happens in parallel for efficiency
+- **Enhanced Error Handling**: Robust retry logic with graceful degradation
+
+### 5.3 Data Structure Improvements
+
+**CategoryInfo Model**:
+- Encapsulates category name, description, and up to 2 examples in a single object
+- Ensures consistent data flow when categories are randomized
+- Provides better type safety through Pydantic validation
+
+**Enhanced XML Parsing**:
+- New `parse_category_info()` method returns structured `CategoryInfo` objects
+- Maintains backward compatibility with existing parsing methods
+- Avoids circular import issues through local model definitions
+
+## 6. Sample Commands to Run the Module
 
 *   **Run a full evaluation (rating + tournament) on `temp/100_jokes_dataset.xml`, process 15 jokes per batch, and advance top 10 to tournament:**
     ```bash
@@ -300,4 +394,4 @@ The Duel Judge focuses on bias mitigation and robust comparison:
 *   **Run with minimal arguments (will use defaults for batch size and top count for tournament):**
     ```bash
     python -m judges.cli temp/short_jokes_list.xml
-    ``` 
+    ```
