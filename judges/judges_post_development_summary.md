@@ -38,7 +38,14 @@ The Rating Judge follows a multi-stage pipeline:
     *   **Data Structure Optimization**: Factor selection now uses `FactorDescription` objects containing only factor names and descriptions for DSPy calls, while maintaining access to full `FactorData` objects (with examples) for scoring.
     *   If no relevant factors are found for a category, that category might be dropped for the joke.
 4.  **Factor-Based Scoring**:
-    *   Each relevant factor is scored on a scale of 0-5.
+    *   Each relevant factor is scored on a scale of 0-5 using **enhanced critical scoring with improved distribution**:
+        *   **0 = Below Average**: Factor execution is weak, flawed, or poorly implemented
+        *   **1 = Average**: Basic, unremarkable execution meeting minimum expectations
+        *   **2 = Good**: Solid, competent execution with no major flaws
+        *   **3 = Better**: Above-average execution showing skill and effectiveness
+        *   **4 = Very Good**: High-quality execution demonstrating expertise and creativity
+        *   **5 = Exceptional**: Outstanding execution representing peak performance (5-10% of jokes)
+    *   **Critical Evaluation Framework**: The scoring uses professional comedy standards with evidence-based differentiation and maintains score distribution across the full 0-5 range.
     *   An `overall_rating` is then calculated for the joke. The current formula is `(max_score * 10 + mean_score + len(scores) / 5) / 12`, which aims to give weight to high-scoring factors and the breadth of factors involved, normalized to roughly a 0-5 scale.
 
 ### 2.2 Duel Judge
@@ -78,7 +85,7 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Purpose**: Ensures data consistency, provides type validation, and eliminates redundancy across the codebase.
     *   **Models**:
         *   **`CategoryInfo(BaseModel)`**: Category information including `name`, `description`, `example1`, and `example2` fields.
-        *   **`FactorData(BaseModel)`**: **UNIFIED FACTOR MODEL** - Stores factor information with `name`, `description`, `positive_examples`, and `negative_examples`.
+        *   **`FactorData(BaseModel)`**: **UNIFIED FACTOR MODEL** - Stores factor information with `name`, `description`, `positive_examples`, and `negative_examples`. **Enhanced with `__str__()` method** for clean DSPy formatting.
         *   **`FactorDescription(BaseModel)`**: **NEW MODEL** - Stores only factor `name` and `description` for DSPy calls to reduce payload size and focus LLM attention.
         *   **`CategoryFactor(BaseModel)`**: **UNIFIED CATEGORY-FACTOR MODEL** - Stores category with its associated factors (`name`, `description`, `factors: List[FactorData]`).
         *   **`CategoryFactorForDSPy(BaseModel)`**: **NEW MODEL** - DSPy-optimized version with `factors: List[FactorDescription]` for efficient LLM calls.
@@ -89,7 +96,7 @@ The Duel Judge focuses on bias mitigation and robust comparison:
         *   **`RatingResult(BaseModel)`**: Comprehensive result for a single joke after rating (ID, text, admissibility, categories, factors, scores, overall rating, original rank).
         *   **`DuelResult(BaseModel)`**: Result of a single duel (match metadata, joke IDs, seeds, lives, winner, confidence, consistency, reasoning, and detailed A/B comparison stats).
         *   **`TournamentResult(BaseModel)`**: Overall result of a tournament (winner, rankings, lives/bye tracking, all matches, etc.).
-    *   **Key Changes**: Eliminated redundant `Factor`, `Category` classes. Unified all data structures into single source of truth models. **Added DSPy-optimized models** for efficient LLM interactions.
+    *   **Key Changes**: Eliminated redundant `Factor`, `Category` classes. Unified all data structures into single source of truth models. **Added DSPy-optimized models** for efficient LLM interactions. **Enhanced `FactorData` with string formatting for improved DSPy integration**.
     *   **Usage**: Used extensively across all modules to pass structured data with type safety.
 
 *   **`admissibility_checker.py`**:
@@ -129,14 +136,19 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Usage**: Used by main `RatingJudge` orchestrator for the factor selection phase.
 
 *   **`factor_scorer.py`**:
-    *   **Description**: **UPDATED** - Handles factor scoring for jokes with parallel processing, now compatible with unified models.
-    *   **Purpose**: To score jokes on individual factors efficiently using parallel LLM calls.
+    *   **Description**: **SIGNIFICANTLY UPDATED** - Handles factor scoring for jokes with parallel processing, unified models, and **enhanced critical scoring framework**.
+    *   **Purpose**: To score jokes on individual factors efficiently using parallel LLM calls with **professional-grade critical evaluation standards**.
     *   **Class `FactorScorer`**:
-        *   **`__init__(self, client, max_retries)`**: Initializes with `ClaudeClient` and retry settings. Sets up `dspy.Predict(FactorScoringSignature)`.
+        *   **`__init__(self, client, max_retries)`**: Initializes with `ClaudeClient` and retry settings. Sets up `dspy.Predict(FactorScoringSignature)`. **NEW**: Includes comprehensive scoring instructions with critical evaluation framework.
         *   **`score_factors_async(self, joke_text, factors, factor_objects)`**: Scores each factor in parallel using `asyncio.gather()`. **Updated parameter**: `factor_objects: Dict[str, FactorData]` instead of `Dict[str, Factor]`.
-        *   **`_score_single_factor_async(self, joke_text, factor)`**: **Updated parameter**: `factor: FactorData` instead of `Factor`. Scores a joke on a single factor using enhanced prompting with positive/negative examples.
+        *   **`_score_single_factor_async(self, joke_text, factor)`**: **SIGNIFICANTLY UPDATED** - Now passes entire `FactorData` object and comprehensive scoring instructions to DSPy. Uses enhanced critical evaluation framework with professional standards.
         *   **`_retry_on_error(self, func, *args, **kwargs)`**: Generic retry wrapper.
-    *   **Key Changes**: Updated type hints and parameter types to use `FactorData` from unified models.
+    *   **Key Changes**: 
+        *   **Unified Data Input**: Now passes single `FactorData` object instead of separate fields
+        *   **Enhanced Instructions**: Includes comprehensive scoring instructions focusing on critical evaluation and proper score distribution
+        *   **Professional Standards**: Implements evidence-based scoring with clear differentiation across 0-5 scale
+        *   **Score Distribution**: Designed to achieve better spread with meaningful distinctions between performance levels
+        *   Updated type hints and parameter types to use `FactorData` from unified models.
     *   **Usage**: Used by main `RatingJudge` orchestrator for the factor scoring phase.
 
 *   **`batch_processor.py`**:
@@ -172,9 +184,9 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Class `AdmissibilitySignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. Defines fields for admissibility checks (`joke_text`, `check_type`, `instruction_prompt` -> `reasoning`, `passed`).
     *   **Class `CategoryAssignmentSignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. Enhanced to include `available_categories` (containing `CategoryInfo` objects) and `instruction` field for detailed analysis framework -> `reasoning`, `selected_categories`, `is_independent`.
     *   **Class `FactorSelectionSignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. **Optimized parameter type**: `relevant_categories: List[CategoryFactor]` now receives preprocessed data containing only factor names and descriptions -> `reasoning`, `relevant_factors`.
-    *   **Class `FactorScoringSignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. Defines fields for scoring a joke on a specific factor (`joke_text`, `factor_name`, `factor_description`, `positive_examples`, `negative_examples` -> `reasoning`, `score`).
+    *   **Class `FactorScoringSignature(dspy.Signature)`**: **SIGNIFICANTLY UPDATED** - Moved `reasoning` to top of output fields. **Consolidated input fields**: Now uses single `factor_data` field (FactorData object) and `instructions` field instead of separate factor components -> `reasoning`, `score`.
     *   **Class `DuelComparisonSignature(dspy.Signature)`**: **UPDATED** - Moved `reasoning` to top of output fields. Defines fields for comparing two jokes (`joke_a`, `joke_b`, `good_examples`, `bad_examples` -> `reasoning`, `winner`, `confidence_factor`).
-    *   **Model Dependency**: Uses `CategoryFactor` from `models.py`.
+    *   **Model Dependency**: Uses `CategoryFactor` and `FactorData` from `models.py`.
     *   **Usage**: These signatures are used by `dspy.Predict` in the specialized rating components and `DuelJudge` to interact with the LLM.
 
 *   **`duel_judge.py`**:
@@ -287,9 +299,18 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Model Dependencies**: Uses models from `models.py` for structured data logging.
     *   **Usage**: Used by `JokeJudgeSystem` to log all stages of the evaluation.
 
-## 4. Complete Pipeline and Code Flow (continued)
+## 4. Complete Pipeline and Code Flow
 
-2.  **System Initialization (`judges/main_judge.py -> JokeJudgeSystem.__init__`)** (continued):
+1.  **CLI Entry Point (`judges/cli.py`)**:
+    *   User runs the module with command-line arguments specifying the input jokes file, batch size, top count, and mode (full or rating-only).
+    *   Arguments are parsed, and the appropriate evaluation function is called.
+
+2.  **System Initialization (`judges/main_judge.py -> JokeJudgeSystem.__init__`)**:
+    *   `ClaudeClient` is initialized with API configuration and caching preferences.
+    *   `XMLConfigParser` loads all configuration files:
+        *   Categories and their info from `criteria_category_of_jokes.xml`
+        *   Category-factor mappings from `factors_to_judge_joke.xml`
+        *   Good/bad joke examples from `judges/good_vs_bad_joke.xml`
     *   `RatingJudge` is initialized with the client and parsed configurations, which internally initializes specialized components: `AdmissibilityChecker`, `CategoryClassifier`, `FactorSelector`, and `FactorScorer`.
     *   `DuelJudge` is initialized (if not in rating-only mode) with the client and examples.
     *   `XMLLogger` is initialized with the output directory once jokes are confirmed to be loaded.
@@ -306,7 +327,7 @@ The Duel Judge focuses on bias mitigation and robust comparison:
             *   **Admissibility Phase**: `AdmissibilityChecker.check_all_admissibility_async()` performs 5 enhanced liberal admissibility checks in parallel using detailed prompting with clear examples.
             *   **Category Phase**: If admissible, `CategoryClassifier.classify_categories_async()` assigns categories using enhanced prompting with randomized category order and detailed analysis framework to reduce bias.
             *   **Factor Selection Phase**: `FactorSelector.select_factors_per_category_async()` identifies relevant factors based on assigned categories or all factors for "Independent" category using **CONSOLIDATED LOGIC** with efficient O(1) lookups.
-            *   **Factor Scoring Phase**: `FactorScorer.score_factors_async()` scores each factor in parallel with enhanced prompting using positive/negative examples from `FactorData` objects.
+            *   **Factor Scoring Phase**: `FactorScorer.score_factors_async()` scores each factor in parallel with **enhanced critical evaluation framework** using comprehensive scoring instructions and unified `FactorData` objects with positive/negative examples.
             *   **Final Calculation**: Calculates `max_score`, `mean_score`, and `overall_rating` with detailed timing logs.
             *   Returns a comprehensive `RatingResult` object.
         *   Batch processor collects `RatingResult` objects and displays progress.
@@ -350,6 +371,7 @@ The system now features a centralized, unified data model architecture:
 *   **Eliminated Redundancy**: Removed duplicate `Factor`, `Category` classes in favor of unified `FactorData`, `CategoryFactor`
 *   **Type Safety**: Consistent type hints across all modules using unified models
 *   **Better Maintainability**: Single place to modify data structures
+*   **Enhanced DSPy Integration**: Added `__str__()` method to `FactorData` for clean formatting in LLM calls
 
 ### 5.2 Simplified and Optimized Code Architecture
 
@@ -378,6 +400,7 @@ The system now features a centralized, unified data model architecture:
 - **Optimized Data Payload**: Factor selection uses simplified `FactorDescription` objects instead of full `FactorData`, reducing token usage and focusing LLM attention
 - **Input Preprocessing**: Raw factor data is converted to minimal required format before LLM calls
 - **Maintained Context**: Full factor data (including examples) remains available for scoring phase
+- **Unified Factor Scoring**: Single `FactorData` object and instructions passed to each scoring call instead of separate fields
 - Parallel processing where possible (admissibility checks, factor scoring)
 - Single call for factor selection regardless of number of categories
 - Efficient data structures minimize processing overhead
@@ -388,7 +411,7 @@ The rating system maintains its modular architecture with specialized components
 *   **`AdmissibilityChecker`**: Dedicated to admissibility checks with enhanced liberal prompting
 *   **`CategoryClassifier`**: Specialized for category assignment with bias reduction techniques
 *   **`FactorSelector`**: **SIMPLIFIED** - Focused on efficient factor selection with consolidated logic
-*   **`FactorScorer`**: **UPDATED** - Optimized for parallel factor scoring with unified models
+*   **`FactorScorer`**: **SIGNIFICANTLY ENHANCED** - Optimized for parallel factor scoring with unified models and critical evaluation framework
 *   **`RatingJudge`**: Main orchestrator that coordinates all specialized components
 
 ### 5.5 Enhanced Prompting and Bias Reduction
@@ -405,7 +428,10 @@ The rating system maintains its modular architecture with specialized components
 - **Focused Instructions**: Each check focuses only on its specific criterion to avoid cross-contamination
 
 **Factor Scoring Enhancements**:
-- **Positive/Negative Examples**: Each factor includes concrete examples of high and low performance
+- **Critical Evaluation Framework**: Comprehensive scoring instructions emphasizing professional standards and evidence-based differentiation
+- **Improved Score Distribution**: Clear 0-5 scale definitions designed to achieve better spread (0=below average, 1=average, 2=good, 3=better, 4=very good, 5=exceptional)
+- **Professional Standards**: Evidence-based scoring methodology with clear quality gradations
+- **Unified Data Input**: Single `FactorData` object contains all necessary information formatted optimally for LLM consumption
 - **Parallel Processing**: All factor scoring happens in parallel for efficiency
 - **Enhanced Error Handling**: Robust retry logic with graceful degradation
 
@@ -417,14 +443,25 @@ The rating system maintains its modular architecture with specialized components
 - **IDE Support**: Better autocomplete and type checking
 - **Maintainability**: Changes to data structures only need to be made in one place
 - **DSPy Optimization**: New `FactorDescription` and `CategoryFactorForDSPy` models provide streamlined data for LLM calls
+- **Enhanced Formatting**: `FactorData.__str__()` method provides clean, consistent formatting for DSPy calls
 
 **Performance Optimizations**:
 - **Reduced Token Usage**: Factor selection now sends only essential information (name + description) to LLM
 - **Preprocessing Pipeline**: Input data is optimized before DSPy calls while maintaining full context internally
-- **Focused LLM Attention**: Simplified data structures help LLM focus on relevant information without examples clutter
+- **Focused LLM Attention**: Simplified data structures help LLM focus on relevant information without examples clutter during selection
+- **Unified Factor Scoring**: Complete factor information passed as single object to scoring calls
 - Efficient lookup dictionaries for factor finding
 - Reduced object creation overhead
 - Streamlined data flow between components
+
+### 5.7 Enhanced Critical Scoring Framework
+
+**Professional-Grade Evaluation**:
+- **Evidence-Based Standards**: Scoring requires specific evidence and justification for each score level
+- **Full Scale Utilization**: Clear definitions for each score (0-5) designed to achieve proper distribution
+- **Critical Mindset**: Professional reviewer approach that maintains high standards while allowing meaningful differentiation
+- **Quality Gradations**: Clear distinctions between functional, competent, skillful, and exceptional execution
+- **Distribution Guidance**: Expected score distributions to prevent clustering and achieve meaningful spread
 
 ## 6. Sample Commands to Run the Module
 
@@ -454,10 +491,13 @@ The rating system maintains its modular architecture with specialized components
 2. **DSPy Signature Optimization**: Moved reasoning to top of all output fields for better LLM response structure
 3. **Data Preprocessing Pipeline**: Added conversion layer that optimizes data for LLM calls while maintaining full context internally
 4. **Simplified Factor Selection**: Preprocesses `CategoryFactor` objects to `FactorDescription` format for efficient DSPy calls
-5. **Reduced Token Usage**: Factor selection now sends minimal required data (names + descriptions) instead of full factor information with examples
-6. **Maintained Functionality**: All preprocessing is transparent - system still has access to full factor data for scoring phase
-7. **Better Performance**: Optimized data structures and algorithms for better efficiency
-8. **Enhanced Type Safety**: Consistent use of unified models across all modules provides better type checking and IDE support
-9. **Maintainable Codebase**: Centralized models and data preprocessing make the system easier to maintain and extend
+5. **Enhanced Factor Scoring**: Unified data input with `FactorData` objects and comprehensive critical evaluation framework
+6. **Critical Scoring Framework**: Implemented professional-grade evaluation standards with evidence-based scoring and proper score distribution
+7. **Reduced Token Usage**: Factor selection now sends minimal required data (names + descriptions) instead of full factor information with examples
+8. **Maintained Functionality**: All preprocessing is transparent - system still has access to full factor data for scoring phase
+9. **Better Performance**: Optimized data structures and algorithms for better efficiency
+10. **Enhanced Type Safety**: Consistent use of unified models across all modules provides better type checking and IDE support
+11. **Maintainable Codebase**: Centralized models and data preprocessing make the system easier to maintain and extend
+12. **Improved Score Distribution**: Critical evaluation framework designed to achieve meaningful spread across 0-5 scale with professional standards
 
-The system now provides the same functionality with cleaner, more efficient, and more maintainable code while preserving all the sophisticated bias reduction and evaluation capabilities, with the added benefit of optimized LLM interactions through strategic data preprocessing.
+The system now provides the same functionality with cleaner, more efficient, and more maintainable code while preserving all the sophisticated bias reduction and evaluation capabilities, with the added benefit of optimized LLM interactions through strategic data preprocessing and enhanced critical scoring methodology.
