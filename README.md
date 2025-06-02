@@ -32,18 +32,21 @@ The system transforms simple topics into tournament-winning jokes through struct
    ```
 
    **Alternative option:**
-   Create `secret/LLAMA_API_KEY.txt` and put your OpenRouter API key there.
+   Create `secret/LLAMA_API_KEY.txt` and put your OpenRouter API key for "meta-llama/llama-3.1-8b-instruct:free" there.
 
 5. Test the installation:
    ```bash
    python -m cli --topic "ant" --jokespace "small"
    ```
-   
+   ( Must launch it from project root i.e. .../PC_jokespace/ )
+
    This will launch a comprehensive pipeline with a joke generator that creates about 10-15 jokes and a joke judge that selects the best joke. After 1-2 minutes, you'll have a novel, witty, punny joke!
 
 ## Quick Start
 
 ### Basic Usage
+
+( Must launch these commands from project root i.e. .../PC_jokespace/ )
 
 **Generate jokes with random topic:**
 ```bash
@@ -76,6 +79,8 @@ The generator CLI supports the following arguments:
 
 ### Sample Workflows
 
+( Must launch these commands from project root i.e. .../PC_jokespace/ )
+
 **Quick Testing:**
 ```bash
 python -m cli --topic "coffee" --jokespace small
@@ -99,6 +104,8 @@ python -m cli --topic "music" --count 5 --output-dir ./music_jokes
 ## Judge System
 
 For evaluating existing joke collections, use the judge module directly:
+
+( Must launch these commands from project root i.e. .../PC_jokespace/ )
 
 ```bash
 python -m judges.cli path/to/jokes.xml

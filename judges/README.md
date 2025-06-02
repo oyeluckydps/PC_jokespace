@@ -608,6 +608,8 @@ The rating system maintains its modular architecture with specialized components
 
 ## 6. Sample Commands to Run the Module
 
+( Must launch these commands from project root i.e. .../PC_jokespace/ )
+
 *   **Run a full evaluation (rating + tournament) on `temp/100_jokes_dataset.xml`, process 15 jokes per batch, and advance top 10 to tournament:**
     ```bash
     python -m judges.cli temp/100_jokes_dataset.xml --batch-size 15 --top-count 10

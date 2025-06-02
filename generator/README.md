@@ -554,21 +554,23 @@ This approach ensures comprehensive exploration of the comedic possibility space
 
 ### 6.1 Basic Usage Commands
 
+( Must launch these commands from project root i.e. .../PC_jokespace/ )
+
 *   **Generate jokes with random topic and default settings:**
     ```bash
-    python -m generators
+    python -m generator.cli
     ```
     *Expected Output*: 1 top joke from ~240 generated, ~30-60 seconds processing time
 
 *   **Generate jokes for specific topic:**
     ```bash
-    python -m generators "pizza"
+    python -m generator.cli "pizza"
     ```
     *Expected Output*: Pizza-themed joke with generation metrics
 
 *   **Generate multiple jokes for immediate review:**
     ```bash
-    python -m generators "cat" --joke-count 5
+    python -m generator.cli "cat" --joke-count 5
     ```
     *Expected Output*: Top 5 cat-themed jokes with diversity metrics
 
@@ -576,19 +578,19 @@ This approach ensures comprehensive exploration of the comedic possibility space
 
 *   **Large-scale jokespace exploration:**
     ```bash
-    python -m generators "technology" --joke-count 20
+    python -m generator.cli "technology" --joke-count 20
     ```
     *Expected Output*: 20 technology jokes from ~240 generated, comprehensive coverage analysis
 
 *   **Topic with high category-factor potential:**
     ```bash
-    python -m generators "doctor" --joke-count 10
+    python -m generator.cli "doctor" --joke-count 10
     ```
     *Expected Output*: Medical humor across multiple categories (wordplay, observational, dark humor)
 
 *   **Abstract concept generation:**
     ```bash
-    python -m generators "time" --joke-count 15
+    python -m generator.cli "time" --joke-count 15
     ```
     *Expected Output*: Time-based humor with philosophical and practical approaches
 
@@ -596,19 +598,19 @@ This approach ensures comprehensive exploration of the comedic possibility space
 
 *   **Development mode with detailed logging:**
     ```bash
-    python -m generators "elephant" --output-dir ./debug_logs --retries 2
+    python -m generator.cli "elephant" --output-dir ./debug_logs --retries 2
     ```
     *Expected Output*: Elephant jokes with comprehensive XML logs in debug_logs directory
 
 *   **Production mode with maximum reliability:**
     ```bash
-    python -m generators "coffee" --retries 5 --joke-count 3
+    python -m generator.cli "coffee" --retries 5 --joke-count 3
     ```
     *Expected Output*: 3 coffee jokes with enhanced retry logic for reliability
 
 *   **Judge integration for quality assessment:**
     ```bash
-    python -m generators "dog" --judge-integration
+    python -m generator.cli "dog" --judge-integration
     ```
     *Expected Output*: Dog joke evaluated through comprehensive judging system
 
@@ -616,13 +618,13 @@ This approach ensures comprehensive exploration of the comedic possibility space
 
 *   **Custom output directory:**
     ```bash
-    python -m generators "music" --output-dir ./music_jokes_analysis
+    python -m generator.cli "music" --output-dir ./music_jokes_analysis
     ```
     *Expected Output*: Music jokes with logs saved to specified directory
 
 *   **Comprehensive analysis with custom settings:**
     ```bash
-    python -m generators "food" --joke-count 12 --output-dir ./food_humor --retries 3
+    python -m generator.cli "food" --joke-count 12 --output-dir ./food_humor --retries 3
     ```
     *Expected Output*: 12 food jokes with detailed analysis in food_humor directory
 
@@ -630,19 +632,19 @@ This approach ensures comprehensive exploration of the comedic possibility space
 
 *   **Quick generation test:**
     ```bash
-    python -m generators "test" --joke-count 1 --retries 1
+    python -m generator.cli "test" --joke-count 1 --retries 1
     ```
     *Expected Output*: Single test joke with minimal processing time
 
 *   **Comprehensive generation with all features:**
     ```bash
-    python -m generators "travel" --joke-count 25 --output-dir ./travel_analysis --judge-integration --retries 4
+    python -m generator.cli "travel" --joke-count 25 --output-dir ./travel_analysis --judge-integration --retries 4
     ```
     *Expected Output*: 25 travel jokes with judge evaluation and comprehensive logging
 
 *   **Random topic with medium jokespace:**
     ```bash
-    python -m generators --joke-count 8 --retries 3
+    python -m generator.cli --joke-count 8 --retries 3
     ```
     *Expected Output*: 8 jokes from random topic with robust error handling
 
@@ -655,28 +657,33 @@ This approach ensures comprehensive exploration of the comedic possibility space
     *Expected Output*: 3 robot jokes via programmatic API
 
 *   **Judge integration with custom output:**
+
+    ( Must launch these commands from project root i.e. .../PC_jokespace/ )
+
     ```bash
-    python -m generators "science" --joke-count 6 --judge-integration --output-dir ./science_evaluation
+    python -m generator.cli "science" --joke-count 6 --judge-integration --output-dir ./science_evaluation
     ```
     *Expected Output*: 6 science jokes with judge evaluation and detailed analysis logs
 
 ### 6.7 Advanced Configuration Commands
 
+    ( Must launch these commands from project root i.e. .../PC_jokespace/ )
+
 *   **Maximum jokespace exploration:**
     ```bash
-    python -m generators "animal" --joke-count 30 --retries 6 --output-dir ./comprehensive_animal_humor
+    python -m generator.cli "animal" --joke-count 30 --retries 6 --output-dir ./comprehensive_animal_humor
     ```
     *Expected Output*: 30 animal jokes with maximum generation coverage and reliability
 
 *   **Minimal processing for rapid iteration:**
     ```bash
-    python -m generators "book" --joke-count 2 --retries 0
+    python -m generator.cli "book" --joke-count 2 --retries 0
     ```
     *Expected Output*: 2 book jokes with minimal retry overhead
 
 *   **Complete pipeline demonstration:**
     ```bash
-    python -m generators "weather" --joke-count 15 --judge-integration --output-dir ./weather_demo --retries 4
+    python -m generator.cli "weather" --joke-count 15 --judge-integration --output-dir ./weather_demo --retries 4
     ```
     *Expected Output*: 15 weather jokes with full pipeline processing and comprehensive documentation
 
