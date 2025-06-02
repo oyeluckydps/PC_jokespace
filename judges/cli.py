@@ -63,7 +63,7 @@ async def evaluate_jokes_programmatic(
         return winner
 
 def main():
-    """Entry point for: python -m judges <jokes_file.xml> [options]"""
+    """Entry point for: python -m judges.cli <jokes_file.xml> [options]"""
     args = parse_arguments()
     
     # Run the evaluation
@@ -102,8 +102,9 @@ def main():
 def parse_arguments():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(
-        description="LLM-based joke evaluation system",
-        usage="python -m judges <jokes_file.xml> [options]"
+        description="Joke Judging System using LLMs. Evaluates jokes from an XML file, rates them, and optionally runs a tournament.",
+        formatter_class=argparse.RawTextHelpFormatter,
+        usage="python -m judges.cli <jokes_file.xml> [options]"
     )
     
     # Required positional argument

@@ -266,7 +266,7 @@ The Duel Judge focuses on bias mitigation and robust comparison:
     *   **Function `display_rating_only_results(top_jokes)`**: Prints the top-rated jokes to the console in rating-only mode.
     *   **Function `display_progress(current_joke, total_jokes, status)`**: (Currently seems unused directly by `cli.py` but intended for progress, handled by `BatchProcessor`).
     *   **Function `display_final_results(winner_id, winner_text, log_dir)`**: Prints the final tournament winner and log directory.
-    *   **Usage**: Executed when running `python -m judges ...` or imported for programmatic use.
+    *   **Usage**: Executed when running `python -m judges.cli ...` or imported for programmatic use.
 
 *   **`dspy_signatures.py`**:
     *   **Description**: **ENHANCED** - Defines the DSPy signatures for various LLM interactions with enhanced prompting structures, optimized data flow, and **bias-free duel comparison**.
@@ -610,72 +610,72 @@ The rating system maintains its modular architecture with specialized components
 
 *   **Run a full evaluation (rating + tournament) on `temp/100_jokes_dataset.xml`, process 15 jokes per batch, and advance top 10 to tournament:**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --batch-size 15 --top-count 10
+    python -m judges.cli temp/100_jokes_dataset.xml --batch-size 15 --top-count 10
     ```
 
 *   **Run a rating-only evaluation on `temp/sample_jokes.xml`, process 5 jokes per batch, and show top 3 rated jokes:**
     ```bash
-    python -m judges temp/sample_jokes.xml --batch-size 5 --top-count 3 --rating-only
+    python -m judges.cli temp/sample_jokes.xml --batch-size 5 --top-count 3 --rating-only
     ```
 
 *   **Run a full evaluation with default batch size (20) and top count (20), but bypass the DSPy cache and set LLM call retries to 3:**
     ```bash
-    python -m judges temp/another_jokes_file.xml --bypass-cache --retries 3
+    python -m judges.cli temp/another_jokes_file.xml --bypass-cache --retries 3
     ```
 
 *   **Run with minimal arguments (will use defaults for batch size and top count for tournament):**
     ```bash
-    python -m judges temp/short_jokes_list.xml
+    python -m judges.cli temp/short_jokes_list.xml
     ```
 
 *   **Bypass cache for fresh evaluation (useful when testing prompt changes):**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --bypass-cache
+    python -m judges.cli temp/100_jokes_dataset.xml --bypass-cache
     ```
 
 *   **Run rating-only mode to quickly see top jokes without tournament:**
     ```bash
-    python -m judges temp/sample_jokes.xml --rating-only
+    python -m judges.cli temp/sample_jokes.xml --rating-only
     ```
 
 *   **Disable retries for faster failure detection during development:**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --retries 0
+    python -m judges.cli temp/100_jokes_dataset.xml --retries 0
     ```
 
 *   **Combine rating-only with custom top count to see best 30 jokes:**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --rating-only --top-count 30
+    python -m judges.cli temp/100_jokes_dataset.xml --rating-only --top-count 30
     ```
 
 *   **Fresh evaluation with increased retries for unstable connections:**
     ```bash
-    python -m judges temp/sample_jokes.xml --bypass-cache --retries 10
+    python -m judges.cli temp/sample_jokes.xml --bypass-cache --retries 10
     ```
 
 *   **Quick test run: rating-only, no cache, minimal retries:**
     ```bash
-    python -m judges temp/sample_jokes.xml --rating-only --bypass-cache --retries 1
+    python -m judges.cli temp/sample_jokes.xml --rating-only --bypass-cache --retries 1
     ```
 
 *   **Full tournament with cache bypass and larger batches:**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --bypass-cache --batch-size 40 --top-count 16
+    python -m judges.cli temp/100_jokes_dataset.xml --bypass-cache --batch-size 40 --top-count 16
     ```
 
 *   **Production run: increased retries, top 32 for 5-round tournament:**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --retries 8 --top-count 32
+    python -m judges.cli temp/100_jokes_dataset.xml --retries 8 --top-count 32
     ```
 
 *   **Debug mode: no retries, bypass cache, small tournament:**
     ```bash
-    python -m judges temp/sample_jokes.xml --retries 0 --bypass-cache --top-count 8
+    python -m judges.cli temp/sample_jokes.xml --retries 0 --bypass-cache --top-count 8
     ```
 
 *   **Complete fresh evaluation with all parameters customized:**
     ```bash
-    python -m judges temp/100_jokes_dataset.xml --batch-size 25 --top-count 20 --bypass-cache --rating-only --retries 3
+    python -m judges.cli temp/100_jokes_dataset.xml --batch-size 25 --top-count 20 --bypass-cache --rating-only --retries 3
     ```
 
 ## 7. Key Architectural Improvements Summary
