@@ -1,5 +1,57 @@
 # Updated Joke Judging System: Post-Code Summary
 
+## Table of Contents
+
+1. **Overall Motive and System Design**
+   
+   1.1 Literature Foundation and Research Basis
+   
+   1.2 System Architecture Overview
+
+2. **Design of the Judges**
+   
+   2.1 Rating Judge
+   
+   2.2 Duel Judge
+
+3. **File Descriptions**
+   
+   3.1 `judges/` Directory
+   
+   3.2 `utilities/` Directory
+
+4. **Complete Pipeline and Code Flow**
+
+5. **Enhanced Features and Improvements**
+   
+   5.1 Unified Data Models Architecture
+   
+   5.2 Simplified and Optimized Code Architecture
+   
+   5.3 Enhanced DSPy Call Efficiency
+   
+   5.4 Modular Architecture with Specialized Components
+   
+   5.5 Advanced Bias Reduction and Research-Based Improvements
+   
+   5.6 Enhanced Duel Judge with Research-Based Improvements
+   
+   5.7 Data Structure and Type Safety Improvements
+   
+   5.8 Enhanced Critical Scoring Framework
+
+6. **Sample Commands to Run the Module**
+
+7. **Key Architectural Improvements Summary**
+
+8. **Future Enhancements and Research Directions**
+   
+   8.1 Planned System Improvements
+   
+   8.2 Advanced Bias Mitigation Research
+   
+   8.3 Advanced Pipeline Extensions
+
 ## 1. Overall Motive and System Design
 
 ### 1.1 Literature Foundation and Research Basis
