@@ -14,7 +14,7 @@ from judges.factor_selector import FactorSelector
 from judges.factor_scorer import FactorScorer
 
 # File-wide variable for timing logs
-LOG_TIME = True
+LOG_TIME = False
 
 
 class RatingJudge:
