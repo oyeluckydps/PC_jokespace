@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rating_results timestamp="2025-06-09 11:25:44" total_jokes="26">
+    <joke id="1" rank="17">
+        <text>What do you call it when the Clown Emperor's new clothes are just his birthday suit? A Bare-Faced Lie!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through wordplay and irony. The pun on &quot;bare-faced lie&quot; and the reference to the Clown Emperor's &quot;birthday suit&quot; demonstrate comedic intent, even if the execution is not particularly sophisticated. This meets the criteria for passing the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call it when the Clown Emperor's new clothes are just his birthday suit?&quot;) and a punchline/conclusion (&quot;A Bare-Faced Lie!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the classic &quot;emperor's new clothes&quot; story in a lighthearted way, without promoting hate, violence, or extreme harm. While the subject matter is a bit irreverent, it does not cross the line into unacceptable content.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the common idiom &quot;bare-faced lie&quot; and applies it to the situation of the emperor's new clothes being his birthday suit. This creates an internally consistent and logically coherent punchline that connects the setup and the twist. The humor comes from the absurdity of the situation, but the logic holds together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;bare-faced lie&quot; is clear, and the reference to the Clown Emperor's new clothes is a well-known story that most people would recognize. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Pop Culture / Celebrity</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="2" rank="8">
+        <text>The Clown Emperor's 'invisible' outfit is the ultimate court jester prank - the Naked Truth!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of wordplay and irony. The reference to the &quot;Clown Emperor's 'invisible' outfit&quot; and the &quot;Naked Truth&quot; punchline demonstrate an attempt at humor, even if the execution is not particularly sophisticated. This meets the criteria for passing the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Clown Emperor's 'invisible' outfit&quot;) and a conclusion/punchline (&quot;the Naked Truth!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not appear to contain any extremely harmful or offensive content. While the subject matter involves a political figure, the joke is not promoting hate, violence, or extreme harm. The humor, while potentially controversial, falls within the realm of acceptable political satire and edgy comedy.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence, even if the premise is absurd and surreal. The &quot;invisible outfit&quot; and &quot;court jester prank&quot; establish a coherent narrative thread, even if the specifics are nonsensical. This type of abstract, absurdist humor can still be considered logically coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It references the well-known story of the Emperor's New Clothes, using the &quot;invisible outfit&quot; as a metaphor for a court jester prank. The punchline &quot;the Naked Truth!&quot; clearly conveys the humorous twist. This joke does not have any obvious barriers to understanding.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+        <factors>
+            <factor name="Structural Playfulness" score="4"/>
+            <factor name="Humor Awareness" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Controlled Nonsense" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.75" overall_rating="3.71"/>
+    </joke>
+    <joke id="3" rank="4">
+        <text>When the Clown Emperor's 'magnificent' new robes turn out to be his birthday suit, that's a Clown Without Makeup!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a play on words and a comedic setup/punchline structure. There is a clear comedic intent, even if the execution is not particularly sophisticated.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;When the Clown Emperor's 'magnificent' new robes turn out to be his birthday suit&quot;) and a punchline/conclusion (&quot;that's a Clown Without Makeup!&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke makes a humorous reference to the classic &quot;Emperor's New Clothes&quot; story, using the concept of a &quot;Clown Emperor&quot; to create a pun. While the subject matter involves nudity and political satire, it does not appear to promote hate, violence, or extreme harm. The humor, while edgy, is not excessively offensive.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence. The premise of a &quot;Clown Emperor&quot; wearing no clothes is an absurd but intentional setup for the punchline of a &quot;Clown Without Makeup&quot;. This surreal, non-sequitur humor is logically consistent within the context of the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It makes a clear reference to the &quot;Clown Emperor&quot; and his &quot;magnificent new robes&quot;, which is a clear allusion to the classic fairy tale &quot;The Emperor's New Clothes&quot;. The punchline about the Clown Emperor's &quot;birthday suit&quot; is also straightforward and easy to comprehend. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Satirical</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Topical Relevance" score="4"/>
+            <factor name="Sharp Commentary" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.73"/>
+    </joke>
+    <joke id="4" rank="3">
+        <text>The Clown Emperor's 'stunning' new wardrobe is simply his birthday suit - a Fool's Gold Outfit!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of wordplay and irony. The reference to the &quot;Clown Emperor's 'stunning' new wardrobe&quot; being &quot;simply his birthday suit - a Fool's Gold Outfit!&quot; is a humorous play on the classic fairy tale of the Emperor's New Clothes. This demonstrates an attempt at humor, even if the joke may not land perfectly.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Clown Emperor's 'stunning' new wardrobe&quot;) and a punchline/conclusion (&quot;is simply his birthday suit - a Fool's Gold Outfit!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke makes a humorous reference to the &quot;Emperor's New Clothes&quot; story, using the image of a clown in the nude as a &quot;Fool's Gold Outfit&quot;. While the subject matter is somewhat irreverent, it does not appear to promote hate, violence, or extreme harm. The joke is in line with the guidelines for liberal evaluation of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence. It plays on the idea of a &quot;Fool's Gold Outfit&quot; as a metaphor for the emperor's birthday suit, which is a coherent and intentional absurdist joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It makes a clear reference to the &quot;Emperor's new clothes&quot; story, using wordplay and a metaphor to create a humorous image. While the joke may require some familiarity with the original story, the core meaning is clear and easy to grasp.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>One-liners</category>
+            <category>Satirical</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="3"/>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Punch Impact" score="5"/>
+        </factors>
+        <scores max_score="5" mean_score="3.67" overall_rating="4.52"/>
+    </joke>
+    <joke id="5" rank="18">
+        <text>What do you call it when the Clown Emperor parades around in the nude? A Royal Flush!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor, with the pun on &quot;Royal Flush&quot; being a comedic play on words. While the joke may not be particularly sophisticated or well-executed, there is an evident intent to be humorous.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call it when the Clown Emperor parades around in the nude?&quot;) and a punchline (&quot;A Royal Flush!&quot;). This meets the basic criteria for a complete joke structure, even if the joke itself is simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains a mildly risque pun about a clown emperor parading nude, which could be considered inappropriate for some audiences. However, it does not appear to promote hate, violence, or extreme harm. The content is edgy but not extremely offensive.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the &quot;Clown Emperor&quot; and the &quot;Royal Flush&quot; punchline, even if the premise is absurd and surreal. The internal logic holds together coherently.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It uses a simple pun on the phrase &quot;royal flush&quot; to make a humorous connection between a clown emperor and nudity. The joke is straightforward and does not require specialized knowledge to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Politics</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="6" rank="19">
+        <text>Why did the Clown Emperor's court jesters quit? They couldn't keep a straight face when the Clown Emperor tried to pass a 'Whoopee Cushion Tax'.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of wordplay and irony. The premise of court jesters quitting due to the Clown Emperor's attempt to tax whoopee cushions sets up a humorous situation. While the joke may not be the most sophisticated, it does demonstrate an attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (why the court jesters quit) and a punchline (they couldn't keep a straight face when the Clown Emperor tried to pass a 'Whoopee Cushion Tax'). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely harmful or promotes hate, violence, or extreme harm. While the joke makes fun of a &quot;Clown Emperor&quot;, this is likely a satirical commentary rather than direct hate speech. The humor, while edgy, does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the court jesters quit because they couldn't keep a straight face when the Clown Emperor tried to pass a &quot;Whoopee Cushion Tax&quot;. This establishes an internally consistent narrative, even if the premise is absurd and surreal. The joke has a coherent structure and flow.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The premise of court jesters quitting due to the Clown Emperor's tax on whoopee cushions is clear and easy to follow, even if the specific cultural references may not be familiar to all readers. The language used is straightforward and the joke structure is simple.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Non-sequiturs</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Anti-jokes</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="7" rank="12">
+        <text>The Clown Emperor's court jesters resigned en masse after he made them the official court 'pie-in-the-face' tasters. The job hazards were just too high.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>This joke has clear comedic intent, with a humorous premise involving court jesters resigning due to the hazardous job of being &quot;pie-in-the-face&quot; tasters. There is an attempt at wordplay and irony that suggests a comedic structure, even if the execution is not particularly sophisticated.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (the Clown Emperor's court jesters resigning) and a conclusion (the job hazards being too high). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that promotes hate, violence, or extreme harm. While the subject matter involves clowns and potential physical harm, the overall tone is lighthearted and not intended to be seriously offensive. This falls within the bounds of acceptable dark or edgy humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the court jesters resigned due to the high job hazards of being the official &quot;pie-in-the-face&quot; tasters for the Clown Emperor. This establishes an internally consistent premise and narrative, even if the situation is absurd and surreal. There are no obvious logical contradictions or incoherence.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious violations that would make it impossible to comprehend. The premise of court jesters resigning due to the hazardous job of being &quot;pie-in-the-face&quot; tasters is clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Workplace</category>
+            <category>One-liners</category>
+            <category>Memes</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="3"/>
+            <factor name="Sarcastic Tone" score="4"/>
+            <factor name="Relatability" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.69"/>
+    </joke>
+    <joke id="8" rank="16">
+        <text>The Clown Emperor's court jesters quit because they refused to be the only ones in the kingdom not allowed to wear oversized shoes and red noses.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through the premise of court jesters quitting due to not being allowed to wear the traditional clown attire. This sets up a comedic situation and plays on the expectations around court jesters. While the execution may not be the strongest, there is a clear intent to be humorous.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (the Clown Emperor's court jesters quitting) and a conclusion (the reason being that they were not allowed to wear oversized shoes and red noses). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that promotes hate, violence, or extreme harm. It is a lighthearted play on the common tropes associated with court jesters and their attire. While the humor may be considered edgy or dark, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread, even if the premise is absurd and surreal. The court jesters quitting because they were not allowed to wear the traditional clown attire of oversized shoes and red noses is an internally consistent and coherent joke premise.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious accessibility issues. The premise of court jesters quitting due to not being allowed to wear traditional clown attire is clear and coherent.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="3"/>
+            <factor name="Controlled Nonsense" score="3"/>
+        </factors>
+        <scores max_score="3" mean_score="3.00" overall_rating="2.78"/>
+    </joke>
+    <joke id="9" rank="6">
+        <text>As the Clown Emperor took the throne, his oversized shoes squeaked with each step, and the crown kept sliding down over his bulbous red nose. The court jesters juggled flaming batons, nearly setting the royal robes ablaze during the coronation ceremony.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The description of the clown emperor and the court jesters juggling flaming batons suggests an attempt at humorous, absurdist imagery. There appears to be a clear comedic intent, even if the execution may not be perfect.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup (the description of the clown emperor and the coronation ceremony) and a conclusion (the court jesters nearly setting the royal robes ablaze). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely harmful or promoting hate, violence, or extreme harm. While the description of the clown emperor and court jesters may be somewhat silly or absurd, it does not cross the line into offensive territory. This appears to be a lighthearted, humorous depiction of a coronation ceremony.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke text presents a coherent narrative sequence, with the clown emperor taking the throne and the court jesters performing during the coronation ceremony. While the details are absurd and surreal, there is a logical progression of events that makes the overall story coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text describes a humorous coronation scene with a clumsy clown emperor and court jesters. The imagery and details are clear and understandable, even if the specific cultural references or context are not known. There are no obvious barriers to comprehension.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Pop Culture / Celebrity</category>
+            <category>Satirical</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Exaggeration" score="4"/>
+            <factor name="Expectation Subversion" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.72"/>
+    </joke>
+    <joke id="10" rank="20">
+        <text>The Clown Emperor's coronation was a riot of color and chaos. Confetti cannons blasted streamers everywhere as he tripped over his comically large scepter, finally plopping down on the throne with a loud honk from his rubber nose.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The description of the clown emperor's comical coronation ceremony, with details like the confetti cannons, the emperor tripping over his scepter, and the loud honk from his rubber nose, clearly demonstrates an attempt at humor and comedic intent. Even though the joke may not be the most sophisticated or well-executed, there is a clear effort to create a humorous scenario.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup describing the clown emperor's coronation, and a conclusion where the emperor trips and plops down on the throne with a honk. This structure is complete enough to be considered a full joke, even if the punchline is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. While the humor is somewhat absurd and irreverent, it does not cross the line into unacceptably offensive territory. The description of the clown emperor's coronation, while silly and chaotic, is not promoting anything harmful.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear narrative flow, with the clown emperor's coronation ceremony described in a coherent sequence of events. While the details are absurd and surreal, there is an internal logical consistency to the joke that makes it coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text describes a humorous scene involving a clown emperor's coronation, with vivid details that are easy to visualize. The language is straightforward and the overall meaning is clear, even if some readers may not be familiar with the specific cultural references. This should be accessible to a wide audience.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Politics</category>
+            <category>Pop Culture / Celebrity</category>
+            <category>Parody / Spoof</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="11" rank="1">
+        <text>With a final flourish, the Clown Emperor's court jester placed the oversized crown atop his head, only for it to slip down and cover the emperor's entire face. Undeterred, the new ruler simply began juggling the royal orb and scepter, to the delight of the cheering crowd.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The text describes a humorous situation involving a clown emperor and his court jester, with comedic elements like the oversized crown slipping over the emperor's face and the emperor juggling royal objects. This demonstrates clear comedic intent, even if the joke itself may not be particularly sophisticated or well-executed.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup (the clown emperor's court jester placing an oversized crown on the emperor's head) and a conclusion (the emperor juggling the royal orb and scepter to the delight of the crowd). This structure is complete enough to be considered a full joke, even if the punchline or resolution is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that promotes hate, violence, or extreme harm. It is a lighthearted story about a clumsy court jester entertaining the crowd. While the humor may be considered somewhat silly or absurd, it does not cross the line into inappropriate or offensive territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear narrative flow and internal logic, even if the events are absurd and surreal. The clown emperor placing the oversized crown on his head, then juggling the royal orb and scepter, creates a coherent sequence of actions that makes sense within the context of the joke. There are no obvious contradictions or illogical leaps.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text describes a humorous situation involving a clown emperor and his court jester, which is understandable and accessible to most readers. There are no obvious barriers to comprehension.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Shaggy dog stories</category>
+            <category>Parody / Spoof</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Logical Pivot" score="4"/>
+            <factor name="Expectation Subversion" score="4"/>
+            <factor name="Style Mimicry" score="4"/>
+            <factor name="Recognition Factor" score="5"/>
+            <factor name="Exaggeration" score="4"/>
+        </factors>
+        <scores max_score="5" mean_score="4.14" overall_rating="4.63"/>
+    </joke>
+    <joke id="12" rank="13">
+        <text>By royal decree of the Clown Emperor, all court jesters must now wear rainbow wigs and squirt flowers at visitors. Laughter is mandatory, or off with their heads!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>This joke has clear comedic intent, with the absurd premise of a &quot;Clown Emperor&quot; decreeing mandatory laughter and the threat of beheading. The exaggerated language and fantastical scenario create a humorous tone. Even though the joke may not be the most sophisticated, it demonstrates an attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;By royal decree of the Clown Emperor...&quot;) and a conclusion (&quot;Laughter is mandatory, or off with their heads!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely harmful or promoting hate, violence, or extreme harm. It is an absurdist, whimsical premise about court jesters being required to wear silly costumes and make people laugh, with a lighthearted reference to the &quot;off with their heads&quot; trope. While the humor may not appeal to everyone, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents an absurd and surreal scenario involving court jesters, mandatory laughter, and the threat of decapitation. While the premise is highly exaggerated and fantastical, there is an internal logical consistency to the joke. The decree from the &quot;Clown Emperor&quot; sets up the premise, and the actions of the court jesters (wearing rainbow wigs, squirting flowers) along with the consequences for not laughing follow from this premise in a coherent manner, even if the overall scenario is highly improbable.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The premise of a &quot;Clown Emperor&quot; decreeing mandatory laughter is clear, and the imagery of court jesters wearing rainbow wigs and squirting flowers is accessible. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Malapropisms</category>
+            <category>Non-sequiturs</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Workplace</category>
+            <category>Wholesome / Clean humor</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Surprise Value" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.33" overall_rating="3.66"/>
+    </joke>
+    <joke id="13" rank="21">
+        <text>The Clown Emperor has declared that the national anthem shall be performed to the tune of 'Pop Goes the Weasel' from this day forth. All subjects must clap along or face public pie-throwing.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text presents a humorous scenario involving a fictional &quot;Clown Emperor&quot; who declares a silly change to the national anthem. This sets up an absurd and exaggerated situation that has clear comedic intent, even if the execution is not particularly sophisticated. The text contains elements of satire, irony, and wordplay that demonstrate an attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup (the Clown Emperor declaring a new national anthem) and a conclusion (subjects must clap along or face pie-throwing). This structure is complete enough to be considered a full joke, even if the content is somewhat absurd or silly.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not appear to promote hate, violence, or extreme harm. While the premise of a &quot;Clown Emperor&quot; and mandatory clapping/pie-throwing may be seen as absurd or satirical, it does not cross the line into extremely offensive content. This can be considered an acceptable form of political/social commentary through humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents an internally consistent and coherent premise - the Clown Emperor has declared a new national anthem and subjects must clap along or face punishment. While the scenario is absurd and surreal, the logic within the joke holds together. There are no obvious contradictions or incoherent elements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text describes a hypothetical scenario where the national anthem is changed to a silly tune, and subjects must clap along or face punishment. This is a fairly straightforward premise that should be understandable to most readers, even if they are not familiar with the specific cultural references. The language used is clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Politics</category>
+            <category>Parody / Spoof</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="14" rank="9">
+        <text>Hear ye, hear ye! The Clown Emperor has ordered that all royal banquets shall feature only custard pies and seltzer water. Failure to comply will result in a court jester tickle torture session.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of exaggerated and absurd elements like the &quot;Clown Emperor&quot; ordering custard pies and seltzer water at royal banquets, with the threat of &quot;court jester tickle torture&quot; for non-compliance. This establishes a humorous, farcical premise that aligns with the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup (&quot;The Clown Emperor has ordered...&quot;) and a conclusion (&quot;Failure to comply will result in a court jester tickle torture session.&quot;). The joke structure is complete, even if the content is somewhat absurd.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. While the premise of a &quot;Clown Emperor&quot; ordering custard pie banquets and threatening &quot;court jester tickle torture&quot; is absurd and silly, it does not cross the line into extremely offensive material. The humor, while somewhat dark, is not promoting anything unethical or dangerous.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent, if absurd, scenario involving a &quot;Clown Emperor&quot; who has issued a decree about the food and drink to be served at royal banquets. While the premise is silly and surreal, there is an internal logical consistency to the joke that makes it coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious barriers to accessibility. The premise of a &quot;Clown Emperor&quot; ordering silly food and punishments is clear, and the language used is straightforward. While the humor may be niche or specialized, it is still accessible to the average reader.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>One-liners</category>
+            <category>Deadpan delivery</category>
+            <category>Satirical</category>
+            <category>Parody / Spoof</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="15" rank="22">
+        <text>You won't believe the Clown Emperor's latest royal accessory - a scepter that squirts confetti with every regal wave!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of humorous imagery and wordplay. The idea of a &quot;Clown Emperor&quot; wielding a confetti-spraying scepter has an inherent absurdist and whimsical quality that suggests an attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (the description of the Clown Emperor's royal accessory) and a conclusion (the punchline about the scepter squirting confetti). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not appear to contain any extremely harmful or offensive content. While it pokes fun at a &quot;Clown Emperor&quot;, this seems to be more of a lighthearted jab rather than promoting hate or violence. The joke is in line with the guidelines for a liberal evaluation of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent, if absurd, scenario of a &quot;Clown Emperor&quot; wielding a scepter that squirts confetti. While the premise is surreal, there is an internal logical consistency to the joke that makes it coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even without any specialized knowledge. The concept of a clown emperor with a confetti-squirting scepter is clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Non-sequiturs</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Politics</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="16" rank="5">
+        <text>The Clown Emperor's new crown is a towering masterpiece of colorful wigs, squeaky horns, and flashing disco lights. All hail his majesty!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The text contains clear comedic intent through the exaggerated and absurd description of the Clown Emperor's crown. There is an attempt at humor through the use of vivid imagery and the ironic tone. Even though the joke may not be particularly sophisticated or well-executed, it does demonstrate some level of comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup describing the Clown Emperor's new crown, and a conclusion that humorously declares &quot;All hail his majesty!&quot;. This provides a complete joke structure, even if the joke is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. It is an absurdist, whimsical description of an imaginary &quot;Clown Emperor&quot; and his crown. While the humor may be considered edgy or unconventional, it does not cross the line into unacceptable territory based on the provided instructions.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke text presents a coherent, if absurd, narrative about a clown emperor's elaborate crown. While the imagery is surreal and humorous, there is a logical thread connecting the different elements of the crown. The joke does not contain any obvious internal contradictions or incoherent statements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text describes a fantastical and colorful crown worn by a clown emperor, which is understandable and accessible to most readers. There are no obvious barriers to understanding the basic premise and imagery of the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Parody / Spoof</category>
+        </categories>
+        <factors>
+            <factor name="Style Mimicry" score="4"/>
+            <factor name="Exaggeration" score="4"/>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.73"/>
+    </joke>
+    <joke id="17" rank="7">
+        <text>Rumor has it the Clown Emperor's royal robes are made from a patchwork of polka dots, stripes, and oversized flower prints. A true fashion icon!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains an attempt at humor by describing the Clown Emperor's outlandish fashion choices in a playful, exaggerated manner. There is a clear comedic intent, even if the joke itself may not be particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup describing the rumor about the Clown Emperor's royal robes, and a conclusion that presents this as a fashion statement. The joke structure is complete, even if the punchline is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. It is a lighthearted comment about the Clown Emperor's fashion choices, which could be considered edgy or political humor, but does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent and logically consistent premise about the Clown Emperor's royal robes being made from a patchwork of various patterns. While the imagery is absurd and surreal, it follows an intentional internal logic that aligns with the concept of a &quot;Clown Emperor&quot; and their eccentric fashion choices. There are no obvious contradictions or incoherent elements within the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. There are no obvious barriers to accessibility or understandability.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Humor Awareness" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.72"/>
+    </joke>
+    <joke id="18" rank="2">
+        <text>What do you call it when the Clown Emperor's new royal robe is actually just a giant red nose and oversized clown shoes?</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text appears to be an attempt at humor through wordplay and irony, with the idea of the clown emperor's &quot;new royal robe&quot; being just a giant red nose and oversized clown shoes. This suggests comedic intent, even if the execution is not particularly sophisticated.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup (&quot;What do you call it when...&quot;) and a conclusion that provides a humorous answer (&quot;the Clown Emperor's new royal robe is actually just a giant red nose and oversized clown shoes&quot;). This structure is complete enough to be considered a joke, even if the punchline is simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not appear to contain any extremely harmful or offensive content. It is making a humorous observation about a hypothetical situation involving a clown emperor's new clothes. While the subject matter is somewhat absurd and silly, it does not promote hate, violence, or extreme harm. This falls within the bounds of acceptable, if somewhat irreverent, humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent concept - the idea of the Clown Emperor's new royal robe actually being just a giant red nose and oversized clown shoes. This creates a logical, if absurd, visual that follows the premise of the joke. Even though the humor is surreal, the internal logic holds together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text describes a humorous situation involving a clown emperor's new royal robe being revealed as just a giant red nose and oversized clown shoes. This is a clear and understandable premise that should be accessible to most readers, even if they may not be familiar with the specific cultural context.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Parody / Spoof</category>
+        </categories>
+        <factors>
+            <factor name="Expectation Subversion" score="5"/>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Imaginative Leap" score="4"/>
+        </factors>
+        <scores max_score="5" mean_score="4.00" overall_rating="4.55"/>
+    </joke>
+    <joke id="19" rank="10">
+        <text>You won't believe the Clown Emperor's latest addition to his royal wardrobe - a wig made of rainbow-colored wigs!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains an absurd and exaggerated premise about a &quot;Clown Emperor&quot; wearing a wig made of rainbow-colored wigs. This setup has a clear comedic intent, playing on the idea of an extravagant and ridiculous royal fashion choice. While the execution may not be the most sophisticated, there is an evident attempt at humor through this imaginative and whimsical concept.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;You won't believe the Clown Emperor's latest addition to his royal wardrobe&quot;) and a conclusion (&quot;a wig made of rainbow-colored wigs!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not appear to contain any extremely harmful or offensive content. While it makes a humorous reference to a &quot;Clown Emperor&quot; and their wardrobe, it does not promote hate, violence, or extreme harm. The content is within the bounds of acceptable edgy or political humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a surreal and absurd image of a &quot;Clown Emperor&quot; wearing a wig made of rainbow-colored wigs. While the concept is unusual and nonsensical, it does have an internal logical consistency. The joke is playing with the idea of an extravagant, layered wig in a humorous way.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. There are no obvious barriers to accessibility.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Controlled Nonsense" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="20" rank="14">
+        <text>What do you call it when the Clown Emperor's new royal scepter is a squeaky rubber chicken?</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a humorous premise and wordplay, with the idea of a &quot;Clown Emperor&quot; having a &quot;squeaky rubber chicken&quot; as a royal scepter. This suggests an attempt at creating a comedic scenario, even if the execution is not particularly sophisticated. The intent to be humorous is present.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call it when...&quot;) and a conclusion (&quot;the Clown Emperor's new royal scepter is a squeaky rubber chicken?&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not appear to contain any extremely harmful or offensive content. While the premise of a &quot;Clown Emperor&quot; with a &quot;squeaky rubber chicken&quot; as a scepter is somewhat absurd and silly, it does not promote hate, violence, or extreme harm. This seems to be an attempt at whimsical, imaginative humor rather than anything malicious.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent and logically consistent scenario, even if it is absurd and surreal. The idea of a &quot;Clown Emperor&quot; having a &quot;squeaky rubber chicken&quot; as a royal scepter is an intentionally nonsensical and humorous image. While the premise is bizarre, it hangs together as an internally consistent joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It describes a humorous situation involving a clown emperor and a squeaky rubber chicken as a royal scepter. The language and concepts are clear and straightforward.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Non-sequiturs</category>
+            <category>Irony / Sarcasm</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Pop Culture / Celebrity</category>
+            <category>Parody / Spoof</category>
+        </categories>
+        <factors>
+            <factor name="Surprise Value" score="4"/>
+            <factor name="Controlled Nonsense" score="2"/>
+            <factor name="Imaginative Leap" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.33" overall_rating="3.66"/>
+    </joke>
+    <joke id="21" rank="23">
+        <text>Why did the Clown Emperor's court jesters quit? They couldn't stand being upstaged by the Clown Emperor's non-stop pratfalls and pie-throwing antics during the royal audiences.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text demonstrates clear comedic intent through the use of humorous elements like wordplay (&quot;upstaged&quot;), irony (the court jesters quitting due to the Clown Emperor's antics), and a comedic setup and punchline structure. Even though the joke may not be the most sophisticated or well-executed, there is a clear attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (the court jesters quitting) and a conclusion (they couldn't stand being upstaged by the Clown Emperor's antics). The joke structure is complete, even if the punchline is a bit longer than a typical one-liner.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that promotes hate, violence, or extreme harm. It is a lighthearted joke about court jesters being upstaged by a clown emperor's antics, which does not cross the line into inappropriate or offensive territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the court jesters quit because they were being upstaged by the Clown Emperor's antics during royal audiences. This establishes a coherent narrative, even if the premise is absurd and humorous.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious barriers to accessibility. The premise of court jesters quitting due to the Clown Emperor's antics is clear and the language used is straightforward.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Self-referential / Meta-humor</category>
+            <category>Politics</category>
+            <category>Workplace</category>
+            <category>Parody / Spoof</category>
+            <category>Dark / Gallows humor</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="22" rank="24">
+        <text>Describe the Clown Emperor's coronation ceremony: Amidst a shower of confetti and squeaky rubber chickens, the Clown Emperor tripped up the steps to the throne, landing face-first in a giant cream pie before being crowned with a comically oversized jester's hat.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The description of the Clown Emperor's coronation ceremony contains clear comedic intent, with elements of slapstick humor, exaggeration, and absurdity. While the joke may not be the most sophisticated, there is a clear attempt at creating a humorous scenario.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup describing the Clown Emperor's coronation ceremony, and a conclusion where the emperor trips and lands in a cream pie before being crowned. This structure is complete enough to be considered a full joke, even if the punchline is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke describes a silly, slapstick coronation ceremony involving a clown emperor. While the imagery is exaggerated and humorous, it does not contain any content that would be considered extremely offensive or harmful. The joke is in line with the expectations for this type of check.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The description of the Clown Emperor's coronation ceremony has a clear internal logic and coherence, even though the events are absurd and surreal. The sequence of the Clown Emperor tripping up the steps, landing in a cream pie, and then being crowned with an oversized jester's hat follows a logical progression, albeit in a humorous and exaggerated manner. This type of abstract, non-sequitur humor can still be considered coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The description of the Clown Emperor's coronation ceremony is understandable and accessible. The imagery and slapstick elements are clear and straightforward, even if the specific context of a &quot;Clown Emperor&quot; may be unfamiliar to some. The language used is simple and easy to follow.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Deadpan delivery</category>
+            <category>Parody / Spoof</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="23" rank="15">
+        <text>Why did the Clown Emperor's court jesters quit? They refused to be the second-best clowns in the kingdom and staged a walkout, demanding to be recognized as the true masters of comedy in the imperial court.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text demonstrates clear comedic intent through the use of a humorous premise (court jesters quitting due to not being recognized as the &quot;true masters of comedy&quot;), wordplay (referring to the &quot;Clown Emperor&quot;), and an ironic twist. Even though the joke may not be particularly sophisticated or well-executed, there is a clear attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup (the reason why the court jesters quit) and a conclusion (they demanded to be recognized as the true masters of comedy). The joke structure is complete, even if the punchline is a bit complex.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely harmful or promoting hate, violence, or extreme harm. It is a lighthearted joke about court jesters staging a walkout, which falls within the realm of acceptable adult/political humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the court jesters quit because they refused to be second-best clowns in the kingdom and demanded to be recognized as the true masters of comedy. This internal logic is coherent, even if the premise is absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious barriers to accessibility. The premise of court jesters staging a walkout is clear, and the punchline about them demanding to be recognized as the &quot;true masters of comedy&quot; is coherent. There are no language, cultural, or technical barriers that would prevent most readers from understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Historical / Intellectual humor</category>
+            <category>Lawyer / Doctor / Engineer jokes</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Role Reversal or Exaggeration" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="24" rank="11">
+        <text>What do you call it when the Clown Emperor has no clothes? A royal wardrobe malfunction!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through wordplay and irony, with the &quot;royal wardrobe malfunction&quot; punchline. While the joke may not be particularly sophisticated or original, it does demonstrate comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call it when the Clown Emperor has no clothes?&quot;) and a punchline/conclusion (&quot;A royal wardrobe malfunction!&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke makes a lighthearted reference to a &quot;royal wardrobe malfunction&quot;, which is a common comedic trope. While the subject matter involves a political figure, the joke does not appear to promote hate, violence, or extreme harm. The content is within the bounds of typical edgy or political humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke makes an intentional logical connection between the idea of a &quot;royal wardrobe malfunction&quot; and the concept of the &quot;Clown Emperor&quot;, which is an absurd but coherent premise. While the humor is surreal, the internal logic of the joke is sound.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It uses a common phrase &quot;wardrobe malfunction&quot; in a humorous way to reference the Clown Emperor, which is a clear and recognizable concept. The joke is straightforward and does not require specialized knowledge to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Politics</category>
+            <category>Dark / Morbid humor</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="25" rank="25">
+        <text>The Clown Emperor's latest royal decree: All court jesters must now address him as 'Your Funniness'.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of wordplay and irony. The idea of a &quot;Clown Emperor&quot; requiring court jesters to address him as &quot;Your Funniness&quot; is inherently humorous and demonstrates an attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Clown Emperor's latest royal decree&quot;) and a conclusion (&quot;All court jesters must now address him as 'Your Funniness'&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely harmful or promoting hate, violence, or extreme harm. It is an edgy, humorous take on a ruler demanding a silly form of address. While some may find it in poor taste, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence. The premise of a &quot;Clown Emperor&quot; issuing a decree about court jesters addressing him as &quot;Your Funniness&quot; is absurd but intentionally so, creating a surreal and humorous scenario. There is a logical thread connecting the different elements of the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The concept of a clown emperor decreeing that court jesters must address him as &quot;Your Funniness&quot; is clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>One-liners</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="26" rank="26">
+        <text>What was the Clown Emperor's latest royal decree? All citizens must now wear oversized shoes and red noses to his weekly court appearances.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through the absurd premise of a &quot;Clown Emperor&quot; issuing a decree for citizens to wear oversized shoes and red noses. This sets up a comedic situation and plays on the exaggerated visual imagery associated with clowns. While the joke may not be particularly sophisticated or original, it does demonstrate an intent to be humorous.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (the Clown Emperor's decree) and a conclusion (all citizens must wear oversized shoes and red noses). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke about the Clown Emperor's decree does not appear to promote hate, violence, or extreme harm. While the premise is somewhat absurd and silly, it does not cross the line into unacceptably offensive content. The humor is more playful than malicious.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent premise of a &quot;Clown Emperor&quot; issuing a decree that citizens must wear oversized shoes and red noses to his court appearances. This establishes an internally consistent, if absurd, scenario. The humor comes from the surreal and exaggerated nature of the decree, but the logic holds together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The premise of a &quot;Clown Emperor&quot; issuing a decree about wearing oversized shoes and red noses is clear and accessible, even if the specific cultural context is not widely known. There are no obvious barriers to understanding the basic meaning of the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Politics</category>
+            <category>One-liners</category>
+            <category>Satirical</category>
+            <category>Parody / Spoof</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+</rating_results>

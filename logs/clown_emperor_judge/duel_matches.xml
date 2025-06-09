@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<duel_matches timestamp="2025-06-09 11:26:02" total_matches="19">
+    <round number="1" name="Round of 15">
+        <bye_recipient joke_id="11" reason="top_rated_no_consecutive_bye"/>
+        <match id="R1_M1">
+            <joke_a id="18" seed="2" lives_before="1"/>
+            <joke_b id="23" seed="15" lives_before="0"/>
+            <winner id="23"/>
+            <loser_advanced id="18" used_life="true"/>
+            <confidence_factor>3.80</confidence_factor>
+            <position_consistent>True</position_consistent>
+            <reasoning>Consistent decision across both position tests (levels: 3.80, 3.80)</reasoning>
+        </match>
+        <match id="R1_M2">
+            <joke_a id="4" seed="3" lives_before="0"/>
+            <joke_b id="20" seed="14" lives_before="0"/>
+            <winner id="4"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>True</position_consistent>
+            <reasoning>Consistent decision across both position tests (levels: 3.70, 3.70)</reasoning>
+        </match>
+        <match id="R1_M3">
+            <joke_a id="3" seed="4" lives_before="0"/>
+            <joke_b id="12" seed="13" lives_before="0"/>
+            <winner id="3"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.00). Using rating to break tie: A(3.73) &gt; B(3.66)</reasoning>
+        </match>
+        <match id="R1_M4">
+            <joke_a id="16" seed="5" lives_before="0"/>
+            <joke_b id="7" seed="12" lives_before="0"/>
+            <winner id="7"/>
+            <confidence_factor>3.60</confidence_factor>
+            <position_consistent>True</position_consistent>
+            <reasoning>Consistent decision across both position tests (levels: 3.70, 3.50)</reasoning>
+        </match>
+        <match id="R1_M5">
+            <joke_a id="9" seed="6" lives_before="0"/>
+            <joke_b id="24" seed="11" lives_before="0"/>
+            <winner id="9"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.10). Using rating to break tie: A(3.72) &gt; B(3.70)</reasoning>
+        </match>
+        <match id="R1_M6">
+            <joke_a id="17" seed="7" lives_before="0"/>
+            <joke_b id="19" seed="10" lives_before="0"/>
+            <winner id="17"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.00). Using rating to break tie: A(3.72) &gt; B(3.70)</reasoning>
+        </match>
+        <match id="R1_M7">
+            <joke_a id="2" seed="8" lives_before="0"/>
+            <joke_b id="14" seed="9" lives_before="0"/>
+            <winner id="2"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.00). Using rating to break tie: A(3.71) &gt; B(3.70)</reasoning>
+        </match>
+    </round>
+    <round number="2" name="Round of 9">
+        <bye_recipient joke_id="18" reason="top_rated_no_consecutive_bye"/>
+        <match id="R2_M1">
+            <joke_a id="11" seed="1" lives_before="2"/>
+            <joke_b id="23" seed="15" lives_before="0"/>
+            <winner id="11"/>
+            <confidence_factor>4.20</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent. Using BA result (higher confidence level 4.20 vs 3.70)</reasoning>
+        </match>
+        <match id="R2_M2">
+            <joke_a id="4" seed="3" lives_before="0"/>
+            <joke_b id="7" seed="12" lives_before="0"/>
+            <winner id="4"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.00). Using rating to break tie: A(4.52) &gt; B(3.69)</reasoning>
+        </match>
+        <match id="R2_M3">
+            <joke_a id="3" seed="4" lives_before="0"/>
+            <joke_b id="2" seed="8" lives_before="0"/>
+            <winner id="3"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.10). Using rating to break tie: A(3.73) &gt; B(3.71)</reasoning>
+        </match>
+        <match id="R2_M4">
+            <joke_a id="9" seed="6" lives_before="0"/>
+            <joke_b id="17" seed="7" lives_before="0"/>
+            <winner id="9"/>
+            <confidence_factor>3.75</confidence_factor>
+            <position_consistent>True</position_consistent>
+            <reasoning>Consistent decision across both position tests (levels: 3.70, 3.80)</reasoning>
+        </match>
+    </round>
+    <round number="3" name="Quarter-Final">
+        <bye_recipient joke_id="11" reason="top_rated_no_consecutive_bye"/>
+        <match id="R3_M1">
+            <joke_a id="18" seed="2" lives_before="0"/>
+            <joke_b id="9" seed="6" lives_before="0"/>
+            <winner id="18"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.10). Using rating to break tie: A(4.55) &gt; B(3.72)</reasoning>
+        </match>
+        <match id="R3_M2">
+            <joke_a id="4" seed="3" lives_before="0"/>
+            <joke_b id="3" seed="4" lives_before="0"/>
+            <winner id="4"/>
+            <confidence_factor>3.50</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.20). Using rating to break tie: A(4.52) &gt; B(3.73)</reasoning>
+        </match>
+    </round>
+    <round number="4" name="Semi-Final (with bye)">
+        <bye_recipient joke_id="18" reason="top_rated_no_consecutive_bye"/>
+        <match id="R4_M1">
+            <joke_a id="11" seed="1" lives_before="2"/>
+            <joke_b id="4" seed="3" lives_before="0"/>
+            <winner id="11"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>True</position_consistent>
+            <reasoning>Consistent decision across both position tests (levels: 3.70, 3.70)</reasoning>
+        </match>
+    </round>
+    <round number="5" name="Final">
+        <match id="R5_M1">
+            <joke_a id="11" seed="1" lives_before="2"/>
+            <joke_b id="18" seed="2" lives_before="0"/>
+            <winner id="11"/>
+            <confidence_factor>2.35</confidence_factor>
+            <position_consistent>True</position_consistent>
+            <reasoning>Consistent decision across both position tests (levels: 1.00, 3.70)</reasoning>
+        </match>
+    </round>
+</duel_matches>
