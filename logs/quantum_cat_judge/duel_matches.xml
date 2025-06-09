@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<duel_matches timestamp="2025-06-09 11:04:42" total_matches="17">
+    <round number="1" name="Round of 15">
+        <bye_recipient joke_id="111" reason="top_rated_no_consecutive_bye"/>
+        <match id="R1_M1">
+            <joke_a id="27" seed="2" lives_before="1"/>
+            <joke_b id="79" seed="15" lives_before="0"/>
+            <winner id="27"/>
+            <confidence_factor>4.20</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent. Using BA result (higher confidence level 4.20 vs 3.70)</reasoning>
+        </match>
+        <match id="R1_M2">
+            <joke_a id="22" seed="3" lives_before="0"/>
+            <joke_b id="67" seed="14" lives_before="0"/>
+            <winner id="22"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.20). Using rating to break tie: A(4.58) &gt; B(4.58)</reasoning>
+        </match>
+        <match id="R1_M3">
+            <joke_a id="23" seed="4" lives_before="0"/>
+            <joke_b id="63" seed="13" lives_before="0"/>
+            <winner id="23"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.00). Using rating to break tie: A(4.58) &gt; B(4.58)</reasoning>
+        </match>
+        <match id="R1_M4">
+            <joke_a id="36" seed="5" lives_before="0"/>
+            <joke_b id="11" seed="12" lives_before="0"/>
+            <winner id="36"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.00). Using rating to break tie: A(4.58) &gt; B(4.58)</reasoning>
+        </match>
+        <match id="R1_M5">
+            <joke_a id="57" seed="6" lives_before="0"/>
+            <joke_b id="97" seed="11" lives_before="0"/>
+            <winner id="57"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence and equal ratings. Using seed to break tie.</reasoning>
+        </match>
+        <match id="R1_M6">
+            <joke_a id="68" seed="7" lives_before="0"/>
+            <joke_b id="94" seed="10" lives_before="0"/>
+            <winner id="68"/>
+            <confidence_factor>3.80</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence and equal ratings. Using seed to break tie.</reasoning>
+        </match>
+        <match id="R1_M7">
+            <joke_a id="84" seed="8" lives_before="0"/>
+            <joke_b id="85" seed="9" lives_before="0"/>
+            <winner id="84"/>
+            <confidence_factor>3.80</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence and equal ratings. Using seed to break tie.</reasoning>
+        </match>
+    </round>
+    <round number="2" name="Quarter-Final">
+        <match id="R2_M1">
+            <joke_a id="111" seed="1" lives_before="2"/>
+            <joke_b id="84" seed="8" lives_before="0"/>
+            <winner id="111"/>
+            <confidence_factor>4.00</confidence_factor>
+            <position_consistent>True</position_consistent>
+            <reasoning>Consistent decision across both position tests (levels: 3.80, 4.20)</reasoning>
+        </match>
+        <match id="R2_M2">
+            <joke_a id="27" seed="2" lives_before="1"/>
+            <joke_b id="68" seed="7" lives_before="0"/>
+            <winner id="27"/>
+            <confidence_factor>4.20</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent. Using BA result (higher confidence level 4.20 vs 3.70)</reasoning>
+        </match>
+        <match id="R2_M3">
+            <joke_a id="22" seed="3" lives_before="0"/>
+            <joke_b id="57" seed="6" lives_before="0"/>
+            <winner id="22"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence and equal ratings. Using seed to break tie.</reasoning>
+        </match>
+        <match id="R2_M4">
+            <joke_a id="23" seed="4" lives_before="0"/>
+            <joke_b id="36" seed="5" lives_before="0"/>
+            <winner id="23"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence and equal ratings. Using seed to break tie.</reasoning>
+        </match>
+    </round>
+    <round number="3" name="Semi-Final">
+        <match id="R3_M1">
+            <joke_a id="111" seed="1" lives_before="2"/>
+            <joke_b id="23" seed="4" lives_before="0"/>
+            <winner id="111"/>
+            <confidence_factor>3.70</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent with close confidence (diff: 0.00). Using rating to break tie: A(4.61) &gt; B(4.58)</reasoning>
+        </match>
+        <match id="R3_M2">
+            <joke_a id="27" seed="2" lives_before="1"/>
+            <joke_b id="22" seed="3" lives_before="0"/>
+            <winner id="27"/>
+            <confidence_factor>4.20</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent. Using BA result (higher confidence level 4.20 vs 3.70)</reasoning>
+        </match>
+    </round>
+    <round number="4" name="Final">
+        <match id="R4_M1">
+            <joke_a id="111" seed="1" lives_before="2"/>
+            <joke_b id="27" seed="2" lives_before="1"/>
+            <winner id="27"/>
+            <loser_advanced id="111" used_life="true"/>
+            <confidence_factor>4.20</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent. Using AB result (higher confidence level 4.20 vs 3.70)</reasoning>
+        </match>
+    </round>
+    <round number="5" name="Final">
+        <match id="R5_M1">
+            <joke_a id="111" seed="1" lives_before="1"/>
+            <joke_b id="27" seed="2" lives_before="1"/>
+            <winner id="27"/>
+            <loser_advanced id="111" used_life="true"/>
+            <confidence_factor>4.20</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent. Using AB result (higher confidence level 4.20 vs 3.70)</reasoning>
+        </match>
+    </round>
+    <round number="6" name="Final">
+        <match id="R6_M1">
+            <joke_a id="111" seed="1" lives_before="0"/>
+            <joke_b id="27" seed="2" lives_before="1"/>
+            <winner id="27"/>
+            <confidence_factor>4.20</confidence_factor>
+            <position_consistent>False</position_consistent>
+            <reasoning>Position inconsistent. Using AB result (higher confidence level 4.20 vs 3.70)</reasoning>
+        </match>
+    </round>
+</duel_matches>

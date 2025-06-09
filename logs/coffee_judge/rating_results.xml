@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rating_results timestamp="2025-06-09 10:34:39" total_jokes="28">
+    <joke id="1" rank="4">
+        <text>What do you call someone who's so addicted to coffee, they have an IV drip of espresso? A java junkie.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the term &quot;java junkie&quot; to describe someone addicted to coffee. This demonstrates comedic intent, even if the joke itself is relatively simple or straightforward.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call someone who's so addicted to coffee, they have an IV drip of espresso?&quot;) and a punchline/conclusion (&quot;A java junkie.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. It is a lighthearted play on words about coffee addiction, which is a common and relatable topic for humor. While the term &quot;junkie&quot; could be considered edgy, in this context it is not used in a derogatory or harmful way.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the setup and punchline. Referring to someone who is addicted to coffee as a &quot;java junkie&quot; is a coherent and humorous play on words. The joke is internally consistent and follows a logical narrative.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;java junkie&quot; is a common and accessible play on words. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="2" rank="5">
+        <text>What do you call a coffee connoisseur who can't go five minutes without a caffeine fix? A bean fiend.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by playing on the term &quot;bean fiend&quot; to describe someone addicted to coffee. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee connoisseur who can't go five minutes without a caffeine fix?&quot;) and a punchline/conclusion (&quot;A bean fiend.&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. It is a play on words that pokes fun at coffee addiction in a lighthearted way. This type of edgy, adult humor is generally considered appropriate.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the setup (&quot;coffee connoisseur who can't go five minutes without a caffeine fix&quot;) and the punchline (&quot;bean fiend&quot;). The wordplay on &quot;bean&quot; and &quot;fiend&quot; creates an internally consistent humorous concept. There are no obvious logical inconsistencies.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;bean fiend&quot; is a clear and accessible play on words. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="3" rank="17">
+        <text>What do you call a coffee snob who turns their nose up at anything less than a triple-shot, venti, soy, no-foam latte? A mocha maniac.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through wordplay and a comedic setup-punchline structure. The reference to a &quot;coffee snob&quot; and the play on the term &quot;mocha maniac&quot; demonstrate an intent to be humorous, even if the joke may not land for all audiences.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call a coffee snob...&quot;) and a punchline/conclusion (&quot;A mocha maniac.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke pokes fun at coffee snobs in a lighthearted way without promoting hate, violence, or extreme harm. While the humor may be considered edgy or adult, it does not cross the line into extremely offensive content.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the setup (describing a coffee snob) and the punchline (calling them a &quot;mocha maniac&quot;). While the humor is somewhat absurd, the joke is internally coherent and follows a recognizable joke structure.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those who may not be familiar with coffee shop lingo. The punchline is clear and the overall joke is accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Misdirection</category>
+            <category>Deadpan delivery</category>
+            <category>Satirical</category>
+        </categories>
+        <factors>
+            <factor name="Contextual Contrast" score="4"/>
+            <factor name="Emotionless Execution" score="3"/>
+            <factor name="Expectation Subversion" score="3"/>
+            <factor name="Logical Pivot" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.25" overall_rating="3.67"/>
+    </joke>
+    <joke id="4" rank="6">
+        <text>What do you call someone who's so obsessed with coffee, they have a tattoo of a coffee bean on their arm? A caffeinated crusader.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the term &quot;caffeinated crusader&quot;. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or hilarious. The wordplay and ironic framing of the joke meets the criteria for passing the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call someone who's so obsessed with coffee, they have a tattoo of a coffee bean on their arm?&quot;) and a punchline/conclusion (&quot;A caffeinated crusader.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted play on words about someone's obsession with coffee. While the humor may be considered edgy or adult, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the premise (someone being obsessed with coffee) and the punchline (calling them a &quot;caffeinated crusader&quot;). While the humor is somewhat absurd, the joke has an internal coherence that makes sense.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;caffeinated crusader&quot; is clear and accessible, even for those who may not be familiar with coffee culture. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="5" rank="10">
+        <text>What do you call a coffee enthusiast who has a PhD in roasting, brewing, and tasting? A java genius.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a clear attempt at wordplay and humor by playing on the term &quot;java&quot; to refer to both coffee and a computer programming language. This demonstrates comedic intent, even if the joke may not be particularly original or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee enthusiast who has a PhD in roasting, brewing, and tasting?&quot;) and a punchline/conclusion (&quot;A java genius.&quot;). This structure is complete enough to be considered a valid joke.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted pun about a coffee enthusiast with a PhD, which is appropriate for a joke.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the double meaning of &quot;java&quot; as both coffee and the programming language. This creates a logical connection between the coffee enthusiast and the &quot;java genius&quot; title, making the joke coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke plays on the word &quot;java&quot; to make a pun about someone with expertise in coffee being a &quot;java genius&quot;. This wordplay is understandable and the joke does not require any specialized knowledge to comprehend. The language used is straightforward and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Workplace</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="3"/>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Punch Impact" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="6" rank="19">
+        <text>Why did the philosopher drink espresso? To caffeinate their existential crisis.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through the use of wordplay and an ironic juxtaposition of &quot;espresso&quot; and &quot;existential crisis&quot;. While the joke may not be particularly sophisticated or hilarious, there is a discernible comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the philosopher drink espresso?&quot;) and a conclusion that provides a punchline (&quot;To caffeinate their existential crisis.&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that promotes hate, violence, or extreme harm. It is an edgy, existential joke that plays on common philosophical themes. While the humor may not appeal to everyone, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the premise (a philosopher drinking espresso) and the punchline (to caffeinate their existential crisis). While the humor is somewhat absurdist, the joke follows an internally consistent narrative that makes sense within the context of the setup. There are no obvious logical contradictions or incoherent elements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The punchline about a philosopher drinking espresso to caffeinate their existential crisis is clear and straightforward. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Science / Math / Academia</category>
+            <category>Deadpan delivery</category>
+        </categories>
+        <factors>
+            <factor name="Contextual Awareness" score="4"/>
+            <factor name="Tone Control" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="7" rank="23">
+        <text>The philosopher ordered an espresso, hoping it would brew up some answers to life's big questions.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a pun on the word &quot;brew&quot; and the philosopher's search for answers, which suggests an attempt at comedic intent. Even though the joke may not be particularly strong or original, there is a clear effort to create a humorous situation.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (the philosopher ordering an espresso) and a conclusion (hoping it would brew up some answers to life's big questions). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely harmful or promoting hate, violence, or extreme harm. It is a lighthearted play on words about a philosopher ordering an espresso. While the humor may be considered somewhat intellectual or niche, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - a philosopher ordering an espresso in hopes of finding answers to life's big questions. While the connection between ordering coffee and philosophical contemplation is somewhat absurd, the joke maintains internal coherence and follows a clear narrative structure. There are no obvious logical inconsistencies.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. There are no obvious barriers to accessibility or comprehension.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Science / Math / Academia</category>
+            <category>Historical / Intellectual humor</category>
+            <category>Deadpan delivery</category>
+        </categories>
+        <factors>
+            <factor name="Contextual Contrast" score="3"/>
+            <factor name="Imaginative Leap" score="3"/>
+            <factor name="Interdisciplinary Play" score="3"/>
+        </factors>
+        <scores max_score="3" mean_score="3.00" overall_rating="2.80"/>
+    </joke>
+    <joke id="8" rank="11">
+        <text>Espresso in hand, the philosopher pondered the meaning of life... and whether they should order a second shot.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>This joke text contains a clear attempt at humor through the juxtaposition of a philosopher pondering the meaning of life and the mundane act of ordering a second espresso shot. There is a comedic intent present, even if the joke may not be particularly sophisticated or original.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (the philosopher pondering the meaning of life) and a conclusion (considering whether to order a second shot of espresso). This structure is complete enough to be considered a full joke, even if the punchline is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely harmful or promoting hate, violence, or extreme harm. It is a lighthearted joke about a philosopher pondering the meaning of life while drinking coffee. This type of edgy, adult humor is generally acceptable.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the philosopher is pondering the meaning of life while drinking coffee, and then considers getting a second shot. This internal consistency and flow of thought gives the joke a coherent structure, even if the subject matter is somewhat absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. There are no obvious barriers to accessibility.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Misdirection</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Workplace</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+        <factors>
+            <factor name="Tone Control" score="4"/>
+            <factor name="Contextual Awareness" score="4"/>
+            <factor name="Sarcastic Tone" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="9" rank="20">
+        <text>What do you call a coffee thief who steals from the barista? A latte larcenist!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a clear attempt at wordplay and humor by using the pun &quot;latte larcenist&quot; to describe a coffee thief. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or complex.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee thief who steals from the barista?&quot;) and a punchline/conclusion (&quot;A latte larcenist!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the pun &quot;latte larcenist&quot; which is a lighthearted play on words. It does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The joke is in line with the guidelines for liberal evaluation of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the pun between &quot;latte&quot; and &quot;larcenist&quot;, which creates a coherent and logically consistent connection between the coffee theft and the punchline. The joke follows a clear narrative structure and the punchline is a natural extension of the setup.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke plays on the wordplay between &quot;latte&quot; and &quot;larcenist&quot;, which is a common type of pun-based humor. The meaning is clear and understandable, even if the specific reference to a &quot;coffee thief&quot; and &quot;barista&quot; may require some context. Overall, the joke is accessible and easy to understand.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+            <category>Memes</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="3"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="10" rank="12">
+        <text>What do you call a coffee burglar who breaks into your home for a caffeine fix? A bean bandit!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by using the pun &quot;bean bandit&quot; to describe a coffee burglar. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee burglar who breaks into your home for a caffeine fix?&quot;) and a punchline/conclusion (&quot;A bean bandit!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the pun of &quot;bean bandit&quot; and does not contain any content that would be considered extremely offensive or harmful. It is an example of lighthearted, pun-based humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the premise (a coffee burglar breaking into a home) and the punchline (referring to the burglar as a &quot;bean bandit&quot;). While the joke relies on a pun and some absurdity, the core concept is coherent and follows a recognizable joke structure.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;bean bandit&quot; is a clear and accessible play on words. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Punch Impact" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="11" rank="7">
+        <text>What do you call a coffee crook who robs the local café? A mocha mobster!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by combining the terms &quot;mocha&quot; and &quot;mobster&quot; to create a comedic phrase. This demonstrates an intent to be humorous, even if the joke may not be particularly sophisticated or successful.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee crook who robs the local café?&quot;) and a punchline/conclusion (&quot;A mocha mobster!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the pun of &quot;mocha&quot; and &quot;mobster&quot; to create a humorous play on words. It does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The joke is in line with the guidelines for liberal evaluation of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the premise (a coffee crook robbing a café) and the punchline (referring to them as a &quot;mocha mobster&quot;). While the humor is somewhat absurd, the joke has an internal coherence that makes sense within the context.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke plays on the similarity between 'mocha' and 'mobster', which is a clear and understandable pun. The language used is straightforward and the meaning is clear, even if the subject matter is a bit niche. Overall, this joke is accessible and easy to understand.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>American stand-up</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="12" rank="3">
+        <text>Why did the barista have a nervous breakdown? They were steamed over the constant flow of customers demanding 'extra hot, extra foam, extra shot, extra everything' lattes!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the barista experiencing a &quot;nervous breakdown&quot; due to the constant demands of customers for overly complex coffee orders. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (the barista having a nervous breakdown) and a conclusion (the reason being the constant flow of customers demanding extra everything in their lattes). The joke structure is complete, even if the conclusion is a bit on the longer side.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke pokes fun at the demanding nature of some coffee shop customers, but does not contain any content that would be considered extremely offensive or harmful. While the humor may be a bit edgy, it does not promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the barista is stressed out by customers demanding overly complex coffee orders, leading to a nervous breakdown. This internal logic is coherent, even if the specific scenario is absurd or exaggerated for comedic effect.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those who may not be familiar with barista culture or coffee shop jargon. The punchline clearly explains the source of the barista's nervous breakdown in a relatable way. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Workplace</category>
+            <category>Shaggy dog stories</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+        <factors>
+            <factor name="Timing" score="3"/>
+            <factor name="Visual Absurdity" score="4"/>
+            <factor name="Relatability" score="4"/>
+            <factor name="Sarcastic Tone" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.75" overall_rating="3.71"/>
+    </joke>
+    <joke id="13" rank="18">
+        <text>Why did the barista have a nervous breakdown? They couldn't keep up with the endless stream of customers ordering 'venti, half-caf, soy, no-foam, extra-hot, pumpkin spice latte with an extra shot and whipped cream on the side' - and that was just one order!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text demonstrates clear comedic intent through its exaggerated and humorous depiction of a barista struggling to fulfill a complex coffee order. The punchline about the barista having a nervous breakdown due to the endless stream of customized orders is an attempt at humor, even if the joke may not land perfectly. Overall, there is a clear effort to be funny, which is the primary criteria for this intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup describing the barista's struggle with a complex coffee order, and a conclusion that provides a humorous explanation for the barista's nervous breakdown. The joke structure is complete, even if the punchline is a bit predictable.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke pokes fun at the complexity of modern coffee orders, but does not contain any content that is extremely offensive or harmful. While the humor may be considered edgy or dark, it does not promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - it describes a barista struggling to keep up with an overly complex coffee order, which is a common and relatable experience. The punchline about the barista having a nervous breakdown due to the demanding customer is a coherent and humorous conclusion.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. While it references a specific type of coffee order, the overall premise of a barista struggling to keep up with complex customer orders is relatable and easy to comprehend. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Misdirection</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+            <category>Deadpan delivery</category>
+        </categories>
+        <factors>
+            <factor name="Expectation Subversion" score="4"/>
+            <factor name="Relatability" score="3"/>
+            <factor name="Sarcastic Tone" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.33" overall_rating="3.66"/>
+    </joke>
+    <joke id="14" rank="13">
+        <text>Why did the barista have a nervous breakdown? They were frothing mad trying to remember whether the customer wanted a double-shot, triple-shot, or quadruple-shot espresso in their 'skinny, decaf, sugar-free, vanilla latte with an extra pump of syrup'.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text demonstrates clear comedic intent through the exaggerated and humorous description of the barista's struggle to remember the customer's complex coffee order. The punchline about the barista being &quot;frothing mad&quot; is a play on words that adds to the comedic effect. Overall, there is a clear attempt at humor, so this joke passes the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup describing the barista's situation, and a conclusion about the barista's mental state due to the complex order. This provides a complete joke structure, even if the punchline is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke pokes fun at the complexity of modern coffee orders, which can be frustrating for baristas. While the humor is a bit exaggerated, it does not contain any content that would be considered extremely offensive or harmful. The joke is in line with the guidelines for liberal evaluation of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the barista is overwhelmed by the customer's complex drink order, leading to a nervous breakdown. This internal logic is coherent, even if the situation is absurd or exaggerated for comedic effect.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. While it references some specialized coffee terminology, the overall meaning and punchline are clear. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Malapropisms</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Workplace</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Relatability" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="15" rank="21">
+        <text>What do you call a coffee that's been roasted to a crisp? A java junkyard!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by playing on the term &quot;java junkyard&quot; to describe a coffee that has been roasted too much. This demonstrates comedic intent, even if the joke itself may not be particularly clever or funny.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee that's been roasted to a crisp?&quot;) and a punchline/conclusion (&quot;A java junkyard!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. It is a play on words about coffee, which is a common topic for humorous jokes. While the joke may not be the most sophisticated, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the setup (&quot;What do you call a coffee that's been roasted to a crisp?&quot;) and the punchline (&quot;A java junkyard!&quot;). The pun on &quot;java&quot; and &quot;junkyard&quot; creates an internally coherent joke, even if the humor is a bit absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;java junkyard&quot; is a clear and accessible play on words. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>One-liners</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="16" rank="25">
+        <text>Overdo the roast? You've got yourself a cup of joe-king material!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor, with the pun on &quot;joe-king material&quot; indicating comedic intent. Even though the joke may not be particularly sophisticated or well-executed, it meets the criteria for this check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a setup ('Overdo the roast?') and a punchline ('You've got yourself a cup of joe-king material!'), which meets the basic requirements for a complete joke structure. While the punchline could be stronger, it provides a conclusion to the setup.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely harmful or promoting hate, violence, or extreme harm. The pun about &quot;joe-king material&quot; is mildly humorous without crossing any major lines.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a logical connection between the premise (overroasting coffee) and the punchline (having &quot;joe-king material&quot;). While the joke is a bit of a stretch, there is an internal coherence to the humor.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on 'joe-king' is clear and the meaning can be easily grasped, even if the reader is not familiar with coffee culture. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="17" rank="15">
+        <text>Burned the beans? Looks like you made a mocha-ry of your coffee.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a pun on the word &quot;mocha&quot; and the phrase &quot;made a mockery&quot;, which demonstrates an attempt at comedic wordplay. While the joke may not be particularly clever or well-executed, there is a clear intent to be humorous.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text contains a setup (&quot;Burned the beans?&quot;) and a punchline/conclusion (&quot;Looks like you made a mocha-ry of your coffee.&quot;). This meets the basic criteria for a complete joke structure, even if the punchline is a simple pun.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains a pun on the word &quot;mocha&quot; and does not appear to contain any extremely offensive or harmful content. It is a mildly humorous play on words.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The pun on 'mocha-ry' is logically consistent with the premise of burning the beans and making a bad coffee. While the joke may be simple, there is an internal logical connection between the setup and punchline.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke plays on the similarity between the words &quot;mocha&quot; and &quot;mockery&quot;, creating a pun that is understandable even for those not familiar with coffee terminology. The joke is clear and accessible, requiring no specialized knowledge to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.68"/>
+    </joke>
+    <joke id="18" rank="14">
+        <text>Roasted that java a little too long? Time to brew up a new batch - this one's a real latte-r.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>This joke contains clear comedic intent through the use of a pun on &quot;latte-r&quot; and the reference to brewing a new batch of coffee. While the joke may not be particularly sophisticated or original, there is an evident attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup ('Roasted that java a little too long?') and a punchline/conclusion ('Time to brew up a new batch - this one's a real latte-r'). The structure is complete, even if the punchline is a simple pun.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains a pun about coffee, which is not an extremely harmful or offensive topic. There is no content promoting hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the setup about over-roasting coffee and the punchline about brewing a new batch. The pun on &quot;latte-r&quot; also ties the joke together coherently. While the humor may be somewhat absurd, the joke has an internal logical consistency.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious accessibility issues. The pun on &quot;latte-r&quot; is a common type of wordplay that should be accessible to most readers.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Double Entendres</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Layered Meaning" score="3"/>
+            <factor name="Subtle Suggestiveness" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="19" rank="24">
+        <text>Overdid the roast? Sounds like you've got a case of the dark roast blues.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a pun on &quot;dark roast blues&quot;, which is an attempt at humor through wordplay. This indicates the presence of comedic intent, even if the joke is not particularly sophisticated or successful.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Overdid the roast?&quot;) and a conclusion (&quot;Sounds like you've got a case of the dark roast blues.&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a play on words about coffee roasts, which is a common type of harmless, inoffensive humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke text has a clear logical connection between the first part about overdoing a roast and the second part about having the &quot;dark roast blues&quot;. This establishes an internal coherence, even if the connection is somewhat absurd or surreal. There is a clear intentional attempt at humor through this juxtaposition.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those unfamiliar with coffee terminology. The pun on &quot;dark roast blues&quot; is clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Double Entendres</category>
+            <category>Misdirection</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Layered Meaning" score="3"/>
+            <factor name="Subtle Suggestiveness" score="3"/>
+        </factors>
+        <scores max_score="3" mean_score="3.00" overall_rating="2.78"/>
+    </joke>
+    <joke id="20" rank="8">
+        <text>What do you call a caffeine-fueled philosopher? A java-sipping sage.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a clear attempt at wordplay and humor by making a pun on &quot;java-sipping sage&quot;. This demonstrates comedic intent, even if the joke may not be particularly sophisticated or hilarious. The structure follows a common joke format of setting up a premise and then delivering a punchline.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a caffeine-fueled philosopher?&quot;) and a conclusion (&quot;A java-sipping sage.&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a play on words that uses a common phrase in a humorous way. While the humor may not appeal to everyone, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the similarity between &quot;java&quot; (coffee) and &quot;java-sipping sage&quot;, creating a coherent pun. While the connection between caffeine and philosophy may be a bit tenuous, the overall logic of the joke is sound.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;java-sipping sage&quot; is a clear and accessible play on words. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Self-referential / Meta-humor</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="21" rank="16">
+        <text>Why did the existentialist order a double espresso? To experience life in a more heightened state of being.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text demonstrates a clear attempt at humor through the use of an existentialist premise and a punchline involving a heightened state of being. While the joke may not be universally funny, there is a discernible comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the existentialist order a double espresso?&quot;) and a conclusion that provides a punchline (&quot;To experience life in a more heightened state of being.&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on existentialist philosophy in a lighthearted way without promoting any harmful content. It does not contain anything extremely offensive or harmful.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the premise (an existentialist ordering a double espresso) and the punchline (to experience life in a more heightened state of being). While the humor is somewhat abstract and surreal, the internal logic is coherent and intentional.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible, even if the reference to existentialism may require some background knowledge. The punchline is clear and the overall meaning can be grasped.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Self-referential / Meta-humor</category>
+            <category>Historical / Intellectual humor</category>
+            <category>One-liners</category>
+            <category>Deadpan delivery</category>
+        </categories>
+        <factors>
+            <factor name="Structural Playfulness" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.68"/>
+    </joke>
+    <joke id="22" rank="1">
+        <text>What do you call a coffee connoisseur who ponders the meaning of life? A mocha-loving metaphysician.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a pun on the words &quot;mocha&quot; and &quot;metaphysician&quot;, which creates a humorous juxtaposition. This demonstrates an attempt at comedic wordplay and intent, even if the joke may not be particularly sophisticated or hilarious. Based on the liberal evaluation criteria, this should be considered an admissible attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee connoisseur who ponders the meaning of life?&quot;) and a punchline/conclusion (&quot;A mocha-loving metaphysician.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the similarity between &quot;mocha&quot; and &quot;metaphysician&quot; in a lighthearted way. It does not contain any content that would be considered extremely offensive or harmful. The humor is playful and not intended to promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke makes a logical connection between a coffee connoisseur and a metaphysician, playing on the similar-sounding words &quot;mocha&quot; and &quot;metaphysician&quot;. This creates an internally coherent pun-based joke, even if the connection is somewhat absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;mocha-loving metaphysician&quot; is clear and accessible, even for those not familiar with metaphysics or coffee culture. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Science / Math / Academia</category>
+            <category>Historical / Intellectual humor</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Interdisciplinary Play" score="5"/>
+        </factors>
+        <scores max_score="5" mean_score="4.50" overall_rating="4.58"/>
+    </joke>
+    <joke id="23" rank="26">
+        <text>What do you call a coffee thief who steals from the barista? A mocha mobster!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a clear attempt at wordplay and humor by playing on the similar-sounding words &quot;mocha&quot; and &quot;mobster&quot;. This indicates the author had comedic intent, even if the joke may not be particularly clever or well-executed.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee thief who steals from the barista?&quot;) and a punchline/conclusion (&quot;A mocha mobster!&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the word &quot;mocha&quot; and &quot;mobster&quot; in a lighthearted way without promoting any harmful content. It does not contain any extremely offensive material.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the concept of a &quot;coffee thief&quot; and the pun on &quot;mocha mobster&quot;. While the humor is somewhat absurd, the internal logic of the joke is coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;mocha&quot; and &quot;mobster&quot; is clear and accessible. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+            <category>One-liners</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="24" rank="27">
+        <text>Why did the barista have a nervous breakdown? They were drowning in a sea of frappuccino orders!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;drowning&quot; and the context of a barista being overwhelmed by frappuccino orders. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or complex.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the barista have a nervous breakdown?&quot;) and a conclusion that provides an explanation (&quot;They were drowning in a sea of frappuccino orders!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke is about a barista being overwhelmed with orders, which is a relatable and common experience in the service industry. It does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The humor is lighthearted and not inappropriate for a general audience.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the barista being overwhelmed by frappuccino orders and experiencing a nervous breakdown. While the specific scenario is absurd and humorous, there is an internal coherence to the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those unfamiliar with barista culture or frappuccinos. The pun on &quot;drowning in a sea of frappuccino orders&quot; clearly conveys the joke's premise. There are no obvious barriers to accessibility.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Workplace</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="25" rank="9">
+        <text>What do you call a barista who can't keep up with the orders? A shot-stressed shot-slinger!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by playing on the term &quot;shot-stressed shot-slinger&quot; to describe a barista who can't keep up with orders. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call a barista who can't keep up with the orders?&quot;) and a punchline/conclusion (&quot;A shot-stressed shot-slinger!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the pun of 'shot-stressed shot-slinger' which is a mildly humorous play on words about a barista struggling to keep up with orders. There is no content that promotes hate, violence, or extreme harm, so this joke passes the appropriateness check.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the premise (a barista who can't keep up with orders) and the punchline (being called a &quot;shot-stressed shot-slinger&quot;). While the humor is a bit absurd, the joke has an internal coherence that makes sense within the context.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;shot-stressed shot-slinger&quot; is a clear and straightforward play on words that should be easy for most readers to grasp.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Workplace</category>
+            <category>Science / Math / Academia</category>
+            <category>Dad jokes</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="26" rank="22">
+        <text>What do you call a coffee that's been roasted too long? A charcoal chai.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a play on words by combining &quot;coffee&quot; and &quot;charcoal chai&quot;, which creates a humorous contrast and unexpected punchline. This demonstrates an attempt at comedic intent, even if the joke may not be particularly sophisticated or successful.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a coffee that's been roasted too long?&quot;) and a punchline/conclusion (&quot;A charcoal chai.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the similarity between &quot;charcoal&quot; and &quot;chai&quot;, creating a humorous pun. It does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The joke is in line with the guidelines for liberal evaluation of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the similarity between &quot;coffee&quot; and &quot;chai&quot;, and the idea of a coffee being &quot;roasted too long&quot; resulting in a &quot;charcoal&quot; flavor. This creates an internally consistent, if absurd, logical connection that can be interpreted as a coherent joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;charcoal chai&quot; is clear and the meaning can be easily grasped, even if the reader is not familiar with coffee or chai terminology.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="3"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="27" rank="28">
+        <text>What do you call someone who is obsessed with coffee? A caffeine connoisseur who can't handle a cinder sip.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a play on words with &quot;caffeine connoisseur&quot; and &quot;cinder sip&quot;, which suggests an attempt at humor and comedic intent. While the joke may not be particularly clever or well-executed, there is a clear effort to create a humorous punchline.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call someone who is obsessed with coffee?&quot;) and a concluding punchline (&quot;A caffeine connoisseur who can't handle a cinder sip.&quot;). This meets the basic requirements for a complete joke structure, even if the punchline is a bit weak.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a play on words related to coffee and caffeine, which is appropriate for a joke.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a logical thread, even if it is a bit absurd and surreal. The punchline &quot;a caffeine connoisseur who can't handle a cinder sip&quot; connects back to the initial premise of someone being obsessed with coffee. While the specific wording is a bit nonsensical, the overall joke structure and internal logic are coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;caffeine connoisseur&quot; and &quot;cinder sip&quot; is clear, and the overall meaning can be grasped without difficulty.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>One-liners</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="28" rank="2">
+        <text>Roast Roast: What do you call a coffee that's been roasted so long, it's practically a briquette? Caffeine Connoisseur: That's what I call a true 'dark' roast.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through wordplay and a comedic setup-punchline structure. While the joke may not be particularly sophisticated or hilarious, there is a discernible comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call a coffee that's been roasted so long, it's practically a briquette?&quot;) and a conclusion (&quot;That's what I call a true 'dark' roast.&quot;). This meets the criteria for a complete joke structure, even though it is a relatively simple pun-style joke.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains some mildly dark humor about coffee being roasted to the point of becoming a briquette, but it does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The humor is edgy but not unacceptably so.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical progression and internal consistency. The initial setup about a coffee being roasted too long leads to the punchline about it being a &quot;true 'dark' roast&quot;, which is a coherent and humorous response. There is a clear narrative thread that makes sense within the context of the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The punchline about a &quot;dark roast&quot; coffee is clear and the overall joke structure is straightforward. There are no obvious barriers to understanding the humor.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Misdirection</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Expectation Subversion" score="4"/>
+            <factor name="Logical Pivot" score="4"/>
+            <factor name="Punch Impact" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.72"/>
+    </joke>
+</rating_results>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<top_jokes timestamp="2025-06-09 10:48:15" count="15">
+    <joke id="19" rank="1" overall_rating="4.58">
+        <text>What do you call a penguin who's a real go-getter? A PRODUC-TUXEDO!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>One-liners</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+    </joke>
+    <joke id="22" rank="2" overall_rating="4.58">
+        <text>A Punguiner - a penguin who loves wordplay so much, they'll pun-ish you with their jokes!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Dad jokes</category>
+        </categories>
+    </joke>
+    <joke id="13" rank="3" overall_rating="3.72">
+        <text>What do you call a penguin who loves telling knock-knock jokes? A pun-guin-ista!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Knock-knock jokes</category>
+            <category>Dad jokes</category>
+        </categories>
+    </joke>
+    <joke id="24" rank="4" overall_rating="3.72">
+        <text>A Pun-guin Paparazzi - a group of photographers who only take pictures of penguins... and then make terrible puns about them.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="3" rank="5" overall_rating="3.71">
+        <text>What do you call a paparazzi who takes pictures of penguins on their lunch break? A peckish penguin photographer.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Animals</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+    <joke id="1" rank="6" overall_rating="3.70">
+        <text>What do you call a paparazzi who only takes pictures of penguins in the snow? A flurry of feathered flashes!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+    </joke>
+    <joke id="4" rank="7" overall_rating="3.70">
+        <text>Why did the penguin try to pick up the other penguin at the bar? Because he was looking to 'chill' with someone.</text>
+        <categories>
+            <category>Sex / Adult</category>
+            <category>Relationships / Marriage</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="7" rank="8" overall_rating="3.70">
+        <text>What do you call a penguin who's a total overachiever? A peng-winner!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Workplace</category>
+        </categories>
+    </joke>
+    <joke id="10" rank="9" overall_rating="3.70">
+        <text>Why did the penguin parents ground their chick? Because it kept trying to fly, even though it couldn't!</text>
+        <categories>
+            <category>Animals</category>
+            <category>School / Exams / Students</category>
+            <category>Shaggy dog stories</category>
+            <category>Deadpan delivery</category>
+        </categories>
+    </joke>
+    <joke id="12" rank="10" overall_rating="3.70">
+        <text>Why did the penguin parents ground their chick? Because it kept trying to sneak out to the local ice cream shop, even though it was past its bedtime!</text>
+        <categories>
+            <category>Children / Parenting</category>
+            <category>School / Exams / Students</category>
+            <category>Wholesome / Clean humor</category>
+        </categories>
+    </joke>
+    <joke id="17" rank="11" overall_rating="3.70">
+        <text>Why did the penguin paparazzi try to pick up the other penguin at the bar? He was hoping to get the perfect shot of a penguin pickup line in action.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+        </categories>
+    </joke>
+    <joke id="23" rank="12" overall_rating="3.69">
+        <text>A Paparazzi-guin - a photographer who will stop at nothing to get the perfect shot of a penguin, even if it means stalking their every move.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Animals</category>
+            <category>Pop Culture / Celebrity</category>
+        </categories>
+    </joke>
+    <joke id="9" rank="13" overall_rating="3.69">
+        <text>What's the most efficient penguin in the office? The one who's always on the ball... and the desk, and the filing cabinet.</text>
+        <categories>
+            <category>Workplace</category>
+            <category>One-liners</category>
+            <category>Dad jokes</category>
+        </categories>
+    </joke>
+    <joke id="16" rank="14" overall_rating="3.69">
+        <text>What do you call a group of photographers who only take pictures of penguins at the bar? The Penguin Paparazzi trying to pick up their next date!</text>
+        <categories>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>Relationships / Marriage</category>
+            <category>Shaggy dog stories</category>
+        </categories>
+    </joke>
+    <joke id="6" rank="15" overall_rating="3.66">
+        <text>Why did the penguin try to pick up the other penguin at the bar? Because he was hoping to 'slide' into her DMs.</text>
+        <categories>
+            <category>Misdirection</category>
+            <category>Relationships / Marriage</category>
+        </categories>
+    </joke>
+</top_jokes>

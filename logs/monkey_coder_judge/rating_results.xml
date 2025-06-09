@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rating_results timestamp="2025-06-09 11:10:09" total_jokes="30">
+    <joke id="1" rank="22">
+        <text>What do you call a monkey coder? A banana byte!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a clear attempt at wordplay and humor by making a pun on &quot;banana byte&quot; to refer to a monkey coder. This demonstrates comedic intent, even if the joke may not be particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a monkey coder?&quot;) and a punchline/conclusion (&quot;A banana byte!&quot;). This meets the basic requirements for a complete joke structure, even if the joke itself is simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the pun of &quot;banana byte&quot; and does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The humor is mildly edgy but within the bounds of acceptable appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke makes a logical connection between a &quot;monkey coder&quot; and a &quot;banana byte&quot;, which is a coherent and intentional play on words. While the joke may be silly or absurd, it has an internal logical consistency that meets the criteria for this check.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;banana byte&quot; is a clear and straightforward play on words that should be accessible to most readers, even those without a technical background.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Misdirection</category>
+            <category>One-liners</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="2" rank="1">
+        <text>Introducing the latest tech sensation: Chimpanzee Compiler, the primate programmer that's bananas for binary.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of humorous wordplay and a playful premise involving a chimpanzee programmer. While the joke may not be the most sophisticated or complex, there is a clear attempt at humor that meets the criteria for this check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Introducing the latest tech sensation: Chimpanzee Compiler&quot;) and a conclusion (&quot;the primate programmer that's bananas for binary&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is an edgy, humorous play on words about a chimpanzee programmer, which is an unusual and creative concept. While the joke may not be to everyone's taste, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear central premise - a chimpanzee that is a computer programmer. This establishes an internal logical thread, even if the concept is absurd and surreal. The joke does not contain any obvious contradictions or incoherent elements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It introduces a humorous concept of a chimpanzee programmer, which is a creative and imaginative idea. The language used is clear and straightforward, making the joke easy to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Technology / IT / Programming</category>
+            <category>Science / Math / Academia</category>
+            <category>Memes</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.72"/>
+    </joke>
+    <joke id="3" rank="18">
+        <text>Monkey Coder: The Primate Programmer who writes code so buggy, it's bananas.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on &quot;primate programmer&quot; and the description of their buggy code as &quot;bananas&quot;. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or complex.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Primate Programmer&quot;) and a conclusion (&quot;it's bananas&quot;), which provides a complete joke structure. Even though the joke is short, it meets the criteria for a complete joke.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any extremely harmful or offensive content. It is a lighthearted play on words about a &quot;Primate Programmer&quot; writing buggy code, which is a common humorous trope. While the joke may be considered edgy or silly, it does not promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic - it's playing on the idea of a &quot;Primate Programmer&quot; who writes buggy code, which is a coherent and intentional humorous concept. While the joke is absurd and surreal, it has a logical thread that ties the different elements together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those without specialized knowledge. The wordplay and metaphor of a &quot;Primate Programmer&quot; writing &quot;buggy&quot; code that's &quot;bananas&quot; is clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Insults / Roasts</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Technical Wit" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="4" rank="20">
+        <text>Why did the Monkey Coder go bananas debugging the spaghetti code?</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on &quot;monkey coder&quot; and &quot;going bananas&quot; in the context of debugging code. This suggests comedic intent, even if the joke itself is not particularly sophisticated or original.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the Monkey Coder go bananas&quot;) and a conclusion (&quot;debugging the spaghetti code?&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted pun about a monkey coder debugging code, which is appropriate for a general audience.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - a monkey coder debugging spaghetti code, which is a common programming metaphor. While the specific connection between a monkey and spaghetti code may be absurd, the overall premise is coherent and makes sense within the context of programming humor.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;monkey coder&quot; and &quot;spaghetti code&quot; is a common technical joke that should be accessible to the target audience.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="3"/>
+            <factor name="Syntax Humor" score="2"/>
+            <factor name="Inside Knowledge Fun" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.00" overall_rating="3.65"/>
+    </joke>
+    <joke id="5" rank="21">
+        <text>The Monkey Coder swung from the branch to catch that elusive bug in the system.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a humorous metaphor comparing a computer programmer to a monkey, as well as a pun on &quot;bug&quot; in the context of software development. This demonstrates clear comedic intent, even if the joke itself is not particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Monkey Coder swung from the branch&quot;) and a conclusion (&quot;to catch that elusive bug in the system&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is an appropriate play on the &quot;monkey coder&quot; concept without crossing any major lines.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - a monkey coder swinging from a branch to catch a bug in the system. While the imagery is absurd and surreal, it is internally consistent and follows a coherent narrative. There are no obvious logical contradictions or incoherence.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It uses a simple metaphor of a &quot;Monkey Coder&quot; swinging to catch a &quot;bug in the system&quot;, which is a common programming analogy that most people would be able to grasp. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors>
+            <factor name="Expectation Subversion" score="3"/>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="2"/>
+        </factors>
+        <scores max_score="4" mean_score="3.00" overall_rating="3.63"/>
+    </joke>
+    <joke id="6" rank="23">
+        <text>Bananas for bugs? More like bugs for bananas! The Monkey Coder just couldn't get enough of those pesky errors.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains wordplay and an attempt at humor, with the pun on &quot;bugs&quot; and &quot;bananas&quot; as well as the comedic framing of a &quot;Monkey Coder&quot; who enjoys programming errors. This indicates there is at least some comedic intent, even if the joke may not be particularly sophisticated or successful.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Bananas for bugs?&quot;) and a punchline/conclusion (&quot;More like bugs for bananas! The Monkey Coder just couldn't get enough of those pesky errors.&quot;). This meets the basic criteria for a complete joke structure, even if the joke is short and simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. It is an edgy, humorous play on words about a programmer's relationship with bugs. While the humor may not appeal to everyone, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread, even if it is a bit absurd and surreal. The punchline about the &quot;Monkey Coder&quot; and their affinity for &quot;pesky errors&quot; connects back to the initial premise about &quot;bananas for bugs&quot;. While the humor is a bit nonsensical, there is an internal coherence to the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those not familiar with programming or computer science concepts. The wordplay and metaphor are clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="7" rank="3">
+        <text>Why did the Monkey Coder banana the compiler? Because it was a-peel-ing way to fix the code!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;appealing&quot; and its relation to fixing code. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the Monkey Coder banana the compiler?&quot;) and a punchline/conclusion (&quot;Because it was a-peel-ing way to fix the code!&quot;). This meets the basic criteria for a complete joke structure, even if the joke itself is simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains a pun on the word &quot;banana&quot; and does not appear to contain any extremely harmful or offensive content. It is a lighthearted play on words related to coding and compilers.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the punchline about the monkey coder &quot;bananing&quot; the compiler, and the explanation that this was an &quot;a-peel-ing way to fix the code&quot;. The joke relies on a pun and anthropomorphization, but the internal logic is coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text uses a pun on the word &quot;appeal&quot; to make a humorous connection between a monkey, a compiler, and fixing code. This wordplay is understandable and the joke is accessible, even if the specific technical context may not be familiar to all readers.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Syntax Humor" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="8" rank="24">
+        <text>The Monkey Coder went ape-shit trying to find the root cause of that infinite loop.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a pun on &quot;ape-shit&quot; and references a programmer trying to debug an infinite loop, which has comedic intent. Even though the joke may not be particularly sophisticated or well-executed, there is a clear attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Monkey Coder went ape-shit&quot;) and a conclusion (&quot;trying to find the root cause of that infinite loop&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any extremely harmful or offensive content. It uses some mildly edgy humor around the idea of a &quot;monkey coder&quot; and an &quot;infinite loop&quot;, but does not promote hate, violence, or extreme harm. This falls within the bounds of acceptable adult/dark humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - a monkey coder encountering an infinite loop and becoming frustrated. While the imagery is absurd and surreal, there is an internal coherence to the joke that makes it understandable and follows a logical progression.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The reference to a &quot;Monkey Coder&quot; and an &quot;infinite loop&quot; are clear technical references that would be understandable to the target audience of this joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>School / Exams / Students</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Shitposts / Absurd Gen-Z humor</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="9" rank="2">
+        <text>You know you're a Monkey Coder when your 'banana' function always returns a peel.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a pun on the word &quot;banana&quot; and a programmer's &quot;function&quot;, which is a common type of wordplay and comedic intent in programming-related humor. Even though the joke may not be particularly sophisticated or hilarious, there is a clear attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;You know you're a Monkey Coder when...&quot;) and a punchline/conclusion (&quot;your 'banana' function always returns a peel.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. It is a play on words related to programming that does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has an internal logical consistency. The &quot;banana&quot; function returning a &quot;peel&quot; instead of a banana is a coherent play on words and a common programming joke. While the joke may be simple, it follows a clear logical structure.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;banana&quot; and &quot;peel&quot; is a common type of wordplay that should be accessible to most readers, even if they are not familiar with programming terminology. The joke does not require specialized knowledge to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Syntax Humor" score="4"/>
+            <factor name="Inside Knowledge Fun" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.72"/>
+    </joke>
+    <joke id="10" rank="8">
+        <text>Monkey Coders don't debug - they just throw their code at the wall and see what sticks.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a humorous comparison between &quot;Monkey Coders&quot; and their debugging process, which has comedic intent. The wordplay and ironic tone suggest an attempt at humor, even if the joke may not be particularly sophisticated or well-executed.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Monkey Coders don't debug&quot;) and a conclusion (&quot;they just throw their code at the wall and see what sticks&quot;). This meets the basic criteria for a complete joke structure, even if the punchline is simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke makes a lighthearted comparison between software developers and monkeys, without promoting any harmful content. While the joke may be considered edgy or irreverent, it does not appear to be extremely offensive or promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has an internal logical consistency. The premise of &quot;Monkey Coders&quot; who don't debug but instead &quot;throw their code at the wall and see what sticks&quot; is coherent and follows a clear narrative thread, even if the imagery is absurd and humorous.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. While it references a specific programming concept, the overall meaning is clear and can be grasped by a general audience. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+            <category>Deadpan delivery</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Syntax Humor" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="11" rank="4">
+        <text>Monkey Coders use 'banana' as their primary data type. Bananas are just that versatile.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through the use of a pun and wordplay around the idea of &quot;banana&quot; as a data type for &quot;monkey coders&quot;. This demonstrates comedic intent, even if the joke itself is not particularly complex or sophisticated.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Monkey Coders use 'banana' as their primary data type&quot;) and a conclusion (&quot;Bananas are just that versatile&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke makes a lighthearted play on the idea of using bananas as a data type, which is an amusing and harmless concept. There is no content that promotes hate, violence, or extreme harm. This joke passes the appropriateness check.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has an internal logical consistency by establishing the premise that &quot;Monkey Coders&quot; use &quot;banana&quot; as their primary data type, and then explaining how &quot;bananas are just that versatile.&quot; This creates a coherent, if absurd, narrative.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The reference to &quot;Monkey Coders&quot; and &quot;bananas as a data type&quot; is a clear and relatable technical joke that should be accessible to the intended audience.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+            <category>Memes</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Syntax Humor" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="12" rank="16">
+        <text>Monkey Coders don't write comments - they just scribble banana doodles in the margins.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a comedic comparison between monkey coders and their coding practices. While the joke may not be particularly sophisticated or complex, it does demonstrate an intent to be funny through the use of an amusing analogy. Therefore, this joke passes the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Monkey Coders don't write comments&quot;) and a conclusion (&quot;they just scribble banana doodles in the margins&quot;). This meets the basic criteria for a complete joke structure, even if the joke is short and simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke makes a lighthearted comparison between monkey behavior and coding practices, without promoting any harmful content. While the humor may be considered edgy or irreverent, it does not appear to be extremely offensive or promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread, even if it is an absurd and surreal comparison. The idea of &quot;monkey coders&quot; who leave &quot;banana doodles&quot; instead of comments is an intentionally nonsensical and humorous concept. While not a conventional joke structure, the internal logic and coherence of the premise is intact.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The reference to &quot;Monkey Coders&quot; and &quot;banana doodles&quot; conveys a clear visual metaphor that is easy to grasp, even for those unfamiliar with programming culture. The joke does not require specialized knowledge to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Technology / IT / Programming</category>
+            <category>Insults / Roasts</category>
+            <category>Memes</category>
+        </categories>
+        <factors>
+            <factor name="Inside Knowledge Fun" score="3"/>
+            <factor name="Syntax Humor" score="4"/>
+            <factor name="Linguistic Creativity" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.33" overall_rating="3.66"/>
+    </joke>
+    <joke id="13" rank="9">
+        <text>You know you're a Monkey Coder when your IDE has a special 'banana' autocomplete feature.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a humorous comparison between a programmer's IDE and a monkey's behavior, which demonstrates comedic intent. The wordplay and ironic juxtaposition of a professional programming tool and a monkey's actions suggests an attempt at humor, even if the joke may not be particularly sophisticated.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;You know you're a Monkey Coder when...&quot;) and a conclusion (&quot;your IDE has a special 'banana' autocomplete feature.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted joke about programmer culture that does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has an internal logical consistency by making a humorous connection between a programmer's IDE and a &quot;banana&quot; autocomplete feature, which plays on the stereotype of programmers as &quot;monkey coders&quot;. This absurd but intentional non-sequitur can be considered coherent within the context of the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It makes a clear reference to &quot;Monkey Coders&quot; and an IDE (Integrated Development Environment) having a &quot;banana&quot; autocomplete feature, which is a humorous and relatable concept for programmers. The language and references used are clear and do not require specialized knowledge to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+            <category>Parody / Spoof</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Memes</category>
+        </categories>
+        <factors>
+            <factor name="Syntax Humor" score="4"/>
+            <factor name="Linguistic Creativity" score="3"/>
+            <factor name="Inside Knowledge Fun" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="14" rank="25">
+        <text>I'm a Banana Bits: The Monkey Coder's Coding Cuisine and here's what a typical day looks like: I start by banging out code on my banana-shaped keyboard, fueled by a steady stream of banana-infused energy drinks. Lunch is always a banana burrito - hold the guac!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains several elements of comedic intent, including wordplay (e.g. &quot;banana-shaped keyboard&quot;, &quot;banana burrito&quot;), exaggeration (e.g. &quot;steady stream of banana-infused energy drinks&quot;), and an attempt at a humorous daily routine. While the humor may not be particularly sophisticated, there is a clear effort to be funny.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup describing the daily life of a &quot;Banana Bits: The Monkey Coder's Coding Cuisine&quot;, and concludes with a description of a typical lunch. This structure of a setup and conclusion is sufficient to meet the criteria for a complete joke.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted joke about a banana-themed coder's lifestyle, which falls within the bounds of acceptable adult/edgy humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence, even if the premise is absurd and surreal. The joke establishes a fictional persona of a &quot;Banana Bits: The Monkey Coder's Coding Cuisine&quot; and describes a typical day in their life, complete with banana-themed details. While the concept is highly unusual, the details are presented in a logically consistent manner.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious accessibility issues. The references to a &quot;banana-shaped keyboard&quot; and &quot;banana burrito&quot; are clear and easy to comprehend, even for those unfamiliar with the specific context.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+            <category>One-liners</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="15" rank="26">
+        <text>I'm a Banana Bits: The Monkey Coder's Coding Cuisine and here's what a typical day looks like: I spend hours swinging from my office chair, typing furiously with my prehensile tail while snacking on banana-nut muffins. My desk is a veritable jungle gym of banana peels and half-eaten bananas.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of humorous imagery, exaggeration, and wordplay. The description of the narrator's work environment and behavior as a &quot;monkey coder&quot; is an attempt at humor, even if the joke may not land perfectly. Overall, there is a clear effort to be funny, which is the primary criteria for this check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup describing the typical day of a &quot;Banana Bits: The Monkey Coder's Coding Cuisine&quot;, and it concludes with a description of the coder's desk. This structure meets the basic requirements for a complete joke.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. While the joke has a somewhat silly and irreverent tone, it does not cross the line into unacceptable territory. The references to bananas and monkeys are used in a lighthearted, humorous way without any malicious intent.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke text presents a coherent, if absurd, narrative about the daily life of a &quot;Banana Bits: The Monkey Coder's Coding Cuisine&quot;. The imagery of a monkey swinging from an office chair, typing with a prehensile tail, and snacking on banana-related foods is logically consistent within the context of the joke. While the scenario is highly exaggerated and surreal, there is an intentional internal logic that ties the different elements together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text describes a humorous day in the life of a &quot;Monkey Coder&quot; who works in a playful, banana-filled environment. While the imagery and references may be niche or specialized, the overall concept is understandable and accessible to the reader. There are no obvious barriers to comprehension.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="16" rank="5">
+        <text>I'm a Banana Bits: The Monkey Coder's Coding Cuisine and here's what a typical day looks like: I begin each morning with a banana-rama smoothie, then spend the day hopping from one computer to the next, leaving a trail of banana crumbs in my wake. My colleagues have learned to avoid my banana-flinging tantrums when the code doesn't compile.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains several elements of comedic intent, including wordplay (&quot;banana-rama&quot;), humorous imagery (a trail of banana crumbs), and an exaggerated description of the character's behavior (banana-flinging tantrums). While the humor may not be particularly sophisticated, there is a clear attempt at creating a comedic narrative.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provided has a clear setup describing the narrator's daily routine as a &quot;Banana Bits: The Monkey Coder's Coding Cuisine&quot;, and it concludes with a description of the narrator's &quot;banana-flinging tantrums when the code doesn't compile&quot;. This provides a complete joke structure with a setup and a punchline/conclusion.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. While the joke makes references to bananas and coding, it does not cross the line into unacceptable territory. The humor is quirky and playful, rather than malicious or harmful.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear narrative structure and internal logic, even if the details are absurd and surreal. The protagonist's morning routine, work habits, and interactions with colleagues all form a coherent, if exaggerated, story. While the humor is unconventional, there is a logical thread tying the different elements together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is generally understandable, with a clear narrative and relatable elements like a morning routine and coding challenges. While it contains some specialized humor around coding and bananas, the overall meaning and intent are clear. There are no obvious barriers to accessibility.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors>
+            <factor name="Syntax Humor" score="4"/>
+            <factor name="Relatability" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="17" rank="10">
+        <text>In the future, Monkey Coders will banana the cloud computing industry, storing all your data in their secret banana-shaped servers.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains an attempt at humorous wordplay and an imaginative future scenario, which suggests comedic intent. While the joke may not be particularly sophisticated or hilarious, it does seem to be making an effort at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;In the future, Monkey Coders will...&quot;) and a conclusion (&quot;storing all your data in their secret banana-shaped servers.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. While the joke relies on a somewhat silly premise involving monkeys and bananas, it does not cross the line into offensive or inappropriate territory. This type of lighthearted, imaginative humor is generally acceptable.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent, if absurd, scenario of monkeys storing data in banana-shaped servers. While the premise is surreal, it follows a logical progression and has an internal consistency. There are no obvious contradictions or incoherent elements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious violations that would make it impossible to comprehend. The reference to &quot;Monkey Coders&quot; and &quot;banana-shaped servers&quot; is a bit unusual, but the overall meaning can be grasped.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Syntax Humor" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="18" rank="11">
+        <text>Forget Silicon Valley - the new tech hub will be Banana Valley, where Monkey Coders swing from the servers and debug code with their prehensile tails.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of humorous imagery and wordplay. The concept of &quot;Banana Valley&quot; and &quot;Monkey Coders&quot; swinging from servers and debugging with their tails is an attempt at creating a whimsical and absurd scenario, which is a common comedic technique. While the joke may not be particularly sophisticated or well-executed, it does demonstrate an effort to be humorous.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Forget Silicon Valley - the new tech hub will be Banana Valley&quot;) and a conclusion (&quot;where Monkey Coders swing from the servers and debug code with their prehensile tails&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. While the joke makes light of stereotypes about monkeys and technology, it does not cross the line into being extremely offensive or inappropriate. The humor, while edgy, is not hateful or harmful.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent, if absurd, vision of a &quot;Banana Valley&quot; tech hub where monkey coders use their tails to debug code. While the premise is surreal and humorous, there is an internal logical consistency to the joke that makes it coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious accessibility issues. The references to &quot;Monkey Coders&quot; and &quot;prehensile tails&quot; may require some context, but the overall meaning is clear.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Deadpan delivery</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Technical Wit" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="19" rank="27">
+        <text>The next breakthrough in virtual reality will come from Monkey Coders, who will code the ultimate simian simulator where you can experience life as a banana-loving primate.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains an imaginative premise about a virtual reality simulation featuring monkeys, which has comedic intent. While the joke may not be particularly sophisticated or hilarious, there is a clear attempt at humor through the exaggerated concept of &quot;Monkey Coders&quot; creating the &quot;ultimate simian simulator.&quot; This meets the criteria for passing the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The next breakthrough in virtual reality&quot;) and a conclusion/punchline (experiencing life as a &quot;banana-loving primate&quot;). The structure is complete, even if the joke is short.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely harmful or promoting hate, violence, or extreme harm. It is an imaginative and humorous take on the future of virtual reality, without crossing any major ethical boundaries.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent premise about a virtual reality simulation where users can experience life as a monkey. While the idea of &quot;Monkey Coders&quot; developing this simulation is absurd and surreal, the overall concept has an internal logical consistency. There are no obvious violations of coherence.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious violations that would make it inaccessible. The concept of a &quot;simian simulator&quot; where you can experience life as a banana-loving primate is a clear and coherent idea, even if it is a somewhat niche or specialized form of humor.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Technology / IT / Programming</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Shitposts / Absurd Gen-Z humor</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="20" rank="19">
+        <text>What do you call a Monkey Coder? A banana bit.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a pun on the words &quot;monkey&quot; and &quot;bit&quot;, which is a common form of wordplay and comedic intent. While the joke may not be particularly sophisticated or hilarious, there is a clear attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call a Monkey Coder?&quot;) and a punchline/conclusion (&quot;A banana bit.&quot;). This meets the basic requirements for a complete joke structure, even if the joke itself is simple or short.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the pun of &quot;banana bit&quot; sounding like &quot;binary bit&quot;, which is a common programming term. While the joke may be considered a bit silly or simplistic, it does not contain any content that would be considered extremely offensive or harmful. The humor is relatively mild and inoffensive.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke makes a logical connection between a &quot;monkey coder&quot; and a &quot;banana bit&quot;, which is a pun on the term &quot;binary bit&quot;. This establishes an internal coherence and logical consistency within the joke, even if the humor is somewhat absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;banana bit&quot; is a clear play on words that can be understood even by those not familiar with coding or monkeys. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Misdirection</category>
+            <category>One-liners</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors>
+            <factor name="Expectation Subversion" score="3"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="21" rank="6">
+        <text>Why did the Monkey Coder banana the compiler? Because it was a syntax error!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on &quot;banana&quot; and &quot;syntax error&quot;. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or successful. The structure and wordplay indicate an effort to be funny.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the Monkey Coder banana the compiler?&quot;) and a conclusion (&quot;Because it was a syntax error!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on a common programming concept (syntax errors) in a lighthearted way. It does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The humor is edgy but not unacceptably so.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the monkey coder made a syntax error that caused the compiler to &quot;banana&quot; (i.e. crash or fail). This establishes an internal coherence and logical consistency, even if the specific analogy is absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text uses a computer programming-related pun that is understandable to those familiar with programming concepts like syntax errors and compilers. While the joke may require some specialized knowledge, it is still accessible and can be understood by a general audience with some context.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Technology / IT / Programming</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Syntax Humor" score="4"/>
+            <factor name="Inside Knowledge Fun" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="22" rank="28">
+        <text>The Monkey Coder's debugging process: Throw banana, see if it compiles.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a humorous comparison between a monkey's debugging process and a programmer's debugging process, using the metaphor of throwing a banana. This demonstrates an attempt at comedic intent, even if the joke is simple or not particularly sophisticated.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Monkey Coder's debugging process&quot;) and a conclusion (&quot;Throw banana, see if it compiles.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. It is a lighthearted joke about the debugging process, using a humorous analogy involving a monkey and a banana. This type of edgy, tech-related humor is generally considered appropriate.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread, comparing the debugging process of a &quot;Monkey Coder&quot; to throwing a banana to see if the code compiles. This establishes an intentional, if absurd, internal consistency.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text uses a relatable analogy of a &quot;Monkey Coder&quot; debugging process, which is understandable even for those not familiar with programming. The language is clear and the meaning is accessible, despite the technical subject matter. This joke should be understandable to a wide audience.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Self-referential / Meta-humor</category>
+            <category>Technology / IT / Programming</category>
+            <category>Shitposts / Absurd Gen-Z humor</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="23" rank="12">
+        <text>Monkey Coder's Debugging Dilemma: When the code doesn't work, just throw more bananas at it.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a humorous comparison between debugging code and throwing bananas at it, which demonstrates comedic intent. While the joke may not be particularly sophisticated or well-executed, there is a clear attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;When the code doesn't work&quot;) and a conclusion (&quot;just throw more bananas at it&quot;). While the conclusion is brief, it provides a complete thought and punchline to the joke. This meets the criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely harmful or promoting hate, violence, or extreme harm. It is a lighthearted joke about debugging code, which is appropriate for the given context.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent, if absurd, scenario of a &quot;Monkey Coder&quot; trying to debug their code by throwing bananas at it. While the premise is silly and surreal, it follows a logical progression and has an internal consistency. The joke is not completely incoherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those not familiar with coding or debugging. The metaphor of throwing bananas at a problem is a clear and accessible way to convey the concept of a frustrated programmer trying to fix their code. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors>
+            <factor name="Imaginative Leap" score="3"/>
+            <factor name="Syntax Humor" score="4"/>
+            <factor name="Inside Knowledge Fun" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="24" rank="15">
+        <text>Monkey Coder's Debugging Tip: When in doubt, just print 'banana' and see what happens.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a humorous suggestion to print &quot;banana&quot; when debugging, which demonstrates comedic intent through wordplay and an unexpected recommendation. This aligns with the instructions for a liberal evaluation of intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Monkey Coder's Debugging Tip:&quot;) and a conclusion (&quot;when in doubt, just print 'banana' and see what happens.&quot;). This meets the basic criteria for a complete joke structure, even if the joke itself is simple or brief.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted coding-related joke without any harmful elements.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke text has a clear internal logic - the idea of a &quot;Monkey Coder's Debugging Tip&quot; to &quot;print 'banana' and see what happens&quot; is a coherent and intentionally absurd/surreal concept. While not a traditional joke structure, the text demonstrates logical consistency within its own surreal premise.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, even for those without a technical background. The reference to &quot;printing 'banana'&quot; is a common debugging technique that most people would be familiar with. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Technology / IT / Programming</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Inside Knowledge Fun" score="4"/>
+            <factor name="Syntax Humor" score="3"/>
+            <factor name="Punch Impact" score="3"/>
+            <factor name="Linguistic Creativity" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.25" overall_rating="3.67"/>
+    </joke>
+    <joke id="25" rank="13">
+        <text>You know you're a Monkey Coder when your keyboard is covered in banana peels and your code is a bunch of bananas.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun and metaphor comparing a &quot;Monkey Coder&quot; to someone who codes with bananas. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or complex.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;You know you're a Monkey Coder when...&quot;) and a conclusion/punchline (&quot;your code is a bunch of bananas&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. It is a lighthearted joke about the habits of &quot;Monkey Coders&quot; that does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence, connecting the idea of a 'Monkey Coder' to their keyboard being covered in banana peels and their code being 'a bunch of bananas'. This establishes a consistent, if absurd, conceptual framework for the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It uses a common metaphor of &quot;monkey coder&quot; and relates it to bananas, which is a clear and relatable visual. The language is simple and straightforward. Even if the reader is not familiar with the &quot;monkey coder&quot; concept, the overall meaning can be grasped.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Technology / IT / Programming</category>
+            <category>Deadpan delivery</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+        <factors>
+            <factor name="Layered Understanding" score="3"/>
+            <factor name="Syntax Humor" score="4"/>
+            <factor name="Contextual Contrast" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="26" rank="29">
+        <text>I'm a Monkey Coder and here's what a typical day looks like: I start with a banana smoothie, then I spend the day typing with my toes while snacking on banana bread and banana chips. Banana-based productivity!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of humorous exaggeration, wordplay, and a playful tone. The description of a &quot;Monkey Coder&quot; engaging in banana-based activities is an attempt at humor, even if the joke may not land perfectly. Overall, there is a clear effort to be funny, which is the primary criteria for this check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup describing the typical day of a &quot;Monkey Coder&quot;, and concludes with a punchline about banana-based productivity. This structure is complete enough to be considered a full joke, even if the punchline is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted joke about a &quot;Monkey Coder&quot; and their banana-based productivity. While the joke may be considered silly or quirky, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear central theme of bananas and a monkey coder, which provides a coherent narrative thread. While the details are absurd and surreal, the overall concept hangs together logically. There are no obvious contradictions or incoherent elements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand, describing a typical day in the life of a &quot;Monkey Coder&quot; who is productive while consuming various banana-based foods and drinks. There are no obvious barriers to understanding the content.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Shitposts / Absurd Gen-Z humor</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="27" rank="30">
+        <text>Monkey See, Monkey Code: Primate Programming Prowess. I'm a Monkey Coder and my IDE is a banana peel, my debugger is a banana split.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains clear comedic intent through the use of humorous wordplay and a playful comparison between monkeys and computer programmers. The overall tone is lighthearted and attempts to be funny, which meets the criteria for this check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;Monkey See, Monkey Code: Primate Programming Prowess&quot;) and a concluding punchline (&quot;my IDE is a banana peel, my debugger is a banana split&quot;). This meets the basic criteria for a complete joke structure, even if the joke is short and simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted joke about a &quot;monkey coder&quot; using programming-related puns. While the humor may not appeal to everyone, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence, even if it is absurd and surreal humor. The comparison of a monkey coder using a banana peel as an IDE and a banana split as a debugger is intentionally nonsensical, but it follows a consistent metaphorical thread. There is a logical connection between the elements of the joke, even if the overall premise is highly unusual.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The references to 'monkey coder', 'IDE', and 'debugger' are clear and convey the intended humorous meaning, even if the reader may not be familiar with programming terminology. The writing style is straightforward and easy to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="28" rank="7">
+        <text>In the future, Simian Software: Monkey Coders Conquer the Tech World will banana the cloud computing industry.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains an attempt at humor through the use of anthropomorphized monkeys and a play on the tech industry term &quot;cloud computing&quot;. While the joke may not be particularly sophisticated or well-executed, there is a clear comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;In the future, Simian Software: Monkey Coders Conquer the Tech World&quot;) and a conclusion (&quot;will banana the cloud computing industry&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely harmful or promotes hate, violence, or extreme harm. While the joke uses some playful anthropomorphic language about monkeys and bananas, it does not cross the line into offensive territory. This type of edgy, tech-focused humor is generally acceptable.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke text has a logical thread, even if it is absurd and surreal. The premise of &quot;Simian Software: Monkey Coders Conquer the Tech World&quot; and the idea of them &quot;banananing the cloud computing industry&quot; creates an internally consistent, if nonsensical, narrative. This aligns with the instructions for a liberal evaluation of coherence.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious accessibility issues. The pun on &quot;banana the cloud computing industry&quot; is a clear and coherent play on words that should be accessible to most readers.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+            <category>Parody / Spoof</category>
+        </categories>
+        <factors>
+            <factor name="Recognition Factor" score="4"/>
+            <factor name="Style Mimicry" score="4"/>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Imaginative Leap" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.69"/>
+    </joke>
+    <joke id="29" rank="17">
+        <text>What do you call a Monkey Coder? A code banana.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by comparing a &quot;monkey coder&quot; to a &quot;code banana&quot;. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or hilarious. The pun and comparison between a monkey and a code banana shows an effort to be funny.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call a Monkey Coder?&quot;) and a punchline/conclusion (&quot;A code banana.&quot;). This meets the basic requirements for a complete joke structure, even if the joke itself is simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted pun playing on the term &quot;code monkey&quot; and does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke makes a logical connection between a &quot;monkey coder&quot; and a &quot;code banana&quot;, which is a coherent and intentional play on words. While the joke may be simple or silly, it has an internal logical consistency that can be understood.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;code banana&quot; is a simple and accessible play on words that most people would be able to grasp.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Syntax Humor" score="3"/>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.33" overall_rating="3.66"/>
+    </joke>
+    <joke id="30" rank="14">
+        <text>Monkey Coder: The Primate Programmer will recursively debug the entire internet.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains an attempt at humor through the use of wordplay and an unexpected juxtaposition of a &quot;primate programmer&quot; recursively debugging the internet. While the joke may not be particularly sophisticated or hilarious, there is a clear comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;The Primate Programmer&quot;) and a conclusion (&quot;will recursively debug the entire internet&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that promotes hate, violence, or extreme harm. It is an absurd, humorous statement about a &quot;Primate Programmer&quot; recursively debugging the internet, which does not cross the line into inappropriate or offensive territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread, even if it is absurd and surreal. The idea of a &quot;Primate Programmer&quot; recursively debugging the entire internet has an internal coherence and consistency, even if it is a highly unusual and imaginative premise. There is a clear logical progression from the premise to the punchline.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and does not contain any obvious accessibility issues. The reference to a &quot;Primate Programmer&quot; recursively debugging the internet is a creative and imaginative premise that should be accessible to most readers.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Technology / IT / Programming</category>
+            <category>Pop Culture / Celebrity</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Humor Awareness" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+</rating_results>

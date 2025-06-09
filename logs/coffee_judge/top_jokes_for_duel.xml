@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<top_jokes timestamp="2025-06-09 10:34:39" count="15">
+    <joke id="22" rank="1" overall_rating="4.58">
+        <text>What do you call a coffee connoisseur who ponders the meaning of life? A mocha-loving metaphysician.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Science / Math / Academia</category>
+            <category>Historical / Intellectual humor</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="28" rank="2" overall_rating="3.72">
+        <text>Roast Roast: What do you call a coffee that's been roasted so long, it's practically a briquette? Caffeine Connoisseur: That's what I call a true 'dark' roast.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Misdirection</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="12" rank="3" overall_rating="3.71">
+        <text>Why did the barista have a nervous breakdown? They were steamed over the constant flow of customers demanding 'extra hot, extra foam, extra shot, extra everything' lattes!</text>
+        <categories>
+            <category>Workplace</category>
+            <category>Shaggy dog stories</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+    </joke>
+    <joke id="1" rank="4" overall_rating="3.70">
+        <text>What do you call someone who's so addicted to coffee, they have an IV drip of espresso? A java junkie.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+    </joke>
+    <joke id="2" rank="5" overall_rating="3.70">
+        <text>What do you call a coffee connoisseur who can't go five minutes without a caffeine fix? A bean fiend.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Dad jokes</category>
+        </categories>
+    </joke>
+    <joke id="4" rank="6" overall_rating="3.70">
+        <text>What do you call someone who's so obsessed with coffee, they have a tattoo of a coffee bean on their arm? A caffeinated crusader.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="11" rank="7" overall_rating="3.70">
+        <text>What do you call a coffee crook who robs the local café? A mocha mobster!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>American stand-up</category>
+        </categories>
+    </joke>
+    <joke id="20" rank="8" overall_rating="3.70">
+        <text>What do you call a caffeine-fueled philosopher? A java-sipping sage.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Self-referential / Meta-humor</category>
+        </categories>
+    </joke>
+    <joke id="25" rank="9" overall_rating="3.70">
+        <text>What do you call a barista who can't keep up with the orders? A shot-stressed shot-slinger!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Workplace</category>
+            <category>Science / Math / Academia</category>
+            <category>Dad jokes</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="5" rank="10" overall_rating="3.69">
+        <text>What do you call a coffee enthusiast who has a PhD in roasting, brewing, and tasting? A java genius.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Workplace</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="8" rank="11" overall_rating="3.69">
+        <text>Espresso in hand, the philosopher pondered the meaning of life... and whether they should order a second shot.</text>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Misdirection</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Workplace</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+    <joke id="10" rank="12" overall_rating="3.69">
+        <text>What do you call a coffee burglar who breaks into your home for a caffeine fix? A bean bandit!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="14" rank="13" overall_rating="3.69">
+        <text>Why did the barista have a nervous breakdown? They were frothing mad trying to remember whether the customer wanted a double-shot, triple-shot, or quadruple-shot espresso in their 'skinny, decaf, sugar-free, vanilla latte with an extra pump of syrup'.</text>
+        <categories>
+            <category>Malapropisms</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Workplace</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="18" rank="14" overall_rating="3.69">
+        <text>Roasted that java a little too long? Time to brew up a new batch - this one's a real latte-r.</text>
+        <categories>
+            <category>Double Entendres</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+    <joke id="17" rank="15" overall_rating="3.68">
+        <text>Burned the beans? Looks like you made a mocha-ry of your coffee.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+    </joke>
+</top_jokes>

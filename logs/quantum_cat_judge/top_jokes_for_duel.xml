@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<top_jokes timestamp="2025-06-09 11:04:21" count="15">
+    <joke id="111" rank="1" overall_rating="4.61">
+        <text>What do you call a Schrödinger's Kitty that's been fed quantum catnip? A cat-astrophic quantum feline!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+    <joke id="27" rank="2" overall_rating="4.59">
+        <text>What happens when the Quantum Catnip Singularity reaches critical mass? The entire universe collapses into a giant ball of irresistible, infinitely dense catnip.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Technology / IT / Programming</category>
+            <category>Science / Math / Academia</category>
+            <category>Shitposts / Absurd Gen-Z humor</category>
+        </categories>
+    </joke>
+    <joke id="22" rank="3" overall_rating="4.58">
+        <text>Quantum Catnap: The only way to get your cat to sleep in is to collapse its wavefunction. Schrodinger's Snooze!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Science / Math / Academia</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="23" rank="4" overall_rating="4.58">
+        <text>Quantum Catnap: When your cat's nap is so deep, it's in a superposition of awake and asleep. Meow-tastic!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+    </joke>
+    <joke id="36" rank="5" overall_rating="4.58">
+        <text>If a cat's quantum catnap is entangled, it can sleep with one eye open and the other eye closed... at the same time.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+    <joke id="57" rank="6" overall_rating="4.58">
+        <text>When a cat's quantum catnip entanglement is observed, the unobserved cat experiences a temporal loop, reliving the same nap cycle over and over until the observation is complete.</text>
+        <categories>
+            <category>Self-referential / Meta-humor</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Shitposts / Absurd Gen-Z humor</category>
+        </categories>
+    </joke>
+    <joke id="68" rank="7" overall_rating="4.58">
+        <text>A Quantum Catnip-addicted Schrödinger's Kitty walks into a bar. The bartender says, 'I'm not sure if I should call an ambulance or not.'</text>
+        <categories>
+            <category>Non-sequiturs</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Dark / Morbid humor</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="84" rank="8" overall_rating="4.58">
+        <text>If a cat's quantum catnap is entangled with another cat's, do they both wake up at the same time... or never?</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Science / Math / Academia</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="85" rank="9" overall_rating="4.58">
+        <text>If a cat eats quantum catnip, is it simultaneously high and sober? Asking for a Schrödinger's friend.</text>
+        <categories>
+            <category>Non-sequiturs</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Science / Math / Academia</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Memes</category>
+        </categories>
+    </joke>
+    <joke id="94" rank="10" overall_rating="4.58">
+        <text>The Quantum Catnip Uncertainty Principle states that the more you try to focus on a cat, the more it will defy your expectations and do the exact opposite of what you predict.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Animals</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+    <joke id="97" rank="11" overall_rating="4.58">
+        <text>The Quantum Catnip Entanglement Paradox states that if a cat's nap is entangled with another cat's, and one cat is disturbed, the other cat will instantly wake up and demand pets.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Science / Math / Academia</category>
+            <category>Deadpan delivery</category>
+        </categories>
+    </joke>
+    <joke id="11" rank="12" overall_rating="4.58">
+        <text>The Quantum Catnip had the cat in a superposition of being here and not here. Schrödinger's feline, if you will.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="63" rank="13" overall_rating="4.58">
+        <text>What do you call a Schrödinger's Kitty that is both alive and dead? A quantum cat-astrophe!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+    <joke id="67" rank="14" overall_rating="4.58">
+        <text>Knock knock.
+Who's there?
+Schrödinger's Kitty. I'm not sure if I'm here or not.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+    <joke id="79" rank="15" overall_rating="4.58">
+        <text>Quantum Catnip Singularity: When the catnip hits critical mass, cats achieve a higher state of consciousness and begin levitating, phasing through walls, and speaking in ancient feline dialects.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Non-sequiturs</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+    </joke>
+</top_jokes>

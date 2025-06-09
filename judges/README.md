@@ -15,7 +15,7 @@
    2.2 Duel Judge
 
 3. **File Descriptions**
-   
+   D:\AppData\Local\SumatraPDF
    3.1 `judges/` Directory
    
    3.2 `utilities/` Directory

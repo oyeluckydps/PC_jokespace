@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tournament_results timestamp="2025-06-09 10:35:03" total_participants="15" tournament_rounds="5">
+    <winner id="12" original_rank="3">
+        <text>Why did the barista have a nervous breakdown? They were steamed over the constant flow of customers demanding 'extra hot, extra foam, extra shot, extra everything' lattes!</text>
+        <lives initial="1" used="1" remaining="0"/>
+    </winner>
+    <final_rankings>
+        <joke id="12" tournament_rank="1" original_rank="3" lives_remaining="0" lives_used="1"/>
+        <joke id="14" tournament_rank="2" original_rank="13" lives_remaining="0" lives_used="0"/>
+        <joke id="22" tournament_rank="3" original_rank="1" lives_remaining="0" lives_used="3" bye_rounds="1"/>
+        <joke id="5" tournament_rank="4" original_rank="10" lives_remaining="0" lives_used="0"/>
+        <joke id="28" tournament_rank="5" original_rank="2" lives_remaining="0" lives_used="2"/>
+        <joke id="2" tournament_rank="6" original_rank="5" lives_remaining="0" lives_used="0"/>
+        <joke id="4" tournament_rank="7" original_rank="6" lives_remaining="0" lives_used="0"/>
+        <joke id="20" tournament_rank="8" original_rank="8" lives_remaining="0" lives_used="0"/>
+        <joke id="1" tournament_rank="9" original_rank="4" lives_remaining="0" lives_used="0"/>
+        <joke id="11" tournament_rank="10" original_rank="7" lives_remaining="0" lives_used="0"/>
+        <joke id="25" tournament_rank="11" original_rank="9" lives_remaining="0" lives_used="0"/>
+        <joke id="8" tournament_rank="12" original_rank="11" lives_remaining="0" lives_used="0"/>
+        <joke id="10" tournament_rank="13" original_rank="12" lives_remaining="0" lives_used="0"/>
+        <joke id="18" tournament_rank="14" original_rank="14" lives_remaining="0" lives_used="0"/>
+        <joke id="17" tournament_rank="15" original_rank="15" lives_remaining="0" lives_used="0"/>
+    </final_rankings>
+</tournament_results>

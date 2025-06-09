@@ -1,0 +1,23 @@
+Kindly find collection of jokes generated on various topics like coffee, quantum cat, etc in the ./output folder. They have been generated on different jokespace size (medium and large) and that's why 20-30 jokes are created in some cases while ~100 jokes are created for large jokespace.
+
+Next to understand the internal thought process during generation and judging, kindly look at logs/<topic>_generator and logs/<topic>_judge fodlers.
+
+You will find the first order and higher order context for joke generation in logs/<topic>_generator, while you will find the rating judge results (for all jokes), top jokes selected for the duel, result of the duel matches, and the tournament resutls along with the winner joke here.
+
+You may also check the ./judge_report.txt file for some sample judge reports and outputs on various topics.
+
+Here are the top three jokes on "PENGUINS"
+
+1.) What do you call a penguin who's a real go-getter? A PRODUC-TUXEDO!
+2.) A Punguiner - a penguin who loves wordplay so much, they'll pun-ish you with their jokes!
+3.) What do you call a penguin who loves telling knock-knock jokes? A pun-guin-ista!
+
+Here are the top jokes on the topic of "MONKEY CODER"
+
+1.) Introducing the latest tech sensation: Chimpanzee Compiler, the primate programmer that's bananas for binary.
+2.) Why did the Monkey Coder banana the compiler? Because it was a-peel-ing way to fix the code!
+3.) You know you're a Monkey Coder when your 'banana' function always returns a peel.
+
+On the topic of "COFFEE"
+
+1.) 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tournament_results timestamp="2025-06-09 11:04:42" total_participants="15" tournament_rounds="6">
+    <winner id="27" original_rank="2">
+        <text>What happens when the Quantum Catnip Singularity reaches critical mass? The entire universe collapses into a giant ball of irresistible, infinitely dense catnip.</text>
+        <lives initial="2" used="1" remaining="1"/>
+    </winner>
+    <final_rankings>
+        <joke id="27" tournament_rank="1" original_rank="2" lives_remaining="1" lives_used="1"/>
+        <joke id="111" tournament_rank="2" original_rank="1" lives_remaining="0" lives_used="3" bye_rounds="1"/>
+        <joke id="22" tournament_rank="3" original_rank="3" lives_remaining="0" lives_used="1"/>
+        <joke id="23" tournament_rank="4" original_rank="4" lives_remaining="0" lives_used="0"/>
+        <joke id="36" tournament_rank="5" original_rank="5" lives_remaining="0" lives_used="0"/>
+        <joke id="57" tournament_rank="6" original_rank="6" lives_remaining="0" lives_used="0"/>
+        <joke id="68" tournament_rank="7" original_rank="7" lives_remaining="0" lives_used="0"/>
+        <joke id="84" tournament_rank="8" original_rank="8" lives_remaining="0" lives_used="0"/>
+        <joke id="85" tournament_rank="9" original_rank="9" lives_remaining="0" lives_used="0"/>
+        <joke id="94" tournament_rank="10" original_rank="10" lives_remaining="0" lives_used="0"/>
+        <joke id="97" tournament_rank="11" original_rank="11" lives_remaining="0" lives_used="0"/>
+        <joke id="11" tournament_rank="12" original_rank="12" lives_remaining="0" lives_used="0"/>
+        <joke id="63" tournament_rank="13" original_rank="13" lives_remaining="0" lives_used="0"/>
+        <joke id="67" tournament_rank="14" original_rank="14" lives_remaining="0" lives_used="0"/>
+        <joke id="79" tournament_rank="15" original_rank="15" lives_remaining="0" lives_used="0"/>
+    </final_rankings>
+</tournament_results>

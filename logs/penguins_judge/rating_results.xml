@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rating_results timestamp="2025-06-09 10:48:15" total_jokes="24">
+    <joke id="1" rank="6">
+        <text>What do you call a paparazzi who only takes pictures of penguins in the snow? A flurry of feathered flashes!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by playing on the similar sounds of &quot;paparazzi&quot; and &quot;flurry&quot;, as well as the visual imagery of penguins in the snow. While the joke may not be particularly sophisticated or hilarious, there is a clear comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a paparazzi who only takes pictures of penguins in the snow?&quot;) and a punchline/conclusion (&quot;A flurry of feathered flashes!&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted pun about paparazzi taking pictures of penguins in the snow. While the humor may be considered somewhat niche or obscure, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the concept of a paparazzi who only takes pictures of penguins in the snow, and the pun on &quot;a flurry of feathered flashes&quot;. This establishes an internal coherence and logical consistency, even if the premise is absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;flurry of feathered flashes&quot; is clear, and the reference to paparazzi taking pictures of penguins in the snow is straightforward. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="2" rank="20">
+        <text>What do you call a paparazzi who follows penguins on their commute? A waddle-watching weirdo.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;waddle&quot; and the phrase &quot;waddle-watching weirdo&quot;. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or hilarious. The structure of the joke also follows a common comedic format.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call a paparazzi who follows penguins on their commute?&quot;) and a punchline/conclusion (&quot;A waddle-watching weirdo.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. It is a lighthearted play on words about paparazzi following penguins, which is an appropriate and inoffensive topic.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the premise (a paparazzi following penguins) and the punchline (calling them a &quot;waddle-watching weirdo&quot;). While the premise and punchline are somewhat absurd, the joke has an internal coherence that makes sense within the context of the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;waddle-watching weirdo&quot; is clear and accessible, even for those unfamiliar with paparazzi or penguin behavior. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Animals</category>
+            <category>One-liners</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="3" rank="5">
+        <text>What do you call a paparazzi who takes pictures of penguins on their lunch break? A peckish penguin photographer.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by combining the words &quot;paparazzi&quot;, &quot;penguins&quot;, and &quot;peckish&quot; to create a punny phrase. This demonstrates comedic intent, even if the joke may not be particularly strong or original.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a paparazzi who takes pictures of penguins on their lunch break?&quot;) and a punchline/conclusion (&quot;A peckish penguin photographer.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke is a play on words involving penguins and paparazzi, and does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The humor is mildly edgy but not inappropriate.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the pun on &quot;peckish&quot; and the photographer taking pictures of penguins on their lunch break. While the premise is absurd, the internal logic of the joke is coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke plays on the similar-sounding words &quot;peckish&quot; and &quot;paparazzi&quot;, creating a pun about a photographer taking pictures of penguins on their lunch break. This wordplay is understandable and the joke is accessible, even if the specific reference to &quot;paparazzi&quot; and &quot;penguins&quot; may require some context.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Animals</category>
+            <category>Science / Math / Academia</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="3"/>
+            <factor name="Humor Awareness" score="4"/>
+            <factor name="Structural Playfulness" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.75" overall_rating="3.71"/>
+    </joke>
+    <joke id="4" rank="7">
+        <text>Why did the penguin try to pick up the other penguin at the bar? Because he was looking to 'chill' with someone.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;chill&quot;. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or complex. The punchline plays on the double meaning of &quot;chill&quot; as both a temperature and a social activity. This meets the criteria for passing the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the penguin try to pick up the other penguin at the bar?&quot;) and a conclusion (&quot;Because he was looking to 'chill' with someone.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains a mildly suggestive pun, but does not promote hate, violence, or extreme harm. It falls within the bounds of acceptable adult humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the penguin trying to &quot;pick up&quot; another penguin and wanting to &quot;chill&quot; with them. This establishes an internally consistent narrative, even if the premise is absurd or surreal. There is a coherent thread tying the different elements of the joke together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;chill&quot; is clear and the overall meaning is accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Sex / Adult</category>
+            <category>Relationships / Marriage</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Double Entendre Cleverness" score="4"/>
+            <factor name="Punch Impact" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="5" rank="18">
+        <text>Why did the penguin try to pick up the other penguin at the bar? Because he thought his 'waddle' impress her, but she just waddled away.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;waddle&quot; and the comedic situation of a penguin trying to pick up another penguin at a bar. While the joke may not be particularly sophisticated or original, there is a discernible comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (the penguin trying to pick up another penguin at a bar) and a conclusion (the other penguin waddling away). While the conclusion is a bit simple, it completes the joke structure. This meets the criteria for a complete joke.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a mildly humorous pun about penguins and their waddling behavior. While the joke may not be the most sophisticated or original, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the penguin tries to impress another penguin at a bar, but the attempt fails. While the premise is absurd, the joke follows an internally consistent narrative structure. There are no obvious logical contradictions or incoherent elements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;waddle&quot; is clear, and the overall premise of a penguin trying to pick up another penguin at a bar is simple and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Malapropisms</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="3"/>
+            <factor name="Pun Precision" score="3"/>
+            <factor name="Groan-Worthy Charm" score="3"/>
+        </factors>
+        <scores max_score="3" mean_score="3.00" overall_rating="2.80"/>
+    </joke>
+    <joke id="6" rank="15">
+        <text>Why did the penguin try to pick up the other penguin at the bar? Because he was hoping to 'slide' into her DMs.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the phrase &quot;slide into her DMs&quot; (direct messages). While the joke may not be particularly sophisticated or original, there is a discernible comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the penguin try to pick up the other penguin at the bar?&quot;) and a conclusion (&quot;Because he was hoping to 'slide' into her DMs.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains a mildly sexual pun, but does not promote hate, violence, or extreme harm. It falls within the bounds of acceptable adult humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between the penguin trying to pick up another penguin at a bar and the pun about &quot;sliding into her DMs&quot;. While the premise is absurd, there is an intentional internal logic and coherence to the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;slide into her DMs&quot; is a common internet/social media reference that most readers would be able to comprehend.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Misdirection</category>
+            <category>Relationships / Marriage</category>
+        </categories>
+        <factors>
+            <factor name="Expectation Subversion" score="3"/>
+            <factor name="Logical Pivot" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="7" rank="8">
+        <text>What do you call a penguin who's a total overachiever? A peng-winner!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by playing on the similarity between &quot;penguin&quot; and &quot;peng-winner&quot;. This demonstrates comedic intent, even if the joke itself may not be particularly clever or funny.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a penguin who's a total overachiever?&quot;) and a punchline/conclusion (&quot;A peng-winner!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a play on words that is mildly humorous without crossing any major lines of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the similarity between the words &quot;penguin&quot; and &quot;peng-winner&quot;, creating a pun that is logically coherent. The connection between a penguin and an overachiever is absurd but intentional, which aligns with the instructions for a liberal evaluation of coherence.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;penguin&quot; and &quot;winner&quot; is clear and accessible. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Workplace</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="8" rank="19">
+        <text>How do penguins stay so productive? They're always waddling to work on time.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;waddling&quot; and the idea of penguins being productive. This demonstrates comedic intent, even if the joke itself is not particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;How do penguins stay so productive?&quot;) and a conclusion/punchline (&quot;They're always waddling to work on time.&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted pun about penguins being productive. While the humor may not appeal to everyone, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical connection between penguins and being productive by waddling to work on time. While the premise is absurd, the joke maintains internal coherence and follows a clear narrative structure.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;waddling to work on time&quot; is clear and accessible. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="3"/>
+            <factor name="Linguistic Creativity" score="3"/>
+        </factors>
+        <scores max_score="3" mean_score="3.00" overall_rating="2.78"/>
+    </joke>
+    <joke id="9" rank="13">
+        <text>What's the most efficient penguin in the office? The one who's always on the ball... and the desk, and the filing cabinet.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;ball&quot; and the penguin's office antics. While the joke may not be particularly sophisticated or original, there is a discernible comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What's the most efficient penguin in the office?&quot;) and a punchline/conclusion (&quot;The one who's always on the ball... and the desk, and the filing cabinet.&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that promotes hate, violence, or extreme harm. It is an inoffensive pun about a penguin's behavior in an office setting. While the humor may be considered somewhat silly or simplistic, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - it's playing on the idea of a penguin being efficient in an office setting by being &quot;on the ball&quot; in various places. While the specific imagery is absurd, the overall concept hangs together coherently.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The punchline about an efficient penguin in an office environment is clear and accessible, even for those unfamiliar with penguin behavior or office settings.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Workplace</category>
+            <category>One-liners</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Pun Precision" score="4"/>
+            <factor name="Punch Impact" score="4"/>
+            <factor name="Relatability" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="10" rank="9">
+        <text>Why did the penguin parents ground their chick? Because it kept trying to fly, even though it couldn't!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>This joke has a clear comedic intent. It sets up a humorous situation with a penguin chick trying to fly despite not being able to, and the punchline of the parents grounding it for this behavior. There is a clear attempt at humor through this ironic and playful scenario.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (why the penguin parents grounded their chick) and a conclusion (because it kept trying to fly, even though it couldn't). The joke structure is complete, even if the punchline is simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely harmful or promoting hate, violence, or extreme harm. It is a lighthearted joke about a penguin chick trying to fly despite not being able to. This type of humor is generally considered appropriate.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the penguin chick kept trying to fly despite not being able to, which led to the parents grounding it as punishment. This internal logic is coherent, even if the premise is absurd or surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The premise of a penguin chick trying to fly despite not being able to is a simple and relatable concept. There are no major barriers to accessibility or understandability.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Animals</category>
+            <category>School / Exams / Students</category>
+            <category>Shaggy dog stories</category>
+            <category>Deadpan delivery</category>
+        </categories>
+        <factors>
+            <factor name="Contextual Contrast" score="4"/>
+            <factor name="Personification" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="11" rank="21">
+        <text>Why did the penguin parents ground their chick? Because it refused to stop belly-sliding down the icy slopes, even after they told it a thousand times!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text presents a humorous scenario involving a penguin chick being grounded for repeatedly sliding down icy slopes, despite their parents' instructions. This setup and punchline structure demonstrates an attempt at creating a comedic situation, which meets the criteria for comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (the penguin parents grounding their chick) and a conclusion (the chick refusing to stop belly-sliding despite being told not to). The joke structure is complete, even if the conclusion is a bit simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely harmful or offensive. It is a lighthearted joke about a penguin chick being grounded for misbehaving, which is a common and relatable scenario. There is no promotion of hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the penguin chick was grounded for repeatedly belly-sliding down icy slopes, even after being told to stop. This internal logic is coherent, even if the specific scenario is absurd and humorous.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is easy to understand and does not contain any obvious barriers to accessibility. The premise of a penguin chick being grounded for sliding down icy slopes is a relatable and understandable situation. The language used is straightforward and the joke structure is clear.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Animals</category>
+            <category>Children / Parenting</category>
+            <category>Wholesome / Clean humor</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="12" rank="10">
+        <text>Why did the penguin parents ground their chick? Because it kept trying to sneak out to the local ice cream shop, even though it was past its bedtime!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text presents a humorous scenario involving a penguin chick trying to sneak out to an ice cream shop past its bedtime. This setup and punchline structure demonstrates an attempt at comedic intent, even if the joke itself is not particularly sophisticated or complex. Based on the liberal evaluation criteria, this should be considered a passing case for the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (the penguin chick trying to sneak out to the ice cream shop) and a conclusion (the parents grounding the chick for this behavior). The joke structure is complete, even if the conclusion is relatively simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that would be considered extremely harmful or offensive. It is a lighthearted joke about a penguin chick trying to sneak out to get ice cream. There is no promotion of hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - a penguin chick trying to sneak out to an ice cream shop, which leads to the parents grounding it. While the premise is absurd and surreal, the internal logic holds together coherently.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is easy to understand and does not contain any obvious barriers to accessibility. The premise of a penguin chick trying to sneak out to an ice cream shop is straightforward and relatable, even if the specific details are a bit whimsical. Overall, the joke is accessible and understandable.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Children / Parenting</category>
+            <category>School / Exams / Students</category>
+            <category>Wholesome / Clean humor</category>
+        </categories>
+        <factors>
+            <factor name="Innocent Irony" score="4"/>
+            <factor name="Role Reversal Humor" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="13" rank="3">
+        <text>What do you call a penguin who loves telling knock-knock jokes? A pun-guin-ista!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a clear pun on the word &quot;penguin&quot; and &quot;pun-guin-ista&quot;, which demonstrates comedic intent through wordplay. Even though the joke may not be particularly sophisticated or hilarious, there is an evident attempt at humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a penguin who loves telling knock-knock jokes?&quot;) and a punchline/conclusion (&quot;A pun-guin-ista!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the word &quot;pun-guin-ista&quot; which is a pun on &quot;penguin&quot; and &quot;pundit&quot;. It does not contain any content that would be considered extremely offensive or promoting hate, violence, or extreme harm. The joke is in line with the guidelines for liberal evaluation of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the similarity between the words &quot;penguin&quot; and &quot;pun-guin-ista&quot;, creating a coherent pun-based joke. While the connection may be absurd, the internal logic of the joke is sound.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke plays on the word &quot;pun-guin-ista&quot;, which is a clever pun combining &quot;penguin&quot; and &quot;pundit/punster&quot;. The joke is understandable and accessible, as the pun is clear and the concept of a penguin telling knock-knock jokes is easy to visualize. There are no major barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Knock-knock jokes</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Predictable Surprise" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.72"/>
+    </joke>
+    <joke id="14" rank="16">
+        <text>Why did the penguin cross the road? To get to the other side and tell more puns!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through the use of a pun and a comedic setup-and-punchline structure. Even though the joke may not be particularly clever or original, there is a clear comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the penguin cross the road?&quot;) and a conclusion (&quot;To get to the other side and tell more puns!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted pun about a penguin crossing the road to tell more puns, which is appropriate for a joke.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical progression - the penguin crosses the road to tell more puns. This establishes an internal coherence, even if the premise is absurd. The joke follows a recognizable joke structure and has a clear punchline.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The punchline about the penguin telling more puns is clear and accessible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Animals</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="15" rank="17">
+        <text>What do you call a penguin who's a master of wordplay? A pun-guin-ius!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor, with the pun on &quot;pun-guin-ius&quot;. This indicates comedic intent, even if the joke may not be particularly clever or successful. Based on the liberal evaluation instructions, this should be considered a passing case.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;What do you call a penguin who's a master of wordplay?&quot;) and a punchline/conclusion (&quot;A pun-guin-ius!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a pun-based joke that plays on the word &quot;penguin&quot; and does not cross any clear lines of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the similarity between the words &quot;penguin&quot; and &quot;pun-guin-ius&quot;, creating a coherent pun-based joke. The connection between the two terms is clear and logically consistent, even if the overall joke is absurd or silly. There are no obvious internal contradictions or incoherent elements.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;pun-guin-ius&quot; is clear and accessible, even for those not familiar with penguins or wordplay. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Animals</category>
+            <category>One-liners</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Sound/Meaning Play" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.66"/>
+    </joke>
+    <joke id="16" rank="14">
+        <text>What do you call a group of photographers who only take pictures of penguins at the bar? The Penguin Paparazzi trying to pick up their next date!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through wordplay and a comedic premise. The pun on &quot;paparazzi&quot; and the humorous situation of photographers trying to pick up dates at a bar while photographing penguins demonstrates comedic intent, even if the execution is not particularly sophisticated.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a group of photographers who only take pictures of penguins at the bar?&quot;) and a punchline/conclusion (&quot;The Penguin Paparazzi trying to pick up their next date!&quot;). The joke structure is complete, even if the punchline is a bit simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted play on words about photographers and penguins, without crossing any major lines of appropriateness.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - a group of photographers who take pictures of penguins at a bar, with the punchline being that they are trying to pick up their next date. While the premise is absurd, the joke has an internal coherence and logical consistency.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. It uses a simple premise and wordplay that should be clear to most readers. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>Relationships / Marriage</category>
+            <category>Shaggy dog stories</category>
+        </categories>
+        <factors>
+            <factor name="Personification" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Punch Impact" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.67" overall_rating="3.69"/>
+    </joke>
+    <joke id="17" rank="11">
+        <text>Why did the penguin paparazzi try to pick up the other penguin at the bar? He was hoping to get the perfect shot of a penguin pickup line in action.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the phrase &quot;penguin pickup line&quot;. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or successful. The structure of the joke also follows a common comedic format.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (the penguin paparazzi trying to pick up another penguin) and a conclusion (the hope of getting a perfect shot of a penguin pickup line). The joke structure is complete, even if the punchline is a bit simple.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke does not contain any content that is extremely offensive or promoting hate, violence, or extreme harm. It is a lighthearted pun about penguins and pickup lines, which falls within the bounds of acceptable adult humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - a penguin paparazzi trying to get a photo of another penguin using a pickup line. While the premise is absurd, the joke has an internal coherence and logical consistency.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The premise of a penguin paparazzi trying to get a photo of a penguin pickup line is clear and accessible, even if the specific details are a bit niche. Overall, the joke is understandable without requiring specialized knowledge.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+        </categories>
+        <factors>
+            <factor name="Expectation Subversion" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.70"/>
+    </joke>
+    <joke id="18" rank="22">
+        <text>The penguin paparazzi were out in full force, snapping photos of penguins trying their best pickup lines. 'Hey baby, I heard you like long, black tuxedos...'</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a penguin-themed pickup line, which demonstrates comedic intent. While the joke may not be particularly sophisticated or hilarious, it does have a recognizable comedic structure and an effort to be funny.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;The penguin paparazzi were out in full force, snapping photos of penguins trying their best pickup lines&quot;) and a punchline/conclusion (&quot;'Hey baby, I heard you like long, black tuxedos...'&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains a mildly flirtatious pickup line, but does not contain any content that would be considered extremely offensive or harmful. The humor is playful and not promoting hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread, with the setup of paparazzi photographing penguins and the punchline of a penguin using a pickup line. While the humor is absurd and surreal, the joke is internally coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The penguin paparazzi and pickup line premise are clear, and the joke does not contain any obvious barriers to comprehension.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Irony / Sarcasm</category>
+            <category>Misdirection</category>
+            <category>Animals</category>
+            <category>Relationships / Marriage</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="19" rank="1">
+        <text>What do you call a penguin who's a real go-getter? A PRODUC-TUXEDO!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains a pun on the word &quot;tuxedo&quot; and &quot;productive&quot;, which demonstrates an attempt at comedic wordplay. While the joke may not be particularly clever or funny, there is a clear intent to create humor.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;What do you call a penguin who's a real go-getter?&quot;) and a punchline/conclusion (&quot;A PRODUC-TUXEDO!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke plays on the similarity between &quot;tuxedo&quot; and &quot;productive&quot;, creating a pun about a hardworking penguin. While the humor is a bit silly, it does not contain any content that would be considered extremely offensive or harmful. The joke does not promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the similarity between the words &quot;productive&quot; and &quot;tuxedo&quot;, creating a pun that connects the idea of a penguin being a &quot;go-getter&quot; with the formal attire of a tuxedo. This establishes a logical connection, even if the overall joke is absurd and surreal. The internal logic holds together.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke plays on the similarity between the words &quot;productive&quot; and &quot;tuxedo&quot;, creating a pun that is understandable. The wordplay is clear and the joke is accessible, even if the specific reference to a &quot;go-getter penguin&quot; may require some additional context.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>One-liners</category>
+            <category>Dad joke bots / AI-generated</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="5"/>
+            <factor name="Punch Impact" score="4"/>
+        </factors>
+        <scores max_score="5" mean_score="4.33" overall_rating="4.58"/>
+    </joke>
+    <joke id="20" rank="23">
+        <text>Why did the penguin parents ground their chick? They caught them WADDLING on the job!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at humor through a pun on the word &quot;waddling&quot; and the situation of penguin parents grounding their chick. This demonstrates comedic intent, even if the joke itself may not be particularly strong or original.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke has a clear setup (&quot;Why did the penguin parents ground their chick?&quot;) and a punchline/conclusion (&quot;They caught them WADDLING on the job!&quot;). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely offensive or promotes hate, violence, or extreme harm. It is a lighthearted pun about penguins, which is appropriate for a general audience.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread - the penguin parents caught their chick &quot;waddling on the job&quot;, which is a play on words and a coherent reason for them to ground their chick. The joke makes internal sense and follows a logical progression.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is straightforward and easy to understand. The pun on &quot;waddling on the job&quot; is clear and accessible. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Animals</category>
+            <category>Children / Parenting</category>
+            <category>One-liners</category>
+            <category>Wholesome / Clean humor</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="21" rank="24">
+        <text>A penguin who's a total overachiever? They're a SUIT-ABLE employee. And their chick is grounded for being a SLIDE-SHOW-OFF.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke contains clear attempts at humor through wordplay and puns, such as &quot;SUIT-ABLE employee&quot; and &quot;SLIDE-SHOW-OFF&quot;. While the humor may be somewhat simplistic or predictable, there is an evident comedic intent.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text contains a setup (a penguin who's a total overachiever) and a punchline/conclusion (they're a SUIT-ABLE employee, and their chick is grounded for being a SLIDE-SHOW-OFF). This meets the basic criteria for a complete joke structure, even if the punchline is a bit weak.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke contains some puns and wordplay related to penguins, which does not appear to contain any extremely harmful or offensive content. While the humor may be considered somewhat silly or corny, it does not promote hate, violence, or extreme harm.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear logical thread, with the puns and wordplay connecting the concepts of penguins, overachieving, and being grounded. While the humor is absurd and surreal, there is an intentional internal consistency that makes the joke coherent.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text uses some puns and wordplay that may require a bit of context to fully understand, but the overall meaning is still accessible and understandable. The references to penguins, employees, and chicks being &quot;grounded&quot; are clear enough for the joke to be comprehensible.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors/>
+        <scores max_score="0" mean_score="0.00" overall_rating="0.00"/>
+    </joke>
+    <joke id="22" rank="2">
+        <text>A Punguiner - a penguin who loves wordplay so much, they'll pun-ish you with their jokes!</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor with the pun on &quot;punguiner&quot;. This demonstrates comedic intent, even if the joke itself may not be particularly successful or sophisticated. Based on the liberal evaluation instructions, this should pass the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text has a clear setup (&quot;A Punguiner&quot;) and a punchline/conclusion (&quot;a penguin who loves wordplay so much, they'll pun-ish you with their jokes!&quot;). This meets the basic criteria for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke text does not contain any content that is extremely harmful or promoting hate, violence, or extreme harm. It is a play on words involving penguins, which is a common and relatively harmless topic for humor.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke plays on the word &quot;punguiner&quot; which is a clever portmanteau of &quot;penguin&quot; and &quot;punish&quot;, creating an amusing and logically consistent concept of a penguin who loves wordplay. The joke has an internal logic and coherence, even if the premise is absurd and surreal.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;punguiner&quot; is clear, and the overall concept of a penguin who loves wordplay is easy to grasp. There are no obvious barriers to understanding this joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Dad jokes</category>
+        </categories>
+        <factors>
+            <factor name="Linguistic Creativity" score="5"/>
+            <factor name="Sound/Meaning Play" score="4"/>
+        </factors>
+        <scores max_score="5" mean_score="4.50" overall_rating="4.58"/>
+    </joke>
+    <joke id="23" rank="12">
+        <text>A Paparazzi-guin - a photographer who will stop at nothing to get the perfect shot of a penguin, even if it means stalking their every move.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a clear attempt at wordplay and humor by combining the words &quot;paparazzi&quot; and &quot;penguin&quot; to create a new humorous term &quot;Paparazzi-guin&quot;. This demonstrates comedic intent, even if the joke itself may not be particularly sophisticated or hilarious.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text provides a clear setup (a &quot;Paparazzi-guin&quot; photographer) and a conclusion (they will stop at nothing to get the perfect shot of a penguin). This meets the basic requirements for a complete joke structure.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke about a &quot;Paparazzi-guin&quot; does not contain any content that would be considered extremely offensive or harmful. It is a play on words that pokes fun at paparazzi behavior, without promoting hate, violence, or extreme harm. This type of edgy, humorous wordplay is generally acceptable.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke presents a coherent concept of a &quot;Paparazzi-guin&quot; - a photographer obsessed with capturing the perfect shot of a penguin. This internal logic is clear and consistent, even if the premise is absurd or surreal. There is a logical thread connecting the key elements of the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The concept of a &quot;Paparazzi-guin&quot; is clear and the pun on &quot;paparazzi&quot; and &quot;penguin&quot; is straightforward. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Misdirection</category>
+            <category>Animals</category>
+            <category>Pop Culture / Celebrity</category>
+        </categories>
+        <factors>
+            <factor name="Controlled Nonsense" score="3"/>
+            <factor name="Imaginative Leap" score="4"/>
+            <factor name="Name Play and Mimicry" score="4"/>
+            <factor name="Personification" score="3"/>
+        </factors>
+        <scores max_score="4" mean_score="3.50" overall_rating="3.69"/>
+    </joke>
+    <joke id="24" rank="4">
+        <text>A Pun-guin Paparazzi - a group of photographers who only take pictures of penguins... and then make terrible puns about them.</text>
+        <admissibility overall="True">
+            <intent passed="True">
+                <reasoning>The joke text contains a pun-based play on words with &quot;Pun-guin Paparazzi&quot;, which demonstrates clear comedic intent. Even though the pun may not be particularly clever or original, there is an attempt at humor through wordplay. This meets the criteria for passing the intent check.</reasoning>
+            </intent>
+            <completeness passed="True">
+                <reasoning>The joke text contains a setup (a group of photographers who take pictures of penguins) and a punchline (they make terrible puns about the penguins). This meets the basic requirements for a complete joke structure, even if the punchline is a bit weak. There are no obvious violations of completeness.</reasoning>
+            </completeness>
+            <appropriateness passed="True">
+                <reasoning>The joke about a &quot;Pun-guin Paparazzi&quot; taking pictures of penguins and making puns does not contain any extremely harmful or offensive content. It is a lighthearted play on words that does not promote hate, violence, or extreme harm. While the pun may be considered corny or groan-worthy by some, it does not cross the line into unacceptable territory.</reasoning>
+            </appropriateness>
+            <coherence passed="True">
+                <reasoning>The joke has a clear internal logic and coherence. The concept of a group of photographers who only take pictures of penguins and make puns about them is an intentionally absurd and surreal premise, but it hangs together as a coherent idea. Even though the pun itself is quite groan-worthy, the overall concept makes sense within the context of the joke.</reasoning>
+            </coherence>
+            <accessibility passed="True">
+                <reasoning>The joke text is understandable and accessible. The pun on &quot;Pun-guin Paparazzi&quot; and the explanation of the group's activities are clear and easy to comprehend. There are no obvious barriers to understanding the joke.</reasoning>
+            </accessibility>
+        </admissibility>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Workplace</category>
+            <category>One-liners</category>
+        </categories>
+        <factors>
+            <factor name="Sound/Meaning Play" score="4"/>
+            <factor name="Linguistic Creativity" score="4"/>
+            <factor name="Imaginative Leap" score="4"/>
+        </factors>
+        <scores max_score="4" mean_score="4.00" overall_rating="3.72"/>
+    </joke>
+</rating_results>

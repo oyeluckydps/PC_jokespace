@@ -1,5 +1,5 @@
-logs/
+logs_bak_2025_06_09/
 **/__pycache__/
 
 **/secret/**
-output/*
+

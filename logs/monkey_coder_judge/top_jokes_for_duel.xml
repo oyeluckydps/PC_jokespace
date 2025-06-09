@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<top_jokes timestamp="2025-06-09 11:10:09" count="15">
+    <joke id="2" rank="1" overall_rating="3.72">
+        <text>Introducing the latest tech sensation: Chimpanzee Compiler, the primate programmer that's bananas for binary.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Absurdity / Surrealism</category>
+            <category>Animals</category>
+            <category>Technology / IT / Programming</category>
+            <category>Science / Math / Academia</category>
+            <category>Memes</category>
+        </categories>
+    </joke>
+    <joke id="9" rank="2" overall_rating="3.72">
+        <text>You know you're a Monkey Coder when your 'banana' function always returns a peel.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+    </joke>
+    <joke id="7" rank="3" overall_rating="3.70">
+        <text>Why did the Monkey Coder banana the compiler? Because it was a-peel-ing way to fix the code!</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+    </joke>
+    <joke id="11" rank="4" overall_rating="3.70">
+        <text>Monkey Coders use 'banana' as their primary data type. Bananas are just that versatile.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+            <category>Memes</category>
+        </categories>
+    </joke>
+    <joke id="16" rank="5" overall_rating="3.70">
+        <text>I'm a Banana Bits: The Monkey Coder's Coding Cuisine and here's what a typical day looks like: I begin each morning with a banana-rama smoothie, then spend the day hopping from one computer to the next, leaving a trail of banana crumbs in my wake. My colleagues have learned to avoid my banana-flinging tantrums when the code doesn't compile.</text>
+        <categories>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+    </joke>
+    <joke id="21" rank="6" overall_rating="3.70">
+        <text>Why did the Monkey Coder banana the compiler? Because it was a syntax error!</text>
+        <categories>
+            <category>Technology / IT / Programming</category>
+            <category>Dad jokes</category>
+        </categories>
+    </joke>
+    <joke id="28" rank="7" overall_rating="3.69">
+        <text>In the future, Simian Software: Monkey Coders Conquer the Tech World will banana the cloud computing industry.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+            <category>Parody / Spoof</category>
+        </categories>
+    </joke>
+    <joke id="10" rank="8" overall_rating="3.69">
+        <text>Monkey Coders don't debug - they just throw their code at the wall and see what sticks.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Workplace</category>
+            <category>Technology / IT / Programming</category>
+            <category>Deadpan delivery</category>
+            <category>Slapstick / Physical comedy</category>
+        </categories>
+    </joke>
+    <joke id="13" rank="9" overall_rating="3.69">
+        <text>You know you're a Monkey Coder when your IDE has a special 'banana' autocomplete feature.</text>
+        <categories>
+            <category>Wordplay / Puns</category>
+            <category>Technology / IT / Programming</category>
+            <category>Parody / Spoof</category>
+            <category>Programmer / Nerd jokes</category>
+            <category>Memes</category>
+        </categories>
+    </joke>
+    <joke id="17" rank="10" overall_rating="3.69">
+        <text>In the future, Monkey Coders will banana the cloud computing industry, storing all your data in their secret banana-shaped servers.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+        </categories>
+    </joke>
+    <joke id="18" rank="11" overall_rating="3.69">
+        <text>Forget Silicon Valley - the new tech hub will be Banana Valley, where Monkey Coders swing from the servers and debug code with their prehensile tails.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Deadpan delivery</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="23" rank="12" overall_rating="3.69">
+        <text>Monkey Coder's Debugging Dilemma: When the code doesn't work, just throw more bananas at it.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Technology / IT / Programming</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="25" rank="13" overall_rating="3.69">
+        <text>You know you're a Monkey Coder when your keyboard is covered in banana peels and your code is a bunch of bananas.</text>
+        <categories>
+            <category>Technology / IT / Programming</category>
+            <category>Deadpan delivery</category>
+            <category>Programmer / Nerd jokes</category>
+        </categories>
+    </joke>
+    <joke id="30" rank="14" overall_rating="3.69">
+        <text>Monkey Coder: The Primate Programmer will recursively debug the entire internet.</text>
+        <categories>
+            <category>Absurdity / Surrealism</category>
+            <category>Self-referential / Meta-humor</category>
+            <category>Technology / IT / Programming</category>
+            <category>Pop Culture / Celebrity</category>
+        </categories>
+    </joke>
+    <joke id="24" rank="15" overall_rating="3.67">
+        <text>Monkey Coder's Debugging Tip: When in doubt, just print 'banana' and see what happens.</text>
+        <categories>
+            <category>Technology / IT / Programming</category>
+            <category>One-liners</category>
+        </categories>
+    </joke>
+</top_jokes>
